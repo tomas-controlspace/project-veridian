@@ -1,0 +1,1759 @@
+{
+  "20001": {
+    "total_dwellings_2021": 109,
+    "rented_2021": 9,
+    "owned_2021": 96,
+    "pct_rented": 8.26,
+    "pct_owned": 88.07
+  },
+  "20002": {
+    "total_dwellings_2021": 175,
+    "rented_2021": 12,
+    "owned_2021": 158,
+    "pct_rented": 6.86,
+    "pct_owned": 90.29
+  },
+  "20003": {
+    "total_dwellings_2021": 282,
+    "rented_2021": 39,
+    "owned_2021": 239,
+    "pct_rented": 13.83,
+    "pct_owned": 84.75
+  },
+  "20004": {
+    "total_dwellings_2021": 113,
+    "rented_2021": 5,
+    "owned_2021": 105,
+    "pct_rented": 4.42,
+    "pct_owned": 92.92
+  },
+  "20005": {
+    "total_dwellings_2021": 708,
+    "rented_2021": 116,
+    "owned_2021": 571,
+    "pct_rented": 16.38,
+    "pct_owned": 80.65
+  },
+  "20006": {
+    "total_dwellings_2021": 132,
+    "rented_2021": 8,
+    "owned_2021": 124,
+    "pct_rented": 6.06,
+    "pct_owned": 93.94
+  },
+  "20007": {
+    "total_dwellings_2021": 162,
+    "rented_2021": 16,
+    "owned_2021": 143,
+    "pct_rented": 9.88,
+    "pct_owned": 88.27
+  },
+  "20008": {
+    "total_dwellings_2021": 358,
+    "rented_2021": 37,
+    "owned_2021": 310,
+    "pct_rented": 10.34,
+    "pct_owned": 86.59
+  },
+  "20009": {
+    "total_dwellings_2021": 6070,
+    "rented_2021": 741,
+    "owned_2021": 5226,
+    "pct_rented": 12.21,
+    "pct_owned": 86.1
+  },
+  "20010": {
+    "total_dwellings_2021": 830,
+    "rented_2021": 95,
+    "owned_2021": 725,
+    "pct_rented": 11.45,
+    "pct_owned": 87.35
+  },
+  "20011": {
+    "total_dwellings_2021": 867,
+    "rented_2021": 68,
+    "owned_2021": 781,
+    "pct_rented": 7.84,
+    "pct_owned": 90.08
+  },
+  "20012": {
+    "total_dwellings_2021": 70,
+    "rented_2021": 5,
+    "owned_2021": 63,
+    "pct_rented": 7.14,
+    "pct_owned": 90
+  },
+  "20013": {
+    "total_dwellings_2021": 2939,
+    "rented_2021": 269,
+    "owned_2021": 2617,
+    "pct_rented": 9.15,
+    "pct_owned": 89.04
+  },
+  "20014": {
+    "total_dwellings_2021": 573,
+    "rented_2021": 72,
+    "owned_2021": 488,
+    "pct_rented": 12.57,
+    "pct_owned": 85.17
+  },
+  "20015": {
+    "total_dwellings_2021": 630,
+    "rented_2021": 65,
+    "owned_2021": 545,
+    "pct_rented": 10.32,
+    "pct_owned": 86.51
+  },
+  "20016": {
+    "total_dwellings_2021": 728,
+    "rented_2021": 79,
+    "owned_2021": 632,
+    "pct_rented": 10.85,
+    "pct_owned": 86.81
+  },
+  "20017": {
+    "total_dwellings_2021": 4483,
+    "rented_2021": 548,
+    "owned_2021": 3856,
+    "pct_rented": 12.22,
+    "pct_owned": 86.01
+  },
+  "20018": {
+    "total_dwellings_2021": 5797,
+    "rented_2021": 663,
+    "owned_2021": 5017,
+    "pct_rented": 11.44,
+    "pct_owned": 86.54
+  },
+  "20019": {
+    "total_dwellings_2021": 5522,
+    "rented_2021": 753,
+    "owned_2021": 4636,
+    "pct_rented": 13.64,
+    "pct_owned": 83.96
+  },
+  "20020": {
+    "total_dwellings_2021": 57,
+    "rented_2021": 7,
+    "owned_2021": 50,
+    "pct_rented": 12.28,
+    "pct_owned": 87.72
+  },
+  "20021": {
+    "total_dwellings_2021": 100,
+    "rented_2021": 7,
+    "owned_2021": 89,
+    "pct_rented": 7,
+    "pct_owned": 89
+  },
+  "20022": {
+    "total_dwellings_2021": 420,
+    "rented_2021": 18,
+    "owned_2021": 385,
+    "pct_rented": 4.29,
+    "pct_owned": 91.67
+  },
+  "20023": {
+    "total_dwellings_2021": 236,
+    "rented_2021": 31,
+    "owned_2021": 197,
+    "pct_rented": 13.14,
+    "pct_owned": 83.47
+  },
+  "20024": {
+    "total_dwellings_2021": 190,
+    "rented_2021": 14,
+    "owned_2021": 172,
+    "pct_rented": 7.37,
+    "pct_owned": 90.53
+  },
+  "20025": {
+    "total_dwellings_2021": 601,
+    "rented_2021": 49,
+    "owned_2021": 533,
+    "pct_rented": 8.15,
+    "pct_owned": 88.69
+  },
+  "20026": {
+    "total_dwellings_2021": 110,
+    "rented_2021": 16,
+    "owned_2021": 89,
+    "pct_rented": 14.55,
+    "pct_owned": 80.91
+  },
+  "20027": {
+    "total_dwellings_2021": 1464,
+    "rented_2021": 197,
+    "owned_2021": 1230,
+    "pct_rented": 13.46,
+    "pct_owned": 84.02
+  },
+  "20028": {
+    "total_dwellings_2021": 1141,
+    "rented_2021": 127,
+    "owned_2021": 994,
+    "pct_rented": 11.13,
+    "pct_owned": 87.12
+  },
+  "20029": {
+    "total_dwellings_2021": 2258,
+    "rented_2021": 274,
+    "owned_2021": 1929,
+    "pct_rented": 12.13,
+    "pct_owned": 85.43
+  },
+  "20030": {
+    "total_dwellings_2021": 11807,
+    "rented_2021": 1712,
+    "owned_2021": 9853,
+    "pct_rented": 14.5,
+    "pct_owned": 83.45
+  },
+  "20031": {
+    "total_dwellings_2021": 95,
+    "rented_2021": 8,
+    "owned_2021": 85,
+    "pct_rented": 8.42,
+    "pct_owned": 89.47
+  },
+  "20032": {
+    "total_dwellings_2021": 4751,
+    "rented_2021": 574,
+    "owned_2021": 4088,
+    "pct_rented": 12.08,
+    "pct_owned": 86.05
+  },
+  "20033": {
+    "total_dwellings_2021": 480,
+    "rented_2021": 55,
+    "owned_2021": 410,
+    "pct_rented": 11.46,
+    "pct_owned": 85.42
+  },
+  "20034": {
+    "total_dwellings_2021": 1694,
+    "rented_2021": 185,
+    "owned_2021": 1479,
+    "pct_rented": 10.92,
+    "pct_owned": 87.31
+  },
+  "20035": {
+    "total_dwellings_2021": 244,
+    "rented_2021": 21,
+    "owned_2021": 215,
+    "pct_rented": 8.61,
+    "pct_owned": 88.11
+  },
+  "20036": {
+    "total_dwellings_2021": 6808,
+    "rented_2021": 1222,
+    "owned_2021": 5340,
+    "pct_rented": 17.95,
+    "pct_owned": 78.44
+  },
+  "20037": {
+    "total_dwellings_2021": 49,
+    "rented_2021": 4,
+    "owned_2021": 44,
+    "pct_rented": 8.16,
+    "pct_owned": 89.8
+  },
+  "20038": {
+    "total_dwellings_2021": 174,
+    "rented_2021": 6,
+    "owned_2021": 156,
+    "pct_rented": 3.45,
+    "pct_owned": 89.66
+  },
+  "20039": {
+    "total_dwellings_2021": 1098,
+    "rented_2021": 179,
+    "owned_2021": 892,
+    "pct_rented": 16.3,
+    "pct_owned": 81.24
+  },
+  "20040": {
+    "total_dwellings_2021": 8504,
+    "rented_2021": 1220,
+    "owned_2021": 7064,
+    "pct_rented": 14.35,
+    "pct_owned": 83.07
+  },
+  "20041": {
+    "total_dwellings_2021": 110,
+    "rented_2021": 8,
+    "owned_2021": 99,
+    "pct_rented": 7.27,
+    "pct_owned": 90
+  },
+  "20042": {
+    "total_dwellings_2021": 1706,
+    "rented_2021": 244,
+    "owned_2021": 1430,
+    "pct_rented": 14.3,
+    "pct_owned": 83.82
+  },
+  "20043": {
+    "total_dwellings_2021": 869,
+    "rented_2021": 85,
+    "owned_2021": 762,
+    "pct_rented": 9.78,
+    "pct_owned": 87.69
+  },
+  "20044": {
+    "total_dwellings_2021": 159,
+    "rented_2021": 19,
+    "owned_2021": 135,
+    "pct_rented": 11.95,
+    "pct_owned": 84.91
+  },
+  "20045": {
+    "total_dwellings_2021": 25076,
+    "rented_2021": 4057,
+    "owned_2021": 20474,
+    "pct_rented": 16.18,
+    "pct_owned": 81.65
+  },
+  "20046": {
+    "total_dwellings_2021": 714,
+    "rented_2021": 114,
+    "owned_2021": 593,
+    "pct_rented": 15.97,
+    "pct_owned": 83.05
+  },
+  "20047": {
+    "total_dwellings_2021": 253,
+    "rented_2021": 35,
+    "owned_2021": 212,
+    "pct_rented": 13.83,
+    "pct_owned": 83.79
+  },
+  "20048": {
+    "total_dwellings_2021": 84,
+    "rented_2021": 7,
+    "owned_2021": 76,
+    "pct_rented": 8.33,
+    "pct_owned": 90.48
+  },
+  "20049": {
+    "total_dwellings_2021": 2332,
+    "rented_2021": 284,
+    "owned_2021": 2007,
+    "pct_rented": 12.18,
+    "pct_owned": 86.06
+  },
+  "20050": {
+    "total_dwellings_2021": 148,
+    "rented_2021": 18,
+    "owned_2021": 125,
+    "pct_rented": 12.16,
+    "pct_owned": 84.46
+  },
+  "20051": {
+    "total_dwellings_2021": 3605,
+    "rented_2021": 305,
+    "owned_2021": 3241,
+    "pct_rented": 8.46,
+    "pct_owned": 89.9
+  },
+  "20052": {
+    "total_dwellings_2021": 574,
+    "rented_2021": 68,
+    "owned_2021": 487,
+    "pct_rented": 11.85,
+    "pct_owned": 84.84
+  },
+  "20053": {
+    "total_dwellings_2021": 2491,
+    "rented_2021": 305,
+    "owned_2021": 2143,
+    "pct_rented": 12.24,
+    "pct_owned": 86.03
+  },
+  "20054": {
+    "total_dwellings_2021": 246,
+    "rented_2021": 30,
+    "owned_2021": 212,
+    "pct_rented": 12.2,
+    "pct_owned": 86.18
+  },
+  "20055": {
+    "total_dwellings_2021": 9226,
+    "rented_2021": 1174,
+    "owned_2021": 7871,
+    "pct_rented": 12.72,
+    "pct_owned": 85.31
+  },
+  "20056": {
+    "total_dwellings_2021": 2136,
+    "rented_2021": 292,
+    "owned_2021": 1792,
+    "pct_rented": 13.67,
+    "pct_owned": 83.9
+  },
+  "20057": {
+    "total_dwellings_2021": 108,
+    "rented_2021": 5,
+    "owned_2021": 102,
+    "pct_rented": 4.63,
+    "pct_owned": 94.44
+  },
+  "20058": {
+    "total_dwellings_2021": 391,
+    "rented_2021": 32,
+    "owned_2021": 349,
+    "pct_rented": 8.18,
+    "pct_owned": 89.26
+  },
+  "20059": {
+    "total_dwellings_2021": 4687,
+    "rented_2021": 393,
+    "owned_2021": 4199,
+    "pct_rented": 8.38,
+    "pct_owned": 89.59
+  },
+  "20060": {
+    "total_dwellings_2021": 43,
+    "rented_2021": 3,
+    "owned_2021": 40,
+    "pct_rented": 6.98,
+    "pct_owned": 93.02
+  },
+  "20061": {
+    "total_dwellings_2021": 2372,
+    "rented_2021": 397,
+    "owned_2021": 1928,
+    "pct_rented": 16.74,
+    "pct_owned": 81.28
+  },
+  "20062": {
+    "total_dwellings_2021": 501,
+    "rented_2021": 39,
+    "owned_2021": 456,
+    "pct_rented": 7.78,
+    "pct_owned": 91.02
+  },
+  "20063": {
+    "total_dwellings_2021": 3889,
+    "rented_2021": 423,
+    "owned_2021": 3371,
+    "pct_rented": 10.88,
+    "pct_owned": 86.68
+  },
+  "20064": {
+    "total_dwellings_2021": 6871,
+    "rented_2021": 1128,
+    "owned_2021": 5589,
+    "pct_rented": 16.42,
+    "pct_owned": 81.34
+  },
+  "20065": {
+    "total_dwellings_2021": 1685,
+    "rented_2021": 223,
+    "owned_2021": 1409,
+    "pct_rented": 13.23,
+    "pct_owned": 83.62
+  },
+  "20066": {
+    "total_dwellings_2021": 187,
+    "rented_2021": 13,
+    "owned_2021": 163,
+    "pct_rented": 6.95,
+    "pct_owned": 87.17
+  },
+  "20067": {
+    "total_dwellings_2021": 16584,
+    "rented_2021": 2161,
+    "owned_2021": 14176,
+    "pct_rented": 13.03,
+    "pct_owned": 85.48
+  },
+  "20068": {
+    "total_dwellings_2021": 89,
+    "rented_2021": 9,
+    "owned_2021": 79,
+    "pct_rented": 10.11,
+    "pct_owned": 88.76
+  },
+  "20069": {
+    "total_dwellings_2021": 78711,
+    "rented_2021": 14871,
+    "owned_2021": 62377,
+    "pct_rented": 18.89,
+    "pct_owned": 79.25
+  },
+  "20070": {
+    "total_dwellings_2021": 555,
+    "rented_2021": 57,
+    "owned_2021": 481,
+    "pct_rented": 10.27,
+    "pct_owned": 86.67
+  },
+  "20071": {
+    "total_dwellings_2021": 8231,
+    "rented_2021": 1197,
+    "owned_2021": 6889,
+    "pct_rented": 14.54,
+    "pct_owned": 83.7
+  },
+  "20072": {
+    "total_dwellings_2021": 2351,
+    "rented_2021": 278,
+    "owned_2021": 2045,
+    "pct_rented": 11.82,
+    "pct_owned": 86.98
+  },
+  "20073": {
+    "total_dwellings_2021": 2397,
+    "rented_2021": 301,
+    "owned_2021": 2037,
+    "pct_rented": 12.56,
+    "pct_owned": 84.98
+  },
+  "20074": {
+    "total_dwellings_2021": 6090,
+    "rented_2021": 656,
+    "owned_2021": 5292,
+    "pct_rented": 10.77,
+    "pct_owned": 86.9
+  },
+  "20075": {
+    "total_dwellings_2021": 2348,
+    "rented_2021": 333,
+    "owned_2021": 1976,
+    "pct_rented": 14.18,
+    "pct_owned": 84.16
+  },
+  "20076": {
+    "total_dwellings_2021": 4097,
+    "rented_2021": 693,
+    "owned_2021": 3334,
+    "pct_rented": 16.91,
+    "pct_owned": 81.38
+  },
+  "20077": {
+    "total_dwellings_2021": 2751,
+    "rented_2021": 309,
+    "owned_2021": 2413,
+    "pct_rented": 11.23,
+    "pct_owned": 87.71
+  },
+  "20078": {
+    "total_dwellings_2021": 620,
+    "rented_2021": 108,
+    "owned_2021": 490,
+    "pct_rented": 17.42,
+    "pct_owned": 79.03
+  },
+  "20079": {
+    "total_dwellings_2021": 9136,
+    "rented_2021": 1459,
+    "owned_2021": 7478,
+    "pct_rented": 15.97,
+    "pct_owned": 81.85
+  },
+  "20080": {
+    "total_dwellings_2021": 4115,
+    "rented_2021": 449,
+    "owned_2021": 3604,
+    "pct_rented": 10.91,
+    "pct_owned": 87.58
+  },
+  "20081": {
+    "total_dwellings_2021": 3879,
+    "rented_2021": 514,
+    "owned_2021": 3298,
+    "pct_rented": 13.25,
+    "pct_owned": 85.02
+  },
+  "20901": {
+    "total_dwellings_2021": 766,
+    "rented_2021": 72,
+    "owned_2021": 674,
+    "pct_rented": 9.4,
+    "pct_owned": 87.99
+  },
+  "20902": {
+    "total_dwellings_2021": 7754,
+    "rented_2021": 1011,
+    "owned_2021": 6536,
+    "pct_rented": 13.04,
+    "pct_owned": 84.29
+  },
+  "20903": {
+    "total_dwellings_2021": 2827,
+    "rented_2021": 341,
+    "owned_2021": 2463,
+    "pct_rented": 12.06,
+    "pct_owned": 87.12
+  },
+  "20904": {
+    "total_dwellings_2021": 50,
+    "rented_2021": 1,
+    "owned_2021": 45,
+    "pct_rented": 2,
+    "pct_owned": 90
+  },
+  "20905": {
+    "total_dwellings_2021": 78,
+    "rented_2021": 10,
+    "owned_2021": 67,
+    "pct_rented": 12.82,
+    "pct_owned": 85.9
+  },
+  "20906": {
+    "total_dwellings_2021": 57,
+    "rented_2021": 2,
+    "owned_2021": 53,
+    "pct_rented": 3.51,
+    "pct_owned": 92.98
+  },
+  "20907": {
+    "total_dwellings_2021": 57,
+    "rented_2021": 3,
+    "owned_2021": 54,
+    "pct_rented": 5.26,
+    "pct_owned": 94.74
+  },
+  "48001": {
+    "total_dwellings_2021": 3047,
+    "rented_2021": 308,
+    "owned_2021": 2687,
+    "pct_rented": 10.11,
+    "pct_owned": 88.19
+  },
+  "48002": {
+    "total_dwellings_2021": 3836,
+    "rented_2021": 293,
+    "owned_2021": 3478,
+    "pct_rented": 7.64,
+    "pct_owned": 90.67
+  },
+  "48003": {
+    "total_dwellings_2021": 7801,
+    "rented_2021": 836,
+    "owned_2021": 6760,
+    "pct_rented": 10.72,
+    "pct_owned": 86.66
+  },
+  "48004": {
+    "total_dwellings_2021": 147,
+    "rented_2021": 7,
+    "owned_2021": 135,
+    "pct_rented": 4.76,
+    "pct_owned": 91.84
+  },
+  "48005": {
+    "total_dwellings_2021": 57,
+    "rented_2021": 3,
+    "owned_2021": 52,
+    "pct_rented": 5.26,
+    "pct_owned": 91.23
+  },
+  "48006": {
+    "total_dwellings_2021": 155,
+    "rented_2021": 16,
+    "owned_2021": 139,
+    "pct_rented": 10.32,
+    "pct_owned": 89.68
+  },
+  "48007": {
+    "total_dwellings_2021": 179,
+    "rented_2021": 23,
+    "owned_2021": 154,
+    "pct_rented": 12.85,
+    "pct_owned": 86.03
+  },
+  "48008": {
+    "total_dwellings_2021": 278,
+    "rented_2021": 25,
+    "owned_2021": 251,
+    "pct_rented": 8.99,
+    "pct_owned": 90.29
+  },
+  "48009": {
+    "total_dwellings_2021": 359,
+    "rented_2021": 23,
+    "owned_2021": 314,
+    "pct_rented": 6.41,
+    "pct_owned": 87.47
+  },
+  "48010": {
+    "total_dwellings_2021": 221,
+    "rented_2021": 18,
+    "owned_2021": 194,
+    "pct_rented": 8.14,
+    "pct_owned": 87.78
+  },
+  "48011": {
+    "total_dwellings_2021": 4808,
+    "rented_2021": 529,
+    "owned_2021": 4193,
+    "pct_rented": 11,
+    "pct_owned": 87.21
+  },
+  "48012": {
+    "total_dwellings_2021": 1280,
+    "rented_2021": 187,
+    "owned_2021": 1062,
+    "pct_rented": 14.61,
+    "pct_owned": 82.97
+  },
+  "48013": {
+    "total_dwellings_2021": 42667,
+    "rented_2021": 4765,
+    "owned_2021": 36758,
+    "pct_rented": 11.17,
+    "pct_owned": 86.15
+  },
+  "48014": {
+    "total_dwellings_2021": 559,
+    "rented_2021": 84,
+    "owned_2021": 466,
+    "pct_rented": 15.03,
+    "pct_owned": 83.36
+  },
+  "48015": {
+    "total_dwellings_2021": 17522,
+    "rented_2021": 1888,
+    "owned_2021": 15360,
+    "pct_rented": 10.78,
+    "pct_owned": 87.66
+  },
+  "48016": {
+    "total_dwellings_2021": 2572,
+    "rented_2021": 302,
+    "owned_2021": 2222,
+    "pct_rented": 11.74,
+    "pct_owned": 86.39
+  },
+  "48017": {
+    "total_dwellings_2021": 7327,
+    "rented_2021": 833,
+    "owned_2021": 6300,
+    "pct_rented": 11.37,
+    "pct_owned": 85.98
+  },
+  "48018": {
+    "total_dwellings_2021": 442,
+    "rented_2021": 68,
+    "owned_2021": 363,
+    "pct_rented": 15.38,
+    "pct_owned": 82.13
+  },
+  "48019": {
+    "total_dwellings_2021": 1760,
+    "rented_2021": 185,
+    "owned_2021": 1556,
+    "pct_rented": 10.51,
+    "pct_owned": 88.41
+  },
+  "48020": {
+    "total_dwellings_2021": 147864,
+    "rented_2021": 21618,
+    "owned_2021": 123043,
+    "pct_rented": 14.62,
+    "pct_owned": 83.21
+  },
+  "48021": {
+    "total_dwellings_2021": 693,
+    "rented_2021": 88,
+    "owned_2021": 593,
+    "pct_rented": 12.7,
+    "pct_owned": 85.57
+  },
+  "48022": {
+    "total_dwellings_2021": 1128,
+    "rented_2021": 100,
+    "owned_2021": 990,
+    "pct_rented": 8.87,
+    "pct_owned": 87.77
+  },
+  "48023": {
+    "total_dwellings_2021": 285,
+    "rented_2021": 28,
+    "owned_2021": 246,
+    "pct_rented": 9.82,
+    "pct_owned": 86.32
+  },
+  "48024": {
+    "total_dwellings_2021": 502,
+    "rented_2021": 48,
+    "owned_2021": 439,
+    "pct_rented": 9.56,
+    "pct_owned": 87.45
+  },
+  "48025": {
+    "total_dwellings_2021": 430,
+    "rented_2021": 61,
+    "owned_2021": 359,
+    "pct_rented": 14.19,
+    "pct_owned": 83.49
+  },
+  "48026": {
+    "total_dwellings_2021": 584,
+    "rented_2021": 54,
+    "owned_2021": 514,
+    "pct_rented": 9.25,
+    "pct_owned": 88.01
+  },
+  "48027": {
+    "total_dwellings_2021": 11714,
+    "rented_2021": 1517,
+    "owned_2021": 10026,
+    "pct_rented": 12.95,
+    "pct_owned": 85.59
+  },
+  "48028": {
+    "total_dwellings_2021": 419,
+    "rented_2021": 47,
+    "owned_2021": 362,
+    "pct_rented": 11.22,
+    "pct_owned": 86.4
+  },
+  "48029": {
+    "total_dwellings_2021": 4454,
+    "rented_2021": 417,
+    "owned_2021": 3982,
+    "pct_rented": 9.36,
+    "pct_owned": 89.4
+  },
+  "48030": {
+    "total_dwellings_2021": 307,
+    "rented_2021": 35,
+    "owned_2021": 264,
+    "pct_rented": 11.4,
+    "pct_owned": 85.99
+  },
+  "48031": {
+    "total_dwellings_2021": 190,
+    "rented_2021": 17,
+    "owned_2021": 168,
+    "pct_rented": 8.95,
+    "pct_owned": 88.42
+  },
+  "48032": {
+    "total_dwellings_2021": 2905,
+    "rented_2021": 348,
+    "owned_2021": 2504,
+    "pct_rented": 11.98,
+    "pct_owned": 86.2
+  },
+  "48033": {
+    "total_dwellings_2021": 109,
+    "rented_2021": 26,
+    "owned_2021": 82,
+    "pct_rented": 23.85,
+    "pct_owned": 75.23
+  },
+  "48034": {
+    "total_dwellings_2021": 6616,
+    "rented_2021": 652,
+    "owned_2021": 5848,
+    "pct_rented": 9.85,
+    "pct_owned": 88.39
+  },
+  "48035": {
+    "total_dwellings_2021": 218,
+    "rented_2021": 17,
+    "owned_2021": 196,
+    "pct_rented": 7.8,
+    "pct_owned": 89.91
+  },
+  "48036": {
+    "total_dwellings_2021": 12064,
+    "rented_2021": 1138,
+    "owned_2021": 10754,
+    "pct_rented": 9.43,
+    "pct_owned": 89.14
+  },
+  "48037": {
+    "total_dwellings_2021": 367,
+    "rented_2021": 35,
+    "owned_2021": 326,
+    "pct_rented": 9.54,
+    "pct_owned": 88.83
+  },
+  "48038": {
+    "total_dwellings_2021": 470,
+    "rented_2021": 47,
+    "owned_2021": 399,
+    "pct_rented": 10,
+    "pct_owned": 84.89
+  },
+  "48039": {
+    "total_dwellings_2021": 109,
+    "rented_2021": 8,
+    "owned_2021": 99,
+    "pct_rented": 7.34,
+    "pct_owned": 90.83
+  },
+  "48040": {
+    "total_dwellings_2021": 590,
+    "rented_2021": 38,
+    "owned_2021": 535,
+    "pct_rented": 6.44,
+    "pct_owned": 90.68
+  },
+  "48041": {
+    "total_dwellings_2021": 352,
+    "rented_2021": 32,
+    "owned_2021": 311,
+    "pct_rented": 9.09,
+    "pct_owned": 88.35
+  },
+  "48042": {
+    "total_dwellings_2021": 668,
+    "rented_2021": 73,
+    "owned_2021": 585,
+    "pct_rented": 10.93,
+    "pct_owned": 87.57
+  },
+  "48043": {
+    "total_dwellings_2021": 2471,
+    "rented_2021": 339,
+    "owned_2021": 2091,
+    "pct_rented": 13.72,
+    "pct_owned": 84.62
+  },
+  "48044": {
+    "total_dwellings_2021": 30162,
+    "rented_2021": 4213,
+    "owned_2021": 25407,
+    "pct_rented": 13.97,
+    "pct_owned": 84.24
+  },
+  "48045": {
+    "total_dwellings_2021": 2791,
+    "rented_2021": 337,
+    "owned_2021": 2393,
+    "pct_rented": 12.07,
+    "pct_owned": 85.74
+  },
+  "48046": {
+    "total_dwellings_2021": 6875,
+    "rented_2021": 834,
+    "owned_2021": 5896,
+    "pct_rented": 12.13,
+    "pct_owned": 85.76
+  },
+  "48047": {
+    "total_dwellings_2021": 75,
+    "rented_2021": 8,
+    "owned_2021": 64,
+    "pct_rented": 10.67,
+    "pct_owned": 85.33
+  },
+  "48048": {
+    "total_dwellings_2021": 328,
+    "rented_2021": 48,
+    "owned_2021": 274,
+    "pct_rented": 14.63,
+    "pct_owned": 83.54
+  },
+  "48049": {
+    "total_dwellings_2021": 284,
+    "rented_2021": 27,
+    "owned_2021": 249,
+    "pct_rented": 9.51,
+    "pct_owned": 87.68
+  },
+  "48050": {
+    "total_dwellings_2021": 86,
+    "rented_2021": 8,
+    "owned_2021": 74,
+    "pct_rented": 9.3,
+    "pct_owned": 86.05
+  },
+  "48051": {
+    "total_dwellings_2021": 106,
+    "rented_2021": 23,
+    "owned_2021": 76,
+    "pct_rented": 21.7,
+    "pct_owned": 71.7
+  },
+  "48052": {
+    "total_dwellings_2021": 830,
+    "rented_2021": 109,
+    "owned_2021": 702,
+    "pct_rented": 13.13,
+    "pct_owned": 84.58
+  },
+  "48053": {
+    "total_dwellings_2021": 402,
+    "rented_2021": 27,
+    "owned_2021": 368,
+    "pct_rented": 6.72,
+    "pct_owned": 91.54
+  },
+  "48054": {
+    "total_dwellings_2021": 12645,
+    "rented_2021": 1506,
+    "owned_2021": 10950,
+    "pct_rented": 11.91,
+    "pct_owned": 86.6
+  },
+  "48055": {
+    "total_dwellings_2021": 1428,
+    "rented_2021": 193,
+    "owned_2021": 1210,
+    "pct_rented": 13.52,
+    "pct_owned": 84.73
+  },
+  "48056": {
+    "total_dwellings_2021": 568,
+    "rented_2021": 45,
+    "owned_2021": 516,
+    "pct_rented": 7.92,
+    "pct_owned": 90.85
+  },
+  "48057": {
+    "total_dwellings_2021": 3205,
+    "rented_2021": 364,
+    "owned_2021": 2764,
+    "pct_rented": 11.36,
+    "pct_owned": 86.24
+  },
+  "48058": {
+    "total_dwellings_2021": 434,
+    "rented_2021": 37,
+    "owned_2021": 386,
+    "pct_rented": 8.53,
+    "pct_owned": 88.94
+  },
+  "48059": {
+    "total_dwellings_2021": 198,
+    "rented_2021": 30,
+    "owned_2021": 160,
+    "pct_rented": 15.15,
+    "pct_owned": 80.81
+  },
+  "48060": {
+    "total_dwellings_2021": 1965,
+    "rented_2021": 241,
+    "owned_2021": 1678,
+    "pct_rented": 12.26,
+    "pct_owned": 85.39
+  },
+  "48061": {
+    "total_dwellings_2021": 369,
+    "rented_2021": 20,
+    "owned_2021": 341,
+    "pct_rented": 5.42,
+    "pct_owned": 92.41
+  },
+  "48062": {
+    "total_dwellings_2021": 140,
+    "rented_2021": 13,
+    "owned_2021": 122,
+    "pct_rented": 9.29,
+    "pct_owned": 87.14
+  },
+  "48063": {
+    "total_dwellings_2021": 169,
+    "rented_2021": 15,
+    "owned_2021": 150,
+    "pct_rented": 8.88,
+    "pct_owned": 88.76
+  },
+  "48064": {
+    "total_dwellings_2021": 258,
+    "rented_2021": 16,
+    "owned_2021": 238,
+    "pct_rented": 6.2,
+    "pct_owned": 92.25
+  },
+  "48065": {
+    "total_dwellings_2021": 1741,
+    "rented_2021": 206,
+    "owned_2021": 1506,
+    "pct_rented": 11.83,
+    "pct_owned": 86.5
+  },
+  "48066": {
+    "total_dwellings_2021": 171,
+    "rented_2021": 13,
+    "owned_2021": 148,
+    "pct_rented": 7.6,
+    "pct_owned": 86.55
+  },
+  "48067": {
+    "total_dwellings_2021": 534,
+    "rented_2021": 44,
+    "owned_2021": 478,
+    "pct_rented": 8.24,
+    "pct_owned": 89.51
+  },
+  "48068": {
+    "total_dwellings_2021": 864,
+    "rented_2021": 105,
+    "owned_2021": 742,
+    "pct_rented": 12.15,
+    "pct_owned": 85.88
+  },
+  "48069": {
+    "total_dwellings_2021": 6655,
+    "rented_2021": 1005,
+    "owned_2021": 5530,
+    "pct_rented": 15.1,
+    "pct_owned": 83.1
+  },
+  "48070": {
+    "total_dwellings_2021": 249,
+    "rented_2021": 13,
+    "owned_2021": 223,
+    "pct_rented": 5.22,
+    "pct_owned": 89.56
+  },
+  "48071": {
+    "total_dwellings_2021": 2953,
+    "rented_2021": 335,
+    "owned_2021": 2569,
+    "pct_rented": 11.34,
+    "pct_owned": 87
+  },
+  "48072": {
+    "total_dwellings_2021": 554,
+    "rented_2021": 61,
+    "owned_2021": 481,
+    "pct_rented": 11.01,
+    "pct_owned": 86.82
+  },
+  "48073": {
+    "total_dwellings_2021": 3481,
+    "rented_2021": 416,
+    "owned_2021": 2987,
+    "pct_rented": 11.95,
+    "pct_owned": 85.81
+  },
+  "48074": {
+    "total_dwellings_2021": 1728,
+    "rented_2021": 235,
+    "owned_2021": 1452,
+    "pct_rented": 13.6,
+    "pct_owned": 84.03
+  },
+  "48075": {
+    "total_dwellings_2021": 1080,
+    "rented_2021": 135,
+    "owned_2021": 897,
+    "pct_rented": 12.5,
+    "pct_owned": 83.06
+  },
+  "48076": {
+    "total_dwellings_2021": 174,
+    "rented_2021": 14,
+    "owned_2021": 157,
+    "pct_rented": 8.05,
+    "pct_owned": 90.23
+  },
+  "48077": {
+    "total_dwellings_2021": 1768,
+    "rented_2021": 261,
+    "owned_2021": 1469,
+    "pct_rented": 14.76,
+    "pct_owned": 83.09
+  },
+  "48078": {
+    "total_dwellings_2021": 19601,
+    "rented_2021": 1978,
+    "owned_2021": 17269,
+    "pct_rented": 10.09,
+    "pct_owned": 88.1
+  },
+  "48079": {
+    "total_dwellings_2021": 203,
+    "rented_2021": 17,
+    "owned_2021": 181,
+    "pct_rented": 8.37,
+    "pct_owned": 89.16
+  },
+  "48080": {
+    "total_dwellings_2021": 5013,
+    "rented_2021": 447,
+    "owned_2021": 4483,
+    "pct_rented": 8.92,
+    "pct_owned": 89.43
+  },
+  "48081": {
+    "total_dwellings_2021": 905,
+    "rented_2021": 83,
+    "owned_2021": 805,
+    "pct_rented": 9.17,
+    "pct_owned": 88.95
+  },
+  "48082": {
+    "total_dwellings_2021": 19671,
+    "rented_2021": 1942,
+    "owned_2021": 17386,
+    "pct_rented": 9.87,
+    "pct_owned": 88.38
+  },
+  "48083": {
+    "total_dwellings_2021": 3523,
+    "rented_2021": 357,
+    "owned_2021": 3095,
+    "pct_rented": 10.13,
+    "pct_owned": 87.85
+  },
+  "48084": {
+    "total_dwellings_2021": 11721,
+    "rented_2021": 1378,
+    "owned_2021": 10076,
+    "pct_rented": 11.76,
+    "pct_owned": 85.97
+  },
+  "48085": {
+    "total_dwellings_2021": 5532,
+    "rented_2021": 783,
+    "owned_2021": 4664,
+    "pct_rented": 14.15,
+    "pct_owned": 84.31
+  },
+  "48086": {
+    "total_dwellings_2021": 1067,
+    "rented_2021": 115,
+    "owned_2021": 926,
+    "pct_rented": 10.78,
+    "pct_owned": 86.79
+  },
+  "48087": {
+    "total_dwellings_2021": 207,
+    "rented_2021": 16,
+    "owned_2021": 188,
+    "pct_rented": 7.73,
+    "pct_owned": 90.82
+  },
+  "48088": {
+    "total_dwellings_2021": 83,
+    "rented_2021": 9,
+    "owned_2021": 72,
+    "pct_rented": 10.84,
+    "pct_owned": 86.75
+  },
+  "48089": {
+    "total_dwellings_2021": 1961,
+    "rented_2021": 222,
+    "owned_2021": 1709,
+    "pct_rented": 11.32,
+    "pct_owned": 87.15
+  },
+  "48090": {
+    "total_dwellings_2021": 3130,
+    "rented_2021": 446,
+    "owned_2021": 2599,
+    "pct_rented": 14.25,
+    "pct_owned": 83.04
+  },
+  "48091": {
+    "total_dwellings_2021": 519,
+    "rented_2021": 67,
+    "owned_2021": 434,
+    "pct_rented": 12.91,
+    "pct_owned": 83.62
+  },
+  "48092": {
+    "total_dwellings_2021": 437,
+    "rented_2021": 46,
+    "owned_2021": 387,
+    "pct_rented": 10.53,
+    "pct_owned": 88.56
+  },
+  "48093": {
+    "total_dwellings_2021": 515,
+    "rented_2021": 84,
+    "owned_2021": 419,
+    "pct_rented": 16.31,
+    "pct_owned": 81.36
+  },
+  "48094": {
+    "total_dwellings_2021": 1652,
+    "rented_2021": 238,
+    "owned_2021": 1394,
+    "pct_rented": 14.41,
+    "pct_owned": 84.38
+  },
+  "48095": {
+    "total_dwellings_2021": 1248,
+    "rented_2021": 160,
+    "owned_2021": 1074,
+    "pct_rented": 12.82,
+    "pct_owned": 86.06
+  },
+  "48096": {
+    "total_dwellings_2021": 3317,
+    "rented_2021": 401,
+    "owned_2021": 2848,
+    "pct_rented": 12.09,
+    "pct_owned": 85.86
+  },
+  "48097": {
+    "total_dwellings_2021": 652,
+    "rented_2021": 80,
+    "owned_2021": 557,
+    "pct_rented": 12.27,
+    "pct_owned": 85.43
+  },
+  "48901": {
+    "total_dwellings_2021": 2688,
+    "rented_2021": 237,
+    "owned_2021": 2416,
+    "pct_rented": 8.82,
+    "pct_owned": 89.88
+  },
+  "48902": {
+    "total_dwellings_2021": 9824,
+    "rented_2021": 1105,
+    "owned_2021": 8491,
+    "pct_rented": 11.25,
+    "pct_owned": 86.43
+  },
+  "48903": {
+    "total_dwellings_2021": 825,
+    "rented_2021": 85,
+    "owned_2021": 726,
+    "pct_rented": 10.3,
+    "pct_owned": 88
+  },
+  "48904": {
+    "total_dwellings_2021": 1827,
+    "rented_2021": 217,
+    "owned_2021": 1576,
+    "pct_rented": 11.88,
+    "pct_owned": 86.26
+  },
+  "48905": {
+    "total_dwellings_2021": 1279,
+    "rented_2021": 190,
+    "owned_2021": 1071,
+    "pct_rented": 14.86,
+    "pct_owned": 83.74
+  },
+  "48906": {
+    "total_dwellings_2021": 355,
+    "rented_2021": 42,
+    "owned_2021": 311,
+    "pct_rented": 11.83,
+    "pct_owned": 87.61
+  },
+  "48907": {
+    "total_dwellings_2021": 157,
+    "rented_2021": 13,
+    "owned_2021": 138,
+    "pct_rented": 8.28,
+    "pct_owned": 87.9
+  },
+  "48908": {
+    "total_dwellings_2021": 114,
+    "rented_2021": 6,
+    "owned_2021": 107,
+    "pct_rented": 5.26,
+    "pct_owned": 93.86
+  },
+  "48909": {
+    "total_dwellings_2021": 109,
+    "rented_2021": 12,
+    "owned_2021": 91,
+    "pct_rented": 11.01,
+    "pct_owned": 83.49
+  },
+  "48910": {
+    "total_dwellings_2021": 1460,
+    "rented_2021": 182,
+    "owned_2021": 1250,
+    "pct_rented": 12.47,
+    "pct_owned": 85.62
+  },
+  "48911": {
+    "total_dwellings_2021": 171,
+    "rented_2021": 12,
+    "owned_2021": 149,
+    "pct_rented": 7.02,
+    "pct_owned": 87.13
+  },
+  "48912": {
+    "total_dwellings_2021": 1257,
+    "rented_2021": 152,
+    "owned_2021": 1085,
+    "pct_rented": 12.09,
+    "pct_owned": 86.32
+  },
+  "48913": {
+    "total_dwellings_2021": 571,
+    "rented_2021": 44,
+    "owned_2021": 512,
+    "pct_rented": 7.71,
+    "pct_owned": 89.67
+  },
+  "48914": {
+    "total_dwellings_2021": 150,
+    "rented_2021": 7,
+    "owned_2021": 141,
+    "pct_rented": 4.67,
+    "pct_owned": 94
+  },
+  "48915": {
+    "total_dwellings_2021": 158,
+    "rented_2021": 11,
+    "owned_2021": 144,
+    "pct_rented": 6.96,
+    "pct_owned": 91.14
+  },
+  "01051": {
+    "total_dwellings_2021": 2035,
+    "rented_2021": 289,
+    "owned_2021": 1703,
+    "pct_rented": 14.2,
+    "pct_owned": 83.69
+  },
+  "01001": {
+    "total_dwellings_2021": 1110,
+    "rented_2021": 166,
+    "owned_2021": 927,
+    "pct_rented": 14.95,
+    "pct_owned": 83.51
+  },
+  "01002": {
+    "total_dwellings_2021": 4135,
+    "rented_2021": 550,
+    "owned_2021": 3484,
+    "pct_rented": 13.3,
+    "pct_owned": 84.26
+  },
+  "01049": {
+    "total_dwellings_2021": 82,
+    "rented_2021": 9,
+    "owned_2021": 70,
+    "pct_rented": 10.98,
+    "pct_owned": 85.37
+  },
+  "01003": {
+    "total_dwellings_2021": 541,
+    "rented_2021": 49,
+    "owned_2021": 475,
+    "pct_rented": 9.06,
+    "pct_owned": 87.8
+  },
+  "01006": {
+    "total_dwellings_2021": 95,
+    "rented_2021": 7,
+    "owned_2021": 86,
+    "pct_rented": 7.37,
+    "pct_owned": 90.53
+  },
+  "01037": {
+    "total_dwellings_2021": 364,
+    "rented_2021": 40,
+    "owned_2021": 320,
+    "pct_rented": 10.99,
+    "pct_owned": 87.91
+  },
+  "01008": {
+    "total_dwellings_2021": 382,
+    "rented_2021": 27,
+    "owned_2021": 350,
+    "pct_rented": 7.07,
+    "pct_owned": 91.62
+  },
+  "01004": {
+    "total_dwellings_2021": 716,
+    "rented_2021": 73,
+    "owned_2021": 630,
+    "pct_rented": 10.2,
+    "pct_owned": 87.99
+  },
+  "01009": {
+    "total_dwellings_2021": 739,
+    "rented_2021": 86,
+    "owned_2021": 632,
+    "pct_rented": 11.64,
+    "pct_owned": 85.52
+  },
+  "01010": {
+    "total_dwellings_2021": 1085,
+    "rented_2021": 82,
+    "owned_2021": 987,
+    "pct_rented": 7.56,
+    "pct_owned": 90.97
+  },
+  "01011": {
+    "total_dwellings_2021": 117,
+    "rented_2021": 13,
+    "owned_2021": 95,
+    "pct_rented": 11.11,
+    "pct_owned": 81.2
+  },
+  "01013": {
+    "total_dwellings_2021": 356,
+    "rented_2021": 22,
+    "owned_2021": 326,
+    "pct_rented": 6.18,
+    "pct_owned": 91.57
+  },
+  "01014": {
+    "total_dwellings_2021": 192,
+    "rented_2021": 19,
+    "owned_2021": 171,
+    "pct_rented": 9.9,
+    "pct_owned": 89.06
+  },
+  "01016": {
+    "total_dwellings_2021": 263,
+    "rented_2021": 20,
+    "owned_2021": 230,
+    "pct_rented": 7.6,
+    "pct_owned": 87.45
+  },
+  "01017": {
+    "total_dwellings_2021": 517,
+    "rented_2021": 49,
+    "owned_2021": 454,
+    "pct_rented": 9.48,
+    "pct_owned": 87.81
+  },
+  "01021": {
+    "total_dwellings_2021": 223,
+    "rented_2021": 13,
+    "owned_2021": 206,
+    "pct_rented": 5.83,
+    "pct_owned": 92.38
+  },
+  "01022": {
+    "total_dwellings_2021": 421,
+    "rented_2021": 38,
+    "owned_2021": 370,
+    "pct_rented": 9.03,
+    "pct_owned": 87.89
+  },
+  "01023": {
+    "total_dwellings_2021": 137,
+    "rented_2021": 19,
+    "owned_2021": 112,
+    "pct_rented": 13.87,
+    "pct_owned": 81.75
+  },
+  "01046": {
+    "total_dwellings_2021": 347,
+    "rented_2021": 29,
+    "owned_2021": 310,
+    "pct_rented": 8.36,
+    "pct_owned": 89.34
+  },
+  "01056": {
+    "total_dwellings_2021": 117,
+    "rented_2021": 7,
+    "owned_2021": 105,
+    "pct_rented": 5.98,
+    "pct_owned": 89.74
+  },
+  "01901": {
+    "total_dwellings_2021": 1264,
+    "rented_2021": 168,
+    "owned_2021": 1076,
+    "pct_rented": 13.29,
+    "pct_owned": 85.13
+  },
+  "01027": {
+    "total_dwellings_2021": 211,
+    "rented_2021": 8,
+    "owned_2021": 198,
+    "pct_rented": 3.79,
+    "pct_owned": 93.84
+  },
+  "01019": {
+    "total_dwellings_2021": 70,
+    "rented_2021": 2,
+    "owned_2021": 67,
+    "pct_rented": 2.86,
+    "pct_owned": 95.71
+  },
+  "01020": {
+    "total_dwellings_2021": 195,
+    "rented_2021": 18,
+    "owned_2021": 172,
+    "pct_rented": 9.23,
+    "pct_owned": 88.21
+  },
+  "01028": {
+    "total_dwellings_2021": 637,
+    "rented_2021": 81,
+    "owned_2021": 535,
+    "pct_rented": 12.72,
+    "pct_owned": 83.99
+  },
+  "01030": {
+    "total_dwellings_2021": 92,
+    "rented_2021": 9,
+    "owned_2021": 80,
+    "pct_rented": 9.78,
+    "pct_owned": 86.96
+  },
+  "01031": {
+    "total_dwellings_2021": 649,
+    "rented_2021": 82,
+    "owned_2021": 543,
+    "pct_rented": 12.63,
+    "pct_owned": 83.67
+  },
+  "01032": {
+    "total_dwellings_2021": 299,
+    "rented_2021": 43,
+    "owned_2021": 243,
+    "pct_rented": 14.38,
+    "pct_owned": 81.27
+  },
+  "01902": {
+    "total_dwellings_2021": 369,
+    "rented_2021": 34,
+    "owned_2021": 320,
+    "pct_rented": 9.21,
+    "pct_owned": 86.72
+  },
+  "01033": {
+    "total_dwellings_2021": 369,
+    "rented_2021": 46,
+    "owned_2021": 311,
+    "pct_rented": 12.47,
+    "pct_owned": 84.28
+  },
+  "01036": {
+    "total_dwellings_2021": 7698,
+    "rented_2021": 843,
+    "owned_2021": 6679,
+    "pct_rented": 10.95,
+    "pct_owned": 86.76
+  },
+  "01058": {
+    "total_dwellings_2021": 799,
+    "rented_2021": 133,
+    "owned_2021": 652,
+    "pct_rented": 16.65,
+    "pct_owned": 81.6
+  },
+  "01034": {
+    "total_dwellings_2021": 95,
+    "rented_2021": 16,
+    "owned_2021": 75,
+    "pct_rented": 16.84,
+    "pct_owned": 78.95
+  },
+  "01039": {
+    "total_dwellings_2021": 101,
+    "rented_2021": 12,
+    "owned_2021": 86,
+    "pct_rented": 11.88,
+    "pct_owned": 85.15
+  },
+  "01041": {
+    "total_dwellings_2021": 78,
+    "rented_2021": 7,
+    "owned_2021": 63,
+    "pct_rented": 8.97,
+    "pct_owned": 80.77
+  },
+  "01042": {
+    "total_dwellings_2021": 465,
+    "rented_2021": 42,
+    "owned_2021": 418,
+    "pct_rented": 9.03,
+    "pct_owned": 89.89
+  },
+  "01043": {
+    "total_dwellings_2021": 1357,
+    "rented_2021": 218,
+    "owned_2021": 1101,
+    "pct_rented": 16.06,
+    "pct_owned": 81.13
+  },
+  "01044": {
+    "total_dwellings_2021": 149,
+    "rented_2021": 18,
+    "owned_2021": 129,
+    "pct_rented": 12.08,
+    "pct_owned": 86.58
+  },
+  "01047": {
+    "total_dwellings_2021": 504,
+    "rented_2021": 59,
+    "owned_2021": 438,
+    "pct_rented": 11.71,
+    "pct_owned": 86.9
+  },
+  "01052": {
+    "total_dwellings_2021": 120,
+    "rented_2021": 12,
+    "owned_2021": 104,
+    "pct_rented": 10,
+    "pct_owned": 86.67
+  },
+  "01053": {
+    "total_dwellings_2021": 292,
+    "rented_2021": 9,
+    "owned_2021": 276,
+    "pct_rented": 3.08,
+    "pct_owned": 94.52
+  },
+  "01054": {
+    "total_dwellings_2021": 573,
+    "rented_2021": 90,
+    "owned_2021": 469,
+    "pct_rented": 15.71,
+    "pct_owned": 81.85
+  },
+  "01055": {
+    "total_dwellings_2021": 521,
+    "rented_2021": 49,
+    "owned_2021": 464,
+    "pct_rented": 9.4,
+    "pct_owned": 89.06
+  },
+  "01057": {
+    "total_dwellings_2021": 119,
+    "rented_2021": 19,
+    "owned_2021": 93,
+    "pct_rented": 15.97,
+    "pct_owned": 78.15
+  },
+  "01059": {
+    "total_dwellings_2021": 106298,
+    "rented_2021": 16300,
+    "owned_2021": 88717,
+    "pct_rented": 15.33,
+    "pct_owned": 83.46
+  },
+  "01060": {
+    "total_dwellings_2021": 101,
+    "rented_2021": 14,
+    "owned_2021": 79,
+    "pct_rented": 13.86,
+    "pct_owned": 78.22
+  },
+  "01061": {
+    "total_dwellings_2021": 86,
+    "rented_2021": 8,
+    "owned_2021": 77,
+    "pct_rented": 9.3,
+    "pct_owned": 89.53
+  },
+  "01062": {
+    "total_dwellings_2021": 182,
+    "rented_2021": 18,
+    "owned_2021": 160,
+    "pct_rented": 9.89,
+    "pct_owned": 87.91
+  },
+  "01018": {
+    "total_dwellings_2021": 720,
+    "rented_2021": 36,
+    "owned_2021": 667,
+    "pct_rented": 5,
+    "pct_owned": 92.64
+  },
+  "01063": {
+    "total_dwellings_2021": 899,
+    "rented_2021": 99,
+    "owned_2021": 780,
+    "pct_rented": 11.01,
+    "pct_owned": 86.76
+  }
+}

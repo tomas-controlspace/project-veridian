@@ -1,0 +1,121 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Project Veridian — Design Tokens
+   Control Space Storage
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Veridian (green) scale ──────────────────────────────────────── */
+  --veridian-50:  #E8F5EE;
+  --veridian-100: #C5E6D3;
+  --veridian-200: #A8DBBD;
+  --veridian-300: #6BC495;
+  --veridian-400: #40826D;
+  --veridian-500: #1A4A3A;
+  --veridian-600: #0E2F25;
+
+  /* ── Choropleth 7-stop ramp ──────────────────────────────────────── */
+  --choro-1: #E8F5EE;
+  --choro-2: #A8DBBD;
+  --choro-3: #6BC495;
+  --choro-4: #40826D;
+  --choro-5: #2D6B55;
+  --choro-6: #1A4A3A;
+  --choro-7: #0E2F25;
+
+  /* ── Accent (interactive) ────────────────────────────────────────── */
+  --accent:       #2EC4A0;
+  --accent-hover: #26A88A;
+  --accent-light: #D4F5EB;
+
+  /* ── Warm (analysis, catchment, overlays) ────────────────────────── */
+  --warm:       #E8913A;
+  --warm-hover: #D07E2F;
+  --warm-light: #FEF3E2;
+
+  /* ── Neutral scale ───────────────────────────────────────────────── */
+  --neutral-50:  #F7F8F6;
+  --neutral-100: #EDEEE9;
+  --neutral-200: #D5D7D0;
+  --neutral-300: #B0B3A8;
+  --neutral-400: #8A8D82;
+  --neutral-500: #6E716A;
+  --neutral-600: #5A5D56;
+  --neutral-700: #3E4139;
+  --neutral-800: #2A2D26;
+
+  /* ── Semantic ────────────────────────────────────────────────────── */
+  --success: #34D399;
+  --danger:  #EF4444;
+  --info:    var(--accent);
+
+  /* ── Map-specific tokens ─────────────────────────────────────────── */
+  --map-selected-stroke: var(--accent);
+  --map-selected-fill:   rgba(46, 196, 160, 0.12);
+  --map-catchment-fill:  rgba(232, 145, 58, 0.2);
+  --map-catchment-stroke: var(--warm);
+  --map-nodata-fill:     var(--neutral-100);
+  --map-polygon-stroke:  var(--neutral-200);
+  --map-hover-stroke:    var(--veridian-300);
+  --map-facility-fill:   var(--warm);
+
+  /* ── Shadows ─────────────────────────────────────────────────────── */
+  --shadow-sm:    0 1px 2px rgba(42, 45, 38, 0.06);
+  --shadow-md:    0 2px 8px rgba(42, 45, 38, 0.10);
+  --shadow-lg:    0 4px 16px rgba(42, 45, 38, 0.12);
+  --shadow-focus: 0 0 0 3px rgba(46, 196, 160, 0.3);
+
+  /* ── Radius ──────────────────────────────────────────────────────── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* ── Typography ──────────────────────────────────────────────────── */
+  --font-display: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-body:    var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-mono:    var(--font-geist-mono), ui-monospace, monospace;
+
+  /* ── Tile URLs ───────────────────────────────────────────────────── */
+  --tiles-light: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
+  --tiles-dark:  "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
+}
+
+/* ── Dark mode ─────────────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --neutral-50:  #0D1117;
+    --neutral-100: #161B22;
+    --neutral-200: #21262D;
+    --neutral-300: #30363D;
+    --neutral-400: #484F58;
+    --neutral-500: #6E7681;
+    --neutral-600: #8B949E;
+    --neutral-700: #C9D1D9;
+    --neutral-800: #E6EDF3;
+
+    --veridian-50:  #0E2F25;
+    --veridian-100: #1A4A3A;
+    --veridian-200: #2D6B55;
+    --veridian-300: #40826D;
+    --veridian-400: #6BC495;
+    --veridian-500: #A8DBBD;
+    --veridian-600: #E8F5EE;
+
+    --choro-1: #0E2F25;
+    --choro-2: #1A4A3A;
+    --choro-3: #2D6B55;
+    --choro-4: #40826D;
+    --choro-5: #6BC495;
+    --choro-6: #A8DBBD;
+    --choro-7: #E8F5EE;
+
+    --map-selected-fill:  rgba(46, 196, 160, 0.2);
+    --map-catchment-fill: rgba(232, 145, 58, 0.25);
+    --map-nodata-fill:    var(--neutral-200);
+    --map-polygon-stroke: var(--neutral-300);
+
+    --shadow-sm:    0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md:    0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-lg:    0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-focus: 0 0 0 3px rgba(46, 196, 160, 0.4);
+  }
+}

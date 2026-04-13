@@ -1,0 +1,1766 @@
+{
+  "20001": {
+    "ine_code": "20001",
+    "name": "Abaltzisketa",
+    "avg_total_income_2023": 26218,
+    "avg_available_income_2023": 22036,
+    "avg_total_income_2022": 25410
+  },
+  "20002": {
+    "ine_code": "20002",
+    "name": "Aduna",
+    "avg_total_income_2023": 30254,
+    "avg_available_income_2023": 24962,
+    "avg_total_income_2022": 28544
+  },
+  "20003": {
+    "ine_code": "20003",
+    "name": "Aizarnazabal",
+    "avg_total_income_2023": 25989,
+    "avg_available_income_2023": 21951,
+    "avg_total_income_2022": 24932
+  },
+  "20004": {
+    "ine_code": "20004",
+    "name": "Albiztur",
+    "avg_total_income_2023": 29062,
+    "avg_available_income_2023": 24161,
+    "avg_total_income_2022": 27297
+  },
+  "20005": {
+    "ine_code": "20005",
+    "name": "Alegia",
+    "avg_total_income_2023": 23550,
+    "avg_available_income_2023": 20036,
+    "avg_total_income_2022": 22363
+  },
+  "20006": {
+    "ine_code": "20006",
+    "name": "Alkiza",
+    "avg_total_income_2023": 25180,
+    "avg_available_income_2023": 21552,
+    "avg_total_income_2022": 25664
+  },
+  "20007": {
+    "ine_code": "20007",
+    "name": "Altzo",
+    "avg_total_income_2023": 28480,
+    "avg_available_income_2023": 23631,
+    "avg_total_income_2022": 27646
+  },
+  "20008": {
+    "ine_code": "20008",
+    "name": "Amezketa",
+    "avg_total_income_2023": 26669,
+    "avg_available_income_2023": 22459,
+    "avg_total_income_2022": 25483
+  },
+  "20009": {
+    "ine_code": "20009",
+    "name": "Andoain",
+    "avg_total_income_2023": 25051,
+    "avg_available_income_2023": 21194,
+    "avg_total_income_2022": 23256
+  },
+  "20010": {
+    "ine_code": "20010",
+    "name": "Anoeta",
+    "avg_total_income_2023": 25926,
+    "avg_available_income_2023": 21867,
+    "avg_total_income_2022": 23878
+  },
+  "20011": {
+    "ine_code": "20011",
+    "name": "Antzuola",
+    "avg_total_income_2023": 31550,
+    "avg_available_income_2023": 26253,
+    "avg_total_income_2022": 29179
+  },
+  "20012": {
+    "ine_code": "20012",
+    "name": "Arama",
+    "avg_total_income_2023": 32952,
+    "avg_available_income_2023": 26698,
+    "avg_total_income_2022": 33750
+  },
+  "20013": {
+    "ine_code": "20013",
+    "name": "Aretxabaleta",
+    "avg_total_income_2023": 28926,
+    "avg_available_income_2023": 24483,
+    "avg_total_income_2022": 27499
+  },
+  "20014": {
+    "ine_code": "20014",
+    "name": "Asteasu",
+    "avg_total_income_2023": 26343,
+    "avg_available_income_2023": 22019,
+    "avg_total_income_2022": 25111
+  },
+  "20015": {
+    "ine_code": "20015",
+    "name": "Ataun",
+    "avg_total_income_2023": 28342,
+    "avg_available_income_2023": 23511,
+    "avg_total_income_2022": 27112
+  },
+  "20016": {
+    "ine_code": "20016",
+    "name": "Aia",
+    "avg_total_income_2023": 26619,
+    "avg_available_income_2023": 22315,
+    "avg_total_income_2022": 24999
+  },
+  "20017": {
+    "ine_code": "20017",
+    "name": "Azkoitia",
+    "avg_total_income_2023": 27924,
+    "avg_available_income_2023": 23406,
+    "avg_total_income_2022": 26117
+  },
+  "20018": {
+    "ine_code": "20018",
+    "name": "Azpeitia",
+    "avg_total_income_2023": 27389,
+    "avg_available_income_2023": 22921,
+    "avg_total_income_2022": 25637
+  },
+  "20019": {
+    "ine_code": "20019",
+    "name": "Beasain",
+    "avg_total_income_2023": 28136,
+    "avg_available_income_2023": 23430,
+    "avg_total_income_2022": 27194
+  },
+  "20020": {
+    "ine_code": "20020",
+    "name": "Beizama",
+    "avg_total_income_2023": 27846,
+    "avg_available_income_2023": 22018,
+    "avg_total_income_2022": 26414
+  },
+  "20021": {
+    "ine_code": "20021",
+    "name": "Belauntza",
+    "avg_total_income_2023": 25691,
+    "avg_available_income_2023": 21694,
+    "avg_total_income_2022": 31247
+  },
+  "20022": {
+    "ine_code": "20022",
+    "name": "Berastegi",
+    "avg_total_income_2023": 28283,
+    "avg_available_income_2023": 23759,
+    "avg_total_income_2022": 29009
+  },
+  "20023": {
+    "ine_code": "20023",
+    "name": "Berrobi",
+    "avg_total_income_2023": 26712,
+    "avg_available_income_2023": 22211,
+    "avg_total_income_2022": 24370
+  },
+  "20024": {
+    "ine_code": "20024",
+    "name": "Bidania-Goiatz",
+    "avg_total_income_2023": 26817,
+    "avg_available_income_2023": 22676,
+    "avg_total_income_2022": 24451
+  },
+  "20025": {
+    "ine_code": "20025",
+    "name": "Zegama",
+    "avg_total_income_2023": 29225,
+    "avg_available_income_2023": 24721,
+    "avg_total_income_2022": 27188
+  },
+  "20026": {
+    "ine_code": "20026",
+    "name": "Zerain",
+    "avg_total_income_2023": 31424,
+    "avg_available_income_2023": 26175,
+    "avg_total_income_2022": 29769
+  },
+  "20027": {
+    "ine_code": "20027",
+    "name": "Zestoa",
+    "avg_total_income_2023": 25281,
+    "avg_available_income_2023": 21509,
+    "avg_total_income_2022": 23622
+  },
+  "20028": {
+    "ine_code": "20028",
+    "name": "Zizurkil",
+    "avg_total_income_2023": 26190,
+    "avg_available_income_2023": 22027,
+    "avg_total_income_2022": 25715
+  },
+  "20029": {
+    "ine_code": "20029",
+    "name": "Deba",
+    "avg_total_income_2023": 27673,
+    "avg_available_income_2023": 23027,
+    "avg_total_income_2022": 26256
+  },
+  "20030": {
+    "ine_code": "20030",
+    "name": "Eibar",
+    "avg_total_income_2023": 26383,
+    "avg_available_income_2023": 22160,
+    "avg_total_income_2022": 24708
+  },
+  "20031": {
+    "ine_code": "20031",
+    "name": "Elduain",
+    "avg_total_income_2023": 30560,
+    "avg_available_income_2023": 24998,
+    "avg_total_income_2022": 27885
+  },
+  "20032": {
+    "ine_code": "20032",
+    "name": "Elgoibar",
+    "avg_total_income_2023": 28006,
+    "avg_available_income_2023": 23366,
+    "avg_total_income_2022": 26663
+  },
+  "20033": {
+    "ine_code": "20033",
+    "name": "Elgeta",
+    "avg_total_income_2023": 28310,
+    "avg_available_income_2023": 23666,
+    "avg_total_income_2022": 26806
+  },
+  "20034": {
+    "ine_code": "20034",
+    "name": "Eskoriatza",
+    "avg_total_income_2023": 26537,
+    "avg_available_income_2023": 22666,
+    "avg_total_income_2022": 25615
+  },
+  "20035": {
+    "ine_code": "20035",
+    "name": "Ezkio-Itsaso",
+    "avg_total_income_2023": 28627,
+    "avg_available_income_2023": 23815,
+    "avg_total_income_2022": 26922
+  },
+  "20036": {
+    "ine_code": "20036",
+    "name": "Hondarribia",
+    "avg_total_income_2023": 30644,
+    "avg_available_income_2023": 24901,
+    "avg_total_income_2022": 35457
+  },
+  "20037": {
+    "ine_code": "20037",
+    "name": "Gaintza",
+    "avg_total_income_2023": 32821,
+    "avg_available_income_2023": 27054,
+    "avg_total_income_2022": 28937
+  },
+  "20038": {
+    "ine_code": "20038",
+    "name": "Gabiria",
+    "avg_total_income_2023": 30163,
+    "avg_available_income_2023": 24949,
+    "avg_total_income_2022": 27944
+  },
+  "20039": {
+    "ine_code": "20039",
+    "name": "Getaria",
+    "avg_total_income_2023": 29672,
+    "avg_available_income_2023": 24307,
+    "avg_total_income_2022": 26989
+  },
+  "20040": {
+    "ine_code": "20040",
+    "name": "Hernani",
+    "avg_total_income_2023": 24705,
+    "avg_available_income_2023": 20865,
+    "avg_total_income_2022": 23330
+  },
+  "20041": {
+    "ine_code": "20041",
+    "name": "Hernialde",
+    "avg_total_income_2023": 27149,
+    "avg_available_income_2023": 22692,
+    "avg_total_income_2022": 22966
+  },
+  "20042": {
+    "ine_code": "20042",
+    "name": "Ibarra",
+    "avg_total_income_2023": 24658,
+    "avg_available_income_2023": 20976,
+    "avg_total_income_2022": 23046
+  },
+  "20043": {
+    "ine_code": "20043",
+    "name": "Idiazabal",
+    "avg_total_income_2023": 31285,
+    "avg_available_income_2023": 26003,
+    "avg_total_income_2022": 29124
+  },
+  "20044": {
+    "ine_code": "20044",
+    "name": "Ikaztegieta",
+    "avg_total_income_2023": 22638,
+    "avg_available_income_2023": 19521,
+    "avg_total_income_2022": 20728
+  },
+  "20045": {
+    "ine_code": "20045",
+    "name": "Irun",
+    "avg_total_income_2023": 23149,
+    "avg_available_income_2023": 19564,
+    "avg_total_income_2022": 22491
+  },
+  "20046": {
+    "ine_code": "20046",
+    "name": "Irura",
+    "avg_total_income_2023": 28284,
+    "avg_available_income_2023": 23449,
+    "avg_total_income_2022": 27603
+  },
+  "20047": {
+    "ine_code": "20047",
+    "name": "Itsasondo",
+    "avg_total_income_2023": 23981,
+    "avg_available_income_2023": 20349,
+    "avg_total_income_2022": 22709
+  },
+  "20048": {
+    "ine_code": "20048",
+    "name": "Larraul",
+    "avg_total_income_2023": 24801,
+    "avg_available_income_2023": 20603,
+    "avg_total_income_2022": 24876
+  },
+  "20049": {
+    "ine_code": "20049",
+    "name": "Lazkao",
+    "avg_total_income_2023": 28758,
+    "avg_available_income_2023": 24016,
+    "avg_total_income_2022": 27012
+  },
+  "20050": {
+    "ine_code": "20050",
+    "name": "Leaburu",
+    "avg_total_income_2023": 24053,
+    "avg_available_income_2023": 20516,
+    "avg_total_income_2022": 23977
+  },
+  "20051": {
+    "ine_code": "20051",
+    "name": "Legazpi",
+    "avg_total_income_2023": 26440,
+    "avg_available_income_2023": 22358,
+    "avg_total_income_2022": 25024
+  },
+  "20052": {
+    "ine_code": "20052",
+    "name": "Legorreta",
+    "avg_total_income_2023": 27628,
+    "avg_available_income_2023": 22904,
+    "avg_total_income_2022": 24656
+  },
+  "20053": {
+    "ine_code": "20053",
+    "name": "Lezo",
+    "avg_total_income_2023": 23693,
+    "avg_available_income_2023": 20168,
+    "avg_total_income_2022": 22404
+  },
+  "20054": {
+    "ine_code": "20054",
+    "name": "Lizartza",
+    "avg_total_income_2023": 24297,
+    "avg_available_income_2023": 20710,
+    "avg_total_income_2022": 23710
+  },
+  "20055": {
+    "ine_code": "20055",
+    "name": "Arrasate/Mondragón",
+    "avg_total_income_2023": 26829,
+    "avg_available_income_2023": 22898,
+    "avg_total_income_2022": 24977
+  },
+  "20056": {
+    "ine_code": "20056",
+    "name": "Mutriku",
+    "avg_total_income_2023": 25673,
+    "avg_available_income_2023": 21631,
+    "avg_total_income_2022": 23778
+  },
+  "20057": {
+    "ine_code": "20057",
+    "name": "Mutiloa",
+    "avg_total_income_2023": 30769,
+    "avg_available_income_2023": 25969,
+    "avg_total_income_2022": 28430
+  },
+  "20058": {
+    "ine_code": "20058",
+    "name": "Olaberria",
+    "avg_total_income_2023": 27799,
+    "avg_available_income_2023": 23195,
+    "avg_total_income_2022": 26019
+  },
+  "20059": {
+    "ine_code": "20059",
+    "name": "Oñati",
+    "avg_total_income_2023": 31041,
+    "avg_available_income_2023": 26065,
+    "avg_total_income_2022": 29556
+  },
+  "20060": {
+    "ine_code": "20060",
+    "name": "Orexa",
+    "avg_total_income_2023": 24348,
+    "avg_available_income_2023": 20667,
+    "avg_total_income_2022": 23773
+  },
+  "20061": {
+    "ine_code": "20061",
+    "name": "Orio",
+    "avg_total_income_2023": 28501,
+    "avg_available_income_2023": 23665,
+    "avg_total_income_2022": 26562
+  },
+  "20062": {
+    "ine_code": "20062",
+    "name": "Ormaiztegi",
+    "avg_total_income_2023": 32128,
+    "avg_available_income_2023": 26659,
+    "avg_total_income_2022": 25719
+  },
+  "20063": {
+    "ine_code": "20063",
+    "name": "Oiartzun",
+    "avg_total_income_2023": 27327,
+    "avg_available_income_2023": 22773,
+    "avg_total_income_2022": 26053
+  },
+  "20064": {
+    "ine_code": "20064",
+    "name": "Pasaia",
+    "avg_total_income_2023": 21370,
+    "avg_available_income_2023": 18355,
+    "avg_total_income_2022": 20232
+  },
+  "20065": {
+    "ine_code": "20065",
+    "name": "Soraluze-Placencia de las Armas",
+    "avg_total_income_2023": 23472,
+    "avg_available_income_2023": 20069,
+    "avg_total_income_2022": 21931
+  },
+  "20066": {
+    "ine_code": "20066",
+    "name": "Errezil",
+    "avg_total_income_2023": 24063,
+    "avg_available_income_2023": 20568,
+    "avg_total_income_2022": 22026
+  },
+  "20067": {
+    "ine_code": "20067",
+    "name": "Errenteria",
+    "avg_total_income_2023": 22639,
+    "avg_available_income_2023": 19368,
+    "avg_total_income_2022": 21112
+  },
+  "20068": {
+    "ine_code": "20068",
+    "name": "Leintz-Gatzaga",
+    "avg_total_income_2023": 30706,
+    "avg_available_income_2023": 25980,
+    "avg_total_income_2022": 28920
+  },
+  "20069": {
+    "ine_code": "20069",
+    "name": "Donostia / San Sebastián",
+    "avg_total_income_2023": 31126,
+    "avg_available_income_2023": 25286,
+    "avg_total_income_2022": 30809
+  },
+  "20070": {
+    "ine_code": "20070",
+    "name": "Segura",
+    "avg_total_income_2023": 29653,
+    "avg_available_income_2023": 24820,
+    "avg_total_income_2022": 28175
+  },
+  "20071": {
+    "ine_code": "20071",
+    "name": "Tolosa",
+    "avg_total_income_2023": 28286,
+    "avg_available_income_2023": 23502,
+    "avg_total_income_2022": 28738
+  },
+  "20072": {
+    "ine_code": "20072",
+    "name": "Urnieta",
+    "avg_total_income_2023": 25596,
+    "avg_available_income_2023": 21443,
+    "avg_total_income_2022": 24719
+  },
+  "20073": {
+    "ine_code": "20073",
+    "name": "Usurbil",
+    "avg_total_income_2023": 26951,
+    "avg_available_income_2023": 22597,
+    "avg_total_income_2022": 25027
+  },
+  "20074": {
+    "ine_code": "20074",
+    "name": "Bergara",
+    "avg_total_income_2023": 28947,
+    "avg_available_income_2023": 24215,
+    "avg_total_income_2022": 27027
+  },
+  "20075": {
+    "ine_code": "20075",
+    "name": "Villabona",
+    "avg_total_income_2023": 24797,
+    "avg_available_income_2023": 20930,
+    "avg_total_income_2022": 23370
+  },
+  "20076": {
+    "ine_code": "20076",
+    "name": "Ordizia",
+    "avg_total_income_2023": 26594,
+    "avg_available_income_2023": 22265,
+    "avg_total_income_2022": 25666
+  },
+  "20077": {
+    "ine_code": "20077",
+    "name": "Urretxu",
+    "avg_total_income_2023": 27334,
+    "avg_available_income_2023": 22791,
+    "avg_total_income_2022": 25825
+  },
+  "20078": {
+    "ine_code": "20078",
+    "name": "Zaldibia",
+    "avg_total_income_2023": 26869,
+    "avg_available_income_2023": 22681,
+    "avg_total_income_2022": 25795
+  },
+  "20079": {
+    "ine_code": "20079",
+    "name": "Zarautz",
+    "avg_total_income_2023": 29780,
+    "avg_available_income_2023": 24369,
+    "avg_total_income_2022": 28588
+  },
+  "20080": {
+    "ine_code": "20080",
+    "name": "Zumarraga",
+    "avg_total_income_2023": 24649,
+    "avg_available_income_2023": 21011,
+    "avg_total_income_2022": 23066
+  },
+  "20081": {
+    "ine_code": "20081",
+    "name": "Zumaia",
+    "avg_total_income_2023": 29640,
+    "avg_available_income_2023": 24530,
+    "avg_total_income_2022": 28333
+  },
+  "20901": {
+    "ine_code": "20901",
+    "name": "Mendaro",
+    "avg_total_income_2023": 27119,
+    "avg_available_income_2023": 22674,
+    "avg_total_income_2022": 25017
+  },
+  "20902": {
+    "ine_code": "20902",
+    "name": "Lasarte-Oria",
+    "avg_total_income_2023": 24302,
+    "avg_available_income_2023": 20685,
+    "avg_total_income_2022": 23077
+  },
+  "20903": {
+    "ine_code": "20903",
+    "name": "Astigarraga",
+    "avg_total_income_2023": 29124,
+    "avg_available_income_2023": 24150,
+    "avg_total_income_2022": 28047
+  },
+  "20904": {
+    "ine_code": "20904",
+    "name": "Baliarrain",
+    "avg_total_income_2023": 30786,
+    "avg_available_income_2023": 25078,
+    "avg_total_income_2022": 29617
+  },
+  "20905": {
+    "ine_code": "20905",
+    "name": "Orendain",
+    "avg_total_income_2023": 34383,
+    "avg_available_income_2023": 28091,
+    "avg_total_income_2022": 32869
+  },
+  "20906": {
+    "ine_code": "20906",
+    "name": "Altzaga",
+    "avg_total_income_2023": 27342,
+    "avg_available_income_2023": 22848,
+    "avg_total_income_2022": 26549
+  },
+  "20907": {
+    "ine_code": "20907",
+    "name": "Gaztelu",
+    "avg_total_income_2023": 28253,
+    "avg_available_income_2023": 24007,
+    "avg_total_income_2022": 22630
+  },
+  "48001": {
+    "ine_code": "48001",
+    "name": "Abadiño",
+    "avg_total_income_2023": 25856,
+    "avg_available_income_2023": 21804,
+    "avg_total_income_2022": 23992
+  },
+  "48002": {
+    "ine_code": "48002",
+    "name": "Abanto y Ciérvana-Abanto Zierbena",
+    "avg_total_income_2023": 23252,
+    "avg_available_income_2023": 19685,
+    "avg_total_income_2022": 21739
+  },
+  "48003": {
+    "ine_code": "48003",
+    "name": "Amorebieta-Etxano",
+    "avg_total_income_2023": 26528,
+    "avg_available_income_2023": 22083,
+    "avg_total_income_2022": 25125
+  },
+  "48004": {
+    "ine_code": "48004",
+    "name": "Amoroto",
+    "avg_total_income_2023": 26543,
+    "avg_available_income_2023": 22302,
+    "avg_total_income_2022": 24294
+  },
+  "48005": {
+    "ine_code": "48005",
+    "name": "Arakaldo",
+    "avg_total_income_2023": 26655,
+    "avg_available_income_2023": 21914,
+    "avg_total_income_2022": 24541
+  },
+  "48006": {
+    "ine_code": "48006",
+    "name": "Arantzazu",
+    "avg_total_income_2023": 26867,
+    "avg_available_income_2023": 22601,
+    "avg_total_income_2022": 25663
+  },
+  "48007": {
+    "ine_code": "48007",
+    "name": "Munitibar-Arbatzegi Gerrikaitz",
+    "avg_total_income_2023": 22311,
+    "avg_available_income_2023": 19344,
+    "avg_total_income_2022": 21197
+  },
+  "48008": {
+    "ine_code": "48008",
+    "name": "Artzentales",
+    "avg_total_income_2023": 22798,
+    "avg_available_income_2023": 19712,
+    "avg_total_income_2022": 21214
+  },
+  "48009": {
+    "ine_code": "48009",
+    "name": "Arrankudiaga-Zollo",
+    "avg_total_income_2023": 27418,
+    "avg_available_income_2023": 22699,
+    "avg_total_income_2022": 26842
+  },
+  "48010": {
+    "ine_code": "48010",
+    "name": "Arrieta",
+    "avg_total_income_2023": 28526,
+    "avg_available_income_2023": 23499,
+    "avg_total_income_2022": 28463
+  },
+  "48011": {
+    "ine_code": "48011",
+    "name": "Arrigorriaga",
+    "avg_total_income_2023": 24455,
+    "avg_available_income_2023": 20561,
+    "avg_total_income_2022": 22729
+  },
+  "48012": {
+    "ine_code": "48012",
+    "name": "Bakio",
+    "avg_total_income_2023": 31642,
+    "avg_available_income_2023": 25597,
+    "avg_total_income_2022": 28950
+  },
+  "48013": {
+    "ine_code": "48013",
+    "name": "Barakaldo",
+    "avg_total_income_2023": 22224,
+    "avg_available_income_2023": 19016,
+    "avg_total_income_2022": 20887
+  },
+  "48014": {
+    "ine_code": "48014",
+    "name": "Barrika",
+    "avg_total_income_2023": 31678,
+    "avg_available_income_2023": 25219,
+    "avg_total_income_2022": 29104
+  },
+  "48015": {
+    "ine_code": "48015",
+    "name": "Basauri",
+    "avg_total_income_2023": 21274,
+    "avg_available_income_2023": 18376,
+    "avg_total_income_2022": 19942
+  },
+  "48016": {
+    "ine_code": "48016",
+    "name": "Berango",
+    "avg_total_income_2023": 31265,
+    "avg_available_income_2023": 25217,
+    "avg_total_income_2022": 29598
+  },
+  "48017": {
+    "ine_code": "48017",
+    "name": "Bermeo",
+    "avg_total_income_2023": 23494,
+    "avg_available_income_2023": 19913,
+    "avg_total_income_2022": 22146
+  },
+  "48018": {
+    "ine_code": "48018",
+    "name": "Berriatua",
+    "avg_total_income_2023": 23977,
+    "avg_available_income_2023": 20452,
+    "avg_total_income_2022": 23225
+  },
+  "48019": {
+    "ine_code": "48019",
+    "name": "Berriz",
+    "avg_total_income_2023": 25049,
+    "avg_available_income_2023": 20955,
+    "avg_total_income_2022": 23710
+  },
+  "48020": {
+    "ine_code": "48020",
+    "name": "Bilbao",
+    "avg_total_income_2023": 26598,
+    "avg_available_income_2023": 21909,
+    "avg_total_income_2022": 25366
+  },
+  "48021": {
+    "ine_code": "48021",
+    "name": "Busturia",
+    "avg_total_income_2023": 24491,
+    "avg_available_income_2023": 20706,
+    "avg_total_income_2022": 22988
+  },
+  "48022": {
+    "ine_code": "48022",
+    "name": "Karrantza Harana/Valle de Carranza",
+    "avg_total_income_2023": 18222,
+    "avg_available_income_2023": 15968,
+    "avg_total_income_2022": 16746
+  },
+  "48023": {
+    "ine_code": "48023",
+    "name": "Artea",
+    "avg_total_income_2023": 28974,
+    "avg_available_income_2023": 23851,
+    "avg_total_income_2022": 26706
+  },
+  "48024": {
+    "ine_code": "48024",
+    "name": "Zeanuri",
+    "avg_total_income_2023": 28357,
+    "avg_available_income_2023": 23328,
+    "avg_total_income_2022": 27337
+  },
+  "48025": {
+    "ine_code": "48025",
+    "name": "Zeberio",
+    "avg_total_income_2023": 26939,
+    "avg_available_income_2023": 22227,
+    "avg_total_income_2022": 26638
+  },
+  "48026": {
+    "ine_code": "48026",
+    "name": "Dima",
+    "avg_total_income_2023": 26960,
+    "avg_available_income_2023": 22389,
+    "avg_total_income_2022": 26672
+  },
+  "48027": {
+    "ine_code": "48027",
+    "name": "Durango",
+    "avg_total_income_2023": 28628,
+    "avg_available_income_2023": 23568,
+    "avg_total_income_2022": 26421
+  },
+  "48028": {
+    "ine_code": "48028",
+    "name": "Ea",
+    "avg_total_income_2023": 27557,
+    "avg_available_income_2023": 22864,
+    "avg_total_income_2022": 25514
+  },
+  "48029": {
+    "ine_code": "48029",
+    "name": "Etxebarri",
+    "avg_total_income_2023": 26442,
+    "avg_available_income_2023": 22043,
+    "avg_total_income_2022": 24772
+  },
+  "48030": {
+    "ine_code": "48030",
+    "name": "Etxebarria",
+    "avg_total_income_2023": 25916,
+    "avg_available_income_2023": 22055,
+    "avg_total_income_2022": 24647
+  },
+  "48031": {
+    "ine_code": "48031",
+    "name": "Elantxobe",
+    "avg_total_income_2023": 23391,
+    "avg_available_income_2023": 19800,
+    "avg_total_income_2022": 20868
+  },
+  "48032": {
+    "ine_code": "48032",
+    "name": "Elorrio",
+    "avg_total_income_2023": 27197,
+    "avg_available_income_2023": 22773,
+    "avg_total_income_2022": 24780
+  },
+  "48033": {
+    "ine_code": "48033",
+    "name": "Ereño",
+    "avg_total_income_2023": 27964,
+    "avg_available_income_2023": 23269,
+    "avg_total_income_2022": 25711
+  },
+  "48034": {
+    "ine_code": "48034",
+    "name": "Ermua",
+    "avg_total_income_2023": 23371,
+    "avg_available_income_2023": 19934,
+    "avg_total_income_2022": 21532
+  },
+  "48035": {
+    "ine_code": "48035",
+    "name": "Fruiz",
+    "avg_total_income_2023": 28261,
+    "avg_available_income_2023": 23274,
+    "avg_total_income_2022": 27568
+  },
+  "48036": {
+    "ine_code": "48036",
+    "name": "Galdakao",
+    "avg_total_income_2023": 26362,
+    "avg_available_income_2023": 22009,
+    "avg_total_income_2022": 24766
+  },
+  "48037": {
+    "ine_code": "48037",
+    "name": "Galdames",
+    "avg_total_income_2023": 24777,
+    "avg_available_income_2023": 21001,
+    "avg_total_income_2022": 23307
+  },
+  "48038": {
+    "ine_code": "48038",
+    "name": "Gamiz-Fika",
+    "avg_total_income_2023": 31339,
+    "avg_available_income_2023": 25458,
+    "avg_total_income_2022": 29174
+  },
+  "48039": {
+    "ine_code": "48039",
+    "name": "Garai",
+    "avg_total_income_2023": 40243,
+    "avg_available_income_2023": 31273,
+    "avg_total_income_2022": 38121
+  },
+  "48040": {
+    "ine_code": "48040",
+    "name": "Gatika",
+    "avg_total_income_2023": 28638,
+    "avg_available_income_2023": 23505,
+    "avg_total_income_2022": 27106
+  },
+  "48041": {
+    "ine_code": "48041",
+    "name": "Gautegiz Arteaga",
+    "avg_total_income_2023": 30064,
+    "avg_available_income_2023": 24720,
+    "avg_total_income_2022": 28942
+  },
+  "48042": {
+    "ine_code": "48042",
+    "name": "Gordexola",
+    "avg_total_income_2023": 27979,
+    "avg_available_income_2023": 22993,
+    "avg_total_income_2022": 27466
+  },
+  "48043": {
+    "ine_code": "48043",
+    "name": "Gorliz",
+    "avg_total_income_2023": 29094,
+    "avg_available_income_2023": 23683,
+    "avg_total_income_2022": 27403
+  },
+  "48044": {
+    "ine_code": "48044",
+    "name": "Getxo",
+    "avg_total_income_2023": 35701,
+    "avg_available_income_2023": 28218,
+    "avg_total_income_2022": 34640
+  },
+  "48045": {
+    "ine_code": "48045",
+    "name": "Güeñes",
+    "avg_total_income_2023": 23099,
+    "avg_available_income_2023": 19609,
+    "avg_total_income_2022": 21528
+  },
+  "48046": {
+    "ine_code": "48046",
+    "name": "Gernika-Lumo",
+    "avg_total_income_2023": 25219,
+    "avg_available_income_2023": 21176,
+    "avg_total_income_2022": 23881
+  },
+  "48047": {
+    "ine_code": "48047",
+    "name": "Gizaburuaga",
+    "avg_total_income_2023": 26925,
+    "avg_available_income_2023": 22448,
+    "avg_total_income_2022": 26157
+  },
+  "48048": {
+    "ine_code": "48048",
+    "name": "Ibarrangelu",
+    "avg_total_income_2023": 29368,
+    "avg_available_income_2023": 24373,
+    "avg_total_income_2022": 28054
+  },
+  "48049": {
+    "ine_code": "48049",
+    "name": "Ispaster",
+    "avg_total_income_2023": 25378,
+    "avg_available_income_2023": 21416,
+    "avg_total_income_2022": 23613
+  },
+  "48050": {
+    "ine_code": "48050",
+    "name": "Izurtza",
+    "avg_total_income_2023": 30541,
+    "avg_available_income_2023": 25218,
+    "avg_total_income_2022": 27638
+  },
+  "48051": {
+    "ine_code": "48051",
+    "name": "Lanestosa",
+    "avg_total_income_2023": 17886,
+    "avg_available_income_2023": 15865,
+    "avg_total_income_2022": 16337
+  },
+  "48052": {
+    "ine_code": "48052",
+    "name": "Larrabetzu",
+    "avg_total_income_2023": 29363,
+    "avg_available_income_2023": 24083,
+    "avg_total_income_2022": 27379
+  },
+  "48053": {
+    "ine_code": "48053",
+    "name": "Laukiz",
+    "avg_total_income_2023": 39101,
+    "avg_available_income_2023": 30619,
+    "avg_total_income_2022": 32528
+  },
+  "48054": {
+    "ine_code": "48054",
+    "name": "Leioa",
+    "avg_total_income_2023": 28070,
+    "avg_available_income_2023": 23078,
+    "avg_total_income_2022": 26026
+  },
+  "48055": {
+    "ine_code": "48055",
+    "name": "Lemoa",
+    "avg_total_income_2023": 24947,
+    "avg_available_income_2023": 21054,
+    "avg_total_income_2022": 23593
+  },
+  "48056": {
+    "ine_code": "48056",
+    "name": "Lemoiz",
+    "avg_total_income_2023": 28424,
+    "avg_available_income_2023": 23443,
+    "avg_total_income_2022": 27317
+  },
+  "48057": {
+    "ine_code": "48057",
+    "name": "Lekeitio",
+    "avg_total_income_2023": 25162,
+    "avg_available_income_2023": 21157,
+    "avg_total_income_2022": 23660
+  },
+  "48058": {
+    "ine_code": "48058",
+    "name": "Mallabia",
+    "avg_total_income_2023": 26899,
+    "avg_available_income_2023": 22534,
+    "avg_total_income_2022": 26522
+  },
+  "48059": {
+    "ine_code": "48059",
+    "name": "Mañaria",
+    "avg_total_income_2023": 28848,
+    "avg_available_income_2023": 23942,
+    "avg_total_income_2022": 26884
+  },
+  "48060": {
+    "ine_code": "48060",
+    "name": "Markina-Xemein",
+    "avg_total_income_2023": 25807,
+    "avg_available_income_2023": 21848,
+    "avg_total_income_2022": 24482
+  },
+  "48061": {
+    "ine_code": "48061",
+    "name": "Maruri-Jatabe",
+    "avg_total_income_2023": 36100,
+    "avg_available_income_2023": 28880,
+    "avg_total_income_2022": 30342
+  },
+  "48062": {
+    "ine_code": "48062",
+    "name": "Mendata",
+    "avg_total_income_2023": 25497,
+    "avg_available_income_2023": 21273,
+    "avg_total_income_2022": 22990
+  },
+  "48063": {
+    "ine_code": "48063",
+    "name": "Mendexa",
+    "avg_total_income_2023": 26230,
+    "avg_available_income_2023": 21929,
+    "avg_total_income_2022": 24197
+  },
+  "48064": {
+    "ine_code": "48064",
+    "name": "Meñaka",
+    "avg_total_income_2023": 29151,
+    "avg_available_income_2023": 24254,
+    "avg_total_income_2022": 26287
+  },
+  "48065": {
+    "ine_code": "48065",
+    "name": "Ugao-Miraballes",
+    "avg_total_income_2023": 23637,
+    "avg_available_income_2023": 20137,
+    "avg_total_income_2022": 22203
+  },
+  "48066": {
+    "ine_code": "48066",
+    "name": "Morga",
+    "avg_total_income_2023": 26392,
+    "avg_available_income_2023": 22004,
+    "avg_total_income_2022": 24625
+  },
+  "48067": {
+    "ine_code": "48067",
+    "name": "Muxika",
+    "avg_total_income_2023": 26558,
+    "avg_available_income_2023": 22172,
+    "avg_total_income_2022": 25507
+  },
+  "48068": {
+    "ine_code": "48068",
+    "name": "Mundaka",
+    "avg_total_income_2023": 29688,
+    "avg_available_income_2023": 24370,
+    "avg_total_income_2022": 27073
+  },
+  "48069": {
+    "ine_code": "48069",
+    "name": "Mungia",
+    "avg_total_income_2023": 30230,
+    "avg_available_income_2023": 24453,
+    "avg_total_income_2022": 29462
+  },
+  "48070": {
+    "ine_code": "48070",
+    "name": "Aulesti",
+    "avg_total_income_2023": 23814,
+    "avg_available_income_2023": 20068,
+    "avg_total_income_2022": 22401
+  },
+  "48071": {
+    "ine_code": "48071",
+    "name": "Muskiz",
+    "avg_total_income_2023": 24391,
+    "avg_available_income_2023": 20551,
+    "avg_total_income_2022": 22320
+  },
+  "48072": {
+    "ine_code": "48072",
+    "name": "Otxandio",
+    "avg_total_income_2023": 25271,
+    "avg_available_income_2023": 21401,
+    "avg_total_income_2022": 24283
+  },
+  "48073": {
+    "ine_code": "48073",
+    "name": "Ondarroa",
+    "avg_total_income_2023": 22638,
+    "avg_available_income_2023": 19454,
+    "avg_total_income_2022": 21072
+  },
+  "48074": {
+    "ine_code": "48074",
+    "name": "Urduña/Orduña",
+    "avg_total_income_2023": 22732,
+    "avg_available_income_2023": 19429,
+    "avg_total_income_2022": 21235
+  },
+  "48075": {
+    "ine_code": "48075",
+    "name": "Orozko",
+    "avg_total_income_2023": 26197,
+    "avg_available_income_2023": 21798,
+    "avg_total_income_2022": 24574
+  },
+  "48076": {
+    "ine_code": "48076",
+    "name": "Sukarrieta",
+    "avg_total_income_2023": 32842,
+    "avg_available_income_2023": 26134,
+    "avg_total_income_2022": 30792
+  },
+  "48077": {
+    "ine_code": "48077",
+    "name": "Plentzia",
+    "avg_total_income_2023": 28535,
+    "avg_available_income_2023": 23317,
+    "avg_total_income_2022": 27243
+  },
+  "48078": {
+    "ine_code": "48078",
+    "name": "Portugalete",
+    "avg_total_income_2023": 22678,
+    "avg_available_income_2023": 19323,
+    "avg_total_income_2022": 21303
+  },
+  "48079": {
+    "ine_code": "48079",
+    "name": "Errigoiti",
+    "avg_total_income_2023": 25389,
+    "avg_available_income_2023": 21372,
+    "avg_total_income_2022": 23812
+  },
+  "48080": {
+    "ine_code": "48080",
+    "name": "Valle de Trápaga-Trapagaran",
+    "avg_total_income_2023": 22460,
+    "avg_available_income_2023": 19150,
+    "avg_total_income_2022": 21075
+  },
+  "48081": {
+    "ine_code": "48081",
+    "name": "Lezama",
+    "avg_total_income_2023": 29732,
+    "avg_available_income_2023": 24171,
+    "avg_total_income_2022": 28712
+  },
+  "48082": {
+    "ine_code": "48082",
+    "name": "Santurtzi",
+    "avg_total_income_2023": 22637,
+    "avg_available_income_2023": 19300,
+    "avg_total_income_2022": 20992
+  },
+  "48083": {
+    "ine_code": "48083",
+    "name": "Ortuella",
+    "avg_total_income_2023": 21390,
+    "avg_available_income_2023": 18423,
+    "avg_total_income_2022": 20000
+  },
+  "48084": {
+    "ine_code": "48084",
+    "name": "Sestao",
+    "avg_total_income_2023": 19236,
+    "avg_available_income_2023": 16786,
+    "avg_total_income_2022": 18200
+  },
+  "48085": {
+    "ine_code": "48085",
+    "name": "Sopela",
+    "avg_total_income_2023": 30904,
+    "avg_available_income_2023": 25017,
+    "avg_total_income_2022": 29225
+  },
+  "48086": {
+    "ine_code": "48086",
+    "name": "Sopuerta",
+    "avg_total_income_2023": 23787,
+    "avg_available_income_2023": 20184,
+    "avg_total_income_2022": 22534
+  },
+  "48087": {
+    "ine_code": "48087",
+    "name": "Trucios-Turtzioz",
+    "avg_total_income_2023": 20472,
+    "avg_available_income_2023": 17564,
+    "avg_total_income_2022": 19732
+  },
+  "48088": {
+    "ine_code": "48088",
+    "name": "Ubide",
+    "avg_total_income_2023": 22535,
+    "avg_available_income_2023": 19242,
+    "avg_total_income_2022": 21424
+  },
+  "48089": {
+    "ine_code": "48089",
+    "name": "Urduliz",
+    "avg_total_income_2023": 28602,
+    "avg_available_income_2023": 23689,
+    "avg_total_income_2022": 27059
+  },
+  "48090": {
+    "ine_code": "48090",
+    "name": "Balmaseda",
+    "avg_total_income_2023": 20919,
+    "avg_available_income_2023": 17983,
+    "avg_total_income_2022": 19621
+  },
+  "48091": {
+    "ine_code": "48091",
+    "name": "Atxondo",
+    "avg_total_income_2023": 26284,
+    "avg_available_income_2023": 22190,
+    "avg_total_income_2022": 23873
+  },
+  "48092": {
+    "ine_code": "48092",
+    "name": "Bedia",
+    "avg_total_income_2023": 25036,
+    "avg_available_income_2023": 21016,
+    "avg_total_income_2022": 24254
+  },
+  "48093": {
+    "ine_code": "48093",
+    "name": "Areatza",
+    "avg_total_income_2023": 23560,
+    "avg_available_income_2023": 19921,
+    "avg_total_income_2022": 22179
+  },
+  "48094": {
+    "ine_code": "48094",
+    "name": "Igorre",
+    "avg_total_income_2023": 24102,
+    "avg_available_income_2023": 20486,
+    "avg_total_income_2022": 22371
+  },
+  "48095": {
+    "ine_code": "48095",
+    "name": "Zaldibar",
+    "avg_total_income_2023": 25685,
+    "avg_available_income_2023": 21670,
+    "avg_total_income_2022": 24276
+  },
+  "48096": {
+    "ine_code": "48096",
+    "name": "Zalla",
+    "avg_total_income_2023": 23819,
+    "avg_available_income_2023": 20054,
+    "avg_total_income_2022": 21910
+  },
+  "48097": {
+    "ine_code": "48097",
+    "name": "Zaratamo",
+    "avg_total_income_2023": 23023,
+    "avg_available_income_2023": 19586,
+    "avg_total_income_2022": 21600
+  },
+  "48901": {
+    "ine_code": "48901",
+    "name": "Derio",
+    "avg_total_income_2023": 26564,
+    "avg_available_income_2023": 22154,
+    "avg_total_income_2022": 24591
+  },
+  "48902": {
+    "ine_code": "48902",
+    "name": "Erandio",
+    "avg_total_income_2023": 21051,
+    "avg_available_income_2023": 18126,
+    "avg_total_income_2022": 19908
+  },
+  "48903": {
+    "ine_code": "48903",
+    "name": "Loiu",
+    "avg_total_income_2023": 33390,
+    "avg_available_income_2023": 26765,
+    "avg_total_income_2022": 29633
+  },
+  "48904": {
+    "ine_code": "48904",
+    "name": "Sondika",
+    "avg_total_income_2023": 28802,
+    "avg_available_income_2023": 23536,
+    "avg_total_income_2022": 30717
+  },
+  "48905": {
+    "ine_code": "48905",
+    "name": "Zamudio",
+    "avg_total_income_2023": 24521,
+    "avg_available_income_2023": 20768,
+    "avg_total_income_2022": 23426
+  },
+  "48906": {
+    "ine_code": "48906",
+    "name": "Forua",
+    "avg_total_income_2023": 25667,
+    "avg_available_income_2023": 21555,
+    "avg_total_income_2022": 24216
+  },
+  "48907": {
+    "ine_code": "48907",
+    "name": "Kortezubi",
+    "avg_total_income_2023": 27092,
+    "avg_available_income_2023": 22400,
+    "avg_total_income_2022": 25773
+  },
+  "48908": {
+    "ine_code": "48908",
+    "name": "Murueta",
+    "avg_total_income_2023": 29544,
+    "avg_available_income_2023": 24449,
+    "avg_total_income_2022": 27266
+  },
+  "48909": {
+    "ine_code": "48909",
+    "name": "Nabarniz",
+    "avg_total_income_2023": 23981,
+    "avg_available_income_2023": 20182,
+    "avg_total_income_2022": 23693
+  },
+  "48910": {
+    "ine_code": "48910",
+    "name": "Iurreta",
+    "avg_total_income_2023": 23875,
+    "avg_available_income_2023": 20241,
+    "avg_total_income_2022": 22071
+  },
+  "48911": {
+    "ine_code": "48911",
+    "name": "Ajangiz",
+    "avg_total_income_2023": 29012,
+    "avg_available_income_2023": 23895,
+    "avg_total_income_2022": 28198
+  },
+  "48912": {
+    "ine_code": "48912",
+    "name": "Alonsotegi",
+    "avg_total_income_2023": 21653,
+    "avg_available_income_2023": 18527,
+    "avg_total_income_2022": 20901
+  },
+  "48913": {
+    "ine_code": "48913",
+    "name": "Zierbena",
+    "avg_total_income_2023": 28853,
+    "avg_available_income_2023": 23873,
+    "avg_total_income_2022": 27465
+  },
+  "48914": {
+    "ine_code": "48914",
+    "name": "Arratzu",
+    "avg_total_income_2023": 30543,
+    "avg_available_income_2023": 25317,
+    "avg_total_income_2022": 27295
+  },
+  "48915": {
+    "ine_code": "48915",
+    "name": "Ziortza-Bolibar",
+    "avg_total_income_2023": 25072,
+    "avg_available_income_2023": 21555,
+    "avg_total_income_2022": 25096
+  },
+  "48916": {
+    "ine_code": "48916",
+    "name": "Usansolo",
+    "avg_total_income_2023": 25494,
+    "avg_available_income_2023": 21464,
+    "avg_total_income_2022": null
+  },
+  "01051": {
+    "ine_code": "01051",
+    "name": "Agurain/Salvatierra",
+    "avg_total_income_2023": 21967,
+    "avg_available_income_2023": 18752,
+    "avg_total_income_2022": 21132
+  },
+  "01001": {
+    "ine_code": "01001",
+    "name": "Alegría-Dulantzi",
+    "avg_total_income_2023": 24050,
+    "avg_available_income_2023": 20162,
+    "avg_total_income_2022": 22916
+  },
+  "01002": {
+    "ine_code": "01002",
+    "name": "Amurrio",
+    "avg_total_income_2023": 24838,
+    "avg_available_income_2023": 20845,
+    "avg_total_income_2022": 23099
+  },
+  "01049": {
+    "ine_code": "01049",
+    "name": "Añana",
+    "avg_total_income_2023": 24555,
+    "avg_available_income_2023": 20950,
+    "avg_total_income_2022": 22744
+  },
+  "01003": {
+    "ine_code": "01003",
+    "name": "Aramaio",
+    "avg_total_income_2023": 29538,
+    "avg_available_income_2023": 24212,
+    "avg_total_income_2022": 25521
+  },
+  "01006": {
+    "ine_code": "01006",
+    "name": "Armiñón",
+    "avg_total_income_2023": 23974,
+    "avg_available_income_2023": 20119,
+    "avg_total_income_2022": 22589
+  },
+  "01037": {
+    "ine_code": "01037",
+    "name": "Arraia-Maeztu",
+    "avg_total_income_2023": 26910,
+    "avg_available_income_2023": 22540,
+    "avg_total_income_2022": 24974
+  },
+  "01008": {
+    "ine_code": "01008",
+    "name": "Arratzua-Ubarrundia",
+    "avg_total_income_2023": 32697,
+    "avg_available_income_2023": 26427,
+    "avg_total_income_2022": 37309
+  },
+  "01004": {
+    "ine_code": "01004",
+    "name": "Artziniega",
+    "avg_total_income_2023": 23041,
+    "avg_available_income_2023": 19411,
+    "avg_total_income_2022": 23045
+  },
+  "01009": {
+    "ine_code": "01009",
+    "name": "Asparrena",
+    "avg_total_income_2023": 23078,
+    "avg_available_income_2023": 19589,
+    "avg_total_income_2022": 21190
+  },
+  "01010": {
+    "ine_code": "01010",
+    "name": "Ayala/Aiara",
+    "avg_total_income_2023": 25285,
+    "avg_available_income_2023": 21083,
+    "avg_total_income_2022": 23799
+  },
+  "01011": {
+    "ine_code": "01011",
+    "name": "Baños de Ebro/Mañueta",
+    "avg_total_income_2023": 13174,
+    "avg_available_income_2023": 11407,
+    "avg_total_income_2022": 12121
+  },
+  "01013": {
+    "ine_code": "01013",
+    "name": "Barrundia",
+    "avg_total_income_2023": 26933,
+    "avg_available_income_2023": 22443,
+    "avg_total_income_2022": 25472
+  },
+  "01014": {
+    "ine_code": "01014",
+    "name": "Berantevilla",
+    "avg_total_income_2023": 22741,
+    "avg_available_income_2023": 19059,
+    "avg_total_income_2022": 23113
+  },
+  "01016": {
+    "ine_code": "01016",
+    "name": "Bernedo",
+    "avg_total_income_2023": 24081,
+    "avg_available_income_2023": 20625,
+    "avg_total_income_2022": 22206
+  },
+  "01017": {
+    "ine_code": "01017",
+    "name": "Campezo/Kanpezu",
+    "avg_total_income_2023": 22146,
+    "avg_available_income_2023": 18739,
+    "avg_total_income_2022": 20994
+  },
+  "01021": {
+    "ine_code": "01021",
+    "name": "Elburgo/Burgelu",
+    "avg_total_income_2023": 29473,
+    "avg_available_income_2023": 24273,
+    "avg_total_income_2022": 28000
+  },
+  "01022": {
+    "ine_code": "01022",
+    "name": "Elciego",
+    "avg_total_income_2023": 23152,
+    "avg_available_income_2023": 19405,
+    "avg_total_income_2022": 21957
+  },
+  "01023": {
+    "ine_code": "01023",
+    "name": "Elvillar/Bilar",
+    "avg_total_income_2023": 17299,
+    "avg_available_income_2023": 15026,
+    "avg_total_income_2022": 13958
+  },
+  "01046": {
+    "ine_code": "01046",
+    "name": "Erriberagoitia/Ribera Alta",
+    "avg_total_income_2023": 26367,
+    "avg_available_income_2023": 21861,
+    "avg_total_income_2022": 24946
+  },
+  "01056": {
+    "ine_code": "01056",
+    "name": "Harana/Valle de Arana",
+    "avg_total_income_2023": 20148,
+    "avg_available_income_2023": 17739,
+    "avg_total_income_2022": 17922
+  },
+  "01901": {
+    "ine_code": "01901",
+    "name": "Iruña Oka/Iruña de Oca",
+    "avg_total_income_2023": 23672,
+    "avg_available_income_2023": 19875,
+    "avg_total_income_2022": 21680
+  },
+  "01027": {
+    "ine_code": "01027",
+    "name": "Iruraiz-Gauna",
+    "avg_total_income_2023": 27701,
+    "avg_available_income_2023": 22959,
+    "avg_total_income_2022": 25272
+  },
+  "01019": {
+    "ine_code": "01019",
+    "name": "Kripan",
+    "avg_total_income_2023": 17703,
+    "avg_available_income_2023": 15393,
+    "avg_total_income_2022": 17058
+  },
+  "01020": {
+    "ine_code": "01020",
+    "name": "Kuartango",
+    "avg_total_income_2023": 25069,
+    "avg_available_income_2023": 21270,
+    "avg_total_income_2022": 24454
+  },
+  "01028": {
+    "ine_code": "01028",
+    "name": "Labastida/Bastida",
+    "avg_total_income_2023": 20268,
+    "avg_available_income_2023": 17285,
+    "avg_total_income_2022": 18557
+  },
+  "01030": {
+    "ine_code": "01030",
+    "name": "Lagrán",
+    "avg_total_income_2023": 23864,
+    "avg_available_income_2023": 20177,
+    "avg_total_income_2022": 21929
+  },
+  "01031": {
+    "ine_code": "01031",
+    "name": "Laguardia",
+    "avg_total_income_2023": 21777,
+    "avg_available_income_2023": 18385,
+    "avg_total_income_2022": 19811
+  },
+  "01032": {
+    "ine_code": "01032",
+    "name": "Lanciego/Lantziego",
+    "avg_total_income_2023": 16331,
+    "avg_available_income_2023": 14352,
+    "avg_total_income_2022": 15295
+  },
+  "01902": {
+    "ine_code": "01902",
+    "name": "Lantarón",
+    "avg_total_income_2023": 23928,
+    "avg_available_income_2023": 19882,
+    "avg_total_income_2022": 20548
+  },
+  "01033": {
+    "ine_code": "01033",
+    "name": "Lapuebla de Labarca",
+    "avg_total_income_2023": 16908,
+    "avg_available_income_2023": 14773,
+    "avg_total_income_2022": 15738
+  },
+  "01036": {
+    "ine_code": "01036",
+    "name": "Laudio/Llodio",
+    "avg_total_income_2023": 23515,
+    "avg_available_income_2023": 19894,
+    "avg_total_income_2022": 22176
+  },
+  "01058": {
+    "ine_code": "01058",
+    "name": "Legutio",
+    "avg_total_income_2023": 26549,
+    "avg_available_income_2023": 21904,
+    "avg_total_income_2022": 25924
+  },
+  "01034": {
+    "ine_code": "01034",
+    "name": "Leza",
+    "avg_total_income_2023": 19750,
+    "avg_available_income_2023": 17099,
+    "avg_total_income_2022": 18719
+  },
+  "01039": {
+    "ine_code": "01039",
+    "name": "Moreda de Álava/Moreda Araba",
+    "avg_total_income_2023": 18858,
+    "avg_available_income_2023": 16114,
+    "avg_total_income_2022": 17899
+  },
+  "01041": {
+    "ine_code": "01041",
+    "name": "Navaridas",
+    "avg_total_income_2023": 11939,
+    "avg_available_income_2023": 10392,
+    "avg_total_income_2022": 11517
+  },
+  "01042": {
+    "ine_code": "01042",
+    "name": "Okondo",
+    "avg_total_income_2023": 22432,
+    "avg_available_income_2023": 18860,
+    "avg_total_income_2022": 21026
+  },
+  "01043": {
+    "ine_code": "01043",
+    "name": "Oyón-Oion",
+    "avg_total_income_2023": 19941,
+    "avg_available_income_2023": 16944,
+    "avg_total_income_2022": 18226
+  },
+  "01044": {
+    "ine_code": "01044",
+    "name": "Peñacerrada-Urizaharra",
+    "avg_total_income_2023": 26481,
+    "avg_available_income_2023": 21892,
+    "avg_total_income_2022": 25202
+  },
+  "01047": {
+    "ine_code": "01047",
+    "name": "Ribera Baja/Erriberabeitia",
+    "avg_total_income_2023": 24824,
+    "avg_available_income_2023": 20515,
+    "avg_total_income_2022": 22541
+  },
+  "01052": {
+    "ine_code": "01052",
+    "name": "Samaniego",
+    "avg_total_income_2023": 18823,
+    "avg_available_income_2023": 16352,
+    "avg_total_income_2022": 17432
+  },
+  "01053": {
+    "ine_code": "01053",
+    "name": "San Millán/Donemiliaga",
+    "avg_total_income_2023": 25743,
+    "avg_available_income_2023": 21724,
+    "avg_total_income_2022": 24342
+  },
+  "01054": {
+    "ine_code": "01054",
+    "name": "Urkabustaiz",
+    "avg_total_income_2023": 24144,
+    "avg_available_income_2023": 20095,
+    "avg_total_income_2022": 23169
+  },
+  "01055": {
+    "ine_code": "01055",
+    "name": "Valdegovía/Gaubea",
+    "avg_total_income_2023": 22737,
+    "avg_available_income_2023": 19417,
+    "avg_total_income_2022": 21701
+  },
+  "01057": {
+    "ine_code": "01057",
+    "name": "Villabuena de Álava/Eskuernaga",
+    "avg_total_income_2023": 15573,
+    "avg_available_income_2023": 14016,
+    "avg_total_income_2022": 14505
+  },
+  "01059": {
+    "ine_code": "01059",
+    "name": "Vitoria-Gasteiz",
+    "avg_total_income_2023": 25221,
+    "avg_available_income_2023": 21047,
+    "avg_total_income_2022": 24000
+  },
+  "01060": {
+    "ine_code": "01060",
+    "name": "Yécora/Iekora",
+    "avg_total_income_2023": 17683,
+    "avg_available_income_2023": 15637,
+    "avg_total_income_2022": 17127
+  },
+  "01061": {
+    "ine_code": "01061",
+    "name": "Zalduondo",
+    "avg_total_income_2023": 26526,
+    "avg_available_income_2023": 22259,
+    "avg_total_income_2022": 25261
+  },
+  "01062": {
+    "ine_code": "01062",
+    "name": "Zambrana",
+    "avg_total_income_2023": 22957,
+    "avg_available_income_2023": 19416,
+    "avg_total_income_2022": 20663
+  },
+  "01018": {
+    "ine_code": "01018",
+    "name": "Zigoitia",
+    "avg_total_income_2023": 32298,
+    "avg_available_income_2023": 26251,
+    "avg_total_income_2022": 30401
+  },
+  "01063": {
+    "ine_code": "01063",
+    "name": "Zuia",
+    "avg_total_income_2023": 31187,
+    "avg_available_income_2023": 25227,
+    "avg_total_income_2022": 30845
+  }
+}

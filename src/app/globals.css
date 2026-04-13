@@ -1,0 +1,75 @@
+@import "./veridian-tokens.css";
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--neutral-50);
+  --color-foreground: var(--neutral-800);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+body {
+  background: var(--neutral-50);
+  color: var(--neutral-800);
+  font-family: var(--font-body);
+}
+
+/* ── Leaflet overrides ─────────────────────────────────────────────── */
+.leaflet-container {
+  font-family: var(--font-body);
+}
+
+.map-tooltip {
+  background: white !important;
+  border: 0.5px solid var(--neutral-200) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 8px 12px !important;
+  font-size: 12px !important;
+  box-shadow: var(--shadow-md) !important;
+  color: var(--neutral-800) !important;
+}
+
+.map-tooltip strong {
+  color: var(--neutral-800) !important;
+  font-weight: 600 !important;
+}
+
+.map-tooltip::before {
+  display: none !important;
+}
+
+/* ── Selection ─────────────────────────────────────────────────────── */
+::selection {
+  background: var(--accent-light);
+  color: var(--veridian-600);
+}
+
+/* ── Focus ring ────────────────────────────────────────────────────── */
+*:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+/* ── Scrollbar styling ─────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--neutral-300);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neutral-400);
+}
+
+@media (prefers-color-scheme: dark) {
+  .map-tooltip {
+    background: var(--neutral-100) !important;
+    border-color: var(--neutral-300) !important;
+    color: var(--neutral-800) !important;
+  }
+}
