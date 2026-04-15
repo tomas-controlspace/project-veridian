@@ -47,6 +47,7 @@ export interface MunicipioMetrics {
   catch_pct_senior: number | null;
   catch_pct_working: number | null;
   catch_n_municipios: number | null;
+  catch_ine_codes: string[] | null;
 }
 
 export interface ProvinciaMetrics {

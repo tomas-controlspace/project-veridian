@@ -434,6 +434,7 @@ if (hasIsochrones) {
 
       const inside = findMunicipiosInIsochrone(geometry);
       const metrics = catchmentMetrics(inside);
+      metrics.catch_ine_codes = inside.map(p => p.metrics.ine_code);
       Object.assign(master[code], metrics);
       computed++;
       if (computed % 50 === 0) process.stdout.write(`\r  ${computed}/${isoFiles.length} municipios processed`);

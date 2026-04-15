@@ -122,7 +122,7 @@ export default function MapView() {
 
     return {
       fillColor: isFiltered ? getColor(value, breaks, colors) : V.nodataFill,
-      fillOpacity: isFiltered ? 0.78 : 0.3,
+      fillOpacity: isFiltered ? 0.55 : 0.3,
       color: isSelected ? V.accent : V.neutralStroke,
       weight: isSelected ? 2.5 : 0.5,
       opacity: 1,

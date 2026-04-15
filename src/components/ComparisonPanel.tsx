@@ -172,7 +172,7 @@ function CompTable({
       <h4
         className="text-xs font-semibold uppercase mb-2"
         style={{
-          color: 'var(--neutral-800)',
+          color: '#409b7e',
           letterSpacing: '0.5px',
           borderLeft: '3px solid var(--veridian-300)',
           paddingLeft: 8,
@@ -268,7 +268,7 @@ export default function ComparisonPanel() {
   return (
     <div className="p-4 space-y-4 overflow-y-auto h-full">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold" style={{ color: 'var(--neutral-800)' }}>
+        <h3 className="text-sm font-semibold" style={{ color: '#547d74' }}>
           Comparing {names.length} area{names.length > 1 ? 's' : ''}
         </h3>
         <button

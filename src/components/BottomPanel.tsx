@@ -3,9 +3,10 @@
 import { useState } from 'react';
 import ComparisonPanel from './ComparisonPanel';
 import RankingTable from './RankingTable';
+import FacilitiesPanel from './FacilitiesPanel';
 import { useStore } from '@/lib/store';
 
-type Tab = 'comparison' | 'ranking';
+type Tab = 'comparison' | 'ranking' | 'facilities';
 
 export default function BottomPanel() {
   const [tab, setTab] = useState<Tab>('comparison');
@@ -44,9 +45,14 @@ export default function BottomPanel() {
         <button onClick={() => setTab('ranking')} style={tabStyle(tab === 'ranking')}>
           Ranking
         </button>
+        <button onClick={() => setTab('facilities')} style={tabStyle(tab === 'facilities')}>
+          Facilities
+        </button>
       </div>
       <div className="flex-1 overflow-hidden">
-        {tab === 'comparison' ? <ComparisonPanel /> : <RankingTable />}
+        {tab === 'comparison' && <ComparisonPanel />}
+        {tab === 'ranking' && <RankingTable />}
+        {tab === 'facilities' && <FacilitiesPanel />}
       </div>
     </div>
   );
