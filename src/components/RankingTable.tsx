@@ -113,7 +113,7 @@ export default function RankingTable() {
     <div className="flex flex-col h-full">
       <div className="overflow-x-auto flex-1">
         <table className="w-full text-sm">
-          <thead className="sticky top-0" style={{ background: 'var(--neutral-50)' }}>
+          <thead className="sticky top-0" style={{ background: '#2A2D26', zIndex: 1 }}>
             {table.getHeaderGroups().map(hg => (
               <tr key={hg.id}>
                 {hg.headers.map(header => (
@@ -121,7 +121,7 @@ export default function RankingTable() {
                     key={header.id}
                     onClick={header.column.getToggleSortingHandler()}
                     className="text-left px-3 py-2 cursor-pointer whitespace-nowrap"
-                    style={{ width: header.column.getSize(), color: '#2A2D26', fontWeight: 600, fontSize: 13 }}
+                    style={{ width: header.column.getSize(), color: '#fff', fontWeight: 600, fontSize: 13 }}
                   >
                     <div className="flex items-center gap-1">
                       {flexRender(header.column.columnDef.header, header.getContext())}
@@ -146,13 +146,24 @@ export default function RankingTable() {
                   className="cursor-pointer transition-colors"
                   style={{
                     borderBottom: '0.5px solid var(--neutral-100)',
-                    background: isSelected ? 'var(--veridian-50)' : 'transparent',
+                    background: isSelected ? '#2EC4A0' : 'transparent',
+                    color: isSelected ? '#fff' : '#2A2D26',
                   }}
-                  onMouseEnter={e => { if (!isSelected) (e.currentTarget as HTMLElement).style.background = 'var(--neutral-50)'; }}
-                  onMouseLeave={e => { if (!isSelected) (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+                  onMouseEnter={e => {
+                    if (!isSelected) {
+                      e.currentTarget.style.background = '#5A5D56';
+                      e.currentTarget.style.color = '#fff';
+                    }
+                  }}
+                  onMouseLeave={e => {
+                    if (!isSelected) {
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.color = '#2A2D26';
+                    }
+                  }}
                 >
                   {row.getVisibleCells().map(cell => (
-                    <td key={cell.id} className="px-3 py-1.5 font-mono whitespace-nowrap" style={{ color: '#2A2D26', fontWeight: 500, fontSize: 13, fontVariantNumeric: 'tabular-nums' }}>
+                    <td key={cell.id} className="px-3 py-1.5 font-mono whitespace-nowrap" style={{ color: 'inherit', fontWeight: 500, fontSize: 13, fontVariantNumeric: 'tabular-nums' }}>
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>
                   ))}
