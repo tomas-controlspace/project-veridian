@@ -6,6 +6,8 @@ import L from 'leaflet';
 import * as topojsonClient from 'topojson-client';
 import { useStore } from '@/lib/store';
 import { METRIC_DEFS, getColorScale, getColor, formatMetricValue } from '@/lib/metrics';
+import DrawPolygon from './DrawPolygon';
+import DrawToolbar from './DrawToolbar';
 import 'leaflet/dist/leaflet.css';
 
 const BASQUE_BOUNDS: L.LatLngBoundsExpression = [[42.4, -3.5], [43.5, -1.7]];
@@ -79,7 +81,13 @@ export default function MapView() {
     level, boundariesMuni, boundariesProv, municipios, provincias,
     selectedMetric, selectedIds, toggleSelection,
     filteredMunicipios, loading, showIsochrones, facilities,
+    drawMode,
   } = useStore();
+
+  const guardedToggle = useCallback((id: string) => {
+    if (drawMode) return;
+    toggleSelection(id);
+  }, [drawMode, toggleSelection]);
 
   const geoJsonRef = useRef<L.GeoJSON | null>(null);
 
@@ -138,7 +146,7 @@ export default function MapView() {
     const tooltipContent = `<strong>${name}</strong><br/>${metricDef?.label || selectedMetric}: ${formatMetricValue(value, selectedMetric)}`;
     layer.bindTooltip(tooltipContent, { sticky: true, className: 'map-tooltip' });
 
-    (layer as L.Path).on('click', () => toggleSelection(id));
+    (layer as L.Path).on('click', () => guardedToggle(id));
     (layer as L.Path).on('mouseover', () => {
       (layer as L.Path).setStyle({ weight: 2, color: V.hoverStroke });
     });
@@ -149,9 +157,9 @@ export default function MapView() {
         color: isSelected ? V.accent : V.neutralStroke,
       });
     });
-  }, [getFeatureId, getMetricValue, selectedMetric, level, toggleSelection, selectedIds]);
+  }, [getFeatureId, getMetricValue, selectedMetric, level, guardedToggle, selectedIds]);
 
-  const geoKey = `${level}-${selectedMetric}-${selectedIds.join(',')}-${filteredIds.size}`;
+  const geoKey = `${level}-${selectedMetric}-${selectedIds.join(',')}-${filteredIds.size}-${drawMode}`;
 
   if (loading) {
     return (
@@ -199,7 +207,10 @@ export default function MapView() {
             </LTooltip>
           </CircleMarker>
         ))}
+        <DrawPolygon />
       </MapContainer>
+
+      <DrawToolbar />
 
       {/* Legend */}
       <div

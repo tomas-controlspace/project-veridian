@@ -1,8 +1,9 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import { useStore, Facility } from '@/lib/store';
 import { formatValue } from '@/lib/metrics';
+import { pointInPolygon } from '@/lib/geo';
 
 function FacilitiesTable({ facilities, areaName }: { facilities: Facility[]; areaName: string }) {
   const totalNLA = facilities.reduce((sum, f) => sum + (f.nla_sqm || 0), 0);
@@ -18,7 +19,7 @@ function FacilitiesTable({ facilities, areaName }: { facilities: Facility[]; are
           paddingLeft: 8,
         }}
       >
-        Facilities in Catchment — {areaName}
+        {areaName}
       </h4>
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
@@ -58,9 +59,56 @@ function FacilitiesTable({ facilities, areaName }: { facilities: Facility[]; are
   );
 }
 
-export default function FacilitiesPanel() {
-  const { selectedIds, municipios, level, facilities } = useStore();
+// ── Mode toggle ────────────────────────────────────────────────────
 
+function ModeToggle({ mode, onChange }: { mode: 'catchment' | 'custom'; onChange: (m: 'catchment' | 'custom') => void }) {
+  const btnStyle = (active: boolean): React.CSSProperties => ({
+    padding: '5px 12px',
+    fontSize: 11,
+    fontWeight: active ? 600 : 400,
+    borderRadius: 4,
+    border: 'none',
+    cursor: 'pointer',
+    background: active ? '#7C3AED' : 'transparent',
+    color: active ? '#fff' : '#5A5D56',
+    transition: 'background 0.15s, color 0.15s',
+  });
+
+  return (
+    <div
+      className="flex gap-1 mb-3"
+      style={{
+        background: 'var(--neutral-100)',
+        borderRadius: 6,
+        padding: 3,
+      }}
+    >
+      <button style={btnStyle(mode === 'catchment')} onClick={() => onChange('catchment')}>
+        Catchment
+      </button>
+      <button style={btnStyle(mode === 'custom')} onClick={() => onChange('custom')}>
+        Custom Area
+      </button>
+    </div>
+  );
+}
+
+// ── Main component ──────────────────────────────────────────────────
+
+export default function FacilitiesPanel() {
+  const {
+    selectedIds, municipios, level, facilities,
+    facilitiesMode, setFacilitiesMode, drawnPolygon,
+  } = useStore();
+
+  // Auto-switch to 'custom' when polygon is drawn
+  useEffect(() => {
+    if (drawnPolygon) {
+      setFacilitiesMode('custom');
+    }
+  }, [drawnPolygon, setFacilitiesMode]);
+
+  // Catchment mode facilities
   const facilitiesByArea = useMemo(() => {
     if (level !== 'municipio') return [];
     return selectedIds.map(id => {
@@ -74,11 +122,48 @@ export default function FacilitiesPanel() {
     });
   }, [selectedIds, municipios, facilities, level]);
 
-  const hasAny = facilitiesByArea.some(a => a.facilities.length > 0);
+  // Custom area facilities
+  const customAreaFacilities = useMemo(() => {
+    if (!drawnPolygon) return [];
+    return facilities.filter(f => pointInPolygon([f.lat, f.lng], drawnPolygon));
+  }, [facilities, drawnPolygon]);
 
+  // ── Render ──
+
+  return (
+    <div className="p-4 overflow-y-auto h-full">
+      <ModeToggle mode={facilitiesMode} onChange={setFacilitiesMode} />
+
+      {facilitiesMode === 'catchment' ? (
+        <CatchmentView
+          selectedIds={selectedIds}
+          level={level}
+          facilitiesByArea={facilitiesByArea}
+        />
+      ) : (
+        <CustomAreaView
+          drawnPolygon={drawnPolygon}
+          facilities={customAreaFacilities}
+        />
+      )}
+    </div>
+  );
+}
+
+// ── Catchment sub-view ─────────────────────────────────────────────
+
+function CatchmentView({
+  selectedIds,
+  level,
+  facilitiesByArea,
+}: {
+  selectedIds: string[];
+  level: string;
+  facilitiesByArea: { name: string; facilities: Facility[] }[];
+}) {
   if (selectedIds.length === 0) {
     return (
-      <div className="flex items-center justify-center h-full text-sm" style={{ color: 'var(--neutral-400)' }}>
+      <div className="flex items-center justify-center h-48 text-sm" style={{ color: 'var(--neutral-400)' }}>
         Select a municipio to see facilities in its 10-min catchment
       </div>
     );
@@ -86,30 +171,70 @@ export default function FacilitiesPanel() {
 
   if (level !== 'municipio') {
     return (
-      <div className="flex items-center justify-center h-full text-sm" style={{ color: 'var(--neutral-400)' }}>
+      <div className="flex items-center justify-center h-48 text-sm" style={{ color: 'var(--neutral-400)' }}>
         Switch to Municipio level to see facility details
       </div>
     );
   }
 
+  const hasAny = facilitiesByArea.some(a => a.facilities.length > 0);
   if (!hasAny) {
     return (
-      <div className="flex items-center justify-center h-full text-sm" style={{ color: 'var(--neutral-400)' }}>
+      <div className="flex items-center justify-center h-48 text-sm" style={{ color: 'var(--neutral-400)' }}>
         No facilities found in the catchment area
       </div>
     );
   }
 
   return (
-    <div className="p-4 space-y-4 overflow-y-auto h-full">
+    <div className="space-y-4">
       <h3 className="text-sm font-semibold" style={{ color: '#547d74' }}>
         Facilities in 10-min Catchment
       </h3>
       {facilitiesByArea.map((area, i) =>
         area.facilities.length > 0 ? (
-          <FacilitiesTable key={selectedIds[i]} facilities={area.facilities} areaName={area.name} />
+          <FacilitiesTable key={i} facilities={area.facilities} areaName={`Catchment — ${area.name}`} />
         ) : null
       )}
+    </div>
+  );
+}
+
+// ── Custom area sub-view ───────────────────────────────────────────
+
+function CustomAreaView({
+  drawnPolygon,
+  facilities,
+}: {
+  drawnPolygon: [number, number][] | null;
+  facilities: Facility[];
+}) {
+  if (!drawnPolygon) {
+    return (
+      <div className="flex flex-col items-center justify-center h-48 text-sm gap-2" style={{ color: 'var(--neutral-400)' }}>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <polygon points="3 17 9 11 13 15 21 7" />
+          <polyline points="14 7 21 7 21 14" />
+        </svg>
+        Draw an area on the map to see facilities
+      </div>
+    );
+  }
+
+  if (facilities.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-48 text-sm" style={{ color: 'var(--neutral-400)' }}>
+        No facilities found in the drawn area
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-4">
+      <h3 className="text-sm font-semibold" style={{ color: '#547d74' }}>
+        Facilities in Custom Area
+      </h3>
+      <FacilitiesTable facilities={facilities} areaName={`Custom Area — ${facilities.length} found`} />
     </div>
   );
 }

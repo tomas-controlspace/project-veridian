@@ -40,6 +40,15 @@ interface StoreState {
   showIsochrones: boolean;
   setShowIsochrones: (v: boolean) => void;
 
+  // Draw-on-map
+  drawMode: boolean;
+  setDrawMode: (v: boolean) => void;
+  drawnPolygon: [number, number][] | null;
+  setDrawnPolygon: (p: [number, number][] | null) => void;
+  clearDrawnPolygon: () => void;
+  facilitiesMode: 'catchment' | 'custom';
+  setFacilitiesMode: (m: 'catchment' | 'custom') => void;
+
   // Derived
   filteredMunicipios: MunicipioMetrics[];
   allMunicipiosList: MunicipioMetrics[];
@@ -62,6 +71,26 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS);
   const [searchQuery, setSearchQuery] = useState('');
   const [showIsochrones, setShowIsochrones] = useState(true);
+
+  // Draw-on-map state
+  const [drawMode, setDrawModeRaw] = useState(false);
+  const [drawnPolygon, setDrawnPolygonRaw] = useState<[number, number][] | null>(null);
+  const [facilitiesMode, setFacilitiesMode] = useState<'catchment' | 'custom'>('catchment');
+
+  const setDrawMode = useCallback((v: boolean) => {
+    if (v) setDrawnPolygonRaw(null); // clear existing polygon when starting new draw
+    setDrawModeRaw(v);
+  }, []);
+
+  const setDrawnPolygon = useCallback((p: [number, number][] | null) => {
+    setDrawnPolygonRaw(p);
+    if (p) setDrawModeRaw(false); // exit draw mode when polygon is completed
+  }, []);
+
+  const clearDrawnPolygon = useCallback(() => {
+    setDrawnPolygonRaw(null);
+    setDrawModeRaw(false);
+  }, []);
 
   // Load data
   useEffect(() => {
@@ -111,6 +140,8 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     filters, setFilters,
     searchQuery, setSearchQuery,
     showIsochrones, setShowIsochrones,
+    drawMode, setDrawMode, drawnPolygon, setDrawnPolygon, clearDrawnPolygon,
+    facilitiesMode, setFacilitiesMode,
     filteredMunicipios, allMunicipiosList,
   };
 
