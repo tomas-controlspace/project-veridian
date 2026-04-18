@@ -38,6 +38,21 @@ body {
   display: none !important;
 }
 
+.area-label-tooltip {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 0.5px solid var(--neutral-200) !important;
+  border-radius: 4px !important;
+  padding: 2px 8px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: #2A2D26 !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12) !important;
+  pointer-events: none !important;
+}
+.area-label-tooltip::before {
+  display: none !important;
+}
+
 /* ── Selection ─────────────────────────────────────────────────────── */
 ::selection {
   background: var(--accent-light);

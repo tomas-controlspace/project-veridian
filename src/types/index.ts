@@ -29,6 +29,12 @@ export interface MunicipioMetrics {
   housing_turnover_annual_prov: number | null;
   nla_sqm: number | null;
   nla_per_capita: number | null;
+  facility_count: number;
+  ss_facility_count: number;
+  constructed_area_sqm: number;
+  nla_per_1000_households: number | null;
+  operator_count: number;
+  opportunity_score: number | null;
   // Catchment area (10-min drive)
   catchment_pop: number | null;
   catchment_density: number | null;
@@ -48,6 +54,10 @@ export interface MunicipioMetrics {
   catch_pct_working: number | null;
   catch_n_municipios: number | null;
   catch_ine_codes: string[] | null;
+  catch_facility_count: number | null;
+  catch_ss_facility_count: number | null;
+  catch_nla_per_1000_hh: number | null;
+  catch_opportunity_score: number | null;
   // Catchment area (20-min drive)
   catch20_pop: number | null;
   catch20_density: number | null;
@@ -67,6 +77,10 @@ export interface MunicipioMetrics {
   catch20_pct_working: number | null;
   catch20_n_municipios: number | null;
   catch20_ine_codes: string[] | null;
+  catch20_facility_count: number | null;
+  catch20_ss_facility_count: number | null;
+  catch20_nla_per_1000_hh: number | null;
+  catch20_opportunity_score: number | null;
 }
 
 export interface ProvinciaMetrics {
@@ -95,6 +109,12 @@ export interface ProvinciaMetrics {
   housing_turnover_annual_prov: number | null;
   nla_sqm: number | null;
   nla_per_capita: number | null;
+  facility_count: number;
+  ss_facility_count: number;
+  constructed_area_sqm: number;
+  nla_per_1000_households: number | null;
+  operator_count: number;
+  opportunity_score: number | null;
   // Catchment area (10-min drive)
   catchment_pop: number | null;
   catchment_density: number | null;
@@ -113,6 +133,10 @@ export interface ProvinciaMetrics {
   catch_pct_senior: number | null;
   catch_pct_working: number | null;
   catch_n_municipios: number | null;
+  catch_facility_count: number | null;
+  catch_ss_facility_count: number | null;
+  catch_nla_per_1000_hh: number | null;
+  catch_opportunity_score: number | null;
   // Catchment area (20-min drive)
   catch20_pop: number | null;
   catch20_density: number | null;
@@ -131,6 +155,10 @@ export interface ProvinciaMetrics {
   catch20_pct_senior: number | null;
   catch20_pct_working: number | null;
   catch20_n_municipios: number | null;
+  catch20_facility_count: number | null;
+  catch20_ss_facility_count: number | null;
+  catch20_nla_per_1000_hh: number | null;
+  catch20_opportunity_score: number | null;
 }
 
 export interface EuskadiMetrics extends Omit<ProvinciaMetrics, 'provincia_code' | 'provincia_name'> {
@@ -145,6 +173,14 @@ export interface MetricDef {
   format: 'number' | 'percent' | 'euro' | 'euro_sqm' | 'decimal';
   decimals?: number;
   suffix?: string;
+}
+
+export interface DrawnArea {
+  id: string;
+  name: string;
+  polygon: [number, number][]; // [lat, lng] ring
+  color: string;
+  createdAt: number;
 }
 
 export interface Filters {

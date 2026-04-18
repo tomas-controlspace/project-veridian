@@ -1,8 +1,11 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
-import type { GeoLevel, MunicipioMetrics, ProvinciaMetrics, EuskadiMetrics, Filters } from '@/types';
+import React, { createContext, useContext, useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import type { GeoLevel, MunicipioMetrics, ProvinciaMetrics, EuskadiMetrics, Filters, DrawnArea } from '@/types';
 import { DEFAULT_FILTERS, passesFilters } from './filters';
+
+export const AREA_COLORS = ['#7C3AED', '#2EC4A0', '#E8913A', '#E05A8B'] as const;
+export const MAX_DRAWN_AREAS = 4;
 
 export interface Facility {
   name: string;
@@ -12,6 +15,10 @@ export interface Facility {
   lng: number;
   ine_code: string;
   nla_sqm: number;
+  constructed_area_sqm?: number;
+  estimated_nla?: number;
+  facility_type?: 'self_storage' | 'guardamuebles';
+  size_tier?: 'small' | 'medium' | 'large' | 'xlarge' | 'unknown';
   notes?: string;
 }
 
@@ -39,13 +46,20 @@ interface StoreState {
   setSearchQuery: (q: string) => void;
   showIsochrones: boolean;
   setShowIsochrones: (v: boolean) => void;
+  showChoropleth: boolean;
+  setShowChoropleth: (v: boolean) => void;
 
   // Draw-on-map
   drawMode: boolean;
   setDrawMode: (v: boolean) => void;
-  drawnPolygon: [number, number][] | null;
-  setDrawnPolygon: (p: [number, number][] | null) => void;
-  clearDrawnPolygon: () => void;
+  drawnAreas: DrawnArea[];
+  pendingArea: DrawnArea | null;
+  startPendingArea: (polygon: [number, number][]) => void;
+  confirmPendingArea: (name: string) => void;
+  cancelPendingArea: () => void;
+  renameDrawnArea: (id: string, name: string) => void;
+  removeDrawnArea: (id: string) => void;
+  clearDrawnAreas: () => void;
   facilitiesMode: 'catchment' | 'custom';
   setFacilitiesMode: (m: 'catchment' | 'custom') => void;
 
@@ -66,29 +80,88 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   const [level, setLevel] = useState<GeoLevel>('municipio');
-  const [selectedMetric, setSelectedMetric] = useState('density_per_km2');
+  const [selectedMetric, setSelectedMetric] = useState('opportunity_score');
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS);
   const [searchQuery, setSearchQuery] = useState('');
   const [showIsochrones, setShowIsochrones] = useState(true);
+  const [showChoropleth, setShowChoropleth] = useState(true);
 
   // Draw-on-map state
   const [drawMode, setDrawModeRaw] = useState(false);
-  const [drawnPolygon, setDrawnPolygonRaw] = useState<[number, number][] | null>(null);
+  const [drawnAreas, setDrawnAreas] = useState<DrawnArea[]>([]);
+  const [pendingArea, setPendingArea] = useState<DrawnArea | null>(null);
+  const pendingAreaRef = useRef<DrawnArea | null>(null);
+  pendingAreaRef.current = pendingArea;
+  const drawnAreasRef = useRef<DrawnArea[]>([]);
+  drawnAreasRef.current = drawnAreas;
   const [facilitiesMode, setFacilitiesMode] = useState<'catchment' | 'custom'>('catchment');
 
   const setDrawMode = useCallback((v: boolean) => {
-    if (v) setDrawnPolygonRaw(null); // clear existing polygon when starting new draw
     setDrawModeRaw(v);
   }, []);
 
-  const setDrawnPolygon = useCallback((p: [number, number][] | null) => {
-    setDrawnPolygonRaw(p);
-    if (p) setDrawModeRaw(false); // exit draw mode when polygon is completed
+  const nextName = useCallback((existing: DrawnArea[]): string => {
+    const used = new Set(existing.map(a => a.name));
+    for (let i = 1; i <= MAX_DRAWN_AREAS + 5; i++) {
+      const candidate = `Area ${i}`;
+      if (!used.has(candidate)) return candidate;
+    }
+    return `Area ${existing.length + 1}`;
   }, []);
 
-  const clearDrawnPolygon = useCallback(() => {
-    setDrawnPolygonRaw(null);
+  const nextColor = useCallback((existing: DrawnArea[]): string => {
+    const used = new Set(existing.map(a => a.color));
+    for (const c of AREA_COLORS) {
+      if (!used.has(c)) return c;
+    }
+    return AREA_COLORS[existing.length % AREA_COLORS.length];
+  }, []);
+
+  const startPendingArea = useCallback((polygon: [number, number][]) => {
+    const current = drawnAreasRef.current;
+    if (current.length >= MAX_DRAWN_AREAS) return;
+    const area: DrawnArea = {
+      id: (typeof crypto !== 'undefined' && crypto.randomUUID) ? crypto.randomUUID() : `area-${Date.now()}`,
+      name: nextName(current),
+      polygon,
+      color: nextColor(current),
+      createdAt: Date.now(),
+    };
+    setPendingArea(area);
+    setDrawModeRaw(false);
+  }, [nextName, nextColor]);
+
+  const confirmPendingArea = useCallback((name: string) => {
+    const pending = pendingAreaRef.current;
+    if (!pending) return;
+    const trimmed = name.trim() || pending.name;
+    setPendingArea(null);
+    setDrawnAreas(current => {
+      if (current.length >= MAX_DRAWN_AREAS) return current;
+      return [...current, { ...pending, name: trimmed }];
+    });
+    setDrawModeRaw(false);
+  }, []);
+
+  const cancelPendingArea = useCallback(() => {
+    setPendingArea(null);
+    setDrawModeRaw(false);
+  }, []);
+
+  const renameDrawnArea = useCallback((id: string, name: string) => {
+    setDrawnAreas(current =>
+      current.map(a => a.id === id ? { ...a, name: name.trim() || a.name } : a)
+    );
+  }, []);
+
+  const removeDrawnArea = useCallback((id: string) => {
+    setDrawnAreas(current => current.filter(a => a.id !== id));
+  }, []);
+
+  const clearDrawnAreas = useCallback(() => {
+    setDrawnAreas([]);
+    setPendingArea(null);
     setDrawModeRaw(false);
   }, []);
 
@@ -140,7 +213,11 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     filters, setFilters,
     searchQuery, setSearchQuery,
     showIsochrones, setShowIsochrones,
-    drawMode, setDrawMode, drawnPolygon, setDrawnPolygon, clearDrawnPolygon,
+    showChoropleth, setShowChoropleth,
+    drawMode, setDrawMode,
+    drawnAreas, pendingArea,
+    startPendingArea, confirmPendingArea, cancelPendingArea,
+    renameDrawnArea, removeDrawnArea, clearDrawnAreas,
     facilitiesMode, setFacilitiesMode,
     filteredMunicipios, allMunicipiosList,
   };

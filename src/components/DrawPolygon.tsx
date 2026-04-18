@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback, useRef } from 'react';
-import { useMap, Polyline, Polygon, CircleMarker } from 'react-leaflet';
+import { useMap, Polyline, CircleMarker } from 'react-leaflet';
 import { useStore } from '@/lib/store';
 import type { LeafletMouseEvent } from 'leaflet';
 
@@ -9,15 +9,6 @@ const DRAW_COLOR = '#7C3AED';
 const SNAP_RADIUS_PX = 12; // pixels — how close to first vertex to trigger close
 
 const polylineStyle = {
-  color: DRAW_COLOR,
-  weight: 2,
-  dashArray: '6 4',
-  opacity: 0.8,
-};
-
-const completedStyle = {
-  fillColor: DRAW_COLOR,
-  fillOpacity: 0.12,
   color: DRAW_COLOR,
   weight: 2,
   dashArray: '6 4',
@@ -40,7 +31,7 @@ const firstVertexStyle = {
 
 export default function DrawPolygon() {
   const map = useMap();
-  const { drawMode, setDrawMode, drawnPolygon, setDrawnPolygon } = useStore();
+  const { drawMode, startPendingArea } = useStore();
 
   const [vertices, setVertices] = useState<[number, number][]>([]);
   const verticesRef = useRef<[number, number][]>([]);
@@ -80,15 +71,15 @@ export default function DrawPolygon() {
     [map],
   );
 
-  // Close the polygon with current vertices
+  // Close the polygon with current vertices → hand off to pending-area flow
   const closePolygon = useCallback(() => {
     const current = verticesRef.current;
     if (current.length >= 3) {
-      setDrawnPolygon([...current]);
+      startPendingArea([...current]);
     }
     setVertices([]);
     setNearFirst(false);
-  }, [setDrawnPolygon]);
+  }, [startPendingArea]);
 
   // Click handler: add vertex or close polygon if clicking near first vertex
   const handleClick = useCallback(
@@ -150,12 +141,7 @@ export default function DrawPolygon() {
     };
   }, [drawMode, map, handleClick, handleDblClick, handleMouseMove]);
 
-  // Render completed polygon
-  if (!drawMode && drawnPolygon) {
-    return <Polygon positions={drawnPolygon} pathOptions={completedStyle} />;
-  }
-
-  // Render in-progress drawing
+  // Render in-progress drawing only; completed polygons are rendered by MapView
   if (!drawMode || vertices.length === 0) return null;
 
   // Build the line including rubber-band to cursor

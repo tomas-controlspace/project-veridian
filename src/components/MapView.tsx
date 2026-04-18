@@ -1,13 +1,14 @@
 'use client';
 
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
-import { MapContainer, TileLayer, GeoJSON, CircleMarker, Tooltip as LTooltip, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON, CircleMarker, Tooltip as LTooltip, useMap, Polygon } from 'react-leaflet';
 import L from 'leaflet';
 import * as topojsonClient from 'topojson-client';
 import { useStore } from '@/lib/store';
 import { METRIC_DEFS, getColorScale, getColor, formatMetricValue } from '@/lib/metrics';
 import DrawPolygon from './DrawPolygon';
 import DrawToolbar from './DrawToolbar';
+import AreaNameInput from './AreaNameInput';
 import 'leaflet/dist/leaflet.css';
 
 const BASQUE_BOUNDS: L.LatLngBoundsExpression = [[42.4, -3.5], [43.5, -1.7]];
@@ -82,8 +83,8 @@ export default function MapView() {
   const {
     level, boundariesMuni, boundariesProv, municipios, provincias,
     selectedMetric, selectedIds, toggleSelection,
-    filteredMunicipios, loading, showIsochrones, facilities,
-    drawMode,
+    filteredMunicipios, loading, showIsochrones, showChoropleth, facilities,
+    drawMode, drawnAreas, pendingArea,
   } = useStore();
 
   const guardedToggle = useCallback((id: string) => {
@@ -131,13 +132,15 @@ export default function MapView() {
     const value = getMetricValue(feature);
 
     return {
-      fillColor: isFiltered ? getColor(value, breaks, colors) : V.nodataFill,
-      fillOpacity: isFiltered ? 0.55 : 0.3,
+      fillColor: showChoropleth
+        ? (isFiltered ? getColor(value, breaks, colors) : V.nodataFill)
+        : 'transparent',
+      fillOpacity: showChoropleth ? (isFiltered ? 0.55 : 0.3) : 0,
       color: isSelected ? V.accent : V.neutralStroke,
       weight: isSelected ? 2.5 : 0.5,
       opacity: 1,
     };
-  }, [getFeatureId, getMetricValue, selectedIds, filteredIds, breaks, colors, level]);
+  }, [getFeatureId, getMetricValue, selectedIds, filteredIds, breaks, colors, level, showChoropleth]);
 
   const onEachFeature = useCallback((feature: GeoJSON.Feature, layer: L.Layer) => {
     const id = getFeatureId(feature);
@@ -199,54 +202,101 @@ export default function MapView() {
             <IsochroneOverlay id={id} level={level} range="10" />
           </React.Fragment>
         ))}
-        {facilities.map((f, i) => (
-          <CircleMarker
-            key={`fac-${i}`}
-            center={[f.lat, f.lng]}
-            radius={5}
-            pathOptions={{ fillColor: V.warm, fillOpacity: 0.9, color: '#fff', weight: 1.5 }}
+        {facilities.map((f, i) => {
+          const isGuarda = f.facility_type === 'guardamuebles';
+          const sizeMap: Record<string, number> = { small: 4, medium: 6, large: 8, xlarge: 10, unknown: 4 };
+          const radius = sizeMap[f.size_tier || 'unknown'] || 5;
+          return (
+            <CircleMarker
+              key={`fac-${i}`}
+              center={[f.lat, f.lng]}
+              radius={radius}
+              bubblingMouseEvents={false}
+              pathOptions={{
+                fillColor: isGuarda ? 'transparent' : V.warm,
+                fillOpacity: isGuarda ? 0 : 0.9,
+                color: isGuarda ? V.warm : '#fff',
+                weight: isGuarda ? 2 : 1.5,
+              }}
+            >
+              <LTooltip>
+                <strong>{f.operator}</strong> — {f.name}<br />
+                NLA: {f.nla_sqm} m²
+                {f.facility_type && <><br />Type: {f.facility_type === 'self_storage' ? 'Self-storage' : 'Guardamuebles'}</>}
+                {f.size_tier && f.size_tier !== 'unknown' && <><br />Size: {f.size_tier}</>}
+              </LTooltip>
+            </CircleMarker>
+          );
+        })}
+        {drawnAreas.map(a => (
+          <Polygon
+            key={a.id}
+            positions={a.polygon}
+            pathOptions={{
+              color: a.color,
+              fillColor: a.color,
+              fillOpacity: 0.12,
+              weight: 2,
+              dashArray: '6 4',
+              opacity: 0.85,
+            }}
           >
-            <LTooltip>
-              <strong>{f.operator}</strong> — {f.name}<br />
-              NLA: {f.nla_sqm} m²
+            <LTooltip direction="center" permanent className="area-label-tooltip">
+              {a.name}
             </LTooltip>
-          </CircleMarker>
+          </Polygon>
         ))}
+        {pendingArea && (
+          <Polygon
+            positions={pendingArea.polygon}
+            pathOptions={{
+              color: pendingArea.color,
+              fillColor: pendingArea.color,
+              fillOpacity: 0.18,
+              weight: 2,
+              dashArray: '6 4',
+              opacity: 0.9,
+            }}
+          />
+        )}
         <DrawPolygon />
+        <AreaNameInput />
       </MapContainer>
 
       <DrawToolbar />
 
       {/* Legend */}
-      <div
-        className="absolute bottom-4 left-4 backdrop-blur z-[1000] text-xs"
-        style={{
-          background: 'rgba(255,255,255,0.92)',
-          borderRadius: 'var(--radius-md)',
-          border: '0.5px solid var(--neutral-200)',
-          padding: '10px 12px',
-          boxShadow: 'var(--shadow-md)',
-        }}
-      >
-        <div className="mb-1.5" style={{ color: '#2A2D26', fontWeight: 600, fontSize: 12 }}>
-          {METRIC_DEFS.find(m => m.key === selectedMetric)?.label}
-        </div>
-        <div className="flex items-center gap-0.5">
-          {colors.map((c, i) => (
-            <div key={i} className="w-6 h-4" style={{ backgroundColor: c, borderRadius: 'var(--radius-sm)' }} />
-          ))}
-        </div>
-        {breaks.length >= 2 && (
-          <div className="flex justify-between mt-0.5" style={{ color: '#5A5D56', fontSize: 11 }}>
-            <span>{formatMetricValue(breaks[0], selectedMetric)}</span>
-            <span>{formatMetricValue(breaks[breaks.length - 1], selectedMetric)}</span>
+      {showChoropleth && (
+        <div
+          className="absolute bottom-4 left-4 backdrop-blur z-[1000] text-xs"
+          style={{
+            background: 'rgba(255,255,255,0.92)',
+            borderRadius: 'var(--radius-md)',
+            border: '0.5px solid var(--neutral-200)',
+            padding: '10px 12px',
+            boxShadow: 'var(--shadow-md)',
+          }}
+        >
+          <div className="mb-1.5" style={{ color: '#2A2D26', fontWeight: 600, fontSize: 12 }}>
+            {METRIC_DEFS.find(m => m.key === selectedMetric)?.label}
           </div>
-        )}
-        <div className="flex items-center gap-1.5 mt-1.5">
-          <div className="w-3 h-3" style={{ backgroundColor: 'var(--neutral-100)', borderRadius: 'var(--radius-sm)' }} />
-          <span style={{ color: '#5A5D56', fontSize: 11 }}>No data / Filtered</span>
+          <div className="flex items-center gap-0.5">
+            {colors.map((c, i) => (
+              <div key={i} className="w-6 h-4" style={{ backgroundColor: c, borderRadius: 'var(--radius-sm)' }} />
+            ))}
+          </div>
+          {breaks.length >= 2 && (
+            <div className="flex justify-between mt-0.5" style={{ color: '#5A5D56', fontSize: 11 }}>
+              <span>{formatMetricValue(breaks[0], selectedMetric)}</span>
+              <span>{formatMetricValue(breaks[breaks.length - 1], selectedMetric)}</span>
+            </div>
+          )}
+          <div className="flex items-center gap-1.5 mt-1.5">
+            <div className="w-3 h-3" style={{ backgroundColor: 'var(--neutral-100)', borderRadius: 'var(--radius-sm)' }} />
+            <span style={{ color: '#5A5D56', fontSize: 11 }}>No data / Filtered</span>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

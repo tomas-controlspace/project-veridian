@@ -1,16 +1,26 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ComparisonPanel from './ComparisonPanel';
 import RankingTable from './RankingTable';
 import FacilitiesPanel from './FacilitiesPanel';
+import CustomAreasPanel from './CustomAreasPanel';
 import { useStore } from '@/lib/store';
 
-type Tab = 'comparison' | 'ranking' | 'facilities';
+type Tab = 'comparison' | 'ranking' | 'facilities' | 'custom';
 
 export default function BottomPanel() {
   const [tab, setTab] = useState<Tab>('comparison');
-  const { selectedIds } = useStore();
+  const { selectedIds, drawnAreas } = useStore();
+
+  // Auto-switch to Custom Areas tab when the first area is confirmed
+  const prevAreaCount = useRef(drawnAreas.length);
+  useEffect(() => {
+    if (prevAreaCount.current === 0 && drawnAreas.length === 1) {
+      setTab('custom');
+    }
+    prevAreaCount.current = drawnAreas.length;
+  }, [drawnAreas.length]);
 
   const tabStyle = (active: boolean): React.CSSProperties => ({
     padding: '10px 16px',
@@ -42,6 +52,22 @@ export default function BottomPanel() {
             </span>
           )}
         </button>
+        <button onClick={() => setTab('custom')} style={tabStyle(tab === 'custom')}>
+          Custom Areas
+          {drawnAreas.length > 0 && (
+            <span
+              className="ml-1.5 text-xs px-1.5 py-0.5"
+              style={{
+                background: 'rgba(124, 58, 237, 0.12)',
+                color: '#7C3AED',
+                borderRadius: 'var(--radius-sm)',
+                fontWeight: 500,
+              }}
+            >
+              {drawnAreas.length}
+            </span>
+          )}
+        </button>
         <button onClick={() => setTab('ranking')} style={tabStyle(tab === 'ranking')}>
           Ranking
         </button>
@@ -51,6 +77,7 @@ export default function BottomPanel() {
       </div>
       <div className="flex-1 overflow-hidden">
         {tab === 'comparison' && <ComparisonPanel />}
+        {tab === 'custom' && <CustomAreasPanel />}
         {tab === 'ranking' && <RankingTable />}
         {tab === 'facilities' && <FacilitiesPanel />}
       </div>

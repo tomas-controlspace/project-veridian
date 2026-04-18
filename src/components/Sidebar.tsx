@@ -12,8 +12,8 @@ const sLabel: React.CSSProperties = {
 
 const sInput: React.CSSProperties = {
   width: '100%', padding: '6px 10px', fontSize: 13,
-  border: '0.5px solid var(--neutral-200)', borderRadius: 'var(--radius-md)',
-  background: '#fff', color: 'var(--neutral-800)', outline: 'none',
+  border: '0.5px solid #D5D7D0', borderRadius: 6,
+  background: '#fff', color: '#2A2D26', outline: 'none',
 };
 
 function FilterInput({
@@ -45,6 +45,7 @@ export default function Sidebar() {
     searchQuery, setSearchQuery,
     allMunicipiosList, toggleSelection, level,
     showIsochrones, setShowIsochrones,
+    showChoropleth, setShowChoropleth,
   } = useStore();
 
   const [showFilters, setShowFilters] = useState(false);
@@ -63,16 +64,33 @@ export default function Sidebar() {
 
   return (
     <div className="flex flex-col gap-4 p-4 h-full overflow-y-auto" style={{ background: '#fff' }}>
-      {/* Metric Selector */}
+      {/* Choropleth Toggle + Metric Selector */}
       <div>
-        <div style={sLabel}>Choropleth Metric</div>
+        <div className="flex items-center justify-between mb-1">
+          <div style={sLabel}>Choropleth</div>
+          <button
+            onClick={() => setShowChoropleth(!showChoropleth)}
+            className="w-9 h-5 rounded-full transition-colors relative"
+            style={{ background: showChoropleth ? '#2EC4A0' : '#D5D7D0' }}
+          >
+            <div
+              className="w-4 h-4 bg-white rounded-full absolute top-0.5 transition-transform"
+              style={{
+                boxShadow: '0 1px 2px rgba(0,0,0,0.15)',
+                left: showChoropleth ? 16 : 2,
+              }}
+            />
+          </button>
+        </div>
         <select
           value={selectedMetric}
           onChange={e => setSelectedMetric(e.target.value)}
+          disabled={!showChoropleth}
           style={{
             ...sInput,
             padding: '8px 10px',
             appearance: 'auto' as const,
+            opacity: showChoropleth ? 1 : 0.4,
           }}
         >
           {METRIC_DEFS.map(m => (
@@ -83,16 +101,16 @@ export default function Sidebar() {
 
       {/* Catchment Toggle */}
       <div className="flex items-center justify-between">
-        <div style={sLabel}>Catchment Areas (10min)</div>
+        <div style={sLabel}>Catchment Areas</div>
         <button
           onClick={() => setShowIsochrones(!showIsochrones)}
           className="w-9 h-5 rounded-full transition-colors relative"
-          style={{ background: showIsochrones ? 'var(--accent)' : 'var(--neutral-200)' }}
+          style={{ background: showIsochrones ? '#2EC4A0' : '#D5D7D0' }}
         >
           <div
             className="w-4 h-4 bg-white rounded-full absolute top-0.5 transition-transform"
             style={{
-              boxShadow: 'var(--shadow-sm)',
+              boxShadow: '0 1px 2px rgba(0,0,0,0.15)',
               left: showIsochrones ? 16 : 2,
             }}
           />
@@ -196,6 +214,7 @@ export default function Sidebar() {
       {/* Footer */}
       <div className="mt-auto text-xs space-y-1" style={{ color: 'var(--neutral-400)' }}>
         <p>Click polygons to select (max 4).</p>
+        <p>Draw up to 4 custom areas to compare.</p>
         <p>Level: <span className="capitalize font-medium" style={{ color: 'var(--neutral-600)' }}>{level}</span></p>
       </div>
     </div>
