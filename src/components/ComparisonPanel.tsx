@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useStore } from '@/lib/store';
 import { formatValue } from '@/lib/metrics';
 
@@ -224,6 +224,108 @@ function CompTable({
   );
 }
 
+// ── Catchment dual table (10-min vs 20-min side by side) ───────────
+
+function toKey20(key10: string): string {
+  if (key10.startsWith('catchment_')) return 'catch20_' + key10.slice('catchment_'.length);
+  if (key10.startsWith('catch_')) return 'catch20_' + key10.slice('catch_'.length);
+  return key10;
+}
+
+function CatchmentDualTable({
+  rows,
+  areas,
+  areaNames,
+  euskadiData,
+}: {
+  rows: CompRow[];
+  areas: (Record<string, unknown> | null)[];
+  areaNames: string[];
+  euskadiData: Record<string, unknown> | null;
+}) {
+  return (
+    <div>
+      <h4
+        className="text-xs font-semibold uppercase mb-2"
+        style={{
+          color: '#409b7e',
+          letterSpacing: '0.5px',
+          borderLeft: '3px solid var(--veridian-300)',
+          paddingLeft: 8,
+        }}
+      >Catchment Area</h4>
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead>
+            {/* Top row: area names */}
+            <tr style={{ borderBottom: '0.5px solid var(--neutral-200)' }}>
+              <th className="text-left py-1.5 pr-4" rowSpan={2} style={{ color: '#2A2D26', fontWeight: 600, fontSize: 13, verticalAlign: 'bottom' }}>
+                Metric
+              </th>
+              {areaNames.map((name, i) => (
+                <th key={i} colSpan={2} className="text-center py-1 px-1" style={{ color: '#2A2D26', fontWeight: 600, fontSize: 12, borderBottom: 'none' }}>
+                  {name}
+                </th>
+              ))}
+              <th colSpan={2} className="text-center py-1 px-1" style={{ color: '#5A5D56', fontWeight: 500, fontSize: 12, borderBottom: 'none' }}>
+                Euskadi
+              </th>
+            </tr>
+            {/* Sub-header row: 10 min / 20 min */}
+            <tr style={{ borderBottom: '1px solid var(--neutral-200)' }}>
+              {[...areaNames, 'Euskadi'].map((_, i) => (
+                <React.Fragment key={i}>
+                  <th className="text-right px-1.5 py-1" style={{ color: '#E8913A', fontWeight: 600, fontSize: 10, minWidth: 55 }}>
+                    10 min
+                  </th>
+                  <th className="text-right px-1.5 py-1" style={{ color: '#C4782E', fontWeight: 500, fontSize: 10, minWidth: 55 }}>
+                    20 min
+                  </th>
+                </React.Fragment>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(row => {
+              const key20 = toKey20(row.key);
+              const euskadi10 = getVal(euskadiData, row.key);
+              const euskadi20 = getVal(euskadiData, key20);
+              return (
+                <tr key={row.key} style={{ borderBottom: '0.5px solid var(--neutral-100)' }}>
+                  <td className="py-1.5 pr-4 whitespace-nowrap" style={{ color: '#5A5D56', fontSize: 12 }}>
+                    {row.label}
+                    {row.info && <InfoTip text={row.info} />}
+                  </td>
+                  {areas.map((area, i) => {
+                    const val10 = getVal(area, row.key);
+                    const val20 = getVal(area, key20);
+                    return (
+                      <React.Fragment key={i}>
+                        <td className="text-right py-1.5 px-1.5 font-mono" style={{ color: '#2A2D26', fontWeight: 500, fontSize: 12, fontVariantNumeric: 'tabular-nums' }}>
+                          {formatValue(val10, row.format, row.decimals)}{row.suffix && val10 != null ? row.suffix : ''}
+                        </td>
+                        <td className="text-right py-1.5 px-1.5 font-mono" style={{ color: '#5A5D56', fontWeight: 400, fontSize: 12, fontVariantNumeric: 'tabular-nums' }}>
+                          {formatValue(val20, row.format, row.decimals)}{row.suffix && val20 != null ? row.suffix : ''}
+                        </td>
+                      </React.Fragment>
+                    );
+                  })}
+                  <td className="text-right py-1.5 px-1.5 font-mono" style={{ color: '#5A5D56', fontWeight: 400, fontSize: 12, fontVariantNumeric: 'tabular-nums' }}>
+                    {formatValue(euskadi10, row.format, row.decimals)}{row.suffix && euskadi10 != null ? row.suffix : ''}
+                  </td>
+                  <td className="text-right py-1.5 px-1.5 font-mono" style={{ color: '#5A5D56', fontWeight: 400, fontSize: 12, fontVariantNumeric: 'tabular-nums' }}>
+                    {formatValue(euskadi20, row.format, row.decimals)}{row.suffix && euskadi20 != null ? row.suffix : ''}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 // ── Main component ──────────────────────────────────────────────────
 
 export default function ComparisonPanel() {
@@ -255,7 +357,7 @@ export default function ComparisonPanel() {
   const euskadiData = euskadi as unknown as Record<string, unknown> | null;
 
   const hasNLA = areas.some(a => a && a.nla_sqm != null);
-  const hasCatchment = areas.some(a => a && a.catchment_pop != null);
+  const hasCatchment = areas.some(a => a && (a.catchment_pop != null || a.catch20_pop != null));
 
   if (selectedIds.length === 0) {
     return (
@@ -286,7 +388,7 @@ export default function ComparisonPanel() {
         <CompTable title="Self-Storage Market" rows={STORAGE_ROWS} areas={areas} areaNames={names} euskadiData={euskadiData} />
       )}
       {hasCatchment && (
-        <CompTable title="Catchment Area (10-min Drive)" rows={CATCHMENT_ROWS} areas={areas} areaNames={names} euskadiData={euskadiData} />
+        <CatchmentDualTable rows={CATCHMENT_ROWS} areas={areas} areaNames={names} euskadiData={euskadiData} />
       )}
     </div>
   );

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { MapContainer, TileLayer, GeoJSON, CircleMarker, Tooltip as LTooltip, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import * as topojsonClient from 'topojson-client';
@@ -44,32 +44,34 @@ function toGeoJSON(topo: any, objectName: string): GeoJSON.FeatureCollection {
   return topojsonClient.feature(topo, topo.objects[objectName]) as unknown as GeoJSON.FeatureCollection;
 }
 
-function IsochroneOverlay({ id, level }: { id: string; level: string }) {
+function IsochroneOverlay({ id, level, range = '10' }: { id: string; level: string; range?: '10' | '20' }) {
   const [geoData, setGeoData] = useState<GeoJSON.FeatureCollection | null>(null);
 
   useEffect(() => {
+    const dir = range === '20' ? 'isochrones_20' : 'isochrones';
     const url = level === 'municipio'
-      ? `/data/isochrones/municipios/${id}.geojson`
-      : `/data/isochrones/provincias/${id}.geojson`;
+      ? `/data/${dir}/municipios/${id}.geojson`
+      : `/data/${dir}/provincias/${id}.geojson`;
 
     fetch(url)
       .then(r => r.ok ? r.json() : null)
       .then(data => setGeoData(data))
       .catch(() => setGeoData(null));
-  }, [id, level]);
+  }, [id, level, range]);
 
   if (!geoData) return null;
 
+  const isOuter = range === '20';
   return (
     <GeoJSON
-      key={`iso-${level}-${id}`}
+      key={`iso${range}-${level}-${id}`}
       data={geoData}
       style={{
         fillColor: V.warm,
-        fillOpacity: 0.2,
+        fillOpacity: isOuter ? 0.1 : 0.2,
         color: V.warm,
-        weight: 2,
-        opacity: 0.7,
+        weight: isOuter ? 1.5 : 2,
+        opacity: isOuter ? 0.5 : 0.7,
         dashArray: '6 4',
       }}
     />
@@ -192,7 +194,10 @@ export default function MapView() {
           />
         )}
         {showIsochrones && level !== 'euskadi' && selectedIds.map(id => (
-          <IsochroneOverlay key={`iso-${id}`} id={id} level={level} />
+          <React.Fragment key={`iso-${id}`}>
+            <IsochroneOverlay id={id} level={level} range="20" />
+            <IsochroneOverlay id={id} level={level} range="10" />
+          </React.Fragment>
         ))}
         {facilities.map((f, i) => (
           <CircleMarker

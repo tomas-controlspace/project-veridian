@@ -48,6 +48,25 @@ export interface MunicipioMetrics {
   catch_pct_working: number | null;
   catch_n_municipios: number | null;
   catch_ine_codes: string[] | null;
+  // Catchment area (20-min drive)
+  catch20_pop: number | null;
+  catch20_density: number | null;
+  catch20_pop_growth: number | null;
+  catch20_pct_apartment: number | null;
+  catch20_pct_house: number | null;
+  catch20_avg_surface_m2: number | null;
+  catch20_pct_rented: number | null;
+  catch20_pct_owned: number | null;
+  catch20_avg_income: number | null;
+  catch20_avg_price_sqm: number | null;
+  catch20_avg_rent_sqm: number | null;
+  catch20_housing_turnover: number | null;
+  catch20_nla_sqm: number | null;
+  catch20_nla_per_capita: number | null;
+  catch20_pct_senior: number | null;
+  catch20_pct_working: number | null;
+  catch20_n_municipios: number | null;
+  catch20_ine_codes: string[] | null;
 }
 
 export interface ProvinciaMetrics {
@@ -94,6 +113,24 @@ export interface ProvinciaMetrics {
   catch_pct_senior: number | null;
   catch_pct_working: number | null;
   catch_n_municipios: number | null;
+  // Catchment area (20-min drive)
+  catch20_pop: number | null;
+  catch20_density: number | null;
+  catch20_pop_growth: number | null;
+  catch20_pct_apartment: number | null;
+  catch20_pct_house: number | null;
+  catch20_avg_surface_m2: number | null;
+  catch20_pct_rented: number | null;
+  catch20_pct_owned: number | null;
+  catch20_avg_income: number | null;
+  catch20_avg_price_sqm: number | null;
+  catch20_avg_rent_sqm: number | null;
+  catch20_housing_turnover: number | null;
+  catch20_nla_sqm: number | null;
+  catch20_nla_per_capita: number | null;
+  catch20_pct_senior: number | null;
+  catch20_pct_working: number | null;
+  catch20_n_municipios: number | null;
 }
 
 export interface EuskadiMetrics extends Omit<ProvinciaMetrics, 'provincia_code' | 'provincia_name'> {

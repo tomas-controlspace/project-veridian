@@ -189,6 +189,11 @@ const PROV_ISO_DIR = path.join(ROOT, 'data', 'es', 'isochrones', 'provincias');
 const ISO_OUT_MUNI = path.join(OUT, 'isochrones', 'municipios');
 const ISO_OUT_PROV = path.join(OUT, 'isochrones', 'provincias');
 
+const MUNI_ISO_DIR_20 = path.join(ROOT, 'data', 'es', 'isochrones_20', 'municipios');
+const PROV_ISO_DIR_20 = path.join(ROOT, 'data', 'es', 'isochrones_20', 'provincias');
+const ISO_OUT_MUNI_20 = path.join(OUT, 'isochrones_20', 'municipios');
+const ISO_OUT_PROV_20 = path.join(OUT, 'isochrones_20', 'provincias');
+
 let hasIsochrones = fs.existsSync(MUNI_ISO_DIR) &&
   fs.readdirSync(MUNI_ISO_DIR).filter(f => f.endsWith('.geojson')).length > 0;
 
@@ -483,6 +488,93 @@ if (hasIsochrones) {
       fs.writeFileSync(dst, reduced);
     }
     console.log(`  ✓ Copied ${isoFiles.length} municipio + ${provIsoFiles.length} provincia isochrone files`);
+
+    // ── 20-min catchment area computation ─────────────────────────────
+    const hasIsochrones20 = fs.existsSync(MUNI_ISO_DIR_20) &&
+      fs.readdirSync(MUNI_ISO_DIR_20).filter(f => f.endsWith('.geojson')).length > 0;
+
+    if (hasIsochrones20) {
+      console.log('\nComputing 20-min catchment areas...');
+
+      // Helper to rename catchment keys to catch20_ prefix
+      function prefixCatchment20(metrics) {
+        const result = {};
+        for (const [k, v] of Object.entries(metrics)) {
+          if (k.startsWith('catchment_')) {
+            // catchment_pop → catch20_pop, catchment_density → catch20_density
+            result['catch20_' + k.slice('catchment_'.length)] = v;
+          } else if (k.startsWith('catch_')) {
+            // catch_avg_income → catch20_avg_income
+            result['catch20_' + k.slice('catch_'.length)] = v;
+          } else {
+            result[k] = v;
+          }
+        }
+        return result;
+      }
+
+      // Compute 20-min catchment for each municipio
+      const isoFiles20 = fs.readdirSync(MUNI_ISO_DIR_20).filter(f => f.endsWith('.geojson'));
+      let computed20 = 0;
+      for (const file of isoFiles20) {
+        const code = path.basename(file, '.geojson');
+        if (!master[code]) continue;
+
+        const geometry = loadIsochrone(path.join(MUNI_ISO_DIR_20, file));
+        if (!geometry) continue;
+
+        const inside = findMunicipiosInIsochrone(geometry);
+        const metrics = prefixCatchment20(catchmentMetrics(inside));
+        metrics.catch20_ine_codes = inside.map(p => p.metrics.ine_code);
+        Object.assign(master[code], metrics);
+        computed20++;
+        if (computed20 % 50 === 0) process.stdout.write(`\r  ${computed20}/${isoFiles20.length} municipios processed (20-min)`);
+      }
+      console.log(`\r  ✓ ${computed20} municipio 20-min catchments computed`);
+
+      // Compute 20-min catchment for provincias
+      for (const [code, prov] of Object.entries(provincias)) {
+        const geometry = loadIsochrone(path.join(PROV_ISO_DIR_20, `${code}.geojson`));
+        if (!geometry) continue;
+        const inside = findMunicipiosInIsochrone(geometry);
+        const metrics = prefixCatchment20(catchmentMetrics(inside));
+        Object.assign(prov, metrics);
+      }
+      console.log('  ✓ Provincia 20-min catchments computed');
+
+      // Recompute euskadi 20-min catchment from all municipios
+      Object.assign(euskadi, prefixCatchment20(catchmentMetrics(allMuniMetrics)));
+      console.log('  ✓ Euskadi 20-min catchment computed');
+
+      // Copy 20-min isochrone files to public/data/
+      fs.mkdirSync(ISO_OUT_MUNI_20, { recursive: true });
+      fs.mkdirSync(ISO_OUT_PROV_20, { recursive: true });
+
+      for (const file of isoFiles20) {
+        const src = path.join(MUNI_ISO_DIR_20, file);
+        const dst = path.join(ISO_OUT_MUNI_20, file);
+        const content = fs.readFileSync(src, 'utf-8');
+        const reduced = content.replace(/-?\d+\.\d{5,}/g, m =>
+          parseFloat(parseFloat(m).toFixed(4)).toString()
+        );
+        fs.writeFileSync(dst, reduced);
+      }
+
+      const provIsoFiles20 = fs.existsSync(PROV_ISO_DIR_20) ?
+        fs.readdirSync(PROV_ISO_DIR_20).filter(f => f.endsWith('.geojson')) : [];
+      for (const file of provIsoFiles20) {
+        const src = path.join(PROV_ISO_DIR_20, file);
+        const dst = path.join(ISO_OUT_PROV_20, file);
+        const content = fs.readFileSync(src, 'utf-8');
+        const reduced = content.replace(/-?\d+\.\d{5,}/g, m =>
+          parseFloat(parseFloat(m).toFixed(4)).toString()
+        );
+        fs.writeFileSync(dst, reduced);
+      }
+      console.log(`  ✓ Copied ${isoFiles20.length} municipio + ${provIsoFiles20.length} provincia 20-min isochrone files`);
+    } else {
+      console.log('\n⚠ No 20-min isochrone files found. Run: ORS_API_KEY=xxx node scripts/generate-isochrones-20.js');
+    }
   }
 } else {
   console.log('\n⚠ No isochrone files found in data/es/isochrones/municipios/');

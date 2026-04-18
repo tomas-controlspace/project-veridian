@@ -5,7 +5,30 @@ import { useStore, Facility } from '@/lib/store';
 import { formatValue } from '@/lib/metrics';
 import { pointInPolygon } from '@/lib/geo';
 
-function FacilitiesTable({ facilities, areaName }: { facilities: Facility[]; areaName: string }) {
+interface FacilityWithZone extends Facility {
+  zone?: '10 min' | '10-20 min';
+}
+
+function ZoneBadge({ zone }: { zone: '10 min' | '10-20 min' }) {
+  const is10 = zone === '10 min';
+  return (
+    <span
+      style={{
+        display: 'inline-block',
+        padding: '1px 6px',
+        borderRadius: 4,
+        fontSize: 10,
+        fontWeight: 600,
+        background: is10 ? 'rgba(232, 145, 58, 0.25)' : 'rgba(232, 145, 58, 0.12)',
+        color: is10 ? '#B5651D' : '#C4782E',
+      }}
+    >
+      {zone}
+    </span>
+  );
+}
+
+function FacilitiesTable({ facilities, areaName, showZone = false }: { facilities: FacilityWithZone[]; areaName: string; showZone?: boolean }) {
   const totalNLA = facilities.reduce((sum, f) => sum + (f.nla_sqm || 0), 0);
 
   return (
@@ -28,6 +51,9 @@ function FacilitiesTable({ facilities, areaName }: { facilities: Facility[]; are
               <th className="text-left py-1.5 pr-2" style={{ color: '#2A2D26', fontWeight: 600, fontSize: 12 }}>Name</th>
               <th className="text-left py-1.5 pr-2" style={{ color: '#2A2D26', fontWeight: 600, fontSize: 12 }}>Operator</th>
               <th className="text-right py-1.5 px-2" style={{ color: '#2A2D26', fontWeight: 600, fontSize: 12 }}>NLA (m²)</th>
+              {showZone && (
+                <th className="text-center py-1.5 px-2" style={{ color: '#2A2D26', fontWeight: 600, fontSize: 12 }}>Zone</th>
+              )}
             </tr>
           </thead>
           <tbody>
@@ -42,15 +68,21 @@ function FacilitiesTable({ facilities, areaName }: { facilities: Facility[]; are
                 <td className="text-right py-1.5 px-2 font-mono" style={{ color: '#2A2D26', fontWeight: 500, fontSize: 12, fontVariantNumeric: 'tabular-nums' }}>
                   {f.nla_sqm > 0 ? formatValue(f.nla_sqm, 'number', 0) : '—'}
                 </td>
+                {showZone && f.zone && (
+                  <td className="text-center py-1.5 px-2">
+                    <ZoneBadge zone={f.zone} />
+                  </td>
+                )}
               </tr>
             ))}
             <tr style={{ borderTop: '1px solid var(--neutral-300)' }}>
-              <td colSpan={2} className="py-1.5 pr-2 font-semibold" style={{ color: '#2A2D26', fontSize: 12 }}>
+              <td colSpan={showZone ? 2 : 2} className="py-1.5 pr-2 font-semibold" style={{ color: '#2A2D26', fontSize: 12 }}>
                 Total ({facilities.length} facilities)
               </td>
               <td className="text-right py-1.5 px-2 font-mono font-semibold" style={{ color: '#2A2D26', fontSize: 12, fontVariantNumeric: 'tabular-nums' }}>
                 {formatValue(totalNLA, 'number', 0)} m²
               </td>
+              {showZone && <td />}
             </tr>
           </tbody>
         </table>
@@ -108,17 +140,25 @@ export default function FacilitiesPanel() {
     }
   }, [drawnPolygon, setFacilitiesMode]);
 
-  // Catchment mode facilities
+  // Catchment mode facilities (20-min superset with zone badges)
   const facilitiesByArea = useMemo(() => {
     if (level !== 'municipio') return [];
     return selectedIds.map(id => {
       const m = municipios[id];
-      if (!m || !m.catch_ine_codes) return { name: m?.name ?? id, facilities: [] };
-      const codes = new Set(m.catch_ine_codes);
-      return {
-        name: m.name,
-        facilities: facilities.filter(f => codes.has(f.ine_code)),
-      };
+      if (!m) return { name: id, facilities: [] as FacilityWithZone[] };
+
+      const codes10 = new Set(m.catch_ine_codes || []);
+      const codes20 = new Set(m.catch20_ine_codes || m.catch_ine_codes || []);
+
+      // Use 20-min superset; tag each facility with its zone
+      const tagged: FacilityWithZone[] = facilities
+        .filter(f => codes20.has(f.ine_code))
+        .map(f => ({
+          ...f,
+          zone: codes10.has(f.ine_code) ? '10 min' as const : '10-20 min' as const,
+        }));
+
+      return { name: m.name, facilities: tagged };
     });
   }, [selectedIds, municipios, facilities, level]);
 
@@ -159,12 +199,12 @@ function CatchmentView({
 }: {
   selectedIds: string[];
   level: string;
-  facilitiesByArea: { name: string; facilities: Facility[] }[];
+  facilitiesByArea: { name: string; facilities: FacilityWithZone[] }[];
 }) {
   if (selectedIds.length === 0) {
     return (
       <div className="flex items-center justify-center h-48 text-sm" style={{ color: 'var(--neutral-400)' }}>
-        Select a municipio to see facilities in its 10-min catchment
+        Select a municipio to see facilities in its catchment area
       </div>
     );
   }
@@ -189,11 +229,11 @@ function CatchmentView({
   return (
     <div className="space-y-4">
       <h3 className="text-sm font-semibold" style={{ color: '#547d74' }}>
-        Facilities in 10-min Catchment
+        Facilities in Catchment
       </h3>
       {facilitiesByArea.map((area, i) =>
         area.facilities.length > 0 ? (
-          <FacilitiesTable key={i} facilities={area.facilities} areaName={`Catchment — ${area.name}`} />
+          <FacilitiesTable key={i} facilities={area.facilities} areaName={`Catchment — ${area.name}`} showZone />
         ) : null
       )}
     </div>
