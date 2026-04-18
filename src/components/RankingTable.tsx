@@ -51,6 +51,10 @@ function makeColumns(level: string) {
     { key: 'catchment_pop', header: 'Catch. Pop', format: 'number', decimals: 0 },
     { key: 'catch_avg_income', header: 'Catch. Inc €', format: 'euro', decimals: 0 },
     { key: 'catch_pct_rented', header: 'Catch. %Rent', format: 'percent', decimals: 1 },
+    { key: 'facility_count', header: 'Facilities', format: 'number', decimals: 0 },
+    { key: 'nla_sqm', header: 'NLA (m²)', format: 'number', decimals: 0 },
+    { key: 'nla_per_capita', header: 'NLA/cap', format: 'decimal', decimals: 4 },
+    { key: 'opportunity_score', header: 'Opp. Score', format: 'number', decimals: 1 },
   ];
 
   for (const c of numCols) {

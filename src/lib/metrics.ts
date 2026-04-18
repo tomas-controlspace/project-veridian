@@ -11,10 +11,20 @@ export const METRIC_DEFS: MetricDef[] = [
   { key: 'avg_rent_sqm', label: 'Rent (€/m²/month)', format: 'euro_sqm', decimals: 2 },
   { key: 'pct_senior_65_plus', label: '% Senior 65+', format: 'percent', decimals: 1 },
   { key: 'pct_working_20_64', label: '% Working Age 20-64', format: 'percent', decimals: 1 },
+  // Self-storage supply
+  { key: 'facility_count', label: 'Facility Count', format: 'number', decimals: 0 },
+  { key: 'nla_per_capita', label: 'NLA per Capita (m²)', format: 'decimal', decimals: 4 },
+  { key: 'nla_per_1000_households', label: 'NLA per 1,000 Households (m²)', format: 'number', decimals: 1 },
+  { key: 'nla_sqm', label: 'Total NLA (m²)', format: 'number', decimals: 0, suffix: ' m²' },
+  // Opportunity
+  { key: 'opportunity_score', label: 'Opportunity Score', format: 'number', decimals: 1 },
   // Catchment metrics
   { key: 'catchment_pop', label: 'Catchment Population (10min)', format: 'number', decimals: 0 },
   { key: 'catchment_density', label: 'Catchment Density (10min)', format: 'number', decimals: 1 },
   { key: 'catch_avg_income', label: 'Catchment Avg Income (€)', format: 'euro', decimals: 0 },
+  { key: 'catch_facility_count', label: 'Catchment Facilities (10min)', format: 'number', decimals: 0 },
+  { key: 'catch_nla_per_capita', label: 'Catchment NLA/Capita (10min)', format: 'decimal', decimals: 4 },
+  { key: 'catch_opportunity_score', label: 'Catchment Opportunity (10min)', format: 'number', decimals: 1 },
 ];
 
 export function formatValue(value: number | null | undefined, format: string, decimals = 1): string {

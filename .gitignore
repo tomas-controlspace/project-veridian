@@ -46,6 +46,15 @@ public/data/xlsoutput_*
 # temp files
 ~$*
 
+# local authoring tooling (pptx generation, excel imports, ad-hoc lookups)
+scripts/add_facilities_slide.py
+scripts/rebuild_bilbao_pptx.py
+scripts/update_json.py
+scripts/catastro_lookup.py
+scripts/catastro_output.txt
+scripts/catastro_output.txt.done
+data/es/facilities/update_summary.txt
+
 # claude local settings
 .claude/settings.local.json
 

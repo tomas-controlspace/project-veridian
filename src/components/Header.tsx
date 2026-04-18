@@ -28,7 +28,7 @@ export default function Header() {
 
       <div
         className="flex items-center gap-0.5 p-0.5"
-        style={{ background: 'var(--neutral-50)', borderRadius: 'var(--radius-md)' }}
+        style={{ background: '#EDEEE9', borderRadius: 6 }}
       >
         {LEVELS.map(l => (
           <button
@@ -36,13 +36,13 @@ export default function Header() {
             onClick={() => { setLevel(l.key); clearSelection(); }}
             className="px-4 py-1.5 text-sm font-medium transition-all"
             style={{
-              borderRadius: 'var(--radius-md)',
+              borderRadius: 5,
               ...(level === l.key
                 ? {
                     background: '#fff',
                     color: '#2D6B55',
                     fontWeight: 600,
-                    boxShadow: 'var(--shadow-sm)',
+                    boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
                     borderBottom: '2px solid #2EC4A0',
                   }
                 : {

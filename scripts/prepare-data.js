@@ -41,23 +41,79 @@ if (fs.existsSync(FACILITIES_PATH)) {
   facilities = JSON.parse(fs.readFileSync(FACILITIES_PATH, 'utf-8'));
   console.log(`Loaded ${facilities.length} facilities`);
 
-  // Aggregate NLA by municipio
-  const nlaByMuni = {};
+  // Classify facility_type
   for (const f of facilities) {
-    if (!f.ine_code || !f.nla_sqm) continue;
-    nlaByMuni[f.ine_code] = (nlaByMuni[f.ine_code] || 0) + f.nla_sqm;
-  }
-
-  // Write NLA into master
-  for (const [code, nla] of Object.entries(nlaByMuni)) {
-    if (master[code]) {
-      master[code].nla_sqm = nla;
-      master[code].nla_per_capita = master[code].pop_2025 > 0
-        ? Math.round((nla / master[code].pop_2025) * 10000) / 10000
-        : null;
+    if (f.constructed_area_sqm === 0 && /mudanzas|gil stauffer|bengala|bricomudanzas|bizidem|pms log/i.test(f.operator)) {
+      f.facility_type = 'guardamuebles';
+    } else {
+      f.facility_type = 'self_storage';
     }
   }
-  console.log(`  ✓ NLA assigned to ${Object.keys(nlaByMuni).length} municipios`);
+
+  // Classify size_tier
+  for (const f of facilities) {
+    const nla = f.estimated_nla || 0;
+    if (nla === 0) f.size_tier = 'unknown';
+    else if (nla < 300) f.size_tier = 'small';
+    else if (nla < 1500) f.size_tier = 'medium';
+    else if (nla < 5000) f.size_tier = 'large';
+    else f.size_tier = 'xlarge';
+  }
+
+  // Aggregate facility data by municipio
+  const supplyByMuni = {};
+  for (const f of facilities) {
+    const code = f.ine_code;
+    if (!code) continue;
+    if (!supplyByMuni[code]) {
+      supplyByMuni[code] = {
+        facility_count: 0,
+        ss_facility_count: 0,
+        total_nla: 0,
+        total_constructed: 0,
+        operators: new Set(),
+      };
+    }
+    const s = supplyByMuni[code];
+    s.facility_count++;
+    if (f.facility_type === 'self_storage') {
+      s.ss_facility_count++;
+    }
+    s.total_nla += (f.estimated_nla || f.nla_sqm || 0);
+    s.total_constructed += (f.constructed_area_sqm || 0);
+    s.operators.add(f.operator);
+  }
+
+  // Write supply metrics into master
+  for (const [code, s] of Object.entries(supplyByMuni)) {
+    if (!master[code]) continue;
+    const m = master[code];
+    const pop = m.pop_2025 || 0;
+    const households = m.total_dwellings || 0;
+
+    m.facility_count = s.facility_count;
+    m.ss_facility_count = s.ss_facility_count;
+    m.nla_sqm = round(s.total_nla, 2);
+    m.constructed_area_sqm = round(s.total_constructed, 2);
+    m.nla_per_capita = pop > 0 ? round(s.total_nla / pop, 4) : null;
+    m.nla_per_1000_households = households > 0 ? round((s.total_nla / households) * 1000, 2) : null;
+    m.operator_count = s.operators.size;
+  }
+
+  // Set zero values for municipios with NO facilities
+  for (const m of Object.values(master)) {
+    if (m.facility_count == null) {
+      m.facility_count = 0;
+      m.ss_facility_count = 0;
+      m.nla_sqm = 0;
+      m.constructed_area_sqm = 0;
+      m.nla_per_capita = 0;
+      m.nla_per_1000_households = 0;
+      m.operator_count = 0;
+    }
+  }
+
+  console.log(`  ✓ Supply metrics assigned to ${Object.keys(supplyByMuni).length} municipios`);
 } else {
   console.log('⚠ No facilities file found');
 }
@@ -138,6 +194,14 @@ function aggregateToLevel(entries) {
     housing_turnover_annual_prov: provTurnover,
     nla_sqm: entries.reduce((s, m) => s + (m.nla_sqm || 0), 0) || null,
     nla_per_capita: totalPop > 0 ? round(entries.reduce((s, m) => s + (m.nla_sqm || 0), 0) / totalPop, 4) : null,
+    facility_count: entries.reduce((s, m) => s + (m.facility_count || 0), 0),
+    ss_facility_count: entries.reduce((s, m) => s + (m.ss_facility_count || 0), 0),
+    constructed_area_sqm: entries.reduce((s, m) => s + (m.constructed_area_sqm || 0), 0),
+    nla_per_1000_households: totalDwellings > 0
+      ? round(entries.reduce((s, m) => s + (m.nla_sqm || 0), 0) / totalDwellings * 1000, 2)
+      : null,
+    operator_count: entries.reduce((s, m) => s + (m.operator_count || 0), 0),
+    opportunity_score: popWeighted('opportunity_score'),
   };
 }
 
@@ -370,6 +434,9 @@ if (hasIsochrones) {
       let surfaceWtd = 0, surfaceWtdPop = 0;
       let catchNLA = 0;
       let catchTurnoverSum = 0;
+      let catchFacilityCount = 0;
+      let catchSSFacilityCount = 0;
+      let oppWtd = 0, oppWtdPop = 0;
 
       for (const p of insideMunis) {
         const m = p.metrics;
@@ -404,6 +471,12 @@ if (hasIsochrones) {
         workingWtd += pop * (m.pct_working_20_64 || 0) / 100;
         catchNLA += (m.nla_sqm || 0);
         catchTurnoverSum += (m.housing_turnover || 0);
+        catchFacilityCount += (m.facility_count || 0);
+        catchSSFacilityCount += (m.ss_facility_count || 0);
+        if (m.opportunity_score != null && pop > 0) {
+          oppWtd += m.opportunity_score * pop;
+          oppWtdPop += pop;
+        }
       }
 
       return {
@@ -424,6 +497,11 @@ if (hasIsochrones) {
         catch_pct_senior: catchPop > 0 ? round(seniorWtd / catchPop * 100, 1) : null,
         catch_pct_working: catchPop > 0 ? round(workingWtd / catchPop * 100, 1) : null,
         catch_n_municipios: insideMunis.length,
+        catch_facility_count: catchFacilityCount,
+        catch_ss_facility_count: catchSSFacilityCount,
+        catch_nla_per_1000_hh: catchDwellings > 0 && catchNLA > 0
+          ? round(catchNLA / catchDwellings * 1000, 2) : null,
+        catch_opportunity_score: oppWtdPop > 0 ? round(oppWtd / oppWtdPop, 1) : null,
       };
     }
 
@@ -582,11 +660,113 @@ if (hasIsochrones) {
   console.log('  Then re-run this script to compute catchment metrics.');
 }
 
-// Re-write metrics with catchment fields
+// ── Opportunity score ───────────────────────────────────────────────
+console.log('\nComputing opportunity scores...');
+
+// Collect values for rank normalization (only municipios with pop > 1000)
+const scorable = Object.values(master).filter(m => (m.pop_2025 || 0) > 1000);
+
+function rankNormalize(arr, field, inverse = false) {
+  const vals = arr.map(m => ({ code: m.ine_code, val: m[field] ?? 0 }))
+    .sort((a, b) => a.val - b.val);
+  const ranks = {};
+  for (let i = 0; i < vals.length; i++) {
+    ranks[vals[i].code] = (i / (vals.length - 1)) * 100;
+  }
+  if (inverse) {
+    for (const code of Object.keys(ranks)) {
+      ranks[code] = 100 - ranks[code];
+    }
+  }
+  return ranks;
+}
+
+const densityRank = rankNormalize(scorable, 'density_per_km2');
+const incomeRank = rankNormalize(scorable, 'avg_total_income');
+const apartmentRank = rankNormalize(scorable, 'pct_apartment');
+const growthRank = rankNormalize(scorable, 'pop_growth_5yr_pct');
+const nlaCapitaRank = rankNormalize(scorable, 'nla_per_capita', true); // INVERSE: low NLA = high opportunity
+const rentedRank = rankNormalize(scorable, 'pct_rented');
+
+const W = { density: 0.20, income: 0.15, apartment: 0.20, growth: 0.10, nla_gap: 0.25, rented: 0.10 };
+
+for (const m of Object.values(master)) {
+  const code = m.ine_code;
+  if (!densityRank[code]) {
+    m.opportunity_score = null;
+    continue;
+  }
+  m.opportunity_score = round(
+    W.density * densityRank[code] +
+    W.income * incomeRank[code] +
+    W.apartment * apartmentRank[code] +
+    W.growth * growthRank[code] +
+    W.nla_gap * nlaCapitaRank[code] +
+    W.rented * rentedRank[code],
+    1
+  );
+}
+
+const scored = Object.values(master).filter(m => m.opportunity_score != null);
+console.log(`  ✓ Scored ${scored.length} municipios (top 5:`);
+scored.sort((a, b) => (b.opportunity_score || 0) - (a.opportunity_score || 0));
+for (const m of scored.slice(0, 5)) {
+  console.log(`    ${m.name}: ${m.opportunity_score}`);
+}
+
+// Patch catchment opportunity scores (scores weren't available during initial catchment computation)
+for (const m of Object.values(master)) {
+  if (!m.catch_ine_codes) continue;
+  // Recompute catch_opportunity_score from the now-scored municipios
+  let oppWtd = 0, oppWtdPop = 0;
+  for (const ineCode of m.catch_ine_codes) {
+    const cm = master[ineCode];
+    if (cm && cm.opportunity_score != null && (cm.pop_2025 || 0) > 0) {
+      oppWtd += cm.opportunity_score * cm.pop_2025;
+      oppWtdPop += cm.pop_2025;
+    }
+  }
+  m.catch_opportunity_score = oppWtdPop > 0 ? round(oppWtd / oppWtdPop, 1) : null;
+
+  // Also patch 20-min catchment
+  if (m.catch20_ine_codes) {
+    let opp20Wtd = 0, opp20WtdPop = 0;
+    for (const ineCode of m.catch20_ine_codes) {
+      const cm = master[ineCode];
+      if (cm && cm.opportunity_score != null && (cm.pop_2025 || 0) > 0) {
+        opp20Wtd += cm.opportunity_score * cm.pop_2025;
+        opp20WtdPop += cm.pop_2025;
+      }
+    }
+    m.catch20_opportunity_score = opp20WtdPop > 0 ? round(opp20Wtd / opp20WtdPop, 1) : null;
+  }
+}
+console.log('  ✓ Patched catchment opportunity scores');
+
+// Re-compute provincia/euskadi aggregates with opportunity scores
+for (const [code, entries] of Object.entries(byProv)) {
+  const agg = aggregateToLevel(entries);
+  provincias[code] = {
+    provincia_code: code,
+    provincia_name: PROV_NAMES[code],
+    ...provincias[code],
+    ...agg,
+  };
+}
+const euskadiAgg = aggregateToLevel(munis);
+Object.assign(euskadi, euskadiAgg);
+
+// Re-write metrics with catchment + opportunity fields
 fs.writeFileSync(path.join(OUT, 'metrics_municipios.json'), JSON.stringify(master));
 fs.writeFileSync(path.join(OUT, 'metrics_provincias.json'), JSON.stringify(provincias));
 fs.writeFileSync(path.join(OUT, 'metrics_euskadi.json'), JSON.stringify(euskadi));
-console.log('✓ Re-wrote metrics files with catchment data');
+console.log('✓ Re-wrote metrics files with catchment + opportunity data');
+
+// Re-write enriched facilities.json
+if (facilities.length > 0) {
+  fs.writeFileSync(path.join(OUT, 'facilities.json'), JSON.stringify(facilities));
+  console.log('✓ Re-wrote enriched facilities.json');
+}
 
 // ── 4. boundaries_municipios.topojson ───────────────────────────────
 // Reduce coordinate precision
