@@ -111,7 +111,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div ref={containerRef} className="flex flex-col h-screen" style={{ background: 'var(--neutral-50)' }}>
+    <div ref={containerRef} className="flex flex-col h-screen overflow-x-hidden" style={{ background: 'var(--neutral-50)' }}>
       <Header />
 
       {/* Main content: map + sidebar */}
