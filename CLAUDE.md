@@ -13,6 +13,7 @@ Users can compare municipios, provincias, or all of Euskadi across demographics,
 - **Styling**: Tailwind CSS 4 + custom CSS tokens (`veridian-tokens.css`)
 - **Tables**: TanStack Table v8
 - **Geospatial**: topojson-client/server/simplify, polygon-clipping
+- **PPTX export**: docxtemplater + pizzip (template fill), html-to-image (map → PNG), file-saver (download)
 - **Dev server**: `npm run dev` on port 3000 (configured in `.claude/launch.json`)
 
 ## Project Structure
@@ -33,6 +34,8 @@ src/
     DrawPolygon.tsx      # Polygon drawing interaction on map
     DrawToolbar.tsx      # Draw button + per-area chips (rename/delete) + clear-all
     AreaNameInput.tsx    # Floating inline name input over a just-closed polygon
+    ExportButton.tsx     # Header "Export PPTX" button — triggers exportToPptx for current selection
+    ExportCaptureOverlay.tsx # Full-screen step indicator shown while capture/render is in flight
   lib/
     store.tsx            # React Context store (all app state — NO Redux/Zustand)
     metrics.ts           # METRIC_DEFS, color scales, formatValue()
@@ -40,13 +43,27 @@ src/
     customAreaMetrics.ts # polygon-clipping intersection + weighted aggregation for drawn areas
     filters.ts           # Filter logic (population, income, price, rent ranges)
     geo.ts               # pointInPolygon() ray-casting utility
+    mapHandle.ts         # Module-level handle so non-map code (ExportButton) can grab the live L.Map
+    export/
+      exportToPptx.ts        # Orchestrator: build data → capture map → render template → save
+      buildCaseStudyData.ts  # Maps store snapshot → typed CaseStudyData per scope (muni/prov/custom)
+      captureMap.ts          # Leaflet map → PNG via html-to-image, cropped to 1.5:1 landscape
+      pptxTemplater.ts       # PizZip + docxtemplater fill; swaps ppt/media/image9.png with map PNG
+      filename.ts            # "{Area} Case Study - Control Space - YYYY-MM-DD.pptx"
+      types.ts               # ExportScope + CaseStudyData + TableRow shapes
   types/
     index.ts             # MunicipioMetrics, ProvinciaMetrics, EuskadiMetrics, Filters, DrawnArea
+
+public/templates/
+  case-study.pptx        # Build artifact from prepare-template.py — committed, fetched at runtime
 
 scripts/
   prepare-data.js          # Build-time: source data → public/data/ (metrics, boundaries, isochrones)
   generate-isochrones.js   # ORS API: 10-min isochrones (needs ORS_API_KEY env var)
   generate-isochrones-20.js # ORS API: 20-min isochrones (needs ORS_API_KEY env var)
+  prepare-template.py      # One-time: Bilbao reference deck → public/templates/case-study.pptx
+  render-sample.mjs        # QA: render template with hand-built Bilbao data → /tmp/bilbao-sample.pptx
+  inject-live-map.mjs      # QA: swap the placeholder image in a sample pptx with a live-captured PNG
 
 data/es/                   # Source data (NOT served to browser)
   master_municipios.json   # Raw metrics per municipio
@@ -147,6 +164,21 @@ Up to 4 named custom areas can be drawn on the map and compared side-by-side.
 ### Metrics & Formatting
 `METRIC_DEFS` in `src/lib/metrics.ts` defines available choropleth metrics. `formatValue()` handles number/percent/euro/euro_sqm/decimal formatting. Color scales use quantile breaks.
 
+### PPTX Export
+The header "Export PPTX" button generates a 17-slide Control Space case study for the currently selected area (single municipio, provincia, or one drawn custom area). Two-stage pipeline:
+
+**One-time template build** (`python scripts/prepare-template.py`): consumes the Bilbao reference deck on the developer's Desktop, deletes the two operator-list slides, replaces hard-coded text with docxtemplater tags (`{areaNameUpper}`, `{s2Title}`, `{#catchmentMunis}…{/catchmentMunis}`, `{pop_r1_c1}` etc.), and reshapes slide 2's `Picture Placeholder 8` to a 1.5:1 (3:2) landscape box. Output is committed at `public/templates/case-study.pptx`.
+
+**Runtime export** (`src/lib/export/exportToPptx.ts`):
+1. `buildCaseStudyData()` projects the store snapshot into typed `CaseStudyData` (per-scope title, column labels, bullets, three table sections). Provincia bullets = top 15 munis by population; custom-area uses the same weighted aggregation as `customAreaMetrics.ts`.
+2. `captureMap()` fits the map to the subject (+10-min catchment for municipios), waits for tiles, and rasterizes the Leaflet container via `html-to-image` (`toPng`). The resulting PNG is **center-cropped to 1.5:1** before returning, so the source aspect matches the slide-2 placeholder exactly and `<a:stretch>` produces no distortion.
+3. `pptxTemplater.renderPptx()` runs docxtemplater over the template, then swaps `ppt/media/image9.png` in-place with the captured PNG.
+4. `file-saver` triggers the download.
+
+**Aspect lock**: the slide-2 placeholder box (`tag_slide2` in `prepare-template.py`, `cx=3870000, cy=2580000`) and `TARGET_ASPECT = 1.5` in `captureMap.ts` are coupled — both files cross-reference each other in comments. If you change one, change the other.
+
+`mapHandle.ts` is a module-level singleton populated by `MapHandleBridge` inside `<MapContainer>`; it's how `ExportButton` (outside the map tree) gets the live `L.Map` instance.
+
 ## Branding
 
 **Control Space** branding with the **Veridian** design system:
@@ -173,6 +205,11 @@ Up to 4 named custom areas can be drawn on the map and compared side-by-side.
 ### Adding a new metric to the ranking table
 Add a column definition in the `numCols` array in `RankingTable.tsx`
 
+### Adding a metric row to the case-study PPTX
+1. Add a `RowSpec` entry to the appropriate `POP_SPEC` / `HOUSING_SPEC` / `STORAGE_SPEC` array in `src/lib/export/buildCaseStudyData.ts`
+2. If the row count for that table grows, edit `tag_table_slide` calls in `scripts/prepare-template.py` (the third arg is the body row count) and re-run `python scripts/prepare-template.py`. The reference deck only ships with as many table rows as it was authored with — adding a row beyond that requires editing `case-study.pptx` source first.
+3. For new column-1 fields (subject side) ensure `MunicipioMetrics`/`ProvinciaMetrics`/`EuskadiMetrics`/`CustomAreaMetrics` types expose them.
+
 ## Gotchas
 
 - **react-leaflet v5** requires components like `<GeoJSON>`, `<Polygon>`, etc. to be children of `<MapContainer>`. Use `useMap()` hook inside child components to access the map instance.
@@ -184,3 +221,5 @@ Add a column definition in the `numCols` array in `RankingTable.tsx`
 - **GeoJSON key and showChoropleth**: Never include `showChoropleth` in the GeoJSON `key` prop or `onEachFeature` dependency array. Toggling choropleth would remount the GeoJSON layer, destroying all event bindings (hover, click, tooltips). Style changes are handled reactively via the `style` callback.
 - **bubblingMouseEvents on CircleMarkers**: Must set `bubblingMouseEvents={false}` on facility CircleMarkers. Without this, mouse events bubble through to the polygon layer underneath, causing polygon tooltips to appear instead of facility tooltips.
 - **React strict-mode & nested setters**: Never call one `setState` inside another `setState`'s functional updater. React 19 strict mode double-invokes pure updaters in dev, so a nested setter fires twice and duplicates state. `store.tsx::confirmPendingArea` uses a `pendingAreaRef` to read the current pending area, then calls `setPendingArea(null)` and `setDrawnAreas(...)` sequentially at the top level — mirror this pattern for any new store action that reads one slice of state to update another.
+- **TileLayer `crossOrigin="anonymous"`**: required so `html-to-image` can read tile pixels into the captured PNG. Without it the canvas is tainted and `toPng` either throws or returns blank tiles. Don't remove this prop from the `<TileLayer>` in `MapView.tsx`.
+- **`captureMap` stalls in hidden/occluded tabs**: both our `waitAnimationFrame` helper and `html-to-image`'s internal Image-decode path depend on `requestAnimationFrame`, which Chromium throttles when `document.visibilityState === 'hidden'`. Real users with a visible window are fine, but headless preview browsers and backgrounded automation will hang at "Capturing map…" with no error. To test the export end-to-end, run it from a foregrounded window and drop the file somewhere accessible.
