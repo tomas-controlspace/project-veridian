@@ -6,6 +6,7 @@ import L from 'leaflet';
 import * as topojsonClient from 'topojson-client';
 import { useStore } from '@/lib/store';
 import { METRIC_DEFS, getColorScale, getColor, formatMetricValue } from '@/lib/metrics';
+import { mapHandle } from '@/lib/mapHandle';
 import DrawPolygon from './DrawPolygon';
 import DrawToolbar from './DrawToolbar';
 import AreaNameInput from './AreaNameInput';
@@ -34,6 +35,15 @@ function FitBounds() {
   const map = useMap();
   useEffect(() => {
     map.fitBounds(BASQUE_BOUNDS, { padding: [20, 20], maxZoom: 10 });
+  }, [map]);
+  return null;
+}
+
+function MapHandleBridge() {
+  const map = useMap();
+  useEffect(() => {
+    mapHandle.set(map);
+    return () => mapHandle.set(null);
   }, [map]);
   return null;
 }
@@ -185,8 +195,10 @@ export default function MapView() {
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>'
+          crossOrigin="anonymous"
         />
         <FitBounds />
+        <MapHandleBridge />
         {geojsonData.features.length > 0 && (
           <GeoJSON
             key={geoKey}

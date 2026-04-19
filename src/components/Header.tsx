@@ -2,6 +2,7 @@
 
 import { useStore } from '@/lib/store';
 import type { GeoLevel } from '@/types';
+import ExportButton from './ExportButton';
 
 const LEVELS: { key: GeoLevel; label: string }[] = [
   { key: 'municipio', label: 'Municipio' },
@@ -57,6 +58,8 @@ export default function Header() {
           </button>
         ))}
       </div>
+
+      <ExportButton />
     </header>
   );
 }
