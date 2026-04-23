@@ -205,3 +205,17 @@ will be added as each source is fetched.)_
 | **Cross-source QA** | `pop_2022` from WSTEMPUS (Cifras Oficiales) matches `pop_2022_padron_continuo` from PX 33570 exactly for all 103 munis |
 | ⚠ **Vintage gap vs Euskadi** | Euskadi's age data (EUSTAT `population_age_groups.px`) is reference date **2025-01-01**; Málaga's is **2022-01-01** — a 3-year gap. Age structure is slow-moving (typical year-over-year delta < 0.3 pp per bucket) so this is a documented limitation, not a blocker. Population itself is fully current (2025). |
 | Bug caught during fetch | Initial muni-filter regex missed codes starting with `291*` (specifically 29100 Yunquera); fixed to use `^29\d{3}\s` pattern. Final output has all 103 munis. |
+
+### Eurostat GISCO LAU 2024 boundaries — Phase 2b, processed 2026-04-23
+
+| Field | Value |
+|---|---|
+| Filter script | `filter_boundaries.js` (re-runnable) |
+| Input | `../raw/LAU_RG_01M_2024_4326.geojson` (143 MB, pre-existing in-repo file from Euskadi Phase; EPSG:4326 WGS84) |
+| Upstream source | Eurostat GISCO, https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/local-administrative-units (2024 release) |
+| Filter | `CNTR_CODE === 'ES'` AND `GISCO_ID` local code starts with `29` (Málaga province) |
+| Output | `boundaries_municipios_malaga.geojson` (130 KB, 103 features) |
+| Properties kept | `ine_code`, `name` (LAU_NAME), `provincia_code="29"`, `provincia_name="Málaga"`, `pop_2024` (see note), `pop_dens_2024` (see note), `area_km2` |
+| Reprojection | None needed — source is already EPSG:4326. |
+| QA | 103 features (= INE muni count). Province area sum = **7,308.4 km²** (matches published Málaga province total ~7,308 km²). |
+| ⚠ Note on `pop_2024` / `pop_dens_2024` | These properties are **0 for all Spanish munis** in this particular GISCO file (not Málaga-specific — Bilbao 48020 is also 0). Use `demographics_malaga.json` for population, this file only for geometry + `area_km2`. |
