@@ -402,3 +402,18 @@ will be added as each source is fetched.)_
 | QA — Málaga city spot-check | `pct_rented`=13.3 %, `pct_owned`=79.8 %, `pct_apartment`=85.6 %, `avg_surface_m2`=83.4 m² — all within expected ranges for a dense southern Spanish capital. |
 | Size-bin spot-check | ≤2k hab band: `pct_apartment`=8.7 %, `avg_surface_m2`=106.6 m² — consistent with rural Serranía de Ronda housing profile. |
 | Decision context | See **Methodology decisions §3 (Option A)** above. |
+
+### INE ADRH income — Phase 2d, downloaded 2026-04-23
+
+| Field | Value |
+|---|---|
+| Fetch script | `fetch_income.js` (re-runnable) |
+| Upstream source | INE Atlas de Distribución de Renta de los Hogares (ADRH), operation 353 `ADRH`, table **31106** "Indicadores de renta media y mediana" (Málaga province), https://www.ine.es/jaxiT3/files/t/es/px/31106.px |
+| Raw | `raw/ine_adrh_31106_malaga.px` (624 KB) |
+| Reference year | **2023** (latest in the 9-year series 2015-2023) |
+| Processed output | `income_malaga.json` — 103 records, all munis covered |
+| Fields extracted (4 indicators × 2023) | `avg_total_income` = Renta bruta media por persona; `avg_available_income` = Renta neta media por persona; `avg_total_income_hogar` = Renta bruta media por hogar; `avg_available_income_hogar` = Renta neta media por hogar |
+| Filter | Keep only 5-digit muni codes; discard the 1,257 distrito/sección rows also present in the PX |
+| Coverage | 103 / 103 Málaga munis ✓ |
+| QA spot-check | Málaga city (29067): bruta/persona=€16,761, neta/persona=€13,847, bruta/hogar=€44,348, neta/hogar=€36,640. Range: Benamargosa €9,768 → Benahavís €20,419. |
+| ⚠ Methodological note vs Euskadi | Euskadi's `avg_total_income` = EUSTAT "Renta total" per-person (Haciendas Forales data); Málaga's `avg_total_income` = ADRH "Renta bruta media por persona" (AEAT data). Both are register-based, per-person, mean gross income, but tax regime differs. Expect a 1-3 % methodological gap beyond the real income difference between regions. |
