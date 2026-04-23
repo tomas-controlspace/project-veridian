@@ -456,3 +456,42 @@ will be added as each source is fetched.)_
 | Muni-list covered (>25k hab in Tabla 5) | Málaga, Marbella, Mijas, Vélez-Málaga, Fuengirola, Benalmádena, Estepona, Torremolinos, Rincón de la Victoria, Alhaurín de la Torre, Antequera, Ronda |
 | Name-matching fallback | Muni names in Tabla 5 use "Vélez Málaga" (space) whereas INE Padrón uses "Vélez-Málaga" (hyphen). Script normalizes both before matching. |
 | ⚠ Cross-region caveat | Euskadi's `avg_price_sqm` in `data/es/master_municipios.json` is **not yet migrated** to MIVAU; it's still €/m² útil transaction prices from ECVI. Málaga-vs-Euskadi price comparisons in the app are **not valid** until the Euskadi migration branch ships. See Methodology decision §1. |
+
+### Registradores — Phase 2g, investigated 2026-04-23, **SKIPPED**
+
+Investigated the Colegio de Registradores "Estadística Registral
+Inmobiliaria" via its Open Data portal
+(https://opendata.registradores.org/dataset/dataset). **Finding**:
+published datasets — residential sales, commercial sales, IPVVR price
+index — are all at **provincial level only**. No municipal
+granularity exists in either the Open Data portal or the quarterly/
+annual yearbook PDFs.
+
+**Decision**: skip Phase 2g entirely. Rationale:
+- Euskadi has **zero** Registradores-sourced fields in
+  `data/es/master_municipios.json` — adding one Málaga-only field
+  would create a Málaga-only column with no Euskadi equivalent.
+- Provincial €/m² is already in `prices_malaga.json` via MIVAU Valor
+  Tasado fallback (Phase 2f).
+- Muni-level compraventa counts are covered by MIVAU Transacciones
+  (Phase 2h below) — same underlying notary registry data with
+  municipal granularity that Registradores' portal does not expose.
+- IPVVR repeat-sales index could theoretically add a price-trend
+  signal, but there's no app component using it today and no Euskadi
+  data to compare against. If needed later, it's a nationwide
+  single-fetch that can be added across all regions in one pass.
+
+No commit for Phase 2g.
+
+### MIVAU Transacciones inmobiliarias — Phase 2h, processed 2026-04-23
+
+| Field | Value |
+|---|---|
+| Processing script | `process_transacciones.js` |
+| Upstream source | Ministerio de Vivienda "Número total de transacciones inmobiliarias de viviendas por municipios" — **same file Euskadi already uses**. `data/es/raw/housing_turnover_municipios.xls` (6 MB, committed as part of the Euskadi pipeline — not duplicated into Málaga's `raw/`). |
+| Reference period | Annual totals = sum of 4 quarters. Prefers 2025 (provisional) where non-zero, falls back to 2024. Matches Euskadi's rule exactly (`data/es/parse_housing_turnover.js:91-93`). |
+| Málaga-only audit dump | `raw/mivau_transacciones_malaga.json` — all 104 Málaga-block rows (header + 103 munis) × 92 columns (2004 Q1 to 2025 Q4) sliced out of the nationwide xls for offline audit. |
+| Processed output | `turnover_malaga.json` — 103 records with `housing_turnover`, `housing_turnover_year`, plus both 2024 and 2025 annual totals for reference. |
+| Name-matching | Muni names in the MIVAU xls match INE Padrón exactly for Málaga (no NAME_OVERRIDES needed). 103 / 103 matched. |
+| QA spot-check | Málaga city 6,299 tx (2025). Marbella 4,407. Estepona 3,475. Mijas 3,197. Fuengirola 2,172. Alameda 85. Yunquera 37. Province total 2025 = **36,164 transactions**. |
+| Cross-region QA | Identical source file as Euskadi — no methodology gap. Euskadi migration needs zero work for this field. |
