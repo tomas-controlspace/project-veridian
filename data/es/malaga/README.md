@@ -18,13 +18,73 @@ read from here and produce `public/data/` artifacts.
 
 ```
 data/es/malaga/
-  raw/                                  # pristine downloads (PX, XLS, CSV, GeoJSON)
-  master_municipios_malaga.json         # per-municipio join, schema mirrors data/es/master_municipios.json
-  boundaries_municipios_malaga.geojson  # filtered from Eurostat GISCO LAU 2024
+  raw/                                  # pristine / filtered-to-Málaga source files
+    ine_padron_2882_malaga.json           Phase 2a — pop by year
+    ine_padron_continuo_33570_malaga.px   Phase 2a — age quinquenal subset
+    ine_adrh_31106_malaga.px              Phase 2d — income
+    ine_censo_viviendas_2021_malaga_rows.tsv   Phase 2c — 99k microdata rows
+    ine_censo_viviendas_2021_malaga_sample.json Phase 2c — sample aggregates
+    mivau_serpavi_2024_malaga.json        Phase 2e — rent subset
+    mivau_valor_tasado_tabla1_35101000.xls Phase 2f — provincial prices
+    mivau_valor_tasado_tabla5_35103500.xls Phase 2f — muni-level prices
+    mivau_transacciones_malaga.json       Phase 2h — transactions subset
+  demographics_malaga.json              Phase 2a intermediate
+  boundaries_municipios_malaga.geojson  Phase 2b — filtered from Eurostat GISCO LAU 2024
+  housing_malaga.json                   Phase 2c intermediate
+  income_malaga.json                    Phase 2d intermediate
+  rent_malaga.json                      Phase 2e intermediate
+  prices_malaga.json                    Phase 2f intermediate
+  turnover_malaga.json                  Phase 2h intermediate
+  master_municipios_malaga.json         Phase 3 — final join, 103 munis, schema mirrors data/es/master_municipios.json
   facilities/
-    malaga_facilities.json              # 99 sites, Google-Places-sourced inventory
-  README.md                             # this file
+    malaga_facilities.json              99 sites, Google-Places-sourced inventory
+  fetch_padron.js                       Phase 2a
+  filter_boundaries.js                  Phase 2b
+  process_censo_microdata.js            Phase 2c
+  fetch_income.js                       Phase 2d
+  process_serpavi.js                    Phase 2e
+  process_valor_tasado.js               Phase 2f
+  process_transacciones.js              Phase 2h
+  build_master_malaga.js                Phase 3 — joins all intermediates
+  README.md                             this file
 ```
+
+All scripts are re-runnable. Large upstream files (INE Censo 2021 Viviendas
+microdata 136 MB zip, MIVAU SERPAVI 68 MB xlsx, INE Padrón PX 50 MB) are
+NOT committed — they're cached in `%TEMP%\ine_scratch\` and re-downloaded
+if missing.
+
+## Final master record shape (Málaga)
+
+`master_municipios_malaga.json` has 103 records, each with 33 fields.
+Fields new vs Euskadi (introduced by the 2026-04-23 methodology
+decisions) are marked ★:
+
+```
+ine_code, name, provincia_code, provincia_name, area_km2,
+pop_2025, pop_2024, pop_growth_5yr_pct, density_per_km2,
+pct_young_0_19, pct_working_20_64, pct_senior_65_plus,
+avg_total_income, avg_available_income,
+total_dwellings, pct_rented, pct_owned,
+pct_apartment, pct_house, total_family_dwellings, avg_surface_m2,
+housing_source ★,
+avg_price_sqm, price_source, price_unit ★,
+avg_rent_sqm (always null in Málaga), avg_rent_sqm_active, rent_source ★,
+housing_turnover, housing_turnover_year, housing_turnover_annual_prov,
+nla_sqm (null, manual), nla_per_capita (null, manual)
+```
+
+## Quick-reference vintage per field
+
+| Field | Source | Vintage |
+|---|---|---|
+| `pop_{year}`, `pop_growth_*` | INE Padrón (Cifras Oficiales), op 22 table 2882 | 2016 – **2025** annual |
+| `pct_young/working/senior` | INE Padrón Continuo, op 188 table 33570 | **2022-01-01** (latest INE publishes at muni level) |
+| `avg_total_income`, `avg_available_income` | INE ADRH, table 31106 | **2023** |
+| Housing (tenure, dwelling type, surface, totals) | INE Censo 2021 Viviendas microdata, 10 % sample | **2021-11-01** |
+| `avg_price_sqm` | MIVAU Valor Tasado, Tabla 1 + Tabla 5 | **Q4 2025** |
+| `avg_rent_sqm_active` | MIVAU SERPAVI (fiscal IRPF data) | **2024** |
+| `housing_turnover` | Mitma Transacciones Inmobiliarias | annual 2025 (provisional), fallback 2024 |
 
 ---
 
@@ -495,3 +555,57 @@ No commit for Phase 2g.
 | Name-matching | Muni names in the MIVAU xls match INE Padrón exactly for Málaga (no NAME_OVERRIDES needed). 103 / 103 matched. |
 | QA spot-check | Málaga city 6,299 tx (2025). Marbella 4,407. Estepona 3,475. Mijas 3,197. Fuengirola 2,172. Alameda 85. Yunquera 37. Province total 2025 = **36,164 transactions**. |
 | Cross-region QA | Identical source file as Euskadi — no methodology gap. Euskadi migration needs zero work for this field. |
+
+---
+
+## Consolidated known limitations
+
+### Data vintage gaps vs Euskadi
+
+| Field | Málaga vintage | Euskadi vintage (current) | Gap |
+|---|---|---|---|
+| Population | 2025-01-01 | 2025-01-01 | — |
+| Age structure | **2022-01-01** | 2025-01-01 | **3 years** — INE publishes muni-level age via op 188 Padrón Continuo, and the latest data INE makes available at muni level is 2022-01-01. The newer Estadística Continua de Población (op 450) stops at provincial level. |
+| Income (renta media per persona) | 2023 | 2023 | — (same year, different tax administrations — 1-3 % methodology gap per §2d) |
+| Housing | 2021-11-01 (Censo 2021) | 2021-11-01 (EUSTAT republishes same census) | — |
+| Prices | Q4 2025 | Q4 2025 (currently ECVI útil — migration pending) | — vintage / **unit mismatch** pre-migration |
+| Rent (active) | 2024 (SERPAVI) | June 2025 (EMAL A2.3) | 6 months |
+| Transactions | 2025 (provisional) | 2025 (same source) | — |
+
+### Coverage gaps vs Euskadi (Málaga-only limitations)
+
+| Field | Gap | Impact |
+|---|---|---|
+| Housing (tenure, apartment %, surface, total dwellings) | **84 / 103** munis use size-bin aggregate (all munis in same band share one value). Only the 19 munis > 10k hab (by 2021 pop) get per-muni values. | Choropleth for these four fields will render uniform swaths across small munis. Ranking table still works — munis just cluster at bin values. |
+| Prices | **91 / 103** munis use provincial fallback (same €2,897/m² Málaga-wide). Only 12 munis > 25k hab (by MIVAU publication rules) get muni-level values. | Same as housing — 91 small munis render identically on the price choropleth. |
+| Rents | **37 / 103** munis use provincial fallback (SERPAVI suppresses munis with very thin fiscal rental samples). 66 munis have muni-level data. | Moderate gap in affluent interior munis; acceptable given small rental markets. |
+| `avg_rent_sqm` (new contracts) | **null for all 103 munis**. No nationwide muni-level new-contract source identified. | Rent metric in app should prefer `avg_rent_sqm_active` when rendering Málaga. |
+| NLA (`nla_sqm`, `nla_per_capita`, `constructed_area_sqm`) | null for all 103 munis, and the 99 facilities in `facilities/malaga_facilities.json` have `nla_m2: null`. | Manual research pass pending. Opportunity score's NLA-gap component (25 % weight) falls back to provincial norm for Málaga munis until this lands — documented downstream. |
+
+### Pending follow-up work
+
+| Task | Blocker for | Branch |
+|---|---|---|
+| **Euskadi price migration to MIVAU Valor Tasado** | Cross-province price comparison in app | separate branch — this one is data-staging only |
+| **Euskadi housing migration to Censo 2021 microdata** (Option A) | Cross-province comparability of tenure / apartment / surface | separate branch |
+| **Málaga NLA research** (fill `facilities/malaga_facilities.json` `nla_m2` fields and per-muni `nla_sqm` totals) | Opportunity scoring granularity for Málaga | separate manual pass |
+| **Isochrones for Málaga** (10-min + 20-min ORS API) | Catchment-area comparison, PPTX case-study export | out of scope this branch — see top-level project `scripts/generate-isochrones*.js` for the pattern |
+| **Pipeline extension** (`scripts/prepare-data.js` must read Málaga + Euskadi and produce combined `public/data/`) | App serving Málaga data | separate branch |
+| **Registradores / IPVVR integration** (if desired) | N/A — not required for current scope | on ice; provincial-only, no municipal value to add |
+
+### Methodology decisions — cross-reference
+
+See §1 (purchase price), §2 (rent), §3 (housing) at the top of this
+file for the locked-in decisions and reversal instructions.
+
+### Smoke-test results (final master, 103 munis)
+
+| Total | Value | Cross-check |
+|---|---|---|
+| Province population 2025 | 1,791,092 | Matches INE published total for Málaga province |
+| Province area | 7,308.4 km² | Matches published Málaga province geography |
+| Housing sources | 19 muni-microdata + 84 provincial-bin | = 103 |
+| Price sources | 12 muni + 91 provincial-fallback | = 103 |
+| Rent sources | 41 muni-apt + 25 muni-singlefam + 37 provincial-fallback | = 103 |
+| Turnover (annual) | 36,164 transactions (2025) | Sum of 103 munis = provincial annual |
+| Fields populated per record | 33 (of which 3 expected-null: `nla_sqm`, `nla_per_capita`, `avg_rent_sqm`) | — |
