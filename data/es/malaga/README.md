@@ -437,3 +437,22 @@ will be added as each source is fetched.)_
 | **Coverage** | 41 munis muni-apt + 25 muni-singlefam = **66 / 103** with direct muni-level data. 37 munis use provincial fallback (small rural munis with tax-privacy suppression). No nulls. |
 | QA spot-check | Málaga city: €9.55/m² (25,741 tax records). Marbella: €9.63. Mijas: €8.68. Range: Cortes de la Frontera €1.33 → Benahavís €10.77. |
 | ⚠ Note vs Euskadi | SERPAVI is 2024 data; Euskadi EMAL A2.3 in `data/es/master_municipios.json` is June 2025 active contracts. 6-month vintage gap. Also: SERPAVI is **median**, EMAL A2.3 publishes both (field stored is mean where available). Impact on comparability: small — median vs mean for rents typically differ by < 5 %. |
+
+### MIVAU Valor Tasado purchase prices — Phase 2f, downloaded 2026-04-23
+
+| Field | Value |
+|---|---|
+| Processing script | `process_valor_tasado.js` (re-runnable) |
+| Upstream source | MIVAU "Estadística de Valor Tasado de la Vivienda", served at https://apps.fomento.gob.es/boletinonline2/?nivel=2&orden=35000000 (legacy Fomento portal still hosts the xls files) |
+| Tabla 1 | `raw/mivau_valor_tasado_tabla1_35101000.xls` (240 KB) — Valor tasado medio de vivienda libre: nacional + CCAA + provincias, quarterly series 1995-Q4 2025. Used for Málaga provincial fallback. |
+| Tabla 5 | `raw/mivau_valor_tasado_tabla5_35103500.xls` (3.8 MB) — Valor tasado por municipio > 25,000 hab, one sheet per quarter T1A2005–T4A2025. Used for muni-level values. |
+| Reference quarter | **T4 2025 (4º trimestre de 2025)** for both tables (the latest sheet in Tabla 5 and the latest column in Tabla 1). Same quarter across both sources. |
+| Unit | **€/m² constructed** (per MIVAU methodology — `price_unit: 'eur_per_sqm_constructed'`). Same unit for Málaga as for the pending Euskadi migration. |
+| Tenure | "Total" column (all housing vintages combined: new + < 5 years + > 5 years). Per-muni dataset in Tabla 5 also exposes "Hasta 5 años" and "Con más de 5 años" — not stored by this pipeline. |
+| Málaga provincial value (fallback) | **€2,897.3/m²** (Q4 2025) applied to the 91 munis < 25k hab |
+| **Coverage** | **12 / 103** munis get muni-level value from Tabla 5 (the MIVAU >25k hab roster). **91** munis use provincial fallback. No nulls. |
+| `price_source` field values | `municipal` / `provincial_fallback` |
+| QA spot-check | Málaga city €3,246.2/m² (n=1,825 tasaciones). Marbella €4,270.2 (highest; affluent Costa del Sol). Antequera €1,409.2 (lowest of the 12 muni-level, interior). |
+| Muni-list covered (>25k hab in Tabla 5) | Málaga, Marbella, Mijas, Vélez-Málaga, Fuengirola, Benalmádena, Estepona, Torremolinos, Rincón de la Victoria, Alhaurín de la Torre, Antequera, Ronda |
+| Name-matching fallback | Muni names in Tabla 5 use "Vélez Málaga" (space) whereas INE Padrón uses "Vélez-Málaga" (hyphen). Script normalizes both before matching. |
+| ⚠ Cross-region caveat | Euskadi's `avg_price_sqm` in `data/es/master_municipios.json` is **not yet migrated** to MIVAU; it's still €/m² útil transaction prices from ECVI. Málaga-vs-Euskadi price comparisons in the app are **not valid** until the Euskadi migration branch ships. See Methodology decision §1. |
