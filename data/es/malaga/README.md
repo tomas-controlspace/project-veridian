@@ -417,3 +417,23 @@ will be added as each source is fetched.)_
 | Coverage | 103 / 103 Málaga munis ✓ |
 | QA spot-check | Málaga city (29067): bruta/persona=€16,761, neta/persona=€13,847, bruta/hogar=€44,348, neta/hogar=€36,640. Range: Benamargosa €9,768 → Benahavís €20,419. |
 | ⚠ Methodological note vs Euskadi | Euskadi's `avg_total_income` = EUSTAT "Renta total" per-person (Haciendas Forales data); Málaga's `avg_total_income` = ADRH "Renta bruta media por persona" (AEAT data). Both are register-based, per-person, mean gross income, but tax regime differs. Expect a 1-3 % methodological gap beyond the real income difference between regions. |
+
+### MIVAU SERPAVI rents — Phase 2e, downloaded 2026-04-23
+
+| Field | Value |
+|---|---|
+| Processing script | `process_serpavi.js` (re-runnable; downloads full nationwide xlsx to scratch if not cached) |
+| Upstream source | MIVAU "Sistema Estatal de Referencia del Precio del Alquiler de Vivienda" (SERPAVI), full 2011-2024 panel. https://cdn.mivau.gob.es/portal-web-mivau/vivienda/serpavi/2026-03-09_bd_SERPAVI_2011-2024%20-%20DEFINITIVO%20WEB.xlsx (67.9 MB) |
+| Full xlsx location | NOT committed (67.9 MB). Cached in `%TEMP%\ine_scratch\mivau_serpavi_2011_2024.xlsx` — re-downloaded automatically if missing. Will be reused for Euskadi migration + other provinces. |
+| Málaga-only subset (committed) | `raw/mivau_serpavi_2024_malaga.json` (381 KB) — all 103 Málaga muni rows from the Municipios sheet + the Málaga row from the Provincias sheet |
+| Concept | Active-contract stock rents derived from IRPF tax declarations, €/m²/month |
+| Field | Stored into `avg_rent_sqm_active` (matches Euskadi EMAL A2.3 concept — active stock, not new contracts) |
+| `avg_rent_sqm` | **null for all Málaga munis** (see Methodology §2 — no nationwide muni-level new-contract source) |
+| Reference year | **2024** |
+| Primary indicator per muni | `ALQM2_LV_M_VC_24` — median €/m²/mes for viviendas colectivas (apartments) |
+| Fallback 1 | `ALQM2_LV_M_VU_24` — median for viviendas unifamiliares (single-family) if VC suppressed |
+| Fallback 2 | Málaga provincial median (`ALQM2_LV_M_VC_24` from Provincias sheet = €9.04/m²/mes) if both are suppressed |
+| `rent_source` field per record | `serpavi_muni_apt` / `serpavi_muni_singlefam` / `serpavi_prov_fallback` |
+| **Coverage** | 41 munis muni-apt + 25 muni-singlefam = **66 / 103** with direct muni-level data. 37 munis use provincial fallback (small rural munis with tax-privacy suppression). No nulls. |
+| QA spot-check | Málaga city: €9.55/m² (25,741 tax records). Marbella: €9.63. Mijas: €8.68. Range: Cortes de la Frontera €1.33 → Benahavís €10.77. |
+| ⚠ Note vs Euskadi | SERPAVI is 2024 data; Euskadi EMAL A2.3 in `data/es/master_municipios.json` is June 2025 active contracts. 6-month vintage gap. Also: SERPAVI is **median**, EMAL A2.3 publishes both (field stored is mean where available). Impact on comparability: small — median vs mean for rents typically differ by < 5 %. |
