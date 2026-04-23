@@ -186,3 +186,22 @@ will be added as each source is fetched.)_
 | Source | Google Places (`places_search` tool), multi-query keyword search across Málaga sub-regions |
 | NLA | `nla_m2: null` for all records — manual research pending |
 | Schema | matches `data/es/facilities/basque_facilities.json` shape (`id`, `name`, `brand`, `municipio`, `postal_code`, `address`, `lat`, `lng`, `place_id`, `phone`, `website`, `rating`, `rating_count`, `nla_m2`, `source`) |
+
+### INE Padrón (population + age) — Phase 2a, downloaded 2026-04-23
+
+| Field | Value |
+|---|---|
+| Fetch script | `fetch_padron.js` (re-runnable) |
+| **Population** file | `raw/ine_padron_2882_malaga.json` (raw WSTEMPUS API response) |
+| Population source | INE table **2882** (operation 22 "Cifras Oficiales de Población de los Municipios Españoles: Revisión del Padrón Municipal"), https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/2882?tip=AM&nult=10 |
+| Population vintage | annual, 2016–2025 (latest = 1 de enero de 2025) |
+| Population coverage | 103 / 103 Málaga munis. QA: provincial total 2025 = **1,791,092** (matches INE published figure) |
+| **Age structure** file | `raw/ine_padron_continuo_33570_malaga.px` (filtered subset of nationwide PX, 523 KB) |
+| Age source | INE table **33570** (operation 188 "Estadística del Padrón Continuo" — "Población por sexo, municipios y edad, grupos quinquenales"), https://www.ine.es/jaxiT3/files/t/es/px/33570.px (50 MB original, filtered in-process to 103 Málaga munis + "Total Nacional") |
+| Age vintage | **1 de enero de 2022** (latest available in this table) |
+| Age bands used | 0-4, 5-9, 10-14, 15-19 → `pct_young_0_19`; 20-24 … 60-64 → `pct_working_20_64`; 65-69 … 95-99 + "100 y más" → `pct_senior_65_plus` |
+| Age coverage | 103 / 103 Málaga munis; percentages sum to 100 (± 0.2 pp) for all munis |
+| **Output** | `demographics_malaga.json` (population by year + growth + age %) |
+| **Cross-source QA** | `pop_2022` from WSTEMPUS (Cifras Oficiales) matches `pop_2022_padron_continuo` from PX 33570 exactly for all 103 munis |
+| ⚠ **Vintage gap vs Euskadi** | Euskadi's age data (EUSTAT `population_age_groups.px`) is reference date **2025-01-01**; Málaga's is **2022-01-01** — a 3-year gap. Age structure is slow-moving (typical year-over-year delta < 0.3 pp per bucket) so this is a documented limitation, not a blocker. Population itself is fully current (2025). |
+| Bug caught during fetch | Initial muni-filter regex missed codes starting with `291*` (specifically 29100 Yunquera); fixed to use `^29\d{3}\s` pattern. Final output has all 103 munis. |
