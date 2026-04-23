@@ -145,6 +145,167 @@ The Phase 1 mapping surfaced three methodological questions. Decisions:
      `avg_rent_sqm_active` over `avg_rent_sqm` when rendering Málaga.
      That is a downstream UI change, not a Phase 1-4 concern here.
 
+3. **Housing (tenure / dwelling type / surface / total dwellings) —
+   use INE Censo 2021 microdata for ALL regions** (Option A). Chosen
+   after Phase 2c investigation — full write-up below.
+
+### 3a. Housing data source — Option A decision detail
+
+**Context**: Euskadi stores `pct_rented`, `pct_owned`, `pct_apartment`,
+`pct_house`, `total_dwellings`, `total_family_dwellings`, `avg_surface_m2`
+in `data/es/master_municipios.json`. All seven fields come from EUSTAT
+PX files (`housing_tenure.px`, `housing_building_size.px`,
+`housing_structural.px`) — which is the **Basque Government's own
+re-aggregation of INE Censo 2021 microdata at full 100 % coverage for
+all 252 Basque munis**. Non-Basque regions do not have an equivalent
+republication; public INE Censo 2021 pre-defined tables stop at munis
+> 50,000 hab for tenure/surface, and publish no building-type table at
+municipal level at all. INE does publish a **10 % microdata sample** of
+the 2021 Viviendas census, but the `CMUN` field is recoded to three
+size bins (`991` ≤ 2k hab, `992` 2k-5k, `993` 5k-10k) for munis under
+10,000 hab to protect statistical secrecy — so 80 % of Spanish munis
+lose their identity in the public microdata.
+
+**Options considered** (2026-04-23, full notes in conversation log):
+
+| # | Option | Pros | Cons |
+|---|---|---|---|
+| A | Hybrid Censo 2021 microdata (muni-level for >10k hab, size-bin for <10k), applied to ALL regions including Euskadi | Scales to all Spain; same source everywhere; public + free; population coverage >85 % nationally | Euskadi loses some muni-level granularity vs current EUSTAT data for small munis |
+| B | Option A for Málaga only, keep Euskadi on EUSTAT | Ships Málaga fastest with no Euskadi regression | Permanent methodological inconsistency that worsens with every new region added |
+| C | INE Censo 2011 (has full muni coverage for all Spain) | 100 % muni coverage nationwide | 14-year vintage — Costa del Sol / Basque Country have both shifted materially since 2011 |
+| D | Hybrid Censo 2021 (big munis) + Censo 2011 (small munis) | Full coverage | Mixed vintages within one dataset — misleading on the choropleth |
+| E | Null fields for <10k hab munis | Simplest | Breaks opportunity scoring for 84 of 103 Málaga munis |
+
+**User decision (2026-04-23)**: **Option A**.
+
+### 3b. State of the data BEFORE this decision (how to reverse)
+
+To revert to the pre-decision state, you need to understand what each
+region's housing data looked like up to this point.
+
+**Euskadi (`data/es/master_municipios.json`)** — as it stands on branch
+`main` and still stands on this branch (not yet migrated):
+
+- All 252 Basque munis have non-null `pct_rented`, `pct_owned`,
+  `pct_apartment`, `pct_house`, `avg_surface_m2`, `total_dwellings`,
+  `total_family_dwellings`.
+- Source per field:
+  - `pct_rented`, `pct_owned`, `total_dwellings`: EUSTAT PX
+    `data/es/raw/housing_tenure.px`, dim `régimen de tenencia`
+    (Total / En propiedad / En alquiler / En otras formas), period
+    2021. Parsed by `data/es/build_master.js`.
+  - `pct_apartment`, `pct_house`, `total_family_dwellings`: EUSTAT PX
+    `data/es/raw/housing_building_size.px`, PROXY method — buildings
+    with 1-2 dwellings counted as houses, 3+ as apartments, `No
+    consta` excluded from denominator. Period 2021. Parsed by
+    `data/es/parse_housing_final.js`.
+  - `avg_surface_m2`: EUSTAT PX `data/es/raw/housing_structural.px`,
+    dim `características`, value `Superficie útil media`, period 2021.
+    Parsed by `data/es/parse_housing_final.js`.
+- Reference date: 2021-01-01 per EUSTAT labeling (effectively Censo
+  2021's 2021-11-01 snapshot, repackaged).
+- Sampling: 100 % (EUSTAT has full access to INE Censo 2021
+  microdata by inter-agency arrangement).
+
+**Málaga (this branch, pre-Option-A)** — if we rolled Option A back:
+
+- Option E's null state for <10k hab munis would be the closest to "do
+  nothing". Only the 19 munis >10k hab would have housing data, from
+  `tpx=59529` (tenure) + `tpx=59528`/`59530` (surface), directly via
+  jaxi URL. No apartment/house proxy available anywhere nationally.
+- Reference date: 2021-11-01 (Censo 2021).
+- Fields set: `pct_rented`, `pct_owned`, `avg_surface_m2`,
+  `total_dwellings` for 19 munis; the other four fields (including
+  `pct_apartment`/`pct_house`) unavailable.
+
+### 3c. Differences between Euskadi and Málaga under Option A
+
+Implementation is identical in shape but arithmetic differs by muni
+size. After the Euskadi migration, both regions share a new
+`housing_source` field on each muni record — one of:
+
+- `muni_microdata` — CMUN identifies the specific muni (munis > 10k
+  hab). Per-muni sample sizes from INE's 10 % sample range roughly
+  500 – 22,000 principal dwellings. Percentages at ±2-3 pp confidence
+  for the smallest; rock-solid for the largest.
+- `provincial_bin_le2k` / `provincial_bin_2k_5k` / `provincial_bin_5k_10k`
+  — CMUN was recoded to one of `991`/`992`/`993`; only the bin-level
+  aggregate is available. All munis in the same province + size bin
+  share identical `pct_*` and `avg_surface_m2` values. This applies to
+  munis under 10k hab. Current Málaga extraction: **3 size-bin records
+  per province** (one per bin, computed from Málaga-province rows of
+  each bin).
+
+After migration, Euskadi's per-muni granularity for small munis is
+**degraded** relative to current state — specifically:
+
+| Region | Current small-muni (<10k) source | Post-Option-A source |
+|---|---|---|
+| Euskadi | EUSTAT full-population aggregates (each muni distinct) | INE 10 %-sample size-bin (all same-band munis share one value) |
+| Málaga | N/A — no data today | INE 10 %-sample size-bin (same treatment as Euskadi) |
+
+This means ~200 small Euskadi munis lose individual tenure/apartment
+percentages after migration. They will instead inherit their
+province's size-bin aggregate.
+
+### 3d. Implementation in this branch (Málaga side only)
+
+- `fetch_padron.js` (Phase 2a) unchanged — population/age unaffected.
+- `process_censo_microdata.js` (Phase 2c) downloads the INE Censo 2021
+  Viviendas microdata zip from
+  https://www.ine.es/ftp/microdatos/censopv/cen21/CensoViviendas_2021.zip
+  (95 MB TSV, 2.66M records, 10 % sample, ref date 2021-11-01),
+  filters rows to `CPRO='29'`, writes three files:
+  - `raw/ine_censo_viviendas_2021_malaga_rows.tsv` (3.4 MB — all 99,653
+    Málaga microdata rows, for audit)
+  - `raw/ine_censo_viviendas_2021_malaga_sample.json` (intermediate
+    sample counts per muni/bin, ~9 KB)
+  - `housing_malaga.json` (processed per-muni/bin record with pct_*
+    and avg_surface_m2 — what Phase 3 will consume)
+- The 95 MB master microdata TSV is NOT committed. It is cached in
+  `%TEMP%\ine_scratch\censo2021\` and the fetch script is
+  re-runnable.
+
+### 3e. Implementation pending (Euskadi migration, separate branch/session)
+
+The Euskadi migration pass must:
+
+1. Download the same INE Censo 2021 Viviendas microdata zip.
+2. Filter rows to `CPRO` in `{'01','20','48'}`.
+3. For each of the 252 Euskadi munis, assign values by the same
+   muni-microdata / size-bin rule as Málaga.
+4. Overwrite `pct_rented`, `pct_owned`, `pct_apartment`, `pct_house`,
+   `avg_surface_m2`, `total_dwellings`, `total_family_dwellings` in
+   `data/es/master_municipios.json`.
+5. Add a new `housing_source` field per muni record.
+6. Re-run `scripts/prepare-data.js` — opportunity scoring inputs
+   (apartment %, rented %) will be size-bin averages for small munis
+   rather than per-muni, which may shift scores for rural munis.
+
+Impact on Euskadi:
+- ~45 munis > 10k hab keep full muni-level resolution.
+- ~207 munis < 10k hab get bin-level values — all munis in the same
+  (province × size bin) share one value.
+
+### 3f. Reversing Option A
+
+If the user later decides Option A was wrong:
+
+- **Reverting Málaga alone**: delete `data/es/malaga/housing_malaga.json`
+  and `data/es/malaga/raw/ine_censo_*`. Switch Phase 3 Málaga build to
+  either Option B (tpx=59529 + provincial fallback) or Option E (null
+  for <10k munis). The microdata extraction is orthogonal to other
+  phases — reversal doesn't touch population, boundaries, income,
+  prices, rents, or turnover.
+- **Preventing Euskadi migration**: before the Euskadi migration
+  branch runs, reconsider and take Option B instead. Euskadi stays on
+  EUSTAT; Málaga keeps this folder's hybrid; cross-province
+  comparability of housing fields becomes documented-inconsistent.
+- **After Euskadi has been migrated**: restoring the pre-migration
+  EUSTAT values requires re-running the original `build_master.js` →
+  `parse_housing_final.js` chain against `data/es/raw/housing_*.px`
+  (those files are already committed, so full recovery is possible).
+
 ## Remaining known limitations (not blocking)
 
 - **Price coverage gap**: MIVAU Valor Tasado publishes municipal values
@@ -219,3 +380,25 @@ will be added as each source is fetched.)_
 | Reprojection | None needed — source is already EPSG:4326. |
 | QA | 103 features (= INE muni count). Province area sum = **7,308.4 km²** (matches published Málaga province total ~7,308 km²). |
 | ⚠ Note on `pop_2024` / `pop_dens_2024` | These properties are **0 for all Spanish munis** in this particular GISCO file (not Málaga-specific — Bilbao 48020 is also 0). Use `demographics_malaga.json` for population, this file only for geometry + `area_km2`. |
+
+### INE Censo 2021 Viviendas microdata — Phase 2c, processed 2026-04-23
+
+| Field | Value |
+|---|---|
+| Processing script | `process_censo_microdata.js` (streaming TSV reader, filters CPRO=29) |
+| Upstream source | INE Censo de Población y Viviendas 2021, Viviendas microdata, https://www.ine.es/ftp/microdatos/censopv/cen21/CensoViviendas_2021.zip (135.8 MB zip, contains 95 MB TSV) |
+| Record design | https://www.ine.es/ftp/microdatos/censopv/cen21/dr_CensoViviendas_2021.zip (consulted via xlsx package) |
+| Reference date | 2021-11-01 |
+| Sample | 10 % of Spanish family dwellings (INE-declared; ORDEN_V ranges 1 to 2,662,371) |
+| Recoding rule | For munis < 10,000 hab, INE replaces the 3-digit `CMUN` code with size-bin `991` (≤2k hab), `992` (2k-5k) or `993` (5k-10k). Munis > 10k hab keep their real 3-digit code. |
+| Raw output | `raw/ine_censo_viviendas_2021_malaga_rows.tsv` (3.4 MB, 99,653 rows — all Málaga dwellings from the 10 % sample) |
+| Intermediate | `raw/ine_censo_viviendas_2021_malaga_sample.json` (~9 KB — sample counts per muni/bin for tenure × dwelling type × surface aggregation) |
+| Processed output | `housing_malaga.json` — 22 records = 19 real munis > 10k hab + 3 size bins covering the other 84 munis |
+| Cached master microdata | NOT committed (95 MB). Cached in `%TEMP%\ine_scratch\censo2021\`. Script re-downloads if missing. |
+| **Coverage** | **19 / 103** munis get muni-level data (88.6 % of province population). **84 / 103** munis inherit one of 3 size-bin aggregates (11.4 % of pop, mostly rural interior). |
+| Smallest muni-level sample | Álora 29012 — 518 principal dwellings (≈ ±3 pp 95 % CI on percentages) |
+| Largest muni-level sample | Málaga city 29067 — 21,796 principal dwellings |
+| Aggregation method | Mirrors `../parse_housing_final.js`: TIPO_EDIF 1-2=house, 3=apartment, 4=excluded; TENEN_VIV 2=propiedad, 3=alquiler, 4=otro; SUPERF mean over principal dwellings ('.' excluded). Percentages computed from raw sample counts (ratios are sample-size invariant up to sampling error). |
+| QA — Málaga city spot-check | `pct_rented`=13.3 %, `pct_owned`=79.8 %, `pct_apartment`=85.6 %, `avg_surface_m2`=83.4 m² — all within expected ranges for a dense southern Spanish capital. |
+| Size-bin spot-check | ≤2k hab band: `pct_apartment`=8.7 %, `avg_surface_m2`=106.6 m² — consistent with rural Serranía de Ronda housing profile. |
+| Decision context | See **Methodology decisions §3 (Option A)** above. |
