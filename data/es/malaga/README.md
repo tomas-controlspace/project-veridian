@@ -86,14 +86,14 @@ they cross-reference `data/es/master_municipios.json`.
 
 | Metric | Euskadi source | Málaga source | Comparability notes |
 |---|---|---|---|
-| `avg_price_sqm`, `price_source` | **Basque Gov ECVI (Encuesta Cuatrimestral de Vivienda) `ECVI_es_2025T4.xlsx`**. Two sheets used: **T1.3** (€/m² by province + capital + rest-of-province, 2025 Q4) and **T3.3** (€/m² for 7 specific larger municipios). Assignment hierarchy: specific muni → capital → rest-of-province (see `refine_prices.js`). Unit: **€/m² útil** (useful area) per ECVI methodology. Tenure: **all dwellings** (new + secondhand combined). | **MIVAU Valor Tasado de la Vivienda Libre** (Ministerio de Vivienda y Agenda Urbana) — nationwide panel of appraiser valuations, published quarterly, €/m² at municipal level but **only for municipios > 25,000 hab**. Unit: **€/m² constructed** (superficie construida, the MIVAU convention). | ⚠ **Two comparability issues** (see "Known limitations"): (1) **Price concept differs**: ECVI = transaction prices (actual sales); MIVAU Valor Tasado = appraisal values. These track but are not identical — appraisals lag the market and smooth volatility. (2) **Unit differs**: ECVI = €/m² **útil**; MIVAU = €/m² **constructed**. Constructed area is typically ~15-25 % larger than útil, so raw values are **not directly comparable** across provinces. Need to either (a) apply a conversion factor, (b) accept the cross-province inconsistency and document, or (c) source a different Málaga dataset. Requires user decision before Phase 2 proceeds. |
+| `avg_price_sqm`, `price_source` | **Basque Gov ECVI (Encuesta Cuatrimestral de Vivienda) `ECVI_es_2025T4.xlsx`**. Two sheets used: **T1.3** (€/m² by province + capital + rest-of-province, 2025 Q4) and **T3.3** (€/m² for 7 specific larger municipios). Assignment hierarchy: specific muni → capital → rest-of-province (see `refine_prices.js`). Unit: **€/m² útil** (useful area) per ECVI methodology. Tenure: **all dwellings** (new + secondhand combined). | **MIVAU Valor Tasado de la Vivienda Libre** (Ministerio de Vivienda y Agenda Urbana) — nationwide panel of appraiser valuations, published quarterly, €/m² at municipal level but **only for municipios > 25,000 hab**. Unit: **€/m² constructed** (superficie construida, the MIVAU convention). | **Decision (2026-04-23)**: use MIVAU Valor Tasado €/m² constructed for ALL regions (Málaga + Euskadi). Euskadi migration to MIVAU is a pending follow-up in a separate branch; until then, cross-province price comparisons in the app are **not valid**. `price_source` for Málaga: `municipal` (muni-level MIVAU value available) or `provincial_fallback` (< 25,000 hab muni, uses province-level MIVAU). |
 
 ### Residential rent (€/m²/month)
 
 | Metric | Euskadi source | Málaga source | Comparability notes |
 |---|---|---|---|
-| `avg_rent_sqm` | **Basque Gov EMAL (Estadística Municipal de Alquileres) residential**, sheet **T2.3** — annual, 2024, **new contracts**. Assignment: provincial average × (municipal-size-band multiplier / Euskadi average), producing a size-adjusted pseudo-municipal estimate (`parse_rent_residential.js:53-75`). Unit: **€/m²/month**. | **MIVAU SERPAVI (Sistema Estatal de Referencia de Precios del Alquiler de Vivienda)** — nationwide, municipal and sección-censal granularity, **€/m²/month**. Based on **IRPF tax declarations** (fiscal register of rental income). | ⚠ **Comparability caveat**: EMAL T2.3 measures **new contract offers**; SERPAVI measures the **active contract stock** (what tenants are actually paying, via tax declarations). New contracts trend ~20-30 % above active stock rents in most urban markets. For cleanest comparability, pair SERPAVI with Euskadi's **EMAL A2.3** (active contracts, June 2025 snapshot — already stored as `avg_rent_sqm_active`). **Recommend**: rename Málaga's SERPAVI value into `avg_rent_sqm_active` and leave `avg_rent_sqm` (new contracts) null for Málaga, or accept the new-vs-active inconsistency. Requires user decision. |
-| `avg_rent_sqm_active` | **EMAL sheet A2.3**, active contracts June 2025, provincial level only | **MIVAU SERPAVI** (same source as above — natural fit here) | Clean match (both measure active stock rents from fiscal / panel sources). |
+| `avg_rent_sqm` | **Basque Gov EMAL (Estadística Municipal de Alquileres) residential**, sheet **T2.3** — annual, 2024, **new contracts**. Assignment: provincial average × (municipal-size-band multiplier / Euskadi average), producing a size-adjusted pseudo-municipal estimate (`parse_rent_residential.js:53-75`). Unit: **€/m²/month**. | **null for Málaga** (no nationwide municipal-level new-contract source identified). If Phase 2e turns up a usable MIVAU new-contract table, populate; otherwise leave null. | **Decision (2026-04-23)**: leave `avg_rent_sqm` null for Málaga rather than substitute a different-concept value. Cross-province new-contract comparisons are therefore unavailable; use `avg_rent_sqm_active` as the primary rent metric for Málaga in the app. |
+| `avg_rent_sqm_active` | **EMAL sheet A2.3**, active contracts June 2025, provincial level only | **MIVAU SERPAVI (Sistema Estatal de Referencia de Precios del Alquiler de Vivienda)** — nationwide, municipal and sección-censal granularity, **€/m²/month**. Based on IRPF tax declarations (fiscal register of rental income, active-contract stock). | **Decision (2026-04-23)**: use SERPAVI for Málaga, store into `avg_rent_sqm_active`. Clean conceptual match with Euskadi's EMAL A2.3 — both measure active-contract stock. Granularity advantage: SERPAVI is municipal-level (Euskadi A2.3 is provincial-only), so Málaga's active rent will be more granular than Euskadi's. Flag in app UI. |
 
 ### Housing transaction turnover
 
@@ -117,36 +117,45 @@ populated by manual operator research as a separate pass.
 
 ---
 
-## Known limitations / decisions pending user input
+## Methodology decisions (2026-04-23, resolved by user)
 
-The Phase 1 mapping above surfaces three methodological questions that
-I flagged before proceeding to Phase 2 fetches. **Phase 2 is paused
-until these are resolved.**
+The Phase 1 mapping surfaced three methodological questions. Decisions:
 
-1. **Purchase-price unit mismatch (ECVI útil vs MIVAU constructed)**.
-   Euskadi stores €/m² útil; the natural nationwide substitute for
-   Málaga is €/m² constructed. A Málaga-vs-Bilbao comparison in the app
-   would be apples-to-oranges unless a conversion is applied (typical
-   factor ~1.15-1.25 constructed → útil). Options:
-   - (a) Divide MIVAU Málaga values by ~1.20 to approximate útil. Flag
-     as estimated.
-   - (b) Accept the inconsistency, add a `price_unit` field to the
-     schema distinguishing `sqm_util` vs `sqm_constructed`.
-   - (c) Source a different Málaga price dataset that publishes útil
-     (none that I know of at municipal level — Registradores and
-     Tinsa use constructed; only ECVI/INE Censo use útil).
+1. **Purchase price — unit + concept**: ALL regions (Málaga and
+   Euskadi) must use **MIVAU Valor Tasado de la Vivienda Libre**,
+   **€/m² constructed**, to guarantee cross-province comparability.
+   - **Málaga** (this branch): fetch MIVAU Valor Tasado directly; no
+     conversion factor applied.
+   - **Euskadi** (⚠ **pending follow-up in a separate branch/session**):
+     the current `avg_price_sqm` values in `data/es/master_municipios.json`
+     come from Basque Gov ECVI (€/m² útil, transaction prices) and are
+     **not** comparable to Málaga. A migration pass must re-source
+     Euskadi from MIVAU Valor Tasado as well. Until that happens, the
+     app will be showing Málaga MIVAU values side-by-side with Euskadi
+     ECVI values — document this clearly in the app's UI tooltip or
+     defer Málaga's public release until Euskadi is migrated.
 
-2. **Purchase-price concept mismatch (ECVI transactions vs MIVAU
-   appraisals)**. ECVI = actual sales; MIVAU Valor Tasado = appraiser
-   valuations (used mainly for mortgage underwriting). They correlate
-   strongly but appraisals smooth volatility. Impact is modest
-   (~±3-5 % typical gap) — documentable rather than blocking.
+2. **Rent concept**: Use **MIVAU SERPAVI** for Málaga, store into
+   `avg_rent_sqm_active` (active-contract stock), leave `avg_rent_sqm`
+   (new contracts) **null** unless Phase 2e identifies a nationwide
+   municipal-level new-contract source.
+   - Euskadi already has `avg_rent_sqm_active` populated from EMAL A2.3
+     (provincial-level); this is the comparable Euskadi field.
+   - For cleaner cross-province comparison, the app should prefer
+     `avg_rent_sqm_active` over `avg_rent_sqm` when rendering Málaga.
+     That is a downstream UI change, not a Phase 1-4 concern here.
 
-3. **Rent concept mismatch (EMAL T2.3 new contracts vs SERPAVI active
-   contracts)**. Recommend storing SERPAVI into `avg_rent_sqm_active`
-   (matches Euskadi's A2.3 methodology) and leaving Málaga's
-   `avg_rent_sqm` (new contracts) null unless MIVAU publishes new-
-   contract rents at municipal level (to be confirmed in Phase 2e).
+## Remaining known limitations (not blocking)
+
+- **Price coverage gap**: MIVAU Valor Tasado publishes municipal values
+  only for municipios **> 25,000 hab**. In Málaga ~15 of 103 municipios
+  clear that threshold; the other ~88 will receive a **provincial
+  fallback** (province-level €/m² constructed). Document exact coverage
+  once pulled (Phase 2f).
+- **Age-group aggregation**: INE Padrón publishes 5-year bands; aggregate
+  0-19, 20-64, 65+ mechanically. No methodology issue.
+- **Registradores granularity**: not yet investigated (Phase 2g). Will
+  STOP and report before committing that source.
 
 Additional limitations that will surface only after Phase 2:
 
