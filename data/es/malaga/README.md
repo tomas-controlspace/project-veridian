@@ -568,6 +568,18 @@ No commit for Phase 2g.
 | Bug caught + fixed | Initial 10-min run had 5 munis (29016 Árchez, 29035 Cañete la Real, 29054 Fuengirola, 29079 Periana, 29903 Montecorto) silently drop after 3 consecutive HTTP 429s — the retry-loop exited without marking progress. Resumable re-run filled them in. Both scripts now flag `error` when retries are exhausted so the failure is visible. |
 | File size | 872 KB (10-min) + 1.5 MB (20-min) = ~2.4 MB total committed. |
 
+### Málaga NLA manual-research workflow
+
+| Field | Value |
+|---|---|
+| Template builder | `facilities/build_nla_research_template.py` (Python + openpyxl, re-runnable) |
+| Template output | `facilities/malaga_nla_research.xlsx` (28 KB, 3 sheets: Instructions, Facilities, Operator_Sources) |
+| Editable columns | `nla_sqm`, `constructed_area_sqm`, `confidence` (dropdown: high/medium/low), `source_url`, `notes`. Yellow-highlighted in the sheet. |
+| Locked columns | All Google-Places fields (id, name, brand, municipio, postal_code, address, lat, lng, place_id, phone, website, rating, rating_count) — must not be edited. |
+| Source hierarchy | 1. Operator website (HIGH). 2. Catastro `superficie construida` × 0.70 NLA ratio (MEDIUM). 3. Google Maps footprint × floors × 0.70 (LOW). 4. For guardamuebles (bulk-storage movers), area is secondary — tag in notes. |
+| Return file | User saves researched data as `malaga_nla_research_filled.xlsx`. A future merge script will read that back, map `id` → `malaga_facilities.json` entry, and populate `nla_sqm` + `constructed_area_sqm` (renaming the current `nla_m2` field to match Euskadi's schema). |
+| Downstream | Once `malaga_facilities.json` has NLA populated, `scripts/prepare-data.js` (pipeline-extension branch) will aggregate per-muni NLA, compute `nla_per_capita` / `nla_per_1000_households`, classify `facility_type` (self_storage vs guardamuebles) and `size_tier` from the NLA value + operator name regex, and feed the 25%-weight NLA-gap component of the opportunity score. |
+
 ---
 
 ## Consolidated known limitations
