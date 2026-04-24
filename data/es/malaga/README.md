@@ -556,6 +556,18 @@ No commit for Phase 2g.
 | QA spot-check | Málaga city 6,299 tx (2025). Marbella 4,407. Estepona 3,475. Mijas 3,197. Fuengirola 2,172. Alameda 85. Yunquera 37. Province total 2025 = **36,164 transactions**. |
 | Cross-region QA | Identical source file as Euskadi — no methodology gap. Euskadi migration needs zero work for this field. |
 
+### Isochrones (10-min + 20-min drive-time) — generated 2026-04-23 / 2026-04-24
+
+| Field | Value |
+|---|---|
+| Generation scripts | `generate_isochrones.js` (10 min, `RANGE_SECONDS = 600`) and `generate_isochrones_20.js` (20 min, `RANGE_SECONDS = 1200`) — Málaga-specific clones of `scripts/generate-isochrones{,-20}.js` with paths re-rooted at `data/es/malaga/` and a single-province merge. |
+| API | OpenRouteService v2 `driving-car` isochrones (free tier: 40 req/min, 2,000/day). Requires `ORS_API_KEY` env var. |
+| Output layout | `data/es/malaga/isochrones/municipios/{ine_code}.geojson` + `.../provincias/29.geojson` for 10-min; same under `isochrones_20/` for 20-min. Coordinate precision reduced to 5 decimals. |
+| Resume behavior | `isochrones/progress.json` tracks per-muni status. Re-running skips `done` entries. |
+| **Coverage** | **103 / 103** munis for both 10-min and 20-min. Provincial merges include all 103 munis (unlike Euskadi where 13 munis had no ORS data, Málaga has no isochrone gaps). |
+| Bug caught + fixed | Initial 10-min run had 5 munis (29016 Árchez, 29035 Cañete la Real, 29054 Fuengirola, 29079 Periana, 29903 Montecorto) silently drop after 3 consecutive HTTP 429s — the retry-loop exited without marking progress. Resumable re-run filled them in. Both scripts now flag `error` when retries are exhausted so the failure is visible. |
+| File size | 872 KB (10-min) + 1.5 MB (20-min) = ~2.4 MB total committed. |
+
 ---
 
 ## Consolidated known limitations
@@ -589,7 +601,7 @@ No commit for Phase 2g.
 | **Euskadi price migration to MIVAU Valor Tasado** | Cross-province price comparison in app | separate branch — this one is data-staging only |
 | **Euskadi housing migration to Censo 2021 microdata** (Option A) | Cross-province comparability of tenure / apartment / surface | separate branch |
 | **Málaga NLA research** (fill `facilities/malaga_facilities.json` `nla_m2` fields and per-muni `nla_sqm` totals) | Opportunity scoring granularity for Málaga | separate manual pass |
-| **Isochrones for Málaga** (10-min + 20-min ORS API) | Catchment-area comparison, PPTX case-study export | out of scope this branch — see top-level project `scripts/generate-isochrones*.js` for the pattern |
+| **Isochrones for Málaga** (10-min + 20-min ORS API) | — | ✅ **DONE** this branch — 103/103 munis + province merges generated via `data/es/malaga/generate_isochrones{,_20}.js`. Catchment metrics still need to be computed (Euskadi-side `catch_*` / `catch20_*` fields in `data/es/master_municipios.json` come from `scripts/prepare-data.js` — pipeline extension needed for Málaga). |
 | **Pipeline extension** (`scripts/prepare-data.js` must read Málaga + Euskadi and produce combined `public/data/`) | App serving Málaga data | separate branch |
 | **Registradores / IPVVR integration** (if desired) | N/A — not required for current scope | on ice; provincial-only, no municipal value to add |
 

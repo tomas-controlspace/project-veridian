@@ -165,6 +165,15 @@ async function main() {
         }
       }
     }
+
+    // If retry loop exhausted 3 consecutive 429s without success, flag as
+    // error so a re-run picks it up. (Observed on 10-min phase: 5 munis
+    // silently dropped without this guard.)
+    if (progress[code] !== 'done' && progress[code] !== 'error') {
+      console.error(`\n  Retries exhausted for ${name} (${code}) — will retry on next run`);
+      errors++;
+    }
+
     await sleep(RATE_LIMIT_MS);
   }
 

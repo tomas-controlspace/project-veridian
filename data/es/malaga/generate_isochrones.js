@@ -175,6 +175,13 @@ async function main() {
       }
     }
 
+    // If the retry loop exited without marking progress (3 consecutive 429s),
+    // flag as error rather than silently drop. Re-running the script picks it up.
+    if (progress[code] !== 'done' && progress[code] !== 'error') {
+      console.error(`\n  Retries exhausted for ${name} (${code}) — will retry on next run`);
+      errors++;
+    }
+
     await sleep(RATE_LIMIT_MS);
   }
 
