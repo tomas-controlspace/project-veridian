@@ -1,0 +1,479 @@
+{
+  "20009": {
+    "ine_code": "20009",
+    "principal_sample": 641,
+    "pct_rented": 11.7,
+    "pct_owned": 85.8,
+    "pct_apartment": 96.87,
+    "pct_house": 3.13,
+    "avg_surface_m2": 86.1
+  },
+  "20017": {
+    "ine_code": "20017",
+    "principal_sample": 482,
+    "pct_rented": 10.37,
+    "pct_owned": 86.51,
+    "pct_apartment": 90.64,
+    "pct_house": 9.36,
+    "avg_surface_m2": 93
+  },
+  "20018": {
+    "ine_code": "20018",
+    "principal_sample": 586,
+    "pct_rented": 12.12,
+    "pct_owned": 84.98,
+    "pct_apartment": 89.25,
+    "pct_house": 10.75,
+    "avg_surface_m2": 102.2
+  },
+  "20019": {
+    "ine_code": "20019",
+    "principal_sample": 604,
+    "pct_rented": 13.74,
+    "pct_owned": 82.78,
+    "pct_apartment": 97.68,
+    "pct_house": 2.32,
+    "avg_surface_m2": 82
+  },
+  "20030": {
+    "ine_code": "20030",
+    "principal_sample": 1200,
+    "pct_rented": 14.42,
+    "pct_owned": 83.33,
+    "pct_apartment": 98.67,
+    "pct_house": 1.33,
+    "avg_surface_m2": 76.1
+  },
+  "20032": {
+    "ine_code": "20032",
+    "principal_sample": 497,
+    "pct_rented": 13.48,
+    "pct_owned": 83.3,
+    "pct_apartment": 92.14,
+    "pct_house": 7.86,
+    "avg_surface_m2": 88.7
+  },
+  "20036": {
+    "ine_code": "20036",
+    "principal_sample": 668,
+    "pct_rented": 15.72,
+    "pct_owned": 79.64,
+    "pct_apartment": 82.34,
+    "pct_house": 17.66,
+    "avg_surface_m2": 98.1
+  },
+  "20040": {
+    "ine_code": "20040",
+    "principal_sample": 867,
+    "pct_rented": 14.65,
+    "pct_owned": 81.66,
+    "pct_apartment": 92.38,
+    "pct_house": 7.62,
+    "avg_surface_m2": 81.3
+  },
+  "20045": {
+    "ine_code": "20045",
+    "principal_sample": 2540,
+    "pct_rented": 17.01,
+    "pct_owned": 79.53,
+    "pct_apartment": 93.38,
+    "pct_house": 6.62,
+    "avg_surface_m2": 83.4
+  },
+  "20055": {
+    "ine_code": "20055",
+    "principal_sample": 934,
+    "pct_rented": 13.28,
+    "pct_owned": 83.51,
+    "pct_apartment": 95.82,
+    "pct_house": 4.18,
+    "avg_surface_m2": 82.6
+  },
+  "20059": {
+    "ine_code": "20059",
+    "principal_sample": 489,
+    "pct_rented": 10.02,
+    "pct_owned": 87.12,
+    "pct_apartment": 86.5,
+    "pct_house": 13.5,
+    "avg_surface_m2": 96.2
+  },
+  "20063": {
+    "ine_code": "20063",
+    "principal_sample": 363,
+    "pct_rented": 9.09,
+    "pct_owned": 88.43,
+    "pct_apartment": 68.23,
+    "pct_house": 31.77,
+    "avg_surface_m2": 98.1
+  },
+  "20064": {
+    "ine_code": "20064",
+    "principal_sample": 720,
+    "pct_rented": 17.36,
+    "pct_owned": 79.58,
+    "pct_apartment": 98.47,
+    "pct_house": 1.53,
+    "avg_surface_m2": 71.9
+  },
+  "20067": {
+    "ine_code": "20067",
+    "principal_sample": 1697,
+    "pct_rented": 12.37,
+    "pct_owned": 85.62,
+    "pct_apartment": 97.7,
+    "pct_house": 2.3,
+    "avg_surface_m2": 74.8
+  },
+  "20069": {
+    "ine_code": "20069",
+    "principal_sample": 7970,
+    "pct_rented": 18.14,
+    "pct_owned": 79.15,
+    "pct_apartment": 95.02,
+    "pct_house": 4.98,
+    "avg_surface_m2": 85.6
+  },
+  "20071": {
+    "ine_code": "20071",
+    "principal_sample": 800,
+    "pct_rented": 15,
+    "pct_owned": 82.75,
+    "pct_apartment": 94.62,
+    "pct_house": 5.38,
+    "avg_surface_m2": 87.7
+  },
+  "20074": {
+    "ine_code": "20074",
+    "principal_sample": 646,
+    "pct_rented": 11.92,
+    "pct_owned": 84.37,
+    "pct_apartment": 93.48,
+    "pct_house": 6.52,
+    "avg_surface_m2": 87.7
+  },
+  "20076": {
+    "ine_code": "20076",
+    "principal_sample": 409,
+    "pct_rented": 20.54,
+    "pct_owned": 76.77,
+    "pct_apartment": 95.6,
+    "pct_house": 4.4,
+    "avg_surface_m2": 85.2
+  },
+  "20079": {
+    "ine_code": "20079",
+    "principal_sample": 943,
+    "pct_rented": 15.8,
+    "pct_owned": 81.65,
+    "pct_apartment": 95.74,
+    "pct_house": 4.26,
+    "avg_surface_m2": 89.8
+  },
+  "20081": {
+    "ine_code": "20081",
+    "principal_sample": 384,
+    "pct_rented": 11.2,
+    "pct_owned": 86.2,
+    "pct_apartment": 92.69,
+    "pct_house": 7.31,
+    "avg_surface_m2": 90.5
+  },
+  "20902": {
+    "ine_code": "20902",
+    "principal_sample": 742,
+    "pct_rented": 9.7,
+    "pct_owned": 86.79,
+    "pct_apartment": 95.41,
+    "pct_house": 4.59,
+    "avg_surface_m2": 80.5
+  },
+  "48003": {
+    "ine_code": "48003",
+    "principal_sample": 759,
+    "pct_rented": 8.17,
+    "pct_owned": 88.41,
+    "pct_apartment": 90.25,
+    "pct_house": 9.75,
+    "avg_surface_m2": 91.7
+  },
+  "48011": {
+    "ine_code": "48011",
+    "principal_sample": 475,
+    "pct_rented": 9.89,
+    "pct_owned": 87.58,
+    "pct_apartment": 96.42,
+    "pct_house": 3.58,
+    "avg_surface_m2": 87.3
+  },
+  "48013": {
+    "ine_code": "48013",
+    "principal_sample": 4265,
+    "pct_rented": 11.51,
+    "pct_owned": 84.62,
+    "pct_apartment": 98.45,
+    "pct_house": 1.55,
+    "avg_surface_m2": 74.1
+  },
+  "48015": {
+    "ine_code": "48015",
+    "principal_sample": 1703,
+    "pct_rented": 11.98,
+    "pct_owned": 85.97,
+    "pct_apartment": 98.12,
+    "pct_house": 1.88,
+    "avg_surface_m2": 73.1
+  },
+  "48017": {
+    "ine_code": "48017",
+    "principal_sample": 758,
+    "pct_rented": 11.87,
+    "pct_owned": 84.56,
+    "pct_apartment": 95.11,
+    "pct_house": 4.89,
+    "avg_surface_m2": 90.3
+  },
+  "48020": {
+    "ine_code": "48020",
+    "principal_sample": 15039,
+    "pct_rented": 14.28,
+    "pct_owned": 82.05,
+    "pct_apartment": 98.9,
+    "pct_house": 1.1,
+    "avg_surface_m2": 82.4
+  },
+  "48027": {
+    "ine_code": "48027",
+    "principal_sample": 1208,
+    "pct_rented": 13.33,
+    "pct_owned": 83.86,
+    "pct_apartment": 97.51,
+    "pct_house": 2.49,
+    "avg_surface_m2": 86.3
+  },
+  "48029": {
+    "ine_code": "48029",
+    "principal_sample": 446,
+    "pct_rented": 8.52,
+    "pct_owned": 90.36,
+    "pct_apartment": 95.96,
+    "pct_house": 4.04,
+    "avg_surface_m2": 84.9
+  },
+  "48034": {
+    "ine_code": "48034",
+    "principal_sample": 679,
+    "pct_rented": 10.31,
+    "pct_owned": 88.07,
+    "pct_apartment": 99.56,
+    "pct_house": 0.44,
+    "avg_surface_m2": 72.6
+  },
+  "48036": {
+    "ine_code": "48036",
+    "principal_sample": 1211,
+    "pct_rented": 9.58,
+    "pct_owned": 88.93,
+    "pct_apartment": 94.72,
+    "pct_house": 5.28,
+    "avg_surface_m2": 85
+  },
+  "48044": {
+    "ine_code": "48044",
+    "principal_sample": 3091,
+    "pct_rented": 13.91,
+    "pct_owned": 83.27,
+    "pct_apartment": 93.92,
+    "pct_house": 6.08,
+    "avg_surface_m2": 107.3
+  },
+  "48046": {
+    "ine_code": "48046",
+    "principal_sample": 699,
+    "pct_rented": 11.87,
+    "pct_owned": 84.84,
+    "pct_apartment": 96.57,
+    "pct_house": 3.43,
+    "avg_surface_m2": 90.8
+  },
+  "48054": {
+    "ine_code": "48054",
+    "principal_sample": 1294,
+    "pct_rented": 11.67,
+    "pct_owned": 86.01,
+    "pct_apartment": 95.83,
+    "pct_house": 4.17,
+    "avg_surface_m2": 84.1
+  },
+  "48069": {
+    "ine_code": "48069",
+    "principal_sample": 673,
+    "pct_rented": 14.12,
+    "pct_owned": 82.62,
+    "pct_apartment": 77.05,
+    "pct_house": 22.95,
+    "avg_surface_m2": 106.4
+  },
+  "48078": {
+    "ine_code": "48078",
+    "principal_sample": 1977,
+    "pct_rented": 9.16,
+    "pct_owned": 88.27,
+    "pct_apartment": 98.89,
+    "pct_house": 1.11,
+    "avg_surface_m2": 74.7
+  },
+  "48080": {
+    "ine_code": "48080",
+    "principal_sample": 512,
+    "pct_rented": 11.13,
+    "pct_owned": 86.72,
+    "pct_apartment": 87.5,
+    "pct_house": 12.5,
+    "avg_surface_m2": 77.2
+  },
+  "48082": {
+    "ine_code": "48082",
+    "principal_sample": 1956,
+    "pct_rented": 11.4,
+    "pct_owned": 86.45,
+    "pct_apartment": 98.01,
+    "pct_house": 1.99,
+    "avg_surface_m2": 75.7
+  },
+  "48084": {
+    "ine_code": "48084",
+    "principal_sample": 1138,
+    "pct_rented": 12.83,
+    "pct_owned": 83.74,
+    "pct_apartment": 98.86,
+    "pct_house": 1.14,
+    "avg_surface_m2": 69.9
+  },
+  "48085": {
+    "ine_code": "48085",
+    "principal_sample": 552,
+    "pct_rented": 15.76,
+    "pct_owned": 82.43,
+    "pct_apartment": 82.25,
+    "pct_house": 17.75,
+    "avg_surface_m2": 90.4
+  },
+  "48902": {
+    "ine_code": "48902",
+    "principal_sample": 997,
+    "pct_rented": 9.23,
+    "pct_owned": 87.46,
+    "pct_apartment": 93.05,
+    "pct_house": 6.95,
+    "avg_surface_m2": 76.6
+  },
+  "48_bin993": {
+    "ine_code": null,
+    "principal_sample": 4414,
+    "pct_rented": 11.78,
+    "pct_owned": 85.82,
+    "pct_apartment": 83.83,
+    "pct_house": 16.17,
+    "avg_surface_m2": 87.9
+  },
+  "01059": {
+    "ine_code": "01059",
+    "principal_sample": 10687,
+    "pct_rented": 15.18,
+    "pct_owned": 82.64,
+    "pct_apartment": 96.54,
+    "pct_house": 3.46,
+    "avg_surface_m2": 85.5
+  },
+  "48_bin992": {
+    "ine_code": null,
+    "principal_sample": 2369,
+    "pct_rented": 12.33,
+    "pct_owned": 85.35,
+    "pct_apartment": 73.95,
+    "pct_house": 26.05,
+    "avg_surface_m2": 96.9
+  },
+  "20_bin993": {
+    "ine_code": null,
+    "principal_sample": 3479,
+    "pct_rented": 11.38,
+    "pct_owned": 85.92,
+    "pct_apartment": 90.33,
+    "pct_house": 9.67,
+    "avg_surface_m2": 87.3
+  },
+  "01_bin993": {
+    "ine_code": null,
+    "principal_sample": 218,
+    "pct_rented": 13.76,
+    "pct_owned": 83.49,
+    "pct_apartment": 84.33,
+    "pct_house": 15.67,
+    "avg_surface_m2": 90.8
+  },
+  "01_bin991": {
+    "ine_code": null,
+    "principal_sample": 1358,
+    "pct_rented": 9.57,
+    "pct_owned": 86.16,
+    "pct_apartment": 26.52,
+    "pct_house": 73.48,
+    "avg_surface_m2": 122
+  },
+  "48_bin991": {
+    "ine_code": null,
+    "principal_sample": 1875,
+    "pct_rented": 9.39,
+    "pct_owned": 87.15,
+    "pct_apartment": 40.28,
+    "pct_house": 59.72,
+    "avg_surface_m2": 122.1
+  },
+  "01036": {
+    "ine_code": "01036",
+    "principal_sample": 753,
+    "pct_rented": 10.09,
+    "pct_owned": 87.38,
+    "pct_apartment": 92.3,
+    "pct_house": 7.7,
+    "avg_surface_m2": 85.1
+  },
+  "20_bin991": {
+    "ine_code": null,
+    "principal_sample": 1150,
+    "pct_rented": 10.78,
+    "pct_owned": 84.96,
+    "pct_apartment": 56.46,
+    "pct_house": 43.54,
+    "avg_surface_m2": 107.3
+  },
+  "20_bin992": {
+    "ine_code": null,
+    "principal_sample": 1266,
+    "pct_rented": 12.24,
+    "pct_owned": 85.31,
+    "pct_apartment": 81.96,
+    "pct_house": 18.04,
+    "avg_surface_m2": 94.2
+  },
+  "01002": {
+    "ine_code": "01002",
+    "principal_sample": 431,
+    "pct_rented": 12.99,
+    "pct_owned": 83.53,
+    "pct_apartment": 78.42,
+    "pct_house": 21.58,
+    "avg_surface_m2": 96.3
+  },
+  "01_bin992": {
+    "ine_code": null,
+    "principal_sample": 583,
+    "pct_rented": 13.89,
+    "pct_owned": 83.88,
+    "pct_apartment": 43.01,
+    "pct_house": 56.99,
+    "avg_surface_m2": 115.9
+  }
+}
