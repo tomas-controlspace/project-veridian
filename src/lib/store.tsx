@@ -209,8 +209,8 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     setDrawModeRaw(false);
   }, []);
 
-  // Load data — multi-region. metrics_regions.json is the new top-level
-  // file; metrics_euskadi.json is no longer fetched.
+  // Load data — multi-region. metrics_regions.json is the top-level file
+  // keyed by region code (PV / AN / …).
   useEffect(() => {
     Promise.all([
       fetch('/data/metrics_municipios.json').then(r => r.json()),
