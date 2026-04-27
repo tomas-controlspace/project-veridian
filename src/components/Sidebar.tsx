@@ -38,6 +38,22 @@ function FilterInput({
   );
 }
 
+/**
+ * Compute (min, max) over a region's munis for each filter field, so the
+ * placeholder text gives the user a sense of realistic typing values. Skips
+ * nulls. Returns nicely-formatted strings ready to drop into a placeholder.
+ */
+function fmtPlaceholder(v: number | null, kind: 'int' | 'decimal'): string {
+  if (v == null) return '';
+  if (kind === 'int') return Math.round(v).toLocaleString('es-ES');
+  return v.toFixed(2);
+}
+function rangeOf(values: (number | null | undefined)[]): { min: number | null; max: number | null } {
+  const valid = values.filter((v): v is number => typeof v === 'number' && Number.isFinite(v));
+  if (valid.length === 0) return { min: null, max: null };
+  return { min: Math.min(...valid), max: Math.max(...valid) };
+}
+
 export default function Sidebar() {
   const {
     selectedMetric, setSelectedMetric,
@@ -61,6 +77,24 @@ export default function Sidebar() {
   };
 
   const hasActiveFilters = Object.values(filters).some(v => v != null);
+
+  // Region-aware placeholder ranges. Computed from allMunicipiosList (which
+  // is already scoped to currentRegion in the store), so they update on
+  // region switch without any extra plumbing.
+  const filterRanges = useMemo(() => {
+    const popR    = rangeOf(allMunicipiosList.map(m => m.pop_2025));
+    const incomeR = rangeOf(allMunicipiosList.map(m => m.avg_total_income));
+    const priceR  = rangeOf(allMunicipiosList.map(m => m.avg_price_sqm));
+    // Rent: prefer avg_rent_sqm; fall back to avg_rent_sqm_active for Málaga
+    // (avg_rent_sqm is null for all 103 Málaga munis per methodology §2).
+    const rentR   = rangeOf(allMunicipiosList.map(m => m.avg_rent_sqm ?? m.avg_rent_sqm_active));
+    return {
+      pop:    { min: fmtPlaceholder(popR.min,    'int'),     max: fmtPlaceholder(popR.max,    'int') },
+      income: { min: fmtPlaceholder(incomeR.min, 'int'),     max: fmtPlaceholder(incomeR.max, 'int') },
+      price:  { min: fmtPlaceholder(priceR.min,  'int'),     max: fmtPlaceholder(priceR.max,  'int') },
+      rent:   { min: fmtPlaceholder(rentR.min,   'decimal'), max: fmtPlaceholder(rentR.max,   'decimal') },
+    };
+  }, [allMunicipiosList]);
 
   return (
     <div className="flex flex-col gap-4 p-4 h-full overflow-y-auto" style={{ background: '#fff' }}>
@@ -184,20 +218,23 @@ export default function Sidebar() {
 
         {showFilters && (
           <div className="mt-2 space-y-3">
-            {[
-              { title: 'Population', minKey: 'pop_min' as const, maxKey: 'pop_max' as const },
-              { title: 'Income (€/year)', minKey: 'income_min' as const, maxKey: 'income_max' as const },
-              { title: 'Price (€/m²)', minKey: 'price_min' as const, maxKey: 'price_max' as const },
-              { title: 'Rent (€/m²/mo)', minKey: 'rent_min' as const, maxKey: 'rent_max' as const },
-            ].map(f => (
-              <div key={f.title}>
-                <div className="text-xs font-medium mb-1" style={{ color: 'var(--neutral-500)' }}>{f.title}</div>
-                <div className="space-y-1">
-                  <FilterInput label="Min" value={filters[f.minKey]} onChange={v => updateFilter(f.minKey, v)} placeholder="0" />
-                  <FilterInput label="Max" value={filters[f.maxKey]} onChange={v => updateFilter(f.maxKey, v)} placeholder="∞" />
+            {([
+              { title: 'Population',     minKey: 'pop_min',    maxKey: 'pop_max',    rangeKey: 'pop' },
+              { title: 'Income (€/year)',minKey: 'income_min', maxKey: 'income_max', rangeKey: 'income' },
+              { title: 'Price (€/m²)',   minKey: 'price_min',  maxKey: 'price_max',  rangeKey: 'price' },
+              { title: 'Rent (€/m²/mo)', minKey: 'rent_min',   maxKey: 'rent_max',   rangeKey: 'rent' },
+            ] as const).map(f => {
+              const r = filterRanges[f.rangeKey];
+              return (
+                <div key={f.title}>
+                  <div className="text-xs font-medium mb-1" style={{ color: 'var(--neutral-500)' }}>{f.title}</div>
+                  <div className="space-y-1">
+                    <FilterInput label="Min" value={filters[f.minKey]} onChange={v => updateFilter(f.minKey, v)} placeholder={r.min || '0'} />
+                    <FilterInput label="Max" value={filters[f.maxKey]} onChange={v => updateFilter(f.maxKey, v)} placeholder={r.max || '∞'} />
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
             {hasActiveFilters && (
               <button
                 onClick={() => setFilters({ pop_min: null, pop_max: null, income_min: null, income_max: null, price_min: null, price_max: null, rent_min: null, rent_max: null })}
