@@ -12,9 +12,7 @@
  * Outputs to public/data/ (UNIONED across regions):
  *   metrics_municipios.json   all munis from all regions
  *   metrics_provincias.json   all provincias from all regions
- *   metrics_regions.json      one record per region (new file)
- *   metrics_euskadi.json      kept as a legacy alias for backwards compat
- *                             (just the Euskadi region record)
+ *   metrics_regions.json      one record per region
  *   boundaries_municipios.topojson    combined
  *   boundaries_provincias.topojson    combined
  *   facilities.json                   combined
@@ -425,17 +423,6 @@ for (const [code, entries] of Object.entries(byRegion)) {
 }
 fs.writeFileSync(path.join(OUT, 'metrics_regions.json'), JSON.stringify(regions));
 console.log('✓ metrics_regions.json (initial)');
-
-// Legacy alias kept for backwards compat with the current frontend, which
-// fetches metrics_euskadi.json directly. Frontend will switch to
-// metrics_regions.json in the multi-region UI branch.
-if (regions.PV) {
-  fs.writeFileSync(
-    path.join(OUT, 'metrics_euskadi.json'),
-    JSON.stringify({ name: 'Euskadi', ...regions.PV }),
-  );
-  console.log('✓ metrics_euskadi.json (legacy alias)');
-}
 
 // ─────────────────────────────────────────────────────────────────────
 // Catchment metrics (per-muni isochrone overlay)
@@ -920,12 +907,6 @@ for (const [code, entries] of Object.entries(byRegion)) {
 fs.writeFileSync(path.join(OUT, 'metrics_municipios.json'), JSON.stringify(master));
 fs.writeFileSync(path.join(OUT, 'metrics_provincias.json'), JSON.stringify(provincias));
 fs.writeFileSync(path.join(OUT, 'metrics_regions.json'), JSON.stringify(regions));
-if (regions.PV) {
-  fs.writeFileSync(
-    path.join(OUT, 'metrics_euskadi.json'),
-    JSON.stringify({ name: 'Euskadi', ...regions.PV }),
-  );
-}
 fs.writeFileSync(path.join(OUT, 'facilities.json'), JSON.stringify(facilities));
 console.log('\n✓ Final metrics files written (with catchment + opportunity_score)');
 

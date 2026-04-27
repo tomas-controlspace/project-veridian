@@ -178,7 +178,6 @@ export interface ProvinciaMetrics {
 export interface RegionMetrics extends Omit<ProvinciaMetrics, 'provincia_code' | 'provincia_name'> {
   region_code: string;
   region_name: string;
-  name?: string; // legacy field kept for backwards compat with metrics_euskadi.json
 }
 
 // Legacy alias — most consumers should prefer RegionMetrics. Kept until
