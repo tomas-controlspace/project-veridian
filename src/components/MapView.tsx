@@ -12,7 +12,8 @@ import DrawToolbar from './DrawToolbar';
 import AreaNameInput from './AreaNameInput';
 import 'leaflet/dist/leaflet.css';
 
-const BASQUE_BOUNDS: L.LatLngBoundsExpression = [[42.4, -3.5], [43.5, -1.7]];
+// Default bounds — overridden by the active region's bounds via FitToRegion.
+const FALLBACK_BOUNDS: L.LatLngBoundsExpression = [[42.4, -3.5], [43.5, -1.7]];
 
 // Veridian palette constants (mirrors CSS tokens for JS usage)
 const V = {
@@ -31,11 +32,12 @@ function getField(obj: any, key: string): number | null {
   return typeof v === 'number' ? v : null;
 }
 
-function FitBounds() {
+/** Re-fits the map to the active region's bounds whenever currentRegion changes. */
+function FitToRegion({ bounds }: { bounds: L.LatLngBoundsExpression }) {
   const map = useMap();
   useEffect(() => {
-    map.fitBounds(BASQUE_BOUNDS, { padding: [20, 20], maxZoom: 10 });
-  }, [map]);
+    map.fitBounds(bounds, { padding: [20, 20], maxZoom: 10 });
+  }, [map, bounds]);
   return null;
 }
 
@@ -93,7 +95,9 @@ export default function MapView() {
   const {
     level, boundariesMuni, boundariesProv, municipios, provincias,
     selectedMetric, selectedIds, toggleSelection,
-    filteredMunicipios, loading, showIsochrones, showChoropleth, facilities,
+    filteredMunicipios, loading, showIsochrones, showChoropleth,
+    currentRegion, currentRegionConfig, currentRegionFacilities,
+    currentRegionProvincias,
     drawMode, drawnAreas, pendingArea,
   } = useStore();
 
@@ -104,28 +108,33 @@ export default function MapView() {
 
   const geoJsonRef = useRef<L.GeoJSON | null>(null);
 
+  // Filter the combined boundaries.topojson to just the active region.
   const geojsonData = useMemo(() => {
-    if (level === 'municipio') return toGeoJSON(boundariesMuni, 'municipios');
-    if (level === 'provincia') return toGeoJSON(boundariesProv, 'provincias');
-    return toGeoJSON(boundariesProv, 'provincias');
-  }, [level, boundariesMuni, boundariesProv]);
+    const src = level === 'municipio' ? boundariesMuni : boundariesProv;
+    const objName = level === 'municipio' ? 'municipios' : 'provincias';
+    const fc = toGeoJSON(src, objName);
+    return {
+      type: 'FeatureCollection' as const,
+      features: fc.features.filter(f => f.properties?.region_code === currentRegion),
+    };
+  }, [level, boundariesMuni, boundariesProv, currentRegion]);
 
   const { breaks, colors } = useMemo(() => {
     if (level === 'municipio') {
       return getColorScale(filteredMunicipios.map(m => getField(m, selectedMetric)));
     } else if (level === 'provincia') {
-      return getColorScale(Object.values(provincias).map(p => getField(p, selectedMetric)));
+      return getColorScale(currentRegionProvincias.map(p => getField(p, selectedMetric)));
     }
     return { breaks: [], colors: [] };
-  }, [level, filteredMunicipios, provincias, selectedMetric]);
+  }, [level, filteredMunicipios, currentRegionProvincias, selectedMetric]);
 
   const filteredIds = useMemo(() => new Set(filteredMunicipios.map(m => m.ine_code)), [filteredMunicipios]);
 
   const getFeatureId = useCallback((feature: GeoJSON.Feature): string => {
     if (level === 'municipio') return feature.properties?.ine_code || '';
     if (level === 'provincia') return feature.properties?.provincia_code || '';
-    return 'euskadi';
-  }, [level]);
+    return currentRegion;
+  }, [level, currentRegion]);
 
   const getMetricValue = useCallback((feature: GeoJSON.Feature): number | null => {
     const props = feature.properties;
@@ -156,7 +165,9 @@ export default function MapView() {
     const id = getFeatureId(feature);
     const value = getMetricValue(feature);
     const metricDef = METRIC_DEFS.find(m => m.key === selectedMetric);
-    const name = level === 'municipio' ? feature.properties?.name : (feature.properties?.provincia_name || 'Euskadi');
+    const name = level === 'municipio'
+      ? feature.properties?.name
+      : (feature.properties?.provincia_name || currentRegionConfig.name);
 
     const tooltipContent = `<strong>${name}</strong><br/>${metricDef?.label || selectedMetric}: ${formatMetricValue(value, selectedMetric)}`;
     layer.bindTooltip(tooltipContent, { sticky: true, className: 'map-tooltip' });
@@ -174,7 +185,7 @@ export default function MapView() {
     });
   }, [getFeatureId, getMetricValue, selectedMetric, level, guardedToggle, selectedIds]);
 
-  const geoKey = `${level}-${selectedMetric}-${selectedIds.join(',')}-${filteredIds.size}-${drawMode}`;
+  const geoKey = `${currentRegion}-${level}-${selectedMetric}-${selectedIds.join(',')}-${filteredIds.size}-${drawMode}`;
 
   if (loading) {
     return (
@@ -187,7 +198,7 @@ export default function MapView() {
   return (
     <div className="h-full w-full relative">
       <MapContainer
-        bounds={BASQUE_BOUNDS}
+        bounds={currentRegionConfig.bounds as L.LatLngBoundsExpression}
         className="h-full w-full"
         zoomControl={true}
         scrollWheelZoom={true}
@@ -197,7 +208,7 @@ export default function MapView() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>'
           crossOrigin="anonymous"
         />
-        <FitBounds />
+        <FitToRegion bounds={currentRegionConfig.bounds as L.LatLngBoundsExpression} />
         <MapHandleBridge />
         {geojsonData.features.length > 0 && (
           <GeoJSON
@@ -208,13 +219,13 @@ export default function MapView() {
             onEachFeature={onEachFeature}
           />
         )}
-        {showIsochrones && level !== 'euskadi' && selectedIds.map(id => (
+        {showIsochrones && level !== 'region' && selectedIds.map(id => (
           <React.Fragment key={`iso-${id}`}>
             <IsochroneOverlay id={id} level={level} range="20" />
             <IsochroneOverlay id={id} level={level} range="10" />
           </React.Fragment>
         ))}
-        {facilities.map((f, i) => {
+        {currentRegionFacilities.map((f, i) => {
           const isGuarda = f.facility_type === 'guardamuebles';
           const sizeMap: Record<string, number> = { small: 4, medium: 6, large: 8, xlarge: 10, unknown: 4 };
           const radius = sizeMap[f.size_tier || 'unknown'] || 5;
@@ -232,8 +243,8 @@ export default function MapView() {
               }}
             >
               <LTooltip>
-                <strong>{f.operator}</strong> — {f.name}<br />
-                NLA: {f.nla_sqm} m²
+                <strong>{f.operator || f.brand || 'Operator'}</strong> — {f.name}<br />
+                NLA: {f.nla_sqm != null ? `${f.nla_sqm} m²` : 'n/a'}
                 {f.facility_type && <><br />Type: {f.facility_type === 'self_storage' ? 'Self-storage' : 'Guardamuebles'}</>}
                 {f.size_tier && f.size_tier !== 'unknown' && <><br />Size: {f.size_tier}</>}
               </LTooltip>

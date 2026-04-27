@@ -1,4 +1,4 @@
-import type { MunicipioMetrics, ProvinciaMetrics, EuskadiMetrics, DrawnArea } from '@/types';
+import type { MunicipioMetrics, ProvinciaMetrics, RegionMetrics, DrawnArea } from '@/types';
 import { formatValue } from '@/lib/metrics';
 import { computeAreaMetrics, type CustomAreaMetrics } from '@/lib/customAreaMetrics';
 import type { ExportScope, CaseStudyData, TableRow } from './types';
@@ -66,7 +66,10 @@ function buildRows(
 export interface BuildStoreSnapshot {
   municipios: Record<string, MunicipioMetrics>;
   provincias: Record<string, ProvinciaMetrics>;
-  euskadi: EuskadiMetrics | null;
+  /** Active region's aggregate — feeds the deck's third comparison column. */
+  euskadi: RegionMetrics | null;
+  /** Display label for the comparison column (was hard-coded "Euskadi"). */
+  regionLabel?: string;
   drawnAreas: DrawnArea[];
   boundariesMuniGeoJSON: GeoJSON.FeatureCollection | null;
 }
@@ -89,6 +92,7 @@ export function buildCaseStudyData(
   snap: BuildStoreSnapshot,
 ): CaseStudyData {
   const euskadiRec = snap.euskadi as unknown as AnyAreaRecord | null;
+  const regionLabel = snap.regionLabel || 'Euskadi';
 
   if (scope.kind === 'municipio') {
     const muni = snap.municipios[scope.ineCode];
@@ -106,7 +110,7 @@ export function buildCaseStudyData(
       s2Title: `${muni.name}’s 10-min Catchment Area`,
       col1Label: muni.name,
       col2Label: 'Catchment',
-      col3Label: 'Euskadi',
+      col3Label: regionLabel,
       catchmentMunis,
       popRows:     buildRows(POP_SPEC,     muniRec, muniRec, euskadiRec, false),
       housingRows: buildRows(HOUSING_SPEC, muniRec, muniRec, euskadiRec, false),
@@ -126,7 +130,7 @@ export function buildCaseStudyData(
       s2Title: `${prov.provincia_name} Overview`,
       col1Label: prov.provincia_name,
       col2Label: '',
-      col3Label: 'Euskadi',
+      col3Label: regionLabel,
       catchmentMunis: top.map(name => ({ name })),
       popRows:     buildRows(POP_SPEC,     provRec, null, euskadiRec, false),
       housingRows: buildRows(HOUSING_SPEC, provRec, null, euskadiRec, false),
