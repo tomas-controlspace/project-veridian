@@ -79,20 +79,20 @@ function makeColumns(level: string) {
 }
 
 export default function RankingTable() {
-  const { level, filteredMunicipios, provincias, selectedIds, toggleSelection } = useStore();
+  const { level, filteredMunicipios, currentRegionProvincias, selectedIds, toggleSelection } = useStore();
   const [sorting, setSorting] = useState<SortingState>([{ id: 'pop_2025', desc: true }]);
 
   const data = useMemo(() => {
     if (level === 'municipio') {
       return filteredMunicipios as unknown as Record<string, unknown>[];
     } else if (level === 'provincia') {
-      return Object.values(provincias).map(p => ({
+      return currentRegionProvincias.map(p => ({
         ...p,
         name: p.provincia_name,
       })) as unknown as Record<string, unknown>[];
     }
     return [];
-  }, [level, filteredMunicipios, provincias]);
+  }, [level, filteredMunicipios, currentRegionProvincias]);
 
   const columns = useMemo(() => makeColumns(level), [level]);
 

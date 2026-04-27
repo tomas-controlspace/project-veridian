@@ -85,13 +85,15 @@ function CompTable({
   rows,
   areas,
   areaNames,
-  euskadiData,
+  regionData,
+  regionLabel,
 }: {
   title: string;
   rows: CompRow[];
   areas: (Record<string, unknown> | null)[];
   areaNames: string[];
-  euskadiData: Record<string, unknown> | null;
+  regionData: Record<string, unknown> | null;
+  regionLabel: string;
 }) {
   return (
     <div>
@@ -115,13 +117,13 @@ function CompTable({
                 </th>
               ))}
               <th className="text-right py-1.5 pl-2 min-w-[100px]" style={{ color: '#5A5D56', fontWeight: 500, fontSize: 13 }}>
-                Euskadi
+                {regionLabel}
               </th>
             </tr>
           </thead>
           <tbody>
             {rows.map(row => {
-              const euskadiVal = getVal(euskadiData, row.key);
+              const euskadiVal = getVal(regionData, row.key);
               return (
                 <tr key={row.key} style={{ borderBottom: '0.5px solid var(--neutral-100)' }}>
                   <td className="py-1.5 pr-4 whitespace-nowrap" style={{ color: '#5A5D56', fontSize: 13 }}>
@@ -162,12 +164,14 @@ function CatchmentDualTable({
   rows,
   areas,
   areaNames,
-  euskadiData,
+  regionData,
+  regionLabel,
 }: {
   rows: CompRow[];
   areas: (Record<string, unknown> | null)[];
   areaNames: string[];
-  euskadiData: Record<string, unknown> | null;
+  regionData: Record<string, unknown> | null;
+  regionLabel: string;
 }) {
   return (
     <div>
@@ -194,12 +198,12 @@ function CatchmentDualTable({
                 </th>
               ))}
               <th colSpan={2} className="text-center py-1 px-1" style={{ color: '#5A5D56', fontWeight: 500, fontSize: 12, borderBottom: 'none' }}>
-                Euskadi
+                {regionLabel}
               </th>
             </tr>
             {/* Sub-header row: 10 min / 20 min */}
             <tr style={{ borderBottom: '1px solid var(--neutral-200)' }}>
-              {[...areaNames, 'Euskadi'].map((_, i) => (
+              {[...areaNames, regionLabel].map((_, i) => (
                 <React.Fragment key={i}>
                   <th className="text-right px-1.5 py-1" style={{ color: '#E8913A', fontWeight: 600, fontSize: 10, minWidth: 55 }}>
                     10 min
@@ -214,8 +218,8 @@ function CatchmentDualTable({
           <tbody>
             {rows.map(row => {
               const key20 = toKey20(row.key);
-              const euskadi10 = getVal(euskadiData, row.key);
-              const euskadi20 = getVal(euskadiData, key20);
+              const euskadi10 = getVal(regionData, row.key);
+              const euskadi20 = getVal(regionData, key20);
               return (
                 <tr key={row.key} style={{ borderBottom: '0.5px solid var(--neutral-100)' }}>
                   <td className="py-1.5 pr-4 whitespace-nowrap" style={{ color: '#5A5D56', fontSize: 12 }}>
@@ -255,7 +259,7 @@ function CatchmentDualTable({
 // ── Main component ──────────────────────────────────────────────────
 
 export default function ComparisonPanel() {
-  const { selectedIds, municipios, provincias, euskadi, level, clearSelection } = useStore();
+  const { selectedIds, municipios, provincias, currentRegionMetrics, currentRegionConfig, level, clearSelection } = useStore();
 
   const { areas, names } = useMemo(() => {
     const areaList: (Record<string, unknown> | null)[] = [];
@@ -280,7 +284,8 @@ export default function ComparisonPanel() {
     return { areas: areaList, names: nameList };
   }, [selectedIds, municipios, provincias, level]);
 
-  const euskadiData = euskadi as unknown as Record<string, unknown> | null;
+  const regionData = currentRegionMetrics as unknown as Record<string, unknown> | null;
+  const regionLabel = currentRegionConfig.name;
 
   const hasNLA = areas.some(a => a && (a.facility_count != null || a.nla_sqm != null));
   const hasCatchment = areas.some(a => a && (a.catchment_pop != null || a.catch20_pop != null));
@@ -308,13 +313,13 @@ export default function ComparisonPanel() {
         </button>
       </div>
 
-      <CompTable title="Population & Economy" rows={POPULATION_ROWS} areas={areas} areaNames={names} euskadiData={euskadiData} />
-      <CompTable title="Housing Market" rows={HOUSING_ROWS} areas={areas} areaNames={names} euskadiData={euskadiData} />
+      <CompTable title="Population & Economy" rows={POPULATION_ROWS} areas={areas} areaNames={names} regionData={regionData} regionLabel={regionLabel} />
+      <CompTable title="Housing Market" rows={HOUSING_ROWS} areas={areas} areaNames={names} regionData={regionData} regionLabel={regionLabel} />
       {hasNLA && (
-        <CompTable title="Self-Storage Market" rows={STORAGE_ROWS} areas={areas} areaNames={names} euskadiData={euskadiData} />
+        <CompTable title="Self-Storage Market" rows={STORAGE_ROWS} areas={areas} areaNames={names} regionData={regionData} regionLabel={regionLabel} />
       )}
       {hasCatchment && (
-        <CatchmentDualTable rows={CATCHMENT_ROWS} areas={areas} areaNames={names} euskadiData={euskadiData} />
+        <CatchmentDualTable rows={CATCHMENT_ROWS} areas={areas} areaNames={names} regionData={regionData} regionLabel={regionLabel} />
       )}
     </div>
   );

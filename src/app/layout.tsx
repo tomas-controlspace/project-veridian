@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Project Veridian — Control Space",
-  description: "Self-storage market analysis for Euskadi, Spain — Control Space Storage",
+  description: "Self-storage market analysis for Spain (Euskadi + Málaga) — Control Space Storage",
 };
 
 export default function RootLayout({

@@ -89,10 +89,10 @@ function FacilitiesTable({ facilities, areaName, showZone = false, color }: { fa
                   {f.name}
                 </td>
                 <td className="py-1.5 pr-2 whitespace-nowrap" style={{ color: '#5A5D56', fontSize: 12 }}>
-                  {f.operator}
+                  {f.operator || f.brand || '—'}
                 </td>
                 <td className="text-right py-1.5 px-2 font-mono" style={{ color: '#2A2D26', fontWeight: 500, fontSize: 12, fontVariantNumeric: 'tabular-nums' }}>
-                  {f.nla_sqm > 0 ? formatValue(f.nla_sqm, 'number', 0) : '—'}
+                  {f.nla_sqm != null && f.nla_sqm > 0 ? formatValue(f.nla_sqm, 'number', 0) : '—'}
                 </td>
                 {showZone && f.zone && (
                   <td className="text-center py-1.5 px-2">
@@ -155,7 +155,8 @@ function ModeToggle({ mode, onChange }: { mode: 'catchment' | 'custom'; onChange
 
 export default function FacilitiesPanel() {
   const {
-    selectedIds, municipios, level, facilities,
+    selectedIds, municipios, level,
+    currentRegionFacilities: facilities,
     facilitiesMode, setFacilitiesMode, drawnAreas,
   } = useStore();
 

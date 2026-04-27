@@ -1,10 +1,22 @@
-export type GeoLevel = 'municipio' | 'provincia' | 'euskadi';
+export type GeoLevel = 'municipio' | 'provincia' | 'region';
+
+// Region (CCAA-equivalent) — one record per top-level geography in the
+// dataset. Currently 'PV' (Euskadi) and 'AN' (Málaga, will become
+// Andalucía when other AN provincias are added).
+export interface RegionConfig {
+  code: string; // INE CCAA code: 'PV', 'AN', ...
+  name: string; // 'Euskadi', 'Málaga'
+  bounds: [[number, number], [number, number]]; // [[south, west], [north, east]] for Leaflet fitBounds
+  default_metric?: string;
+}
 
 export interface MunicipioMetrics {
   ine_code: string;
   name: string;
   provincia_code: string;
   provincia_name: string;
+  region_code: string;
+  region_name: string;
   area_km2: number;
   pop_2025: number;
   pop_2024: number;
@@ -86,6 +98,8 @@ export interface MunicipioMetrics {
 export interface ProvinciaMetrics {
   provincia_code: string;
   provincia_name: string;
+  region_code: string;
+  region_name: string;
   pop_2025: number;
   pop_2024: number;
   area_km2: number;
@@ -161,11 +175,17 @@ export interface ProvinciaMetrics {
   catch20_opportunity_score: number | null;
 }
 
-export interface EuskadiMetrics extends Omit<ProvinciaMetrics, 'provincia_code' | 'provincia_name'> {
-  name: string;
+export interface RegionMetrics extends Omit<ProvinciaMetrics, 'provincia_code' | 'provincia_name'> {
+  region_code: string;
+  region_name: string;
+  name?: string; // legacy field kept for backwards compat with metrics_euskadi.json
 }
 
-export type AreaMetrics = MunicipioMetrics | ProvinciaMetrics | EuskadiMetrics;
+// Legacy alias — most consumers should prefer RegionMetrics. Kept until
+// downstream code (PPTX export, comparison panels) migrates fully.
+export type EuskadiMetrics = RegionMetrics;
+
+export type AreaMetrics = MunicipioMetrics | ProvinciaMetrics | RegionMetrics;
 
 export interface MetricDef {
   key: string;

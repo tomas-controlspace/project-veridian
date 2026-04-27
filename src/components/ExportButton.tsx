@@ -53,7 +53,10 @@ export default function ExportButton() {
     const snap = {
       municipios: store.municipios,
       provincias: store.provincias,
-      euskadi: store.euskadi,
+      // The active region's aggregate is what the PPTX uses as its "comparison
+      // anchor" column (was hard-coded to 'Euskadi' before multi-region).
+      euskadi: store.currentRegionMetrics,
+      regionLabel: store.currentRegionConfig.name,
       drawnAreas: store.drawnAreas,
       boundariesMuniGeoJSON: store.boundariesMuni
         ? (topojsonClient.feature(

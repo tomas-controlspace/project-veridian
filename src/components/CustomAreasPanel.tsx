@@ -73,12 +73,14 @@ function CompTable({
   title,
   rows,
   areas,
-  euskadiData,
+  regionData,
+  regionLabel,
 }: {
   title: string;
   rows: CompRow[];
   areas: { area: DrawnArea; metrics: CustomAreaMetrics }[];
-  euskadiData: Record<string, unknown> | null;
+  regionData: Record<string, unknown> | null;
+  regionLabel: string;
 }) {
   return (
     <div>
@@ -121,13 +123,13 @@ function CompTable({
                 </th>
               ))}
               <th className="text-right py-1.5 pl-2 min-w-[100px]" style={{ color: '#5A5D56', fontWeight: 500, fontSize: 13 }}>
-                Euskadi
+                {regionLabel}
               </th>
             </tr>
           </thead>
           <tbody>
             {rows.map(row => {
-              const euskadiVal = getVal(euskadiData, row.key);
+              const euskadiVal = getVal(regionData, row.key);
               return (
                 <tr key={row.key} style={{ borderBottom: '0.5px solid var(--neutral-100)' }}>
                   <td className="py-1.5 pr-4 whitespace-nowrap" style={{ color: '#5A5D56', fontSize: 13 }}>
@@ -166,7 +168,7 @@ function CompTable({
 
 export default function CustomAreasPanel() {
   const {
-    drawnAreas, municipios, boundariesMuni, euskadi, clearDrawnAreas,
+    drawnAreas, municipios, boundariesMuni, currentRegionMetrics, currentRegionConfig, clearDrawnAreas,
   } = useStore();
 
   // Convert topojson boundaries → geojson once (memoized on boundariesMuni identity)
@@ -192,7 +194,8 @@ export default function CustomAreasPanel() {
     }));
   }, [drawnAreas, municipios, boundariesGeoJSON]);
 
-  const euskadiData = euskadi as unknown as Record<string, unknown> | null;
+  const regionData = currentRegionMetrics as unknown as Record<string, unknown> | null;
+  const regionLabel = currentRegionConfig.name;
 
   if (drawnAreas.length === 0) {
     return (
@@ -253,19 +256,22 @@ export default function CustomAreasPanel() {
         title="Population & Economy"
         rows={POPULATION_ROWS}
         areas={areasWithMetrics}
-        euskadiData={euskadiData}
+        regionData={regionData}
+        regionLabel={regionLabel}
       />
       <CompTable
         title="Housing Market"
         rows={HOUSING_ROWS}
         areas={areasWithMetrics}
-        euskadiData={euskadiData}
+        regionData={regionData}
+        regionLabel={regionLabel}
       />
       <CompTable
         title="Self-Storage Market"
         rows={STORAGE_ROWS}
         areas={areasWithMetrics}
-        euskadiData={euskadiData}
+        regionData={regionData}
+        regionLabel={regionLabel}
       />
 
       <p className="text-xs pt-2" style={{ color: '#8A8D86' }}>

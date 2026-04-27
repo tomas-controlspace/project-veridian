@@ -2,9 +2,9 @@
 
 ## What This Is
 
-An interactive dashboard for analyzing the self-storage market in the Basque Country (Euskadi), Spain. Built for **Control Space**, a self-storage consultancy. Deployed on Vercel via GitHub (`tomas-controlspace/project-veridian`).
+An interactive dashboard for analyzing the self-storage market in **Spain** — currently covers two regions: **Euskadi** (País Vasco, 252 municipios) and **Málaga** (single-province subset of Andalucía, 103 municipios). The data model is multi-region from the ground up; new CCAA / provincial subsets plug in via a single REGIONS config block. Built for **Control Space**, a self-storage consultancy. Deployed on Vercel via GitHub (`tomas-controlspace/project-veridian`).
 
-Users can compare municipios, provincias, or all of Euskadi across demographics, housing, and self-storage metrics. The app shows choropleth maps, catchment areas (10-min and 20-min drive-time isochrones), facility locations, and ranking tables.
+Users can compare municipios, provincias, or the active region's aggregate across demographics, housing, and self-storage metrics. The app shows choropleth maps, catchment areas (10-min and 20-min drive-time isochrones), facility locations, and ranking tables. A region selector in the header switches the entire UI context between regions; opportunity scores are rank-normalised globally across all regions so the choropleth puts every muni on the same scale.
 
 ## Tech Stack
 
@@ -65,32 +65,50 @@ scripts/
   render-sample.mjs        # QA: render template with hand-built Bilbao data → /tmp/bilbao-sample.pptx
   inject-live-map.mjs      # QA: swap the placeholder image in a sample pptx with a live-captured PNG
 
-data/es/                   # Source data (NOT served to browser)
-  master_municipios.json   # Raw metrics per municipio
-  boundaries_municipios.geojson  # Full-resolution boundaries
+data/es/                            # Source data (NOT served to browser)
+  master_municipios.json             # Euskadi master (252 munis)
+  boundaries_municipios.geojson      # Euskadi full-resolution boundaries
   facilities/basque_facilities.json  # 53 storage facilities
-  isochrones/              # 10-min isochrone GeoJSON files (239 municipios + 3 provincias)
-  isochrones_20/           # 20-min isochrone GeoJSON files
+  isochrones/                        # Euskadi 10-min isochrone GeoJSON
+  isochrones_20/                     # Euskadi 20-min isochrone GeoJSON
+  malaga/                            # Málaga staging (mirrors Euskadi shape — see data/es/malaga/README.md)
+    master_municipios_malaga.json
+    boundaries_municipios_malaga.geojson
+    facilities/malaga_facilities.json
+    isochrones/, isochrones_20/
+  master_municipios_pre_censo2021.json    # Reversal snapshot for housing migration
+  master_municipios_pre_price_mivau.json  # Reversal snapshot for price migration
 
-public/data/               # Build output (served to browser via fetch)
-  metrics_municipios.json  # All 252 municipios with ~80 fields each
-  metrics_provincias.json  # 3 provincias
-  metrics_euskadi.json     # Region aggregate
-  boundaries_municipios.topojson  # Simplified boundaries
-  boundaries_provincias.topojson
-  facilities.json          # Facility list for map markers (with facility_type and size_tier)
-  isochrones/              # Precision-reduced 10-min isochrone GeoJSON
-  isochrones_20/           # Precision-reduced 20-min isochrone GeoJSON
+public/data/               # Build output (served to browser via fetch). UNION of all regions.
+  metrics_municipios.json  # All 355 munis (252 Euskadi + 103 Málaga), ~80 fields each
+  metrics_provincias.json  # 4 provincias (Álava/Bizkaia/Gipuzkoa + Málaga)
+  metrics_regions.json     # NEW: one record per region (PV / AN). Replaces metrics_euskadi.json conceptually.
+  metrics_euskadi.json     # LEGACY alias — just the PV region record. Frontend doesn't fetch it any more; kept for back-compat.
+  boundaries_municipios.topojson  # Combined boundaries with region_code per feature
+  boundaries_provincias.topojson  # Combined provincia boundaries with region_code
+  facilities.json          # Combined facility list (152 sites: 53 + 99) with facility_type + size_tier
+  isochrones/, isochrones_20/  # Per-muni geojson, combined across regions
 ```
 
 ## Data Pipeline
 
-Source data does NOT auto-update when changed. The pipeline is:
+Source data does NOT auto-update when changed. The pipeline is multi-region — one config block per region at the top of `scripts/prepare-data.js`:
 
-1. Edit source files in `data/es/`
+```js
+const REGIONS = [
+  { code: 'PV', name: 'Euskadi', master_path: 'data/es/master_municipios.json', ... },
+  { code: 'AN', name: 'Málaga',  master_path: 'data/es/malaga/master_municipios_malaga.json', ... },
+];
+```
+
+Adding a new region = adding one entry to that array (paths to master JSON, boundaries GeoJSON, facilities JSON, two isochrone dirs, and the region's INE provincia codes).
+
+Pipeline flow:
+
+1. Edit source files in `data/es/` (or `data/es/<region>/`)
 2. Run `node scripts/prepare-data.js`
-3. This writes processed files to `public/data/`
-4. The app fetches from `public/data/` at runtime
+3. Pipeline loads each region, unions into combined collections, runs the same supply / catchment / opportunity pipeline (catchment per-region, opportunity GLOBAL), and writes combined `public/data/`
+4. The app fetches from `public/data/` at runtime and filters to the user's selected region
 
 To regenerate isochrones (only needed if adding new municipios or changing drive times):
 ```
@@ -105,7 +123,8 @@ ORS free tier: 40 req/min, 2000/day. Scripts handle rate limiting and resume fro
 
 ### State Management
 All state lives in `src/lib/store.tsx` via React Context (`useStore()` hook). No external state library. Key state includes:
-- `level`: 'municipio' | 'provincia' | 'euskadi'
+- `currentRegion`: 'PV' | 'AN' — the active region (top-level CCAA selector). Switching it clears `selectedIds`, `searchQuery`, `filters` and triggers a map refit to the region's bounds. Default 'PV'.
+- `level`: 'municipio' | 'provincia' | 'region' — was `'euskadi'`; renamed to be region-agnostic. The 'region' level shows the active region's aggregate (was the singleton "Euskadi" view).
 - `selectedIds`: up to 4 selected areas for comparison
 - `selectedMetric`: which metric colors the choropleth
 - `filters`: population/income/price/rent range filters
@@ -115,7 +134,15 @@ All state lives in `src/lib/store.tsx` via React Context (`useStore()` hook). No
 - `showChoropleth`: toggle choropleth layer visibility
 - `facilitiesMode`: 'catchment' | 'custom'
 
-Area-palette constants: `AREA_COLORS` (purple `#7C3AED`, teal `#2EC4A0`, amber `#E8913A`, pink `#E05A8B`) and `MAX_DRAWN_AREAS = 4` are exported from the store.
+Area-palette constants: `AREA_COLORS` (purple `#7C3AED`, teal `#2EC4A0`, amber `#E8913A`, pink `#E05A8B`) and `MAX_DRAWN_AREAS = 4` are exported from the store. The `REGIONS` array (region code, display name, Leaflet bounds) is also exported.
+
+**Region-scoped derivations** (most components consume these, not the raw maps):
+- `allMunicipiosList`, `filteredMunicipios`, `currentRegionProvincias`, `currentRegionFacilities` — already filtered to `currentRegion`.
+- `currentRegionMetrics` — the active region's aggregate (replaces the old `euskadi` singleton).
+- `currentRegionConfig` — bounds, name, etc.
+- `allMunicipiosGlobal` — escape hatch for components that need every muni regardless of region (rare).
+- `regions` — full map of region records, keyed by region code.
+- `euskadi` — legacy alias pointing at `currentRegionMetrics`. New code should prefer `currentRegionMetrics`.
 
 ### Catchment Areas
 Each municipio has two catchment zones computed at build time:
@@ -141,7 +168,7 @@ Computed at build time in `scripts/prepare-data.js`:
 - Population growth: 10%
 - % rented dwellings: 10%
 
-Only municipios with population >= 1,000 receive a score (153 of 252). The default choropleth metric is `opportunity_score`.
+Only municipios with population >= 1,000 receive a score (228 of 355 across both regions). Rank normalization is **GLOBAL across all regions** — Málaga and Euskadi munis compete on the same axis. The default choropleth metric is `opportunity_score`.
 
 **Post-scoring catchment patch**: After scoring all municipios, the pipeline loops through `catch_ine_codes` and `catch20_ine_codes` to recompute `catch_opportunity_score` and `catch20_opportunity_score` as population-weighted averages of the now-scored municipios.
 
