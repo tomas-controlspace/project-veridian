@@ -85,26 +85,59 @@ function main() {
     withBinHousing = 0;
   const missingAnyField = {};
 
+  // First pass: assign each muni a housing source. Bin-fallback munis
+  // need their `total_dwellings` pro-rated by population (the bin record's
+  // total_dwellings_2021 is the SUM across all munis in that bin — applying
+  // it directly to every muni would massively over-count).
+  const housingAssignment = {}; // code → { rec, source, binKey, binTotal }
+  const binPopSums = {}; // binKey → sum of pop_2025 of munis assigned to it
+
+  for (const [code, demo] of Object.entries(demographics)) {
+    if (housing[code]) {
+      housingAssignment[code] = {
+        rec: housing[code],
+        source: 'muni_microdata',
+        binKey: null,
+        binTotal: null,
+      };
+      withMuniHousing++;
+    } else {
+      const bin = pickHousingBin(demo.pop_2025);
+      if (bin && housing[bin.key]) {
+        housingAssignment[code] = {
+          rec: housing[bin.key],
+          source: `provincial_bin_${bin.band}`,
+          binKey: bin.key,
+          binTotal: housing[bin.key].total_dwellings_2021,
+        };
+        binPopSums[bin.key] = (binPopSums[bin.key] || 0) + (demo.pop_2025 || 0);
+        withBinHousing++;
+      } else {
+        housingAssignment[code] = { rec: null, source: 'unavailable', binKey: null, binTotal: null };
+      }
+    }
+  }
+
   for (const [code, demo] of Object.entries(demographics)) {
     const area = areaByCode[code] || null;
     const density =
       demo.pop_2025 && area ? Math.round((demo.pop_2025 / area) * 10) / 10 : null;
 
-    // Housing pick
-    let housingRec = null,
-      housingSource = null;
-    if (housing[code]) {
-      housingRec = housing[code];
-      housingSource = 'muni_microdata';
-      withMuniHousing++;
-    } else {
-      const bin = pickHousingBin(demo.pop_2025);
-      if (bin && housing[bin.key]) {
-        housingRec = housing[bin.key];
-        housingSource = `provincial_bin_${bin.band}`;
-        withBinHousing++;
+    const a = housingAssignment[code] || { rec: null, source: 'unavailable', binKey: null };
+    const housingRec = a.rec;
+    const housingSource = a.source;
+    // For bin-fallback munis, pro-rate the bin's total dwellings by population
+    // share. For muni-microdata munis, use the muni's own count directly.
+    let muniDwellings = null;
+    if (housingRec) {
+      if (a.binKey) {
+        const binPopTotal = binPopSums[a.binKey] || 0;
+        muniDwellings =
+          binPopTotal > 0 && demo.pop_2025
+            ? Math.round((a.binTotal * demo.pop_2025) / binPopTotal)
+            : null;
       } else {
-        housingSource = 'unavailable';
+        muniDwellings = housingRec.total_dwellings_2021 ?? null;
       }
     }
 
@@ -136,12 +169,12 @@ function main() {
       avg_available_income: incomeRec.avg_available_income ?? null,
 
       // Housing (2021, Censo microdata)
-      total_dwellings: housingRec?.total_dwellings_2021 ?? null,
+      total_dwellings: muniDwellings,
       pct_rented: housingRec?.pct_rented ?? null,
       pct_owned: housingRec?.pct_owned ?? null,
       pct_apartment: housingRec?.pct_apartment ?? null,
       pct_house: housingRec?.pct_house ?? null,
-      total_family_dwellings: housingRec?.total_dwellings_2021 ?? null,
+      total_family_dwellings: muniDwellings,
       avg_surface_m2: housingRec?.avg_surface_m2 ?? null,
       housing_source: housingSource,
 
