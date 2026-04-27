@@ -11,10 +11,15 @@
     "method": "Multi-query keyword search across Málaga province sub-regions; hybrid moving/storage operators included where types contain 'storage'; pure luggage-storage and pure moving-company listings excluded."
   },
   "schema_notes": {
-    "nla_m2": "Net Lettable Area in square metres. NULL pending manual research per Project Veridian methodology. Populate before computing NLA-per-capita indicator.",
     "municipio": "LAU-level assignment derived from postal code / address; use as join key against GISCO LAU 2024 boundaries.",
     "brand": "Chain operator where identifiable, otherwise 'Independent'. Useful for competitive concentration analysis.",
-    "place_id": "Google Place ID — stable identifier for re-fetching enriched data."
+    "place_id": "Google Place ID — stable identifier for re-fetching enriched data.",
+    "nla_sqm": "Net Lettable Area in m². Field renamed from nla_m2 (2026-04-27 NLA research merge) to match Euskadi schema. Direct value when operator publishes it; otherwise constructed_area_sqm × 0.70. See nla_estimated flag and nla_confidence.",
+    "constructed_area_sqm": "Gross constructed floor area in m² (superficie construida) — primarily from Catastro.",
+    "nla_confidence": "Researcher's confidence in the NLA value: high (operator-published), medium (Catastro × 0.70), low (footprint estimate), none (no source found).",
+    "nla_source_url": "URL of the primary source consulted by the researcher.",
+    "nla_notes": "Researcher notes — Referencia Catastral, # units, special cases.",
+    "nla_estimated": "true if nla_sqm was derived from constructed_area × 0.70 rather than published directly."
   },
   "summary": {
     "facility_count": 99,
@@ -56,7 +61,10 @@
       "Antequera (pop ~40k, major inland logistics hub): zero true self-storage facilities; only moving companies found. Likely largest single white-space opportunity in the province.",
       "A-357 Cártama–Álora corridor: only two facilities (both Islatrans) across ~15 km.",
       "East of Nerja (Torrox, Frigiliana, La Herradura): no facilities found."
-    ]
+    ],
+    "nla_total_sqm": 59391.4,
+    "constructed_area_total_sqm": 70149.2,
+    "nla_research_completed": "2026-04-27"
   },
   "facilities": [
     {
@@ -73,8 +81,13 @@
       "website": "https://www.trasterosplus.es/alquiler-trasteros/mijas-fuengirola/",
       "rating": 4.8,
       "rating_count": 1123,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 867.3,
+      "constructed_area_sqm": 1239.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?via=VIRGEN@DE@FATIMA&tipoVia=CL&numero=1&kilometro=&bloque=&escalera=&planta=&puerta=&DescProv=MALAGA&prov=29&muni=70&DescMuni=MIJAS&TipUR=U&codvia=429&comVia=VIRGEN%20DE%20FATIMA%20(CALLE)&pest=urbana&from=OVCBusqueda&nomusu=%20&tipousu=&ZV=NO&ZR=NO&anyoZV=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-002",
@@ -90,8 +103,13 @@
       "website": "https://www.trasterosplus.es/alquiler-trasteros/mijas-fuengirola/",
       "rating": 4.9,
       "rating_count": 63,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 72.8,
+      "constructed_area_sqm": 104.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=4053212UF5445S0001PW&RCCompleta=&via=VIEJO@DE@COIN&tipoVia=CM&numero=14&kilometro=&bloque=&escalera=&planta=&puerta=&DescProv=MALAGA&prov=29&muni=70&DescMuni=MIJAS&TipUR=U&codvia=158&comVia=VIEJO%20DE%20COIN%20(CAMINO,%20CARMEN)&pest=urbana&from=OVCBusqueda&del=29&mun=70",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-003",
@@ -107,8 +125,13 @@
       "website": "https://www.keepy.es/alquiler-de-trasteros-fuengirola.php",
       "rating": 4.7,
       "rating_count": 43,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 333.2,
+      "constructed_area_sqm": 476.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=3654218UF5435S0001IZ&esBice=&RCBice1=&RCBice2=&DenoBice=&from=OVCBusqueda&pest=rc&RCCompleta=3654218UF5435S&final=&del=29&mun=70",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-004",
@@ -124,8 +147,13 @@
       "website": null,
       "rating": 4.9,
       "rating_count": 26,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 462.0,
+      "constructed_area_sqm": 660.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=3963201&RC2=UF5436S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=3963201UF5436S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Assumed 1/4th of plant bj commercial sections",
+      "nla_estimated": true
     },
     {
       "id": "mlg-005",
@@ -141,8 +169,13 @@
       "website": "https://www.eco-storage.es/",
       "rating": 5.0,
       "rating_count": 31,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": null,
+      "constructed_area_sqm": null,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=0674101&RC2=UF5407S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=0674101UF5407S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Doesn't seem like the right building. Can't estimate.",
+      "nla_estimated": false
     },
     {
       "id": "mlg-006",
@@ -158,8 +191,13 @@
       "website": "http://www.cubox.com.es/",
       "rating": 5.0,
       "rating_count": 13,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 425.6,
+      "constructed_area_sqm": 608.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=70&UrbRus=U&RefC=2356111UF5425N0001IO&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "Whole building. Google Maps is in the wrong spot.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-007",
@@ -175,8 +213,13 @@
       "website": null,
       "rating": null,
       "rating_count": null,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": null,
+      "constructed_area_sqm": null,
+      "nla_confidence": "low",
+      "nla_source_url": null,
+      "nla_notes": "Can't make an estimation. Can't find the building",
+      "nla_estimated": false
     },
     {
       "id": "mlg-008",
@@ -192,8 +235,13 @@
       "website": "https://www.selfstoragecostadelsol.com/",
       "rating": 4.7,
       "rating_count": 101,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 1060.5,
+      "constructed_area_sqm": 1515.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=25&UrbRus=U&RefC=3223303UF6532S0001PP&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-009",
@@ -209,8 +257,13 @@
       "website": "https://www.islatrans.es/trasteros-en-torremolinos/",
       "rating": 5.0,
       "rating_count": 845,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 1029.0,
+      "constructed_area_sqm": 1470.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=5023301&RC2=UF6552S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=5023301UF6552S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Assumed it was the lowest commercial area available in the building.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-010",
@@ -226,8 +279,13 @@
       "website": "https://www.trasterosplus.es/alquiler-trasteros/el-pinillo/",
       "rating": 5.0,
       "rating_count": 91,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 3987.9,
+      "constructed_area_sqm": 5697.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=103&UrbRus=U&RefC=4730207UF6543S0001SI&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-011",
@@ -243,8 +301,13 @@
       "website": "http://www.selfstoragecarihuela.com/",
       "rating": 3.3,
       "rating_count": 4,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 270.0,
+      "constructed_area_sqm": null,
+      "nla_confidence": "high",
+      "nla_source_url": "https://beheer.myyounit.nl/checkout/self-storage-carihuela/6R5bvjfG?language=es",
+      "nla_notes": "Used Claude and their website floor plan to calculate NLA.",
+      "nla_estimated": false
     },
     {
       "id": "mlg-012",
@@ -260,8 +323,13 @@
       "website": "http://www.trasteroz.com/",
       "rating": 5.0,
       "rating_count": 17,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 100.0,
+      "constructed_area_sqm": null,
+      "nla_confidence": "high",
+      "nla_source_url": "https://trasteroz.com/en/",
+      "nla_notes": "Their website mentions: Más de 50 trasteros de reciente construcción & Trasteros de hasta 4,50m2.",
+      "nla_estimated": false
     },
     {
       "id": "mlg-013",
@@ -277,8 +345,13 @@
       "website": "http://trasteroz.com/",
       "rating": 4.7,
       "rating_count": 25,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 240.0,
+      "constructed_area_sqm": null,
+      "nla_confidence": "high",
+      "nla_source_url": "https://trasteroz.com/en/",
+      "nla_notes": "Their website mentions: More than 80 recently built storage units & Storage units of up to 9.40 m2.",
+      "nla_estimated": false
     },
     {
       "id": "mlg-014",
@@ -294,8 +367,13 @@
       "website": "https://www.trasteroz.com/",
       "rating": 5.0,
       "rating_count": 1,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 60.0,
+      "constructed_area_sqm": null,
+      "nla_confidence": "high",
+      "nla_source_url": "https://trasteroz.com/en/",
+      "nla_notes": "Their website mentions: More than 30 recently built storage units & Storage units of up to 3.70m2",
+      "nla_estimated": false
     },
     {
       "id": "mlg-015",
@@ -311,8 +389,13 @@
       "website": "https://easyboxtrasteros.es/alquiler-trasteros-torremolinos/",
       "rating": null,
       "rating_count": null,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 1125.0,
+      "constructed_area_sqm": null,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://easyboxtrasteros.es/alquiler-trasteros-torremolinos/",
+      "nla_notes": "Their websited mentions units up to 25m and at least 225 units.",
+      "nla_estimated": false
     },
     {
       "id": "mlg-016",
@@ -328,8 +411,13 @@
       "website": "https://easyboxtrasteros.es/alquiler-trasteros-gamonal/",
       "rating": 5.0,
       "rating_count": 428,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 1788.5,
+      "constructed_area_sqm": 2555.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=3512302&RC2=UF6531S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=3512302UF6531S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-017",
@@ -345,8 +433,13 @@
       "website": "https://easyboxtrasteros.es/alquiler-trasteros-retamar/",
       "rating": 4.7,
       "rating_count": 20,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 875.0,
+      "constructed_area_sqm": 1250.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=7602309&RC2=UF5570S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=7602309UF5570S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Downloaded the building floor plan and considered the two basements as storage.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-018",
@@ -362,8 +455,13 @@
       "website": "https://www.trasterosbenalmadena.es/",
       "rating": 5.0,
       "rating_count": 42,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 370.3,
+      "constructed_area_sqm": 529.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=2822202&RC2=UF6522S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=2822202UF6522S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "All almacen in the building",
+      "nla_estimated": true
     },
     {
       "id": "mlg-019",
@@ -379,8 +477,13 @@
       "website": "https://www.trasterosplus.es/alquiler-trasteros/juan-xxiii/",
       "rating": 4.8,
       "rating_count": 2147,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 3000.0,
+      "constructed_area_sqm": null,
+      "nla_confidence": "high",
+      "nla_source_url": "Albano",
+      "nla_notes": null,
+      "nla_estimated": false
     },
     {
       "id": "mlg-020",
@@ -396,8 +499,13 @@
       "website": "https://www.keepy.es/alquiler-de-trasteros-malaga.php",
       "rating": 4.8,
       "rating_count": 147,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 1282.4,
+      "constructed_area_sqm": 1832.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=900&UrbRus=U&RefC=8535103UF6683N0001LZ&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-021",
@@ -413,8 +521,13 @@
       "website": "https://www.keepy.es/alquiler-de-trasteros-malaga-ciudad-jardin.php",
       "rating": 4.6,
       "rating_count": 42,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 799.4,
+      "constructed_area_sqm": 1142.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=900&UrbRus=U&RefC=3174301UF7637S0001LB&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-022",
@@ -430,8 +543,13 @@
       "website": "https://www.keepy.es/",
       "rating": 5.0,
       "rating_count": 14,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 682.5,
+      "constructed_area_sqm": 975.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=5235119&RC2=UF6653N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=5235119UF6653N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-023",
@@ -447,8 +565,13 @@
       "website": "http://www.trasterosyalmacenes.com/",
       "rating": 4.3,
       "rating_count": 146,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 667.8,
+      "constructed_area_sqm": 954.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=8419107UF6681N0001DP&esBice=&RCBice1=&RCBice2=&DenoBice=&from=OVCBusqueda&pest=rc&RCCompleta=8419107UF6681N&final=&del=29&mun=900",
+      "nla_notes": "1/8th of parcel AAL",
+      "nla_estimated": true
     },
     {
       "id": "mlg-024",
@@ -464,8 +587,13 @@
       "website": "https://fierostorage.com/trasteros-malaga/",
       "rating": 5.0,
       "rating_count": 6,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 220.7,
+      "constructed_area_sqm": 315.3,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=8697129UF6589N0001BE&esBice=&RCBice1=&RCBice2=&DenoBice=&from=OVCBusqueda&pest=rc&RCCompleta=8697129UF6589N&final=&del=29&mun=900",
+      "nla_notes": "Two parcels 8697129UF6589N and 8697128UF6589N of 473sqm with containers. Considering 1/3 is storage.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-025",
@@ -481,8 +609,13 @@
       "website": "https://www.islatrans.es/trasteros-en-malaga/",
       "rating": 4.9,
       "rating_count": 1449,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 1734.6,
+      "constructed_area_sqm": 2478.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/Cartografia/mapa.aspx?del=29&mun=900&refcat=0634112UF7603S&Xcentro=370610.667201569&Ycentro=4063284.06911697&from=OVCBusqueda&final=&pest=coordenadas&latitud=36.7064281&longitud=-4.4486089&gradoslat=&minlat=&seglat=&gradoslon=&minlon=&seglon=&x=&y=&huso=0&tipoCoordenadas=2&ZV=NO&ZR=NO&anyoZV=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Four side by side buildings",
+      "nla_estimated": true
     },
     {
       "id": "mlg-026",
@@ -498,8 +631,13 @@
       "website": "https://www.trasterosplus.es/alquiler-trasteros/san-millan/",
       "rating": 4.9,
       "rating_count": 2178,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 1442.7,
+      "constructed_area_sqm": 2061.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/Cartografia/mapa.aspx?via=SAN@MILLAN&tipoVia=CL&numero=15&kilometro=&bloque=&escalera=&planta=&puerta=&DescProv=MALAGA&prov=29&muni=900&DescMuni=MALAGA&TipUR=U&codvia=1188&comVia=SAN%20MILLAN%20(CALLE)&pest=urbana&from=OVCBusqueda&nomusu=%20&tipousu=&ZV=NO&ZR=NO&anyoZV=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=&cartografia=True&ListaBienes=TRUE",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-027",
@@ -515,8 +653,13 @@
       "website": "https://www.trasterosplus.es/alquiler-trasteros/san-millan/",
       "rating": 4.9,
       "rating_count": 20,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 980.0,
+      "constructed_area_sqm": 1400.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?via=SAN@MILLAN&tipoVia=CL&numero=5&kilometro=&bloque=&escalera=&planta=&puerta=&DescProv=MALAGA&prov=29&muni=900&DescMuni=MALAGA&TipUR=U&codvia=1188&comVia=SAN%20MILLAN%20(CALLE)&pest=urbana&from=OVCBusqueda&nomusu=%20&tipousu=&ZV=NO&ZR=NO&anyoZV=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-028",
@@ -532,8 +675,13 @@
       "website": "https://www.trasterosplus.es/alquiler-trasteros/los-guindos/",
       "rating": 4.9,
       "rating_count": 2071,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 736.4,
+      "constructed_area_sqm": 1052.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=0520224UF7602S0001JG&RCCompleta=&via=GUINDOS@LOS&tipoVia=AV&numero=17&kilometro=&bloque=&escalera=&planta=&puerta=&DescProv=MALAGA&prov=29&muni=900&DescMuni=MALAGA&TipUR=U&codvia=4590&comVia=GUINDOS%20LOS%20(AVENIDA,%20AVINGUDA)&pest=urbana&from=OVCBusqueda&del=29&mun=900",
+      "nla_notes": "seems small from the storefront",
+      "nla_estimated": true
     },
     {
       "id": "mlg-029",
@@ -549,8 +697,13 @@
       "website": null,
       "rating": 5.0,
       "rating_count": 13,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 169.4,
+      "constructed_area_sqm": 242.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=1953116&RC2=UF7615S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=1953116UF7615S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Small player inside a residential building",
+      "nla_estimated": true
     },
     {
       "id": "mlg-030",
@@ -566,8 +719,13 @@
       "website": "https://www.trasterosplus.es/alquiler-trasteros/los-vegas/",
       "rating": 4.3,
       "rating_count": 93,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 1736.0,
+      "constructed_area_sqm": null,
+      "nla_confidence": "high",
+      "nla_source_url": "Albano",
+      "nla_notes": null,
+      "nla_estimated": false
     },
     {
       "id": "mlg-031",
@@ -583,8 +741,13 @@
       "website": "https://www.instagram.com/trastero.malaga",
       "rating": 5.0,
       "rating_count": 4,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 284.9,
+      "constructed_area_sqm": 407.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=2341101&RC2=UF7624S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=2341101UF7624S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Small player inside a residential building. Assumed it was the biggest Almacén unit.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-032",
@@ -600,8 +763,13 @@
       "website": null,
       "rating": 5.0,
       "rating_count": 2,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 340.2,
+      "constructed_area_sqm": 486.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=1157701&RC2=UF7615N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=1157701UF7615N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "From the pictures on Google Maps I can see several corridors. Probably they own whole lower floor.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-033",
@@ -617,8 +785,13 @@
       "website": "https://mitrasterocerca.com/malaga/malaga/",
       "rating": 4.8,
       "rating_count": 43,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 123.2,
+      "constructed_area_sqm": 176.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=1953220UF7615S0001DQ&esBice=&RCBice1=&RCBice2=&DenoBice=&from=OVCBusqueda&pest=rc&RCCompleta=1953220UF7615S&final=&del=29&mun=900",
+      "nla_notes": "Seems like a small storage corridor.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-034",
@@ -634,8 +807,13 @@
       "website": "https://trasterosmalagacapital.es/",
       "rating": 5.0,
       "rating_count": 3,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 147.0,
+      "constructed_area_sqm": 210.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=3759103&RC2=UF7635N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=3759103UF7635N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Small independent player.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-035",
@@ -651,8 +829,13 @@
       "website": "https://urbantrasterosmalaga.es/",
       "rating": 5.0,
       "rating_count": 1,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 79.8,
+      "constructed_area_sqm": 114.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=1859147&RC2=UF7615N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=1859147UF7615N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Small independent player.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-036",
@@ -668,8 +851,13 @@
       "website": "https://www.islatrans.es/trasteros-en-bailen-miraflores/",
       "rating": 5.0,
       "rating_count": 22,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 141.4,
+      "constructed_area_sqm": 202.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=1757114&RC2=UF7615N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=1757114UF7615N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "seems small from the storefront",
+      "nla_estimated": true
     },
     {
       "id": "mlg-037",
@@ -685,8 +873,13 @@
       "website": "https://dantrasteros.com/",
       "rating": 4.6,
       "rating_count": 11,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 257.6,
+      "constructed_area_sqm": 368.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=7741115UF6674S0001JL&RCCompleta=2785701UF4528N&via=TER&tipoVia=CL&numero=36&kilometro=&bloque=&escalera=&planta=&puerta=&DescProv=MALAGA&prov=29&muni=900&DescMuni=MALAGA&TipUR=U&codvia=2784&comVia=TER%20(CALLE)&pest=urbana&from=OVCBusqueda&del=29&mun=900",
+      "nla_notes": "Considered the whole builing",
+      "nla_estimated": true
     },
     {
       "id": "mlg-038",
@@ -702,8 +895,13 @@
       "website": "http://www.trasterosmalagacentro.es/",
       "rating": 4.8,
       "rating_count": 12,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 92.4,
+      "constructed_area_sqm": 132.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=2443106&RC2=UF7624S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=2443106UF7624S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Seems like a small storage corridor.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-039",
@@ -719,8 +917,13 @@
       "website": "http://www.guardamueblemalaga.com/",
       "rating": 4.9,
       "rating_count": 62,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 273.7,
+      "constructed_area_sqm": 391.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=8531123UF6683S0001PY&esBice=&RCBice1=&RCBice2=&DenoBice=&from=OVCBusqueda&pest=rc&RCCompleta=8531123UF6683S&final=&del=29&mun=900",
+      "nla_notes": "Guardamuebles",
+      "nla_estimated": true
     },
     {
       "id": "mlg-040",
@@ -736,8 +939,13 @@
       "website": "https://dantrasteros.com/",
       "rating": 4.8,
       "rating_count": 109,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 793.8,
+      "constructed_area_sqm": 1134.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/Cartografia/mapa.aspx?pest=urbana&from=OVCBusqueda&ZV=NO&ZR=NO&anyoZV=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=&RCCompleta=&via=ALFREDO%20CORROCHANO&tipoVia=CL&numero=&kilometro=&bloque=&escalera=&planta=&puerta=&DescProv=MALAGA&prov=29&muni=900&DescMuni=MALAGA&TipUR=U&codvia=4695&comVia=ALFREDO%20CORROCHANO%20(CALLE)&tc=U&del=29&mun=900",
+      "nla_notes": "The floor plan  for 135 does not exist in catastro. I estimated it would be the same as 131.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-041",
@@ -753,8 +961,13 @@
       "website": "https://www.islatrans.es/mudanzas-en-malaga/",
       "rating": 5.0,
       "rating_count": 983,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 627.9,
+      "constructed_area_sqm": 897.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=9208116UF6690N0001PB&esBice=&RCBice1=&RCBice2=&DenoBice=&from=OVCBusqueda&pest=rc&RCCompleta=9208116UF6690N&final=&del=29&mun=900",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-042",
@@ -770,8 +983,13 @@
       "website": "https://mudanzasreva.com/",
       "rating": 5.0,
       "rating_count": 41,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 128.1,
+      "constructed_area_sqm": 183.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=0864328UF7606S0001OF&esBice=&RCBice1=&RCBice2=&DenoBice=&from=OVCBusqueda&pest=rc&RCCompleta=0864328UF7606S&final=&del=29&mun=900",
+      "nla_notes": "Strange, since this is a residencial home.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-043",
@@ -787,8 +1005,13 @@
       "website": "https://www.trasterosplus.es/alquiler-trasteros/la-princesa/",
       "rating": 4.8,
       "rating_count": 105,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 1372.7,
+      "constructed_area_sqm": 1961.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?via=RIO@GARGALIGA&tipoVia=CL&numero=2&kilometro=&bloque=&escalera=&planta=&puerta=&DescProv=MALAGA&prov=29&muni=900&DescMuni=MALAGA&TipUR=U&codvia=3673&comVia=RIO%20GARGALIGA%20(CALLE)&pest=urbana&from=OVCBusqueda&nomusu=%20&tipousu=&ZV=NO&ZR=NO&anyoZV=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "took out the declared commercial area, since the each individual box was already categorised as Almacén-Estacionamiento",
+      "nla_estimated": true
     },
     {
       "id": "mlg-044",
@@ -804,8 +1027,13 @@
       "website": "http://www.trasteroscampanillas.com/",
       "rating": null,
       "rating_count": null,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 77.7,
+      "constructed_area_sqm": 111.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=R&RefC=0567959UF6606N0001JJ&esBice=&RCBice1=&RCBice2=&DenoBice=&from=OVCBusqueda&pest=rc&RCCompleta=0567959UF6606N&final=&del=29&mun=900",
+      "nla_notes": "Their containers in a open space. I'll assume 1/3th of the area.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-045",
@@ -821,8 +1049,13 @@
       "website": null,
       "rating": 5.0,
       "rating_count": 1,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 143.5,
+      "constructed_area_sqm": 205.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=9149902&RC2=UF7694N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=9149902UF7694N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Can't view the floor plan by floor. Seems like it this section due to the google maps photos.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-046",
@@ -838,8 +1071,13 @@
       "website": "https://www.islatrans.es/alquiler-de-trasteros/",
       "rating": 4.9,
       "rating_count": 1057,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 2178.4,
+      "constructed_area_sqm": 3112.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=80&UrbRus=R&RefC=29080A016000150000AR&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "They own the full area and the bits added as almacen where summed here.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-047",
@@ -855,8 +1093,13 @@
       "website": "https://www.islatrans.es/",
       "rating": 5.0,
       "rating_count": 587,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 1549.1,
+      "constructed_area_sqm": 2213.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=80&UrbRus=R&RefC=29080A022000710000AM&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "Only the north building counts.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-048",
@@ -872,8 +1115,13 @@
       "website": "https://ustore-it.eu/location/torremolinos-alhaurin-de-la-torre/",
       "rating": 4.9,
       "rating_count": 36,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 445.2,
+      "constructed_area_sqm": 636.0,
+      "nla_confidence": "high",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=1998117UF6519N0001DZ&esBice=&RCBice1=&RCBice2=&DenoBice=&from=OVCBusqueda&pest=rc&RCCompleta=1998117UF6519N&final=&del=29&mun=7",
+      "nla_notes": "Whole building.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-049",
@@ -889,8 +1137,13 @@
       "website": "https://www.selfstorageenmalaga.com/",
       "rating": 4.6,
       "rating_count": 5,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": null,
+      "constructed_area_sqm": null,
+      "nla_confidence": "low",
+      "nla_source_url": null,
+      "nla_notes": "This is not their location. Can't estimate anything.",
+      "nla_estimated": false
     },
     {
       "id": "mlg-050",
@@ -906,8 +1159,13 @@
       "website": null,
       "rating": 5.0,
       "rating_count": 3,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 84.8,
+      "constructed_area_sqm": 121.2,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=8&UrbRus=U&RefC=8962105UF4586S0002RY&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "1/5 of the building according to google maps",
+      "nla_estimated": true
     },
     {
       "id": "mlg-051",
@@ -923,8 +1181,13 @@
       "website": "http://www.selfstoragealhaurin.com/",
       "rating": 5.0,
       "rating_count": 23,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 215.6,
+      "constructed_area_sqm": 308.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=8&UrbRus=U&RefC=8887809UF4588N0001OI&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "Whole building",
+      "nla_estimated": true
     },
     {
       "id": "mlg-052",
@@ -940,8 +1203,13 @@
       "website": "https://westore4uspain.com/",
       "rating": 5.0,
       "rating_count": 56,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 282.1,
+      "constructed_area_sqm": 403.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=8&UrbRus=U&RefC=8887319UF4588N0006AD&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "Whole section",
+      "nla_estimated": true
     },
     {
       "id": "mlg-053",
@@ -957,8 +1225,13 @@
       "website": "https://www.trasterosplus.es/coin/",
       "rating": null,
       "rating_count": null,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 3311.7,
+      "constructed_area_sqm": 4731.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=2785701&RC2=UF4528N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=2785701UF4528N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "used all the Almacén-Estacionamiento on the building. Not 100% sure this is the right building (Catastro has this road as in construction) and their google maps pin is in the wrong spot. Not all Almacén-Estacionamiento might be theirs, maybe just part of it?",
+      "nla_estimated": true
     },
     {
       "id": "mlg-054",
@@ -974,8 +1247,13 @@
       "website": null,
       "rating": 4.6,
       "rating_count": 9,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 427.0,
+      "constructed_area_sqm": 610.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=4597211UF4549N0001YO&esBice=&RCBice1=&RCBice2=&DenoBice=&from=OVCBusqueda&pest=rc&RCCompleta=4597211UF4549N&final=&del=29&mun=42",
+      "nla_notes": "Whole building.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-055",
@@ -991,8 +1269,13 @@
       "website": null,
       "rating": 5.0,
       "rating_count": 5,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 200.0,
+      "constructed_area_sqm": null,
+      "nla_confidence": "high",
+      "nla_source_url": "https://www.google.com/maps/place/Trasteros+Rinc%C3%B3n/@36.7160212,-4.2902434,3a,75y,90t/data=!3m8!1e2!3m6!1sAF1QipMimiuwVGNEgwo9gsQJAk6i8cwd4obBxXdlpKaR!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fp%2FAF1QipMimiuwVGNEgwo9gsQJAk6i8cwd4obBxXdlpKaR%3Dw203-h256-k-no!7i657!8i829!4m7!3m6!1s0xd725bbaaf7184b1:0x45b51cbb0eea97af!8m2!3d36.7158711!4d-4.2902975!10e5!16s%2Fg%2F11stt_l71v!5m1!1e4?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D",
+      "nla_notes": "Claude used the facility floor plan to calculate nla",
+      "nla_estimated": false
     },
     {
       "id": "mlg-056",
@@ -1008,8 +1291,13 @@
       "website": "https://trasterosvictoria.wixsite.com/trasterosvictoria",
       "rating": 4.8,
       "rating_count": 5,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 254.1,
+      "constructed_area_sqm": 363.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=82&UrbRus=U&RefC=5343401UF8654S0036KG&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "Considered the half of the almacen portion of -1",
+      "nla_estimated": true
     },
     {
       "id": "mlg-057",
@@ -1025,8 +1313,13 @@
       "website": null,
       "rating": 4.2,
       "rating_count": 5,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 810.6,
+      "constructed_area_sqm": 1158.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=82&UrbRus=U&RefC=6849901UF8664N0001GI&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "Naves y trasteros. Not just trasteros. Their sign mentions: Se alquilan Naves y Trasteros desde 5m hasta 100m.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-058",
@@ -1042,8 +1335,13 @@
       "website": null,
       "rating": null,
       "rating_count": null,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 105.0,
+      "constructed_area_sqm": null,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://materialesdeconstruccionjoma.com/alquiler-de-trasteros/",
+      "nla_notes": "Google Maps says that it might be closed. Their website mentions: 30 trasteros con superficies de 3,30 m², 3,40 m², 3,50 m², 3,80 m², 4,20 m² y 4,80 m²",
+      "nla_estimated": false
     },
     {
       "id": "mlg-059",
@@ -1059,8 +1357,13 @@
       "website": "https://www.trasterosaxarquia.com/",
       "rating": 5.0,
       "rating_count": 66,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 356.3,
+      "constructed_area_sqm": 509.0,
+      "nla_confidence": "high",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=2295108VF0629N0001DJ&esBice=&RCBice1=&RCBice2=&DenoBice=&from=OVCBusqueda&pest=rc&RCCompleta=2295108VF0629N&final=&del=29&mun=94",
+      "nla_notes": "Whole building.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-060",
@@ -1076,8 +1379,13 @@
       "website": "https://www.trasterosvelasco.com/",
       "rating": 5.0,
       "rating_count": 3,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 161.0,
+      "constructed_area_sqm": 230.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=1805102&RC2=VF0710N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=1805102VF0710N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Assumed 1/6th of the whole almacen in the lower floor.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-061",
@@ -1093,8 +1401,13 @@
       "website": null,
       "rating": 4.6,
       "rating_count": 10,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 163.8,
+      "constructed_area_sqm": 234.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=1909614&RC2=VF0720N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=1909614VF0720N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Assumed half of the lower floor with almancen",
+      "nla_estimated": true
     },
     {
       "id": "mlg-062",
@@ -1110,8 +1423,13 @@
       "website": "https://trasterosaxarquia.com/",
       "rating": 5.0,
       "rating_count": 58,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 210.0,
+      "constructed_area_sqm": 300.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=1115101&RC2=VF0711N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=1115101VF0711N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Assumed it was the 300sqm plot",
+      "nla_estimated": true
     },
     {
       "id": "mlg-063",
@@ -1127,8 +1445,13 @@
       "website": null,
       "rating": 5.0,
       "rating_count": 2,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 113.4,
+      "constructed_area_sqm": 162.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=1217114&RC2=VF0711N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=1217114VF0711N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Assumed it was one of the commercial units. All very similar.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-064",
@@ -1144,8 +1467,13 @@
       "website": "https://www.trasteros10.com/",
       "rating": null,
       "rating_count": null,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 132.3,
+      "constructed_area_sqm": 189.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=2070101&RC2=VF0627S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=2070101VF0627S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Assumed it was one of the commercial units. All very similar.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-065",
@@ -1161,8 +1489,13 @@
       "website": null,
       "rating": 5.0,
       "rating_count": 33,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 65.8,
+      "constructed_area_sqm": 94.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=2670105&RC2=VF0627S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=2670105VF0627S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Seems like they only have around 30 doors by the pics. Assumed it was the 94sqm, not the 447sqm unit.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-066",
@@ -1178,8 +1511,13 @@
       "website": "http://www.trastum.com/",
       "rating": 4.4,
       "rating_count": 19,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 68.6,
+      "constructed_area_sqm": 98.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=2468421&RC2=VF0626N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=2468421VF0626N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Seems like they only have around 56 doors by the pics. Assumed it was the 98sqm, not the 197sqm unit.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-067",
@@ -1195,8 +1533,13 @@
       "website": "http://www.store-it.es/",
       "rating": 5.0,
       "rating_count": 5,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 189.0,
+      "constructed_area_sqm": 270.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=75&UrbRus=U&RefC=1283114VF2618S0001TT&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "Half of the building. Only one floor.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-068",
@@ -1212,8 +1555,13 @@
       "website": null,
       "rating": 5.0,
       "rating_count": 3,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 382.7,
+      "constructed_area_sqm": 546.7,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=75&UrbRus=U&RefC=0983237VF2608S0001QQ&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "Assumed 1/3 of the total area.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-069",
@@ -1229,8 +1577,13 @@
       "website": "https://www.guardamueblesmalaga.eu/",
       "rating": 5.0,
       "rating_count": 1,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": null,
+      "constructed_area_sqm": null,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www.google.com/maps/place/Abilplus+Marbella+-+Alquiler+de+trasteros+en+Marbella+-+Guardamuebles+y+Mudanzas/@36.5108676,-4.9008557,19z/data=!3m1!4b1!4m6!3m5!1s0xd72d7e024fce483:0xec1ad9acb4b60670!8m2!3d36.5108665!4d-4.900212!16s%2Fg%2F11frzd6313?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D",
+      "nla_notes": "Can't estimate. Can't find the building.",
+      "nla_estimated": false
     },
     {
       "id": "mlg-070",
@@ -1246,8 +1599,13 @@
       "website": "http://trasterosmarbella.es/",
       "rating": 4.7,
       "rating_count": 13,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": null,
+      "constructed_area_sqm": null,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www.google.com/maps/place/Trasteros+Marbella/@36.5123982,-4.8630421,190m/data=!3m1!1e3!4m6!3m5!1s0xd72d9fd12a41809:0x86bc88339038cc2a!8m2!3d36.5122702!4d-4.8623622!16s%2Fg%2F11wqnx7q1z?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D",
+      "nla_notes": "Shipping containers. Can't estimate.",
+      "nla_estimated": false
     },
     {
       "id": "mlg-071",
@@ -1263,8 +1621,13 @@
       "website": "https://www.rentaspacemarbella.com/",
       "rating": 4.8,
       "rating_count": 71,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 490.0,
+      "constructed_area_sqm": 700.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=2823107&RC2=UF3422S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=2823107UF3422S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "According to google maps only half the building is from this trastero.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-072",
@@ -1280,8 +1643,13 @@
       "website": "http://www.keepy.es/",
       "rating": 4.6,
       "rating_count": 62,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 886.2,
+      "constructed_area_sqm": 1266.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=2525128&RC2=UF3422N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=2525128UF3422N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "I picked the section with the floor area closest to 185 trasteros (mentioned on their website).",
+      "nla_estimated": true
     },
     {
       "id": "mlg-073",
@@ -1297,8 +1665,13 @@
       "website": "https://www.secureselfstorage.es/",
       "rating": 5.0,
       "rating_count": 1,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": null,
+      "constructed_area_sqm": null,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=8415319UF3481N0001DP&esBice=&RCBice1=&RCBice2=&DenoBice=&from=OVCBusqueda&pest=rc&RCCompleta=8415319UF3481N&final=&del=29&mun=69",
+      "nla_notes": "Shipping containers. Can't estimate.",
+      "nla_estimated": false
     },
     {
       "id": "mlg-074",
@@ -1314,8 +1687,13 @@
       "website": "http://marbellaselfstorage.com/",
       "rating": 4.6,
       "rating_count": 42,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 711.9,
+      "constructed_area_sqm": 1017.0,
+      "nla_confidence": "high",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=2817309UF2421N0001AB&esBice=&RCBice1=&RCBice2=&DenoBice=&from=OVCBusqueda&pest=rc&RCCompleta=2817309UF2421N&final=&del=29&mun=69",
+      "nla_notes": "Whole building.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-075",
@@ -1331,8 +1709,13 @@
       "website": "https://vikingselfstorage.es/",
       "rating": 4.9,
       "rating_count": 46,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 385.7,
+      "constructed_area_sqm": 551.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=1609402&RC2=UF2410N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=1609402UF2410N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-076",
@@ -1348,8 +1731,13 @@
       "website": "http://www.full-storage.com/",
       "rating": 4.8,
       "rating_count": 53,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 375.2,
+      "constructed_area_sqm": 536.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=1611601&RC2=UF2411S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=1611601UF2411S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-077",
@@ -1365,8 +1753,13 @@
       "website": "https://www.full-storage.com/",
       "rating": 5.0,
       "rating_count": 30,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 330.4,
+      "constructed_area_sqm": 472.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=1411601&RC2=UF2411S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=1411601UF2411S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-078",
@@ -1382,8 +1775,13 @@
       "website": "http://www.bluestripestorage.com/",
       "rating": 5.0,
       "rating_count": 12,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 1406.3,
+      "constructed_area_sqm": 2009.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=1511701UF2411S0001TQ&esBice=&RCBice1=&RCBice2=&DenoBice=&from=OVCBusqueda&pest=rc&RCCompleta=1511701UF2411S&final=&del=29&mun=69",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-079",
@@ -1399,8 +1797,13 @@
       "website": "https://www.ustore-it.eu/san-pedro/",
       "rating": 5.0,
       "rating_count": 5,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 428.4,
+      "constructed_area_sqm": 612.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=1611601&RC2=UF2411S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=1611601UF2411S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Seems like it has two floors",
+      "nla_estimated": true
     },
     {
       "id": "mlg-080",
@@ -1416,8 +1819,13 @@
       "website": "http://www.warda-trasteros.com/",
       "rating": 5.0,
       "rating_count": 3,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 157.5,
+      "constructed_area_sqm": 225.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=2096202&RC2=UF2329N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=2096202UF2329N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-081",
@@ -1433,8 +1841,13 @@
       "website": "https://www.1easystore.com/",
       "rating": 5.0,
       "rating_count": 3,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 161.0,
+      "constructed_area_sqm": 230.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=2102303&RC2=UF2420S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=2102303UF2420S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Assumed 1/7th of the lower floor.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-082",
@@ -1450,8 +1863,13 @@
       "website": "https://marbellastorage.com/",
       "rating": 5.0,
       "rating_count": 38,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 360.5,
+      "constructed_area_sqm": 515.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?UrbRus=U&RefC=9277401UF1397N0001HK&esBice=&RCBice1=&RCBice2=&DenoBice=&from=OVCBusqueda&pest=rc&RCCompleta=9277401UF1397N&final=&del=29&mun=51",
+      "nla_notes": "They mentioned its on floor 0. I assumed it was all of floor 0. They have offer of 8 sizes from 1 to 10m.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-083",
@@ -1467,8 +1885,13 @@
       "website": "http://www.imushu.es/",
       "rating": 4.6,
       "rating_count": 23,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 2604.0,
+      "constructed_area_sqm": null,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://imushu.es/",
+      "nla_notes": "Assuming 4 blocks of 31 with an avg 21sqm container.",
+      "nla_estimated": false
     },
     {
       "id": "mlg-084",
@@ -1484,8 +1907,13 @@
       "website": "https://www.keepy.es/alquiler-de-trasteros-estepona.php",
       "rating": 4.8,
       "rating_count": 77,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 1126.3,
+      "constructed_area_sqm": 1609.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=7438202&RC2=UF0373N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=7438202UF0373N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "I picked the section with the floor area closest to more than 200 trasteros (mentioned on their website).",
+      "nla_estimated": true
     },
     {
       "id": "mlg-085",
@@ -1501,8 +1929,13 @@
       "website": "http://storagecosta.com/",
       "rating": 5.0,
       "rating_count": 1,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 147.0,
+      "constructed_area_sqm": null,
+      "nla_confidence": "high",
+      "nla_source_url": "https://storagecosta.com/our-prices/",
+      "nla_notes": "Claude used the facility floor plan to calculate nla",
+      "nla_estimated": false
     },
     {
       "id": "mlg-086",
@@ -1518,8 +1951,13 @@
       "website": "https://www.warda-trasteros.com/",
       "rating": 5.0,
       "rating_count": 1,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": null,
+      "constructed_area_sqm": null,
+      "nla_confidence": "low",
+      "nla_source_url": null,
+      "nla_notes": "Can't estimate. Can't find the building.",
+      "nla_estimated": false
     },
     {
       "id": "mlg-087",
@@ -1535,8 +1973,13 @@
       "website": "https://necesitountrastero.es/alquiler-de-trasteros-en-estepona/",
       "rating": 4.5,
       "rating_count": 33,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 700.0,
+      "constructed_area_sqm": null,
+      "nla_confidence": "high",
+      "nla_source_url": "https://necesitountrastero.es/alquiler-de-trasteros-en-estepona/",
+      "nla_notes": "Their website mentions: imos nuestras puertas en Marzo del 2019. A primeros del 2020 iniciamos nuestra ampliación, llegando entonces a tener más de 700 metros dedicados al alquiler de trasteros en Estepona.",
+      "nla_estimated": false
     },
     {
       "id": "mlg-088",
@@ -1552,8 +1995,13 @@
       "website": "http://www.storadorsl.com/",
       "rating": 4.9,
       "rating_count": 70,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 235.2,
+      "constructed_area_sqm": 336.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=51&UrbRus=U&RefC=5939423UF0353N0001FF&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "Whole building.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-089",
@@ -1569,8 +2017,13 @@
       "website": "http://www.full-storage.com/",
       "rating": 5.0,
       "rating_count": 15,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 233.8,
+      "constructed_area_sqm": 334.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=51&UrbRus=U&RefC=5840205UF0354S0001AH&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-090",
@@ -1586,8 +2039,13 @@
       "website": "http://simontrasteros.com/",
       "rating": 5.0,
       "rating_count": 14,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 245.0,
+      "constructed_area_sqm": 350.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=51&UrbRus=U&RefC=5638507UF0353N0001HF&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "Whole building.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-091",
@@ -1603,8 +2061,13 @@
       "website": "https://www.hazespacio.com/",
       "rating": 4.8,
       "rating_count": 65,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 243.6,
+      "constructed_area_sqm": 348.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=51&UrbRus=U&RefC=5537704UF0353N0001MF&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "Whole building.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-092",
@@ -1620,8 +2083,13 @@
       "website": "https://www.storagedepot.es/",
       "rating": 5.0,
       "rating_count": 43,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 840.0,
+      "constructed_area_sqm": 1200.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=68&UrbRus=U&RefC=7593713TF9279S0001JG&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "Two buildings side-by-side.",
+      "nla_estimated": true
     },
     {
       "id": "mlg-093",
@@ -1637,8 +2105,13 @@
       "website": "http://www.ustore-it.es/",
       "rating": 4.4,
       "rating_count": 21,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 1232.0,
+      "constructed_area_sqm": 1760.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=68&UrbRus=U&RefC=7492518TF9279S0001AG&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "Three buildings side-by-side",
+      "nla_estimated": true
     },
     {
       "id": "mlg-094",
@@ -1654,8 +2127,13 @@
       "website": "https://www.costadelstorage.com/",
       "rating": 5.0,
       "rating_count": 22,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 210.0,
+      "constructed_area_sqm": 300.0,
+      "nla_confidence": "medium",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=68&UrbRus=U&RefC=7494303TF9279S0001BG&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "Whole building",
+      "nla_estimated": true
     },
     {
       "id": "mlg-095",
@@ -1671,8 +2149,13 @@
       "website": "http://www.trasterosya.com/",
       "rating": 5.0,
       "rating_count": 33,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 79.8,
+      "constructed_area_sqm": 114.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=9966501&RC2=TF9296N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=9966501TF9296N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Seems too small",
+      "nla_estimated": true
     },
     {
       "id": "mlg-096",
@@ -1688,8 +2171,13 @@
       "website": "https://habitatisalgeciras.com/",
       "rating": 4.6,
       "rating_count": 12,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 167.3,
+      "constructed_area_sqm": 239.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=0270101&RC2=UF0207S&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=0270101UF0207S&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Section CCE.06",
+      "nla_estimated": true
     },
     {
       "id": "mlg-097",
@@ -1705,8 +2193,13 @@
       "website": "https://guarda-muebles.com/",
       "rating": 4.5,
       "rating_count": 34,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 1593.2,
+      "constructed_area_sqm": 2276.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?del=29&mun=41&UrbRus=U&RefC=000802300TF92C0001PS&Apenom=&esBice=&RCBice1=&RCBice2=&DenoBice=&from=nuevoVisor&ZV=NO&anyoZV=",
+      "nla_notes": "A guardamuebles. Not a self storage",
+      "nla_estimated": true
     },
     {
       "id": "mlg-098",
@@ -1722,8 +2215,13 @@
       "website": "https://www.facebook.com/profile.php?id=61553383076875",
       "rating": 4.8,
       "rating_count": 22,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 110.6,
+      "constructed_area_sqm": 158.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=8297205&RC2=UF0689N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=8297205UF0689N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": null,
+      "nla_estimated": true
     },
     {
       "id": "mlg-099",
@@ -1739,8 +2237,13 @@
       "website": "https://trasterosronda.com/",
       "rating": 4.5,
       "rating_count": 11,
-      "nla_m2": null,
-      "source": "google_places_v1"
+      "source": "google_places_v1",
+      "nla_sqm": 821.1,
+      "constructed_area_sqm": 1173.0,
+      "nla_confidence": "low",
+      "nla_source_url": "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?RC1=7087701&RC2=UF0678N&RC3=&RC4=&esBice=&RCBice1=&RCBice2=&DenoBice=&pest=rc&final=&RCCompleta=7087701UF0678N&from=OVCBusqueda&tipoCarto=nuevo&ZV=NO&ZR=NO&anyoZV=&strFechaVR=&tematicos=&anyotem=&historica=&coordinadas=&antecedentes=",
+      "nla_notes": "Trasteros de 1m³ a 18m³ y Amplio almacenamiento de hasta 50m³",
+      "nla_estimated": true
     }
   ]
 }
