@@ -180,10 +180,6 @@ export interface RegionMetrics extends Omit<ProvinciaMetrics, 'provincia_code' |
   region_name: string;
 }
 
-// Legacy alias — most consumers should prefer RegionMetrics. Kept until
-// downstream code (PPTX export, comparison panels) migrates fully.
-export type EuskadiMetrics = RegionMetrics;
-
 export type AreaMetrics = MunicipioMetrics | ProvinciaMetrics | RegionMetrics;
 
 export interface MetricDef {

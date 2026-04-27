@@ -6,7 +6,7 @@ import type { ExportScope, CaseStudyData, TableRow } from './types';
 // Reference deck uses exactly these rows — do not add or remove.
 interface RowSpec {
   label: string;
-  baseKey: string;                      // field name on MunicipioMetrics / ProvinciaMetrics / EuskadiMetrics
+  baseKey: string;                      // field name on MunicipioMetrics / ProvinciaMetrics / RegionMetrics
   catchKey: string;                     // field name for 10-min catchment column (municipio scope only)
   customKey: keyof CustomAreaMetrics;   // field name on CustomAreaMetrics
   format: 'number' | 'percent' | 'euro' | 'euro_sqm' | 'decimal';

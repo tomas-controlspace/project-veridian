@@ -52,7 +52,7 @@ src/
       filename.ts            # "{Area} Case Study - Control Space - YYYY-MM-DD.pptx"
       types.ts               # ExportScope + CaseStudyData + TableRow shapes
   types/
-    index.ts             # MunicipioMetrics, ProvinciaMetrics, EuskadiMetrics, Filters, DrawnArea
+    index.ts             # MunicipioMetrics, ProvinciaMetrics, RegionMetrics, RegionConfig, Filters, DrawnArea
 
 public/templates/
   case-study.pptx        # Build artifact from prepare-template.py — committed, fetched at runtime
@@ -234,7 +234,7 @@ Add a column definition in the `numCols` array in `RankingTable.tsx`
 ### Adding a metric row to the case-study PPTX
 1. Add a `RowSpec` entry to the appropriate `POP_SPEC` / `HOUSING_SPEC` / `STORAGE_SPEC` array in `src/lib/export/buildCaseStudyData.ts`
 2. If the row count for that table grows, edit `tag_table_slide` calls in `scripts/prepare-template.py` (the third arg is the body row count) and re-run `python scripts/prepare-template.py`. The reference deck only ships with as many table rows as it was authored with — adding a row beyond that requires editing `case-study.pptx` source first.
-3. For new column-1 fields (subject side) ensure `MunicipioMetrics`/`ProvinciaMetrics`/`EuskadiMetrics`/`CustomAreaMetrics` types expose them.
+3. For new column-1 fields (subject side) ensure `MunicipioMetrics`/`ProvinciaMetrics`/`RegionMetrics`/`CustomAreaMetrics` types expose them.
 
 ## Gotchas
 
