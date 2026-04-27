@@ -87,7 +87,7 @@ src/
   components/  React components — Dashboard orchestrates Header + Sidebar + MapView + BottomPanel
   lib/         Store (React Context), metrics, filters, custom-area aggregation, mapHandle
   lib/export/  PPTX export pipeline (orchestrator, map capture, data builder, templater)
-  types/       Domain types: MunicipioMetrics, ProvinciaMetrics, EuskadiMetrics, DrawnArea, Filters
+  types/       Domain types: MunicipioMetrics, ProvinciaMetrics, RegionMetrics, RegionConfig, DrawnArea, Filters
 
 scripts/
   prepare-data.js          Build runtime files in public/data/ from data/es/
