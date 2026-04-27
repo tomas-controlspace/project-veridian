@@ -31,11 +31,12 @@ export default function BottomPanel() {
     background: 'transparent',
     cursor: 'pointer',
     transition: 'color 0.15s, border-color 0.15s',
+    whiteSpace: 'nowrap',
   });
 
   return (
     <div className="flex flex-col h-full" style={{ background: '#fff', borderTop: '0.5px solid var(--neutral-200)' }}>
-      <div className="flex items-center px-4 shrink-0" style={{ borderBottom: '0.5px solid var(--neutral-200)' }}>
+      <div className="flex items-center px-4 shrink-0 overflow-x-auto" style={{ borderBottom: '0.5px solid var(--neutral-200)' }}>
         <button onClick={() => setTab('comparison')} style={tabStyle(tab === 'comparison')}>
           Comparison
           {selectedIds.length > 0 && (

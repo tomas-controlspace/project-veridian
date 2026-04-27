@@ -1,0 +1,929 @@
+{
+  "29001": {
+    "ine_code": "29001",
+    "name": "Alameda",
+    "avg_total_income": 11342,
+    "avg_available_income": 10057,
+    "avg_total_income_hogar": 29744,
+    "avg_available_income_hogar": 26375,
+    "income_year": 2023
+  },
+  "29002": {
+    "ine_code": "29002",
+    "name": "Alcaucín",
+    "avg_total_income": 12470,
+    "avg_available_income": 11024,
+    "avg_total_income_hogar": 28388,
+    "avg_available_income_hogar": 25095,
+    "income_year": 2023
+  },
+  "29003": {
+    "ine_code": "29003",
+    "name": "Alfarnate",
+    "avg_total_income": 13644,
+    "avg_available_income": 11989,
+    "avg_total_income_hogar": 28020,
+    "avg_available_income_hogar": 24621,
+    "income_year": 2023
+  },
+  "29004": {
+    "ine_code": "29004",
+    "name": "Alfarnatejo",
+    "avg_total_income": 13057,
+    "avg_available_income": 11570,
+    "avg_total_income_hogar": 25600,
+    "avg_available_income_hogar": 22684,
+    "income_year": 2023
+  },
+  "29005": {
+    "ine_code": "29005",
+    "name": "Algarrobo",
+    "avg_total_income": 12482,
+    "avg_available_income": 10851,
+    "avg_total_income_hogar": 30789,
+    "avg_available_income_hogar": 26764,
+    "income_year": 2023
+  },
+  "29006": {
+    "ine_code": "29006",
+    "name": "Algatocín",
+    "avg_total_income": 12331,
+    "avg_available_income": 10882,
+    "avg_total_income_hogar": 25162,
+    "avg_available_income_hogar": 22206,
+    "income_year": 2023
+  },
+  "29007": {
+    "ine_code": "29007",
+    "name": "Alhaurín de la Torre",
+    "avg_total_income": 17280,
+    "avg_available_income": 14083,
+    "avg_total_income_hogar": 52785,
+    "avg_available_income_hogar": 43020,
+    "income_year": 2023
+  },
+  "29008": {
+    "ine_code": "29008",
+    "name": "Alhaurín el Grande",
+    "avg_total_income": 12162,
+    "avg_available_income": 10432,
+    "avg_total_income_hogar": 36087,
+    "avg_available_income_hogar": 30953,
+    "income_year": 2023
+  },
+  "29009": {
+    "ine_code": "29009",
+    "name": "Almáchar",
+    "avg_total_income": 9889,
+    "avg_available_income": 8985,
+    "avg_total_income_hogar": 23579,
+    "avg_available_income_hogar": 21423,
+    "income_year": 2023
+  },
+  "29010": {
+    "ine_code": "29010",
+    "name": "Almargen",
+    "avg_total_income": 13288,
+    "avg_available_income": 11507,
+    "avg_total_income_hogar": 31813,
+    "avg_available_income_hogar": 27550,
+    "income_year": 2023
+  },
+  "29011": {
+    "ine_code": "29011",
+    "name": "Almogía",
+    "avg_total_income": 12006,
+    "avg_available_income": 10613,
+    "avg_total_income_hogar": 29219,
+    "avg_available_income_hogar": 25828,
+    "income_year": 2023
+  },
+  "29012": {
+    "ine_code": "29012",
+    "name": "Álora",
+    "avg_total_income": 12142,
+    "avg_available_income": 10648,
+    "avg_total_income_hogar": 30559,
+    "avg_available_income_hogar": 26800,
+    "income_year": 2023
+  },
+  "29013": {
+    "ine_code": "29013",
+    "name": "Alozaina",
+    "avg_total_income": 12659,
+    "avg_available_income": 11006,
+    "avg_total_income_hogar": 28212,
+    "avg_available_income_hogar": 24529,
+    "income_year": 2023
+  },
+  "29014": {
+    "ine_code": "29014",
+    "name": "Alpandeire",
+    "avg_total_income": 13386,
+    "avg_available_income": 11780,
+    "avg_total_income_hogar": 25886,
+    "avg_available_income_hogar": 22781,
+    "income_year": 2023
+  },
+  "29015": {
+    "ine_code": "29015",
+    "name": "Antequera",
+    "avg_total_income": 14982,
+    "avg_available_income": 12633,
+    "avg_total_income_hogar": 39058,
+    "avg_available_income_hogar": 32934,
+    "income_year": 2023
+  },
+  "29016": {
+    "ine_code": "29016",
+    "name": "Árchez",
+    "avg_total_income": 12611,
+    "avg_available_income": 11171,
+    "avg_total_income_hogar": 25558,
+    "avg_available_income_hogar": 22638,
+    "income_year": 2023
+  },
+  "29017": {
+    "ine_code": "29017",
+    "name": "Archidona",
+    "avg_total_income": 13470,
+    "avg_available_income": 11595,
+    "avg_total_income_hogar": 32325,
+    "avg_available_income_hogar": 27824,
+    "income_year": 2023
+  },
+  "29018": {
+    "ine_code": "29018",
+    "name": "Ardales",
+    "avg_total_income": 13203,
+    "avg_available_income": 11576,
+    "avg_total_income_hogar": 30416,
+    "avg_available_income_hogar": 26668,
+    "income_year": 2023
+  },
+  "29019": {
+    "ine_code": "29019",
+    "name": "Arenas",
+    "avg_total_income": 11812,
+    "avg_available_income": 10534,
+    "avg_total_income_hogar": 23944,
+    "avg_available_income_hogar": 21353,
+    "income_year": 2023
+  },
+  "29020": {
+    "ine_code": "29020",
+    "name": "Arriate",
+    "avg_total_income": 13242,
+    "avg_available_income": 11480,
+    "avg_total_income_hogar": 33636,
+    "avg_available_income_hogar": 29162,
+    "income_year": 2023
+  },
+  "29021": {
+    "ine_code": "29021",
+    "name": "Atajate",
+    "avg_total_income": 16112,
+    "avg_available_income": 13884,
+    "avg_total_income_hogar": 28624,
+    "avg_available_income_hogar": 24667,
+    "income_year": 2023
+  },
+  "29022": {
+    "ine_code": "29022",
+    "name": "Benadalid",
+    "avg_total_income": 13129,
+    "avg_available_income": 11351,
+    "avg_total_income_hogar": 27015,
+    "avg_available_income_hogar": 23358,
+    "income_year": 2023
+  },
+  "29023": {
+    "ine_code": "29023",
+    "name": "Benahavís",
+    "avg_total_income": 20419,
+    "avg_available_income": 14248,
+    "avg_total_income_hogar": 53410,
+    "avg_available_income_hogar": 37268,
+    "income_year": 2023
+  },
+  "29024": {
+    "ine_code": "29024",
+    "name": "Benalauría",
+    "avg_total_income": 12515,
+    "avg_available_income": 11051,
+    "avg_total_income_hogar": 26783,
+    "avg_available_income_hogar": 23650,
+    "income_year": 2023
+  },
+  "29025": {
+    "ine_code": "29025",
+    "name": "Benalmádena",
+    "avg_total_income": 16490,
+    "avg_available_income": 13418,
+    "avg_total_income_hogar": 41661,
+    "avg_available_income_hogar": 33901,
+    "income_year": 2023
+  },
+  "29026": {
+    "ine_code": "29026",
+    "name": "Benamargosa",
+    "avg_total_income": 9768,
+    "avg_available_income": 8872,
+    "avg_total_income_hogar": 21843,
+    "avg_available_income_hogar": 19840,
+    "income_year": 2023
+  },
+  "29027": {
+    "ine_code": "29027",
+    "name": "Benamocarra",
+    "avg_total_income": 10795,
+    "avg_available_income": 9570,
+    "avg_total_income_hogar": 28029,
+    "avg_available_income_hogar": 24848,
+    "income_year": 2023
+  },
+  "29028": {
+    "ine_code": "29028",
+    "name": "Benaoján",
+    "avg_total_income": 11846,
+    "avg_available_income": 10434,
+    "avg_total_income_hogar": 28108,
+    "avg_available_income_hogar": 24756,
+    "income_year": 2023
+  },
+  "29029": {
+    "ine_code": "29029",
+    "name": "Benarrabá",
+    "avg_total_income": 12956,
+    "avg_available_income": 11382,
+    "avg_total_income_hogar": 25231,
+    "avg_available_income_hogar": 22165,
+    "income_year": 2023
+  },
+  "29030": {
+    "ine_code": "29030",
+    "name": "Borge, El",
+    "avg_total_income": 10889,
+    "avg_available_income": 9801,
+    "avg_total_income_hogar": 22476,
+    "avg_available_income_hogar": 20230,
+    "income_year": 2023
+  },
+  "29031": {
+    "ine_code": "29031",
+    "name": "Burgo, El",
+    "avg_total_income": 12691,
+    "avg_available_income": 11216,
+    "avg_total_income_hogar": 27506,
+    "avg_available_income_hogar": 24309,
+    "income_year": 2023
+  },
+  "29032": {
+    "ine_code": "29032",
+    "name": "Campillos",
+    "avg_total_income": 13385,
+    "avg_available_income": 11577,
+    "avg_total_income_hogar": 34054,
+    "avg_available_income_hogar": 29455,
+    "income_year": 2023
+  },
+  "29033": {
+    "ine_code": "29033",
+    "name": "Canillas de Aceituno",
+    "avg_total_income": 12266,
+    "avg_available_income": 10863,
+    "avg_total_income_hogar": 25412,
+    "avg_available_income_hogar": 22506,
+    "income_year": 2023
+  },
+  "29034": {
+    "ine_code": "29034",
+    "name": "Canillas de Albaida",
+    "avg_total_income": 12306,
+    "avg_available_income": 10859,
+    "avg_total_income_hogar": 25405,
+    "avg_available_income_hogar": 22417,
+    "income_year": 2023
+  },
+  "29035": {
+    "ine_code": "29035",
+    "name": "Cañete la Real",
+    "avg_total_income": 14112,
+    "avg_available_income": 12357,
+    "avg_total_income_hogar": 28188,
+    "avg_available_income_hogar": 24681,
+    "income_year": 2023
+  },
+  "29036": {
+    "ine_code": "29036",
+    "name": "Carratraca",
+    "avg_total_income": 13606,
+    "avg_available_income": 11911,
+    "avg_total_income_hogar": 30096,
+    "avg_available_income_hogar": 26347,
+    "income_year": 2023
+  },
+  "29037": {
+    "ine_code": "29037",
+    "name": "Cartajima",
+    "avg_total_income": 16706,
+    "avg_available_income": 14460,
+    "avg_total_income_hogar": 32969,
+    "avg_available_income_hogar": 28536,
+    "income_year": 2023
+  },
+  "29038": {
+    "ine_code": "29038",
+    "name": "Cártama",
+    "avg_total_income": 13300,
+    "avg_available_income": 11383,
+    "avg_total_income_hogar": 37374,
+    "avg_available_income_hogar": 31986,
+    "income_year": 2023
+  },
+  "29039": {
+    "ine_code": "29039",
+    "name": "Casabermeja",
+    "avg_total_income": 13220,
+    "avg_available_income": 11434,
+    "avg_total_income_hogar": 32456,
+    "avg_available_income_hogar": 28070,
+    "income_year": 2023
+  },
+  "29040": {
+    "ine_code": "29040",
+    "name": "Casarabonela",
+    "avg_total_income": 13557,
+    "avg_available_income": 11693,
+    "avg_total_income_hogar": 30567,
+    "avg_available_income_hogar": 26365,
+    "income_year": 2023
+  },
+  "29041": {
+    "ine_code": "29041",
+    "name": "Casares",
+    "avg_total_income": 15374,
+    "avg_available_income": 12763,
+    "avg_total_income_hogar": 39059,
+    "avg_available_income_hogar": 32424,
+    "income_year": 2023
+  },
+  "29042": {
+    "ine_code": "29042",
+    "name": "Coín",
+    "avg_total_income": 12519,
+    "avg_available_income": 10596,
+    "avg_total_income_hogar": 36384,
+    "avg_available_income_hogar": 30797,
+    "income_year": 2023
+  },
+  "29043": {
+    "ine_code": "29043",
+    "name": "Colmenar",
+    "avg_total_income": 11666,
+    "avg_available_income": 10322,
+    "avg_total_income_hogar": 28652,
+    "avg_available_income_hogar": 25352,
+    "income_year": 2023
+  },
+  "29044": {
+    "ine_code": "29044",
+    "name": "Comares",
+    "avg_total_income": 11716,
+    "avg_available_income": 10502,
+    "avg_total_income_hogar": 25785,
+    "avg_available_income_hogar": 23112,
+    "income_year": 2023
+  },
+  "29045": {
+    "ine_code": "29045",
+    "name": "Cómpeta",
+    "avg_total_income": 11858,
+    "avg_available_income": 10330,
+    "avg_total_income_hogar": 28740,
+    "avg_available_income_hogar": 25036,
+    "income_year": 2023
+  },
+  "29046": {
+    "ine_code": "29046",
+    "name": "Cortes de la Frontera",
+    "avg_total_income": 12941,
+    "avg_available_income": 11339,
+    "avg_total_income_hogar": 28949,
+    "avg_available_income_hogar": 25364,
+    "income_year": 2023
+  },
+  "29047": {
+    "ine_code": "29047",
+    "name": "Cuevas Bajas",
+    "avg_total_income": 11794,
+    "avg_available_income": 10528,
+    "avg_total_income_hogar": 27595,
+    "avg_available_income_hogar": 24633,
+    "income_year": 2023
+  },
+  "29048": {
+    "ine_code": "29048",
+    "name": "Cuevas del Becerro",
+    "avg_total_income": 12874,
+    "avg_available_income": 11361,
+    "avg_total_income_hogar": 28331,
+    "avg_available_income_hogar": 25001,
+    "income_year": 2023
+  },
+  "29049": {
+    "ine_code": "29049",
+    "name": "Cuevas de San Marcos",
+    "avg_total_income": 11226,
+    "avg_available_income": 10061,
+    "avg_total_income_hogar": 26800,
+    "avg_available_income_hogar": 24019,
+    "income_year": 2023
+  },
+  "29050": {
+    "ine_code": "29050",
+    "name": "Cútar",
+    "avg_total_income": 11183,
+    "avg_available_income": 10006,
+    "avg_total_income_hogar": 22829,
+    "avg_available_income_hogar": 20425,
+    "income_year": 2023
+  },
+  "29051": {
+    "ine_code": "29051",
+    "name": "Estepona",
+    "avg_total_income": 15485,
+    "avg_available_income": 12741,
+    "avg_total_income_hogar": 41907,
+    "avg_available_income_hogar": 34480,
+    "income_year": 2023
+  },
+  "29052": {
+    "ine_code": "29052",
+    "name": "Faraján",
+    "avg_total_income": 15869,
+    "avg_available_income": 13304,
+    "avg_total_income_hogar": 33669,
+    "avg_available_income_hogar": 28227,
+    "income_year": 2023
+  },
+  "29053": {
+    "ine_code": "29053",
+    "name": "Frigiliana",
+    "avg_total_income": 14037,
+    "avg_available_income": 11964,
+    "avg_total_income_hogar": 34101,
+    "avg_available_income_hogar": 29064,
+    "income_year": 2023
+  },
+  "29054": {
+    "ine_code": "29054",
+    "name": "Fuengirola",
+    "avg_total_income": 14597,
+    "avg_available_income": 12115,
+    "avg_total_income_hogar": 38665,
+    "avg_available_income_hogar": 32091,
+    "income_year": 2023
+  },
+  "29055": {
+    "ine_code": "29055",
+    "name": "Fuente de Piedra",
+    "avg_total_income": 12573,
+    "avg_available_income": 10980,
+    "avg_total_income_hogar": 30526,
+    "avg_available_income_hogar": 26659,
+    "income_year": 2023
+  },
+  "29056": {
+    "ine_code": "29056",
+    "name": "Gaucín",
+    "avg_total_income": 12838,
+    "avg_available_income": 11068,
+    "avg_total_income_hogar": 29328,
+    "avg_available_income_hogar": 25283,
+    "income_year": 2023
+  },
+  "29057": {
+    "ine_code": "29057",
+    "name": "Genalguacil",
+    "avg_total_income": 12579,
+    "avg_available_income": 11068,
+    "avg_total_income_hogar": 23290,
+    "avg_available_income_hogar": 20493,
+    "income_year": 2023
+  },
+  "29058": {
+    "ine_code": "29058",
+    "name": "Guaro",
+    "avg_total_income": 12311,
+    "avg_available_income": 10779,
+    "avg_total_income_hogar": 29971,
+    "avg_available_income_hogar": 26240,
+    "income_year": 2023
+  },
+  "29059": {
+    "ine_code": "29059",
+    "name": "Humilladero",
+    "avg_total_income": 12443,
+    "avg_available_income": 10939,
+    "avg_total_income_hogar": 24916,
+    "avg_available_income_hogar": 21904,
+    "income_year": 2023
+  },
+  "29060": {
+    "ine_code": "29060",
+    "name": "Igualeja",
+    "avg_total_income": 14790,
+    "avg_available_income": 12815,
+    "avg_total_income_hogar": 32393,
+    "avg_available_income_hogar": 28068,
+    "income_year": 2023
+  },
+  "29061": {
+    "ine_code": "29061",
+    "name": "Istán",
+    "avg_total_income": 15908,
+    "avg_available_income": 13228,
+    "avg_total_income_hogar": 36076,
+    "avg_available_income_hogar": 29998,
+    "income_year": 2023
+  },
+  "29062": {
+    "ine_code": "29062",
+    "name": "Iznate",
+    "avg_total_income": 10090,
+    "avg_available_income": 9028,
+    "avg_total_income_hogar": 23745,
+    "avg_available_income_hogar": 21247,
+    "income_year": 2023
+  },
+  "29063": {
+    "ine_code": "29063",
+    "name": "Jimera de Líbar",
+    "avg_total_income": 14513,
+    "avg_available_income": 12519,
+    "avg_total_income_hogar": 28500,
+    "avg_available_income_hogar": 24583,
+    "income_year": 2023
+  },
+  "29064": {
+    "ine_code": "29064",
+    "name": "Jubrique",
+    "avg_total_income": 13213,
+    "avg_available_income": 11645,
+    "avg_total_income_hogar": 24091,
+    "avg_available_income_hogar": 21232,
+    "income_year": 2023
+  },
+  "29065": {
+    "ine_code": "29065",
+    "name": "Júzcar",
+    "avg_total_income": 14383,
+    "avg_available_income": 12545,
+    "avg_total_income_hogar": 28633,
+    "avg_available_income_hogar": 24975,
+    "income_year": 2023
+  },
+  "29066": {
+    "ine_code": "29066",
+    "name": "Macharaviaya",
+    "avg_total_income": 12508,
+    "avg_available_income": 10846,
+    "avg_total_income_hogar": 32357,
+    "avg_available_income_hogar": 28059,
+    "income_year": 2023
+  },
+  "29067": {
+    "ine_code": "29067",
+    "name": "Málaga",
+    "avg_total_income": 16761,
+    "avg_available_income": 13847,
+    "avg_total_income_hogar": 44348,
+    "avg_available_income_hogar": 36640,
+    "income_year": 2023
+  },
+  "29068": {
+    "ine_code": "29068",
+    "name": "Manilva",
+    "avg_total_income": 14688,
+    "avg_available_income": 12411,
+    "avg_total_income_hogar": 35683,
+    "avg_available_income_hogar": 30150,
+    "income_year": 2023
+  },
+  "29069": {
+    "ine_code": "29069",
+    "name": "Marbella",
+    "avg_total_income": 16581,
+    "avg_available_income": 13384,
+    "avg_total_income_hogar": 46587,
+    "avg_available_income_hogar": 37606,
+    "income_year": 2023
+  },
+  "29070": {
+    "ine_code": "29070",
+    "name": "Mijas",
+    "avg_total_income": 14221,
+    "avg_available_income": 11823,
+    "avg_total_income_hogar": 38385,
+    "avg_available_income_hogar": 31912,
+    "income_year": 2023
+  },
+  "29071": {
+    "ine_code": "29071",
+    "name": "Moclinejo",
+    "avg_total_income": 11383,
+    "avg_available_income": 10025,
+    "avg_total_income_hogar": 29606,
+    "avg_available_income_hogar": 26074,
+    "income_year": 2023
+  },
+  "29072": {
+    "ine_code": "29072",
+    "name": "Mollina",
+    "avg_total_income": 12195,
+    "avg_available_income": 10729,
+    "avg_total_income_hogar": 28534,
+    "avg_available_income_hogar": 25105,
+    "income_year": 2023
+  },
+  "29073": {
+    "ine_code": "29073",
+    "name": "Monda",
+    "avg_total_income": 12069,
+    "avg_available_income": 10435,
+    "avg_total_income_hogar": 31199,
+    "avg_available_income_hogar": 26973,
+    "income_year": 2023
+  },
+  "29074": {
+    "ine_code": "29074",
+    "name": "Montejaque",
+    "avg_total_income": 12385,
+    "avg_available_income": 10965,
+    "avg_total_income_hogar": 26560,
+    "avg_available_income_hogar": 23515,
+    "income_year": 2023
+  },
+  "29075": {
+    "ine_code": "29075",
+    "name": "Nerja",
+    "avg_total_income": 13952,
+    "avg_available_income": 11896,
+    "avg_total_income_hogar": 36050,
+    "avg_available_income_hogar": 30738,
+    "income_year": 2023
+  },
+  "29076": {
+    "ine_code": "29076",
+    "name": "Ojén",
+    "avg_total_income": 14128,
+    "avg_available_income": 11898,
+    "avg_total_income_hogar": 35952,
+    "avg_available_income_hogar": 30276,
+    "income_year": 2023
+  },
+  "29077": {
+    "ine_code": "29077",
+    "name": "Parauta",
+    "avg_total_income": 12681,
+    "avg_available_income": 11161,
+    "avg_total_income_hogar": 25362,
+    "avg_available_income_hogar": 22321,
+    "income_year": 2023
+  },
+  "29079": {
+    "ine_code": "29079",
+    "name": "Periana",
+    "avg_total_income": 11529,
+    "avg_available_income": 10193,
+    "avg_total_income_hogar": 26477,
+    "avg_available_income_hogar": 23411,
+    "income_year": 2023
+  },
+  "29080": {
+    "ine_code": "29080",
+    "name": "Pizarra",
+    "avg_total_income": 12643,
+    "avg_available_income": 10935,
+    "avg_total_income_hogar": 34937,
+    "avg_available_income_hogar": 30217,
+    "income_year": 2023
+  },
+  "29081": {
+    "ine_code": "29081",
+    "name": "Pujerra",
+    "avg_total_income": 14464,
+    "avg_available_income": 12491,
+    "avg_total_income_hogar": 32318,
+    "avg_available_income_hogar": 27910,
+    "income_year": 2023
+  },
+  "29082": {
+    "ine_code": "29082",
+    "name": "Rincón de la Victoria",
+    "avg_total_income": 19369,
+    "avg_available_income": 15614,
+    "avg_total_income_hogar": 47030,
+    "avg_available_income_hogar": 37913,
+    "income_year": 2023
+  },
+  "29083": {
+    "ine_code": "29083",
+    "name": "Riogordo",
+    "avg_total_income": 12291,
+    "avg_available_income": 10819,
+    "avg_total_income_hogar": 29202,
+    "avg_available_income_hogar": 25706,
+    "income_year": 2023
+  },
+  "29084": {
+    "ine_code": "29084",
+    "name": "Ronda",
+    "avg_total_income": 15541,
+    "avg_available_income": 13057,
+    "avg_total_income_hogar": 38435,
+    "avg_available_income_hogar": 32294,
+    "income_year": 2023
+  },
+  "29085": {
+    "ine_code": "29085",
+    "name": "Salares",
+    "avg_total_income": 10383,
+    "avg_available_income": 9287,
+    "avg_total_income_hogar": 22150,
+    "avg_available_income_hogar": 19813,
+    "income_year": 2023
+  },
+  "29086": {
+    "ine_code": "29086",
+    "name": "Sayalonga",
+    "avg_total_income": 11911,
+    "avg_available_income": 10551,
+    "avg_total_income_hogar": 25482,
+    "avg_available_income_hogar": 22571,
+    "income_year": 2023
+  },
+  "29087": {
+    "ine_code": "29087",
+    "name": "Sedella",
+    "avg_total_income": 14729,
+    "avg_available_income": 12822,
+    "avg_total_income_hogar": 26663,
+    "avg_available_income_hogar": 23210,
+    "income_year": 2023
+  },
+  "29088": {
+    "ine_code": "29088",
+    "name": "Sierra de Yeguas",
+    "avg_total_income": 12162,
+    "avg_available_income": 10782,
+    "avg_total_income_hogar": 30843,
+    "avg_available_income_hogar": 27344,
+    "income_year": 2023
+  },
+  "29089": {
+    "ine_code": "29089",
+    "name": "Teba",
+    "avg_total_income": 11938,
+    "avg_available_income": 10631,
+    "avg_total_income_hogar": 27989,
+    "avg_available_income_hogar": 24926,
+    "income_year": 2023
+  },
+  "29090": {
+    "ine_code": "29090",
+    "name": "Tolox",
+    "avg_total_income": 12256,
+    "avg_available_income": 10797,
+    "avg_total_income_hogar": 27778,
+    "avg_available_income_hogar": 24472,
+    "income_year": 2023
+  },
+  "29091": {
+    "ine_code": "29091",
+    "name": "Torrox",
+    "avg_total_income": 12458,
+    "avg_available_income": 10740,
+    "avg_total_income_hogar": 30422,
+    "avg_available_income_hogar": 26227,
+    "income_year": 2023
+  },
+  "29092": {
+    "ine_code": "29092",
+    "name": "Totalán",
+    "avg_total_income": 11124,
+    "avg_available_income": 9837,
+    "avg_total_income_hogar": 27958,
+    "avg_available_income_hogar": 24721,
+    "income_year": 2023
+  },
+  "29093": {
+    "ine_code": "29093",
+    "name": "Valle de Abdalajís",
+    "avg_total_income": 11601,
+    "avg_available_income": 10481,
+    "avg_total_income_hogar": 27245,
+    "avg_available_income_hogar": 24615,
+    "income_year": 2023
+  },
+  "29094": {
+    "ine_code": "29094",
+    "name": "Vélez-Málaga",
+    "avg_total_income": 14386,
+    "avg_available_income": 12154,
+    "avg_total_income_hogar": 37025,
+    "avg_available_income_hogar": 31280,
+    "income_year": 2023
+  },
+  "29095": {
+    "ine_code": "29095",
+    "name": "Villanueva de Algaidas",
+    "avg_total_income": 12113,
+    "avg_available_income": 10785,
+    "avg_total_income_hogar": 28625,
+    "avg_available_income_hogar": 25488,
+    "income_year": 2023
+  },
+  "29096": {
+    "ine_code": "29096",
+    "name": "Villanueva del Rosario",
+    "avg_total_income": 12939,
+    "avg_available_income": 11372,
+    "avg_total_income_hogar": 29799,
+    "avg_available_income_hogar": 26189,
+    "income_year": 2023
+  },
+  "29097": {
+    "ine_code": "29097",
+    "name": "Villanueva del Trabuco",
+    "avg_total_income": 11921,
+    "avg_available_income": 10499,
+    "avg_total_income_hogar": 29287,
+    "avg_available_income_hogar": 25794,
+    "income_year": 2023
+  },
+  "29098": {
+    "ine_code": "29098",
+    "name": "Villanueva de Tapia",
+    "avg_total_income": 12657,
+    "avg_available_income": 11324,
+    "avg_total_income_hogar": 29432,
+    "avg_available_income_hogar": 26335,
+    "income_year": 2023
+  },
+  "29099": {
+    "ine_code": "29099",
+    "name": "Viñuela",
+    "avg_total_income": 12689,
+    "avg_available_income": 11020,
+    "avg_total_income_hogar": 29532,
+    "avg_available_income_hogar": 25648,
+    "income_year": 2023
+  },
+  "29100": {
+    "ine_code": "29100",
+    "name": "Yunquera",
+    "avg_total_income": 11883,
+    "avg_available_income": 10638,
+    "avg_total_income_hogar": 27639,
+    "avg_available_income_hogar": 24743,
+    "income_year": 2023
+  },
+  "29901": {
+    "ine_code": "29901",
+    "name": "Torremolinos",
+    "avg_total_income": 16868,
+    "avg_available_income": 13845,
+    "avg_total_income_hogar": 41004,
+    "avg_available_income_hogar": 33655,
+    "income_year": 2023
+  },
+  "29902": {
+    "ine_code": "29902",
+    "name": "Villanueva de la Concepción",
+    "avg_total_income": 11614,
+    "avg_available_income": 10288,
+    "avg_total_income_hogar": 30007,
+    "avg_available_income_hogar": 26582,
+    "income_year": 2023
+  },
+  "29903": {
+    "ine_code": "29903",
+    "name": "Montecorto",
+    "avg_total_income": 12608,
+    "avg_available_income": 11046,
+    "avg_total_income_hogar": 29149,
+    "avg_available_income_hogar": 25537,
+    "income_year": 2023
+  },
+  "29904": {
+    "ine_code": "29904",
+    "name": "Serrato",
+    "avg_total_income": 11277,
+    "avg_available_income": 10268,
+    "avg_total_income_hogar": 23169,
+    "avg_available_income_hogar": 21097,
+    "income_year": 2023
+  }
+}

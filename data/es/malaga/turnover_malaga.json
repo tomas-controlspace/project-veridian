@@ -1,0 +1,929 @@
+{
+  "29001": {
+    "ine_code": "29001",
+    "name": "Alameda",
+    "name_in_mivau": "Alameda",
+    "housing_turnover": 85,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 74,
+    "housing_turnover_2025": 85
+  },
+  "29002": {
+    "ine_code": "29002",
+    "name": "Alcaucín",
+    "name_in_mivau": "Alcaucín",
+    "housing_turnover": 179,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 132,
+    "housing_turnover_2025": 179
+  },
+  "29003": {
+    "ine_code": "29003",
+    "name": "Alfarnate",
+    "name_in_mivau": "Alfarnate",
+    "housing_turnover": 17,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 9,
+    "housing_turnover_2025": 17
+  },
+  "29004": {
+    "ine_code": "29004",
+    "name": "Alfarnatejo",
+    "name_in_mivau": "Alfarnatejo",
+    "housing_turnover": 3,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 2,
+    "housing_turnover_2025": 3
+  },
+  "29005": {
+    "ine_code": "29005",
+    "name": "Algarrobo",
+    "name_in_mivau": "Algarrobo",
+    "housing_turnover": 157,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 192,
+    "housing_turnover_2025": 157
+  },
+  "29006": {
+    "ine_code": "29006",
+    "name": "Algatocín",
+    "name_in_mivau": "Algatocín",
+    "housing_turnover": 10,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 7,
+    "housing_turnover_2025": 10
+  },
+  "29007": {
+    "ine_code": "29007",
+    "name": "Alhaurín de la Torre",
+    "name_in_mivau": "Alhaurín de la Torre",
+    "housing_turnover": 581,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 489,
+    "housing_turnover_2025": 581
+  },
+  "29008": {
+    "ine_code": "29008",
+    "name": "Alhaurín el Grande",
+    "name_in_mivau": "Alhaurín el Grande",
+    "housing_turnover": 277,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 312,
+    "housing_turnover_2025": 277
+  },
+  "29009": {
+    "ine_code": "29009",
+    "name": "Almáchar",
+    "name_in_mivau": "Almáchar",
+    "housing_turnover": 28,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 18,
+    "housing_turnover_2025": 28
+  },
+  "29010": {
+    "ine_code": "29010",
+    "name": "Almargen",
+    "name_in_mivau": "Almargen",
+    "housing_turnover": 12,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 13,
+    "housing_turnover_2025": 12
+  },
+  "29011": {
+    "ine_code": "29011",
+    "name": "Almogía",
+    "name_in_mivau": "Almogía",
+    "housing_turnover": 79,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 50,
+    "housing_turnover_2025": 79
+  },
+  "29012": {
+    "ine_code": "29012",
+    "name": "Álora",
+    "name_in_mivau": "Álora",
+    "housing_turnover": 165,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 180,
+    "housing_turnover_2025": 165
+  },
+  "29013": {
+    "ine_code": "29013",
+    "name": "Alozaina",
+    "name_in_mivau": "Alozaina",
+    "housing_turnover": 62,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 34,
+    "housing_turnover_2025": 62
+  },
+  "29014": {
+    "ine_code": "29014",
+    "name": "Alpandeire",
+    "name_in_mivau": "Alpandeire",
+    "housing_turnover": 6,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 7,
+    "housing_turnover_2025": 6
+  },
+  "29015": {
+    "ine_code": "29015",
+    "name": "Antequera",
+    "name_in_mivau": "Antequera",
+    "housing_turnover": 597,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 553,
+    "housing_turnover_2025": 597
+  },
+  "29016": {
+    "ine_code": "29016",
+    "name": "Árchez",
+    "name_in_mivau": "Árchez",
+    "housing_turnover": 9,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 6,
+    "housing_turnover_2025": 9
+  },
+  "29017": {
+    "ine_code": "29017",
+    "name": "Archidona",
+    "name_in_mivau": "Archidona",
+    "housing_turnover": 146,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 99,
+    "housing_turnover_2025": 146
+  },
+  "29018": {
+    "ine_code": "29018",
+    "name": "Ardales",
+    "name_in_mivau": "Ardales",
+    "housing_turnover": 44,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 36,
+    "housing_turnover_2025": 44
+  },
+  "29019": {
+    "ine_code": "29019",
+    "name": "Arenas",
+    "name_in_mivau": "Arenas",
+    "housing_turnover": 23,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 20,
+    "housing_turnover_2025": 23
+  },
+  "29020": {
+    "ine_code": "29020",
+    "name": "Arriate",
+    "name_in_mivau": "Arriate",
+    "housing_turnover": 57,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 46,
+    "housing_turnover_2025": 57
+  },
+  "29021": {
+    "ine_code": "29021",
+    "name": "Atajate",
+    "name_in_mivau": "Atajate",
+    "housing_turnover": 4,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 6,
+    "housing_turnover_2025": 4
+  },
+  "29022": {
+    "ine_code": "29022",
+    "name": "Benadalid",
+    "name_in_mivau": "Benadalid",
+    "housing_turnover": 4,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 8,
+    "housing_turnover_2025": 4
+  },
+  "29023": {
+    "ine_code": "29023",
+    "name": "Benahavís",
+    "name_in_mivau": "Benahavís",
+    "housing_turnover": 712,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 800,
+    "housing_turnover_2025": 712
+  },
+  "29024": {
+    "ine_code": "29024",
+    "name": "Benalauría",
+    "name_in_mivau": "Benalauría",
+    "housing_turnover": 1,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 1,
+    "housing_turnover_2025": 1
+  },
+  "29025": {
+    "ine_code": "29025",
+    "name": "Benalmádena",
+    "name_in_mivau": "Benalmádena",
+    "housing_turnover": 2073,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 2299,
+    "housing_turnover_2025": 2073
+  },
+  "29026": {
+    "ine_code": "29026",
+    "name": "Benamargosa",
+    "name_in_mivau": "Benamargosa",
+    "housing_turnover": 25,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 22,
+    "housing_turnover_2025": 25
+  },
+  "29027": {
+    "ine_code": "29027",
+    "name": "Benamocarra",
+    "name_in_mivau": "Benamocarra",
+    "housing_turnover": 21,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 32,
+    "housing_turnover_2025": 21
+  },
+  "29028": {
+    "ine_code": "29028",
+    "name": "Benaoján",
+    "name_in_mivau": "Benaoján",
+    "housing_turnover": 22,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 17,
+    "housing_turnover_2025": 22
+  },
+  "29029": {
+    "ine_code": "29029",
+    "name": "Benarrabá",
+    "name_in_mivau": "Benarrabá",
+    "housing_turnover": 13,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 0,
+    "housing_turnover_2025": 13
+  },
+  "29030": {
+    "ine_code": "29030",
+    "name": "Borge, El",
+    "name_in_mivau": "Borge (El)",
+    "housing_turnover": 12,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 5,
+    "housing_turnover_2025": 12
+  },
+  "29031": {
+    "ine_code": "29031",
+    "name": "Burgo, El",
+    "name_in_mivau": "Burgo (El)",
+    "housing_turnover": 27,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 22,
+    "housing_turnover_2025": 27
+  },
+  "29032": {
+    "ine_code": "29032",
+    "name": "Campillos",
+    "name_in_mivau": "Campillos",
+    "housing_turnover": 206,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 138,
+    "housing_turnover_2025": 206
+  },
+  "29033": {
+    "ine_code": "29033",
+    "name": "Canillas de Aceituno",
+    "name_in_mivau": "Canillas de Aceituno",
+    "housing_turnover": 56,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 34,
+    "housing_turnover_2025": 56
+  },
+  "29034": {
+    "ine_code": "29034",
+    "name": "Canillas de Albaida",
+    "name_in_mivau": "Canillas de Albaida",
+    "housing_turnover": 35,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 92,
+    "housing_turnover_2025": 35
+  },
+  "29035": {
+    "ine_code": "29035",
+    "name": "Cañete la Real",
+    "name_in_mivau": "Cañete la Real",
+    "housing_turnover": 23,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 16,
+    "housing_turnover_2025": 23
+  },
+  "29036": {
+    "ine_code": "29036",
+    "name": "Carratraca",
+    "name_in_mivau": "Carratraca",
+    "housing_turnover": 17,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 9,
+    "housing_turnover_2025": 17
+  },
+  "29037": {
+    "ine_code": "29037",
+    "name": "Cartajima",
+    "name_in_mivau": "Cartajima",
+    "housing_turnover": 6,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 5,
+    "housing_turnover_2025": 6
+  },
+  "29038": {
+    "ine_code": "29038",
+    "name": "Cártama",
+    "name_in_mivau": "Cártama",
+    "housing_turnover": 297,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 321,
+    "housing_turnover_2025": 297
+  },
+  "29039": {
+    "ine_code": "29039",
+    "name": "Casabermeja",
+    "name_in_mivau": "Casabermeja",
+    "housing_turnover": 41,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 49,
+    "housing_turnover_2025": 41
+  },
+  "29040": {
+    "ine_code": "29040",
+    "name": "Casarabonela",
+    "name_in_mivau": "Casarabonela",
+    "housing_turnover": 69,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 61,
+    "housing_turnover_2025": 69
+  },
+  "29041": {
+    "ine_code": "29041",
+    "name": "Casares",
+    "name_in_mivau": "Casares",
+    "housing_turnover": 636,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 626,
+    "housing_turnover_2025": 636
+  },
+  "29042": {
+    "ine_code": "29042",
+    "name": "Coín",
+    "name_in_mivau": "Coín",
+    "housing_turnover": 377,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 344,
+    "housing_turnover_2025": 377
+  },
+  "29043": {
+    "ine_code": "29043",
+    "name": "Colmenar",
+    "name_in_mivau": "Colmenar",
+    "housing_turnover": 58,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 50,
+    "housing_turnover_2025": 58
+  },
+  "29044": {
+    "ine_code": "29044",
+    "name": "Comares",
+    "name_in_mivau": "Comares",
+    "housing_turnover": 19,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 22,
+    "housing_turnover_2025": 19
+  },
+  "29045": {
+    "ine_code": "29045",
+    "name": "Cómpeta",
+    "name_in_mivau": "Cómpeta",
+    "housing_turnover": 210,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 91,
+    "housing_turnover_2025": 210
+  },
+  "29046": {
+    "ine_code": "29046",
+    "name": "Cortes de la Frontera",
+    "name_in_mivau": "Cortes de la Frontera",
+    "housing_turnover": 63,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 52,
+    "housing_turnover_2025": 63
+  },
+  "29047": {
+    "ine_code": "29047",
+    "name": "Cuevas Bajas",
+    "name_in_mivau": "Cuevas Bajas",
+    "housing_turnover": 17,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 17,
+    "housing_turnover_2025": 17
+  },
+  "29048": {
+    "ine_code": "29048",
+    "name": "Cuevas del Becerro",
+    "name_in_mivau": "Cuevas del Becerro",
+    "housing_turnover": 14,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 24,
+    "housing_turnover_2025": 14
+  },
+  "29049": {
+    "ine_code": "29049",
+    "name": "Cuevas de San Marcos",
+    "name_in_mivau": "Cuevas de San Marcos",
+    "housing_turnover": 45,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 43,
+    "housing_turnover_2025": 45
+  },
+  "29050": {
+    "ine_code": "29050",
+    "name": "Cútar",
+    "name_in_mivau": "Cútar",
+    "housing_turnover": 9,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 12,
+    "housing_turnover_2025": 9
+  },
+  "29051": {
+    "ine_code": "29051",
+    "name": "Estepona",
+    "name_in_mivau": "Estepona",
+    "housing_turnover": 3475,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 3163,
+    "housing_turnover_2025": 3475
+  },
+  "29052": {
+    "ine_code": "29052",
+    "name": "Faraján",
+    "name_in_mivau": "Faraján",
+    "housing_turnover": 1,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 6,
+    "housing_turnover_2025": 1
+  },
+  "29053": {
+    "ine_code": "29053",
+    "name": "Frigiliana",
+    "name_in_mivau": "Frigiliana",
+    "housing_turnover": 70,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 75,
+    "housing_turnover_2025": 70
+  },
+  "29054": {
+    "ine_code": "29054",
+    "name": "Fuengirola",
+    "name_in_mivau": "Fuengirola",
+    "housing_turnover": 2172,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 2391,
+    "housing_turnover_2025": 2172
+  },
+  "29055": {
+    "ine_code": "29055",
+    "name": "Fuente de Piedra",
+    "name_in_mivau": "Fuente de Piedra",
+    "housing_turnover": 88,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 94,
+    "housing_turnover_2025": 88
+  },
+  "29056": {
+    "ine_code": "29056",
+    "name": "Gaucín",
+    "name_in_mivau": "Gaucín",
+    "housing_turnover": 36,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 31,
+    "housing_turnover_2025": 36
+  },
+  "29057": {
+    "ine_code": "29057",
+    "name": "Genalguacil",
+    "name_in_mivau": "Genalguacil",
+    "housing_turnover": 2,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 10,
+    "housing_turnover_2025": 2
+  },
+  "29058": {
+    "ine_code": "29058",
+    "name": "Guaro",
+    "name_in_mivau": "Guaro",
+    "housing_turnover": 76,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 75,
+    "housing_turnover_2025": 76
+  },
+  "29059": {
+    "ine_code": "29059",
+    "name": "Humilladero",
+    "name_in_mivau": "Humilladero",
+    "housing_turnover": 54,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 51,
+    "housing_turnover_2025": 54
+  },
+  "29060": {
+    "ine_code": "29060",
+    "name": "Igualeja",
+    "name_in_mivau": "Igualeja",
+    "housing_turnover": 3,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 9,
+    "housing_turnover_2025": 3
+  },
+  "29061": {
+    "ine_code": "29061",
+    "name": "Istán",
+    "name_in_mivau": "Istán",
+    "housing_turnover": 61,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 44,
+    "housing_turnover_2025": 61
+  },
+  "29062": {
+    "ine_code": "29062",
+    "name": "Iznate",
+    "name_in_mivau": "Iznate",
+    "housing_turnover": 8,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 14,
+    "housing_turnover_2025": 8
+  },
+  "29063": {
+    "ine_code": "29063",
+    "name": "Jimera de Líbar",
+    "name_in_mivau": "Jimera de Líbar",
+    "housing_turnover": 12,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 11,
+    "housing_turnover_2025": 12
+  },
+  "29064": {
+    "ine_code": "29064",
+    "name": "Jubrique",
+    "name_in_mivau": "Jubrique",
+    "housing_turnover": 9,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 11,
+    "housing_turnover_2025": 9
+  },
+  "29065": {
+    "ine_code": "29065",
+    "name": "Júzcar",
+    "name_in_mivau": "Júzcar",
+    "housing_turnover": 3,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 1,
+    "housing_turnover_2025": 3
+  },
+  "29066": {
+    "ine_code": "29066",
+    "name": "Macharaviaya",
+    "name_in_mivau": "Macharaviaya",
+    "housing_turnover": 3,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 6,
+    "housing_turnover_2025": 3
+  },
+  "29067": {
+    "ine_code": "29067",
+    "name": "Málaga",
+    "name_in_mivau": "Málaga",
+    "housing_turnover": 6299,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 7240,
+    "housing_turnover_2025": 6299
+  },
+  "29068": {
+    "ine_code": "29068",
+    "name": "Manilva",
+    "name_in_mivau": "Manilva",
+    "housing_turnover": 1123,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 1351,
+    "housing_turnover_2025": 1123
+  },
+  "29069": {
+    "ine_code": "29069",
+    "name": "Marbella",
+    "name_in_mivau": "Marbella",
+    "housing_turnover": 4407,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 4743,
+    "housing_turnover_2025": 4407
+  },
+  "29070": {
+    "ine_code": "29070",
+    "name": "Mijas",
+    "name_in_mivau": "Mijas",
+    "housing_turnover": 3197,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 3800,
+    "housing_turnover_2025": 3197
+  },
+  "29071": {
+    "ine_code": "29071",
+    "name": "Moclinejo",
+    "name_in_mivau": "Moclinejo",
+    "housing_turnover": 17,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 8,
+    "housing_turnover_2025": 17
+  },
+  "29072": {
+    "ine_code": "29072",
+    "name": "Mollina",
+    "name_in_mivau": "Mollina",
+    "housing_turnover": 108,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 122,
+    "housing_turnover_2025": 108
+  },
+  "29073": {
+    "ine_code": "29073",
+    "name": "Monda",
+    "name_in_mivau": "Monda",
+    "housing_turnover": 53,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 58,
+    "housing_turnover_2025": 53
+  },
+  "29074": {
+    "ine_code": "29074",
+    "name": "Montejaque",
+    "name_in_mivau": "Montejaque",
+    "housing_turnover": 43,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 40,
+    "housing_turnover_2025": 43
+  },
+  "29075": {
+    "ine_code": "29075",
+    "name": "Nerja",
+    "name_in_mivau": "Nerja",
+    "housing_turnover": 583,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 501,
+    "housing_turnover_2025": 583
+  },
+  "29076": {
+    "ine_code": "29076",
+    "name": "Ojén",
+    "name_in_mivau": "Ojén",
+    "housing_turnover": 190,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 239,
+    "housing_turnover_2025": 190
+  },
+  "29077": {
+    "ine_code": "29077",
+    "name": "Parauta",
+    "name_in_mivau": "Parauta",
+    "housing_turnover": 5,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 4,
+    "housing_turnover_2025": 5
+  },
+  "29079": {
+    "ine_code": "29079",
+    "name": "Periana",
+    "name_in_mivau": "Periana",
+    "housing_turnover": 63,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 60,
+    "housing_turnover_2025": 63
+  },
+  "29080": {
+    "ine_code": "29080",
+    "name": "Pizarra",
+    "name_in_mivau": "Pizarra",
+    "housing_turnover": 105,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 135,
+    "housing_turnover_2025": 105
+  },
+  "29081": {
+    "ine_code": "29081",
+    "name": "Pujerra",
+    "name_in_mivau": "Pujerra",
+    "housing_turnover": 2,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 2,
+    "housing_turnover_2025": 2
+  },
+  "29082": {
+    "ine_code": "29082",
+    "name": "Rincón de la Victoria",
+    "name_in_mivau": "Rincón de la Victoria",
+    "housing_turnover": 861,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 786,
+    "housing_turnover_2025": 861
+  },
+  "29083": {
+    "ine_code": "29083",
+    "name": "Riogordo",
+    "name_in_mivau": "Riogordo",
+    "housing_turnover": 53,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 45,
+    "housing_turnover_2025": 53
+  },
+  "29084": {
+    "ine_code": "29084",
+    "name": "Ronda",
+    "name_in_mivau": "Ronda",
+    "housing_turnover": 536,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 522,
+    "housing_turnover_2025": 536
+  },
+  "29085": {
+    "ine_code": "29085",
+    "name": "Salares",
+    "name_in_mivau": "Salares",
+    "housing_turnover": 12,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 9,
+    "housing_turnover_2025": 12
+  },
+  "29086": {
+    "ine_code": "29086",
+    "name": "Sayalonga",
+    "name_in_mivau": "Sayalonga",
+    "housing_turnover": 31,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 18,
+    "housing_turnover_2025": 31
+  },
+  "29087": {
+    "ine_code": "29087",
+    "name": "Sedella",
+    "name_in_mivau": "Sedella",
+    "housing_turnover": 41,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 12,
+    "housing_turnover_2025": 41
+  },
+  "29088": {
+    "ine_code": "29088",
+    "name": "Sierra de Yeguas",
+    "name_in_mivau": "Sierra de Yeguas",
+    "housing_turnover": 45,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 29,
+    "housing_turnover_2025": 45
+  },
+  "29089": {
+    "ine_code": "29089",
+    "name": "Teba",
+    "name_in_mivau": "Teba",
+    "housing_turnover": 38,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 28,
+    "housing_turnover_2025": 38
+  },
+  "29090": {
+    "ine_code": "29090",
+    "name": "Tolox",
+    "name_in_mivau": "Tolox",
+    "housing_turnover": 36,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 50,
+    "housing_turnover_2025": 36
+  },
+  "29091": {
+    "ine_code": "29091",
+    "name": "Torrox",
+    "name_in_mivau": "Torrox",
+    "housing_turnover": 821,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 864,
+    "housing_turnover_2025": 821
+  },
+  "29092": {
+    "ine_code": "29092",
+    "name": "Totalán",
+    "name_in_mivau": "Totalán",
+    "housing_turnover": 12,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 9,
+    "housing_turnover_2025": 12
+  },
+  "29093": {
+    "ine_code": "29093",
+    "name": "Valle de Abdalajís",
+    "name_in_mivau": "Valle de Abdalajís",
+    "housing_turnover": 24,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 26,
+    "housing_turnover_2025": 24
+  },
+  "29094": {
+    "ine_code": "29094",
+    "name": "Vélez-Málaga",
+    "name_in_mivau": "Vélez-Málaga",
+    "housing_turnover": 1413,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 1667,
+    "housing_turnover_2025": 1413
+  },
+  "29095": {
+    "ine_code": "29095",
+    "name": "Villanueva de Algaidas",
+    "name_in_mivau": "Villanueva de Algaidas",
+    "housing_turnover": 64,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 60,
+    "housing_turnover_2025": 64
+  },
+  "29096": {
+    "ine_code": "29096",
+    "name": "Villanueva del Rosario",
+    "name_in_mivau": "Villanueva del Rosario",
+    "housing_turnover": 56,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 42,
+    "housing_turnover_2025": 56
+  },
+  "29097": {
+    "ine_code": "29097",
+    "name": "Villanueva del Trabuco",
+    "name_in_mivau": "Villanueva del Trabuco",
+    "housing_turnover": 43,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 52,
+    "housing_turnover_2025": 43
+  },
+  "29098": {
+    "ine_code": "29098",
+    "name": "Villanueva de Tapia",
+    "name_in_mivau": "Villanueva de Tapia",
+    "housing_turnover": 27,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 14,
+    "housing_turnover_2025": 27
+  },
+  "29099": {
+    "ine_code": "29099",
+    "name": "Viñuela",
+    "name_in_mivau": "Viñuela",
+    "housing_turnover": 56,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 52,
+    "housing_turnover_2025": 56
+  },
+  "29100": {
+    "ine_code": "29100",
+    "name": "Yunquera",
+    "name_in_mivau": "Yunquera",
+    "housing_turnover": 37,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 35,
+    "housing_turnover_2025": 37
+  },
+  "29901": {
+    "ine_code": "29901",
+    "name": "Torremolinos",
+    "name_in_mivau": "Torremolinos",
+    "housing_turnover": 1991,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 1566,
+    "housing_turnover_2025": 1991
+  },
+  "29902": {
+    "ine_code": "29902",
+    "name": "Villanueva de la Concepción",
+    "name_in_mivau": "Villanueva de la Concepción",
+    "housing_turnover": 29,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 26,
+    "housing_turnover_2025": 29
+  },
+  "29903": {
+    "ine_code": "29903",
+    "name": "Montecorto",
+    "name_in_mivau": "Montecorto",
+    "housing_turnover": 12,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 9,
+    "housing_turnover_2025": 12
+  },
+  "29904": {
+    "ine_code": "29904",
+    "name": "Serrato",
+    "name_in_mivau": "Serrato",
+    "housing_turnover": 9,
+    "housing_turnover_year": 2025,
+    "housing_turnover_2024": 6,
+    "housing_turnover_2025": 9
+  }
+}

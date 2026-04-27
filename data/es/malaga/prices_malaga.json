@@ -1,0 +1,929 @@
+{
+  "29001": {
+    "ine_code": "29001",
+    "name": "Alameda",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29002": {
+    "ine_code": "29002",
+    "name": "Alcaucín",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29003": {
+    "ine_code": "29003",
+    "name": "Alfarnate",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29004": {
+    "ine_code": "29004",
+    "name": "Alfarnatejo",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29005": {
+    "ine_code": "29005",
+    "name": "Algarrobo",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29006": {
+    "ine_code": "29006",
+    "name": "Algatocín",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29007": {
+    "ine_code": "29007",
+    "name": "Alhaurín de la Torre",
+    "avg_price_sqm": 2651.4,
+    "price_source": "municipal",
+    "price_tasaciones_n": 153,
+    "price_quarter": "T4A2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29008": {
+    "ine_code": "29008",
+    "name": "Alhaurín el Grande",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29009": {
+    "ine_code": "29009",
+    "name": "Almáchar",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29010": {
+    "ine_code": "29010",
+    "name": "Almargen",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29011": {
+    "ine_code": "29011",
+    "name": "Almogía",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29012": {
+    "ine_code": "29012",
+    "name": "Álora",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29013": {
+    "ine_code": "29013",
+    "name": "Alozaina",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29014": {
+    "ine_code": "29014",
+    "name": "Alpandeire",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29015": {
+    "ine_code": "29015",
+    "name": "Antequera",
+    "avg_price_sqm": 1409.2,
+    "price_source": "municipal",
+    "price_tasaciones_n": 144,
+    "price_quarter": "T4A2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29016": {
+    "ine_code": "29016",
+    "name": "Árchez",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29017": {
+    "ine_code": "29017",
+    "name": "Archidona",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29018": {
+    "ine_code": "29018",
+    "name": "Ardales",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29019": {
+    "ine_code": "29019",
+    "name": "Arenas",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29020": {
+    "ine_code": "29020",
+    "name": "Arriate",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29021": {
+    "ine_code": "29021",
+    "name": "Atajate",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29022": {
+    "ine_code": "29022",
+    "name": "Benadalid",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29023": {
+    "ine_code": "29023",
+    "name": "Benahavís",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29024": {
+    "ine_code": "29024",
+    "name": "Benalauría",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29025": {
+    "ine_code": "29025",
+    "name": "Benalmádena",
+    "avg_price_sqm": 3464.6,
+    "price_source": "municipal",
+    "price_tasaciones_n": 430,
+    "price_quarter": "T4A2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29026": {
+    "ine_code": "29026",
+    "name": "Benamargosa",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29027": {
+    "ine_code": "29027",
+    "name": "Benamocarra",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29028": {
+    "ine_code": "29028",
+    "name": "Benaoján",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29029": {
+    "ine_code": "29029",
+    "name": "Benarrabá",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29030": {
+    "ine_code": "29030",
+    "name": "Borge, El",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29031": {
+    "ine_code": "29031",
+    "name": "Burgo, El",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29032": {
+    "ine_code": "29032",
+    "name": "Campillos",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29033": {
+    "ine_code": "29033",
+    "name": "Canillas de Aceituno",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29034": {
+    "ine_code": "29034",
+    "name": "Canillas de Albaida",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29035": {
+    "ine_code": "29035",
+    "name": "Cañete la Real",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29036": {
+    "ine_code": "29036",
+    "name": "Carratraca",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29037": {
+    "ine_code": "29037",
+    "name": "Cartajima",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29038": {
+    "ine_code": "29038",
+    "name": "Cártama",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29039": {
+    "ine_code": "29039",
+    "name": "Casabermeja",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29040": {
+    "ine_code": "29040",
+    "name": "Casarabonela",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29041": {
+    "ine_code": "29041",
+    "name": "Casares",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29042": {
+    "ine_code": "29042",
+    "name": "Coín",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29043": {
+    "ine_code": "29043",
+    "name": "Colmenar",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29044": {
+    "ine_code": "29044",
+    "name": "Comares",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29045": {
+    "ine_code": "29045",
+    "name": "Cómpeta",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29046": {
+    "ine_code": "29046",
+    "name": "Cortes de la Frontera",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29047": {
+    "ine_code": "29047",
+    "name": "Cuevas Bajas",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29048": {
+    "ine_code": "29048",
+    "name": "Cuevas del Becerro",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29049": {
+    "ine_code": "29049",
+    "name": "Cuevas de San Marcos",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29050": {
+    "ine_code": "29050",
+    "name": "Cútar",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29051": {
+    "ine_code": "29051",
+    "name": "Estepona",
+    "avg_price_sqm": 3415.9,
+    "price_source": "municipal",
+    "price_tasaciones_n": 619,
+    "price_quarter": "T4A2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29052": {
+    "ine_code": "29052",
+    "name": "Faraján",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29053": {
+    "ine_code": "29053",
+    "name": "Frigiliana",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29054": {
+    "ine_code": "29054",
+    "name": "Fuengirola",
+    "avg_price_sqm": 3495.6,
+    "price_source": "municipal",
+    "price_tasaciones_n": 314,
+    "price_quarter": "T4A2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29055": {
+    "ine_code": "29055",
+    "name": "Fuente de Piedra",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29056": {
+    "ine_code": "29056",
+    "name": "Gaucín",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29057": {
+    "ine_code": "29057",
+    "name": "Genalguacil",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29058": {
+    "ine_code": "29058",
+    "name": "Guaro",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29059": {
+    "ine_code": "29059",
+    "name": "Humilladero",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29060": {
+    "ine_code": "29060",
+    "name": "Igualeja",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29061": {
+    "ine_code": "29061",
+    "name": "Istán",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29062": {
+    "ine_code": "29062",
+    "name": "Iznate",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29063": {
+    "ine_code": "29063",
+    "name": "Jimera de Líbar",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29064": {
+    "ine_code": "29064",
+    "name": "Jubrique",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29065": {
+    "ine_code": "29065",
+    "name": "Júzcar",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29066": {
+    "ine_code": "29066",
+    "name": "Macharaviaya",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29067": {
+    "ine_code": "29067",
+    "name": "Málaga",
+    "avg_price_sqm": 3246.2,
+    "price_source": "municipal",
+    "price_tasaciones_n": 1825,
+    "price_quarter": "T4A2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29068": {
+    "ine_code": "29068",
+    "name": "Manilva",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29069": {
+    "ine_code": "29069",
+    "name": "Marbella",
+    "avg_price_sqm": 4270.2,
+    "price_source": "municipal",
+    "price_tasaciones_n": 725,
+    "price_quarter": "T4A2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29070": {
+    "ine_code": "29070",
+    "name": "Mijas",
+    "avg_price_sqm": 3119.3,
+    "price_source": "municipal",
+    "price_tasaciones_n": 564,
+    "price_quarter": "T4A2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29071": {
+    "ine_code": "29071",
+    "name": "Moclinejo",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29072": {
+    "ine_code": "29072",
+    "name": "Mollina",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29073": {
+    "ine_code": "29073",
+    "name": "Monda",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29074": {
+    "ine_code": "29074",
+    "name": "Montejaque",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29075": {
+    "ine_code": "29075",
+    "name": "Nerja",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29076": {
+    "ine_code": "29076",
+    "name": "Ojén",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29077": {
+    "ine_code": "29077",
+    "name": "Parauta",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29079": {
+    "ine_code": "29079",
+    "name": "Periana",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29080": {
+    "ine_code": "29080",
+    "name": "Pizarra",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29081": {
+    "ine_code": "29081",
+    "name": "Pujerra",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29082": {
+    "ine_code": "29082",
+    "name": "Rincón de la Victoria",
+    "avg_price_sqm": 3376.9,
+    "price_source": "municipal",
+    "price_tasaciones_n": 196,
+    "price_quarter": "T4A2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29083": {
+    "ine_code": "29083",
+    "name": "Riogordo",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29084": {
+    "ine_code": "29084",
+    "name": "Ronda",
+    "avg_price_sqm": 1500.1,
+    "price_source": "municipal",
+    "price_tasaciones_n": 130,
+    "price_quarter": "T4A2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29085": {
+    "ine_code": "29085",
+    "name": "Salares",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29086": {
+    "ine_code": "29086",
+    "name": "Sayalonga",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29087": {
+    "ine_code": "29087",
+    "name": "Sedella",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29088": {
+    "ine_code": "29088",
+    "name": "Sierra de Yeguas",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29089": {
+    "ine_code": "29089",
+    "name": "Teba",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29090": {
+    "ine_code": "29090",
+    "name": "Tolox",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29091": {
+    "ine_code": "29091",
+    "name": "Torrox",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29092": {
+    "ine_code": "29092",
+    "name": "Totalán",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29093": {
+    "ine_code": "29093",
+    "name": "Valle de Abdalajís",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29094": {
+    "ine_code": "29094",
+    "name": "Vélez-Málaga",
+    "avg_price_sqm": 2422.7,
+    "price_source": "municipal",
+    "price_tasaciones_n": 307,
+    "price_quarter": "T4A2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29095": {
+    "ine_code": "29095",
+    "name": "Villanueva de Algaidas",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29096": {
+    "ine_code": "29096",
+    "name": "Villanueva del Rosario",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29097": {
+    "ine_code": "29097",
+    "name": "Villanueva del Trabuco",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29098": {
+    "ine_code": "29098",
+    "name": "Villanueva de Tapia",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29099": {
+    "ine_code": "29099",
+    "name": "Viñuela",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29100": {
+    "ine_code": "29100",
+    "name": "Yunquera",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29901": {
+    "ine_code": "29901",
+    "name": "Torremolinos",
+    "avg_price_sqm": 3546.4,
+    "price_source": "municipal",
+    "price_tasaciones_n": 312,
+    "price_quarter": "T4A2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29902": {
+    "ine_code": "29902",
+    "name": "Villanueva de la Concepción",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29903": {
+    "ine_code": "29903",
+    "name": "Montecorto",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  },
+  "29904": {
+    "ine_code": "29904",
+    "name": "Serrato",
+    "avg_price_sqm": 2897.3,
+    "price_source": "provincial_fallback",
+    "price_tasaciones_n": null,
+    "price_quarter": "Q4 2025",
+    "price_unit": "eur_per_sqm_constructed"
+  }
+}
