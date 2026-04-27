@@ -15,15 +15,15 @@ export default function Header() {
 
   return (
     <header
-      className="px-4 py-3 flex items-center justify-between shrink-0"
+      className="px-3 md:px-4 py-2 md:py-3 flex items-center justify-between shrink-0"
       style={{ background: '#fff', borderBottom: '0.5px solid var(--neutral-200)' }}
     >
       <div className="flex items-center gap-2">
         <span className="inline-block w-2 h-2 rounded-full shrink-0" style={{ background: '#40826D' }} />
         <h1 style={{ fontSize: 15 }}>
           <span style={{ color: '#2A2D26', fontWeight: 600 }}>Control Space</span>
-          <span style={{ color: '#B0B3A8', margin: '0 6px' }}>·</span>
-          <span style={{ color: '#5A5D56', fontWeight: 400 }}>Project Veridian</span>
+          <span className="hidden md:inline" style={{ color: '#B0B3A8', margin: '0 6px' }}>·</span>
+          <span className="hidden md:inline" style={{ color: '#5A5D56', fontWeight: 400 }}>Project Veridian</span>
         </h1>
       </div>
 
@@ -35,7 +35,7 @@ export default function Header() {
           <button
             key={l.key}
             onClick={() => { setLevel(l.key); clearSelection(); }}
-            className="px-4 py-1.5 text-sm font-medium transition-all"
+            className="px-3 md:px-4 py-1.5 text-sm font-medium transition-all"
             style={{
               borderRadius: 5,
               ...(level === l.key
@@ -59,7 +59,9 @@ export default function Header() {
         ))}
       </div>
 
-      <ExportButton />
+      <div className="hidden md:flex">
+        <ExportButton />
+      </div>
     </header>
   );
 }
