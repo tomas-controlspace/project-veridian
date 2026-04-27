@@ -193,6 +193,15 @@ async function main() {
           console.log(`\n  Rate limited on ${name}, waiting 10s...`);
           await sleep(10000);
           retries++;
+          // If this was the third strike, the while-loop exits next iteration
+          // without ever entering the success branch. Mark + count the failure
+          // here so the muni isn't silently dropped (was the bug that left 13
+          // Basque munis with no isochrone after the original 2024 run).
+          if (retries >= 3) {
+            console.error(`\n  Rate-limit retries exhausted for ${name} (${code})`);
+            progress[code] = 'error';
+            errors++;
+          }
         } else {
           console.error(`\n  Error for ${name} (${code}): ${err.message}`);
           progress[code] = 'error';

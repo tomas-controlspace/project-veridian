@@ -166,6 +166,13 @@ async function main() {
           console.log(`\n  Rate limited on ${name}, waiting 10s...`);
           await sleep(10000);
           retries++;
+          // Mark exhausted retries so the muni isn't silently dropped — see
+          // scripts/generate-isochrones.js for the same fix and rationale.
+          if (retries >= 3) {
+            console.error(`\n  Rate-limit retries exhausted for ${name} (${code})`);
+            progress[code] = 'error';
+            errors++;
+          }
         } else {
           console.error(`\n  Error for ${name} (${code}): ${err.message}`);
           progress[code] = 'error';
