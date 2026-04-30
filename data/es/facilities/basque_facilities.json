@@ -618,18 +618,6 @@
     "nla_estimated": true
   },
   {
-    "name": "Trastero",
-    "operator": "Trasteros Egia",
-    "address": "Ametzagaña K., 20012 Donostia / San Sebastián, Gipuzkoa, Spain",
-    "lat": 43.3174937,
-    "lng": -1.9685951,
-    "ine_code": "20069",
-    "nla_sqm": 10,
-    "notes": "",
-    "constructed_area_sqm": 0,
-    "estimated_nla": 0
-  },
-  {
     "id": "ss-005",
     "name": "TKB-Trasteleku Alokairua Donostia (Usurbil)",
     "brand": "Trasteleku",
