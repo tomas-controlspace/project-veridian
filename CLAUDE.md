@@ -153,7 +153,7 @@ The `catchmentMetrics()` function in prepare-data.js computes population-weighte
 ### Supply Metrics & Opportunity Scoring
 Computed at build time in `scripts/prepare-data.js`:
 
-**Facility classification** (applied to 53 facilities):
+**Facility classification** (applied to all facilities across regions):
 - `facility_type`: `self_storage` or `guardamuebles` (classified by `constructed_area_sqm` presence + operator name regex for known guardamuebles operators)
 - `size_tier`: `small` (<300 m²), `medium` (<1,500 m²), `large` (<5,000 m²), `xlarge` (>=5,000 m²), `unknown` (no NLA data)
 
@@ -218,9 +218,42 @@ The header "Export PPTX" button generates a 17-slide Control Space case study fo
 ## Common Tasks
 
 ### Adding a new facility
-1. Edit `data/es/facilities/basque_facilities.json`
-2. Run `node scripts/prepare-data.js`
-3. Restart dev server or hard refresh
+1. Edit the appropriate region's facilities file (`data/es/facilities/basque_facilities.json` or `data/es/malaga/facilities/malaga_facilities.json`).
+2. **Always use the canonical facility schema below** — same field names across all regions so the dashboard, ranking table, comparison panel, and PPTX export read everything uniformly.
+3. Run `node scripts/prepare-data.js` (Windows full path: `& "C:\Program Files\nodejs\node.exe" scripts\prepare-data.js`).
+4. Restart dev server or hard refresh.
+
+**Canonical facility schema** (Málaga 2026-04-23 + Donostia 2026-04-30 follow this; Bizkaia/Vitoria 47 legacy entries are kept on a different shape — see Gotchas):
+
+```json
+{
+  "id": "ss-001",                       // unique within region; ss-* (Euskadi), mlg-* (Málaga)
+  "name": "Necesito un Trastero (Gros)", // human-readable site name
+  "brand": "Necesito un Trastero",      // chain operator, or "Independent"
+  "municipio": "Donostia / San Sebastián", // matches master_municipios.json after normName()
+  "postal_code": "20001",
+  "address": "Segundo Izpizua Kalea, 5, 20001 Donostia / San Sebastián, Gipuzkoa",
+  "lat": 43.3256497,
+  "lng": -1.9720964,
+  "place_id": "ChIJxWTB3tOlUQ0R3PNGg0h7S88", // Google Place ID, null if no listing
+  "phone": "+34 900 811 646",           // null if unknown
+  "website": "https://...",             // null if unknown
+  "rating": 5.0,                         // Google rating, null if unrated
+  "rating_count": 35,                    // null if unrated
+  "source": "Google Places",             // provenance label
+  "nla_sqm": 175.0,                      // OPERATIONAL NLA: published if available, else constructed_area_sqm × 0.70
+  "constructed_area_sqm": 250.0,         // gross floor area from Catastro; null if unknown
+  "nla_confidence": "medium",            // high | medium | low | none
+  "nla_source_url": "https://ssl7.gipuzkoa.net/...", // primary research source
+  "nla_notes": "RefCat 8397654 — ...",   // researcher notes (Referencia Catastral, assumptions)
+  "nla_estimated": true                  // true if nla_sqm came from constructed × 0.70, false if operator-published
+}
+```
+
+Notes:
+- The pipeline matches facilities to municipios via `municipio` string (normalized) → master `name`. `ine_code` is no longer required on canonical-schema entries — `prepare-data.js` resolves it via [name lookup](scripts/prepare-data.js:165). Bizkaia legacy entries still carry `ine_code` and that path also works.
+- `nla_sqm` is the single operational value the pipeline sums into per-muni `nla_sqm`. Never split "published vs estimated" across two fields on canonical entries — flag estimation via `nla_estimated`.
+- `source` should be a short descriptive label (`"Google Places"`, `"Operator website (...) + Catastro"`). Keep consistent within a research batch.
 
 ### Adding a new metric to the comparison panel
 1. Add the field to types in `src/types/index.ts`
@@ -251,6 +284,6 @@ Add a column definition in the `numCols` array in `RankingTable.tsx`
 - **`captureMap` stalls in hidden/occluded tabs**: both our `waitAnimationFrame` helper and `html-to-image`'s internal Image-decode path depend on `requestAnimationFrame`, which Chromium throttles when `document.visibilityState === 'hidden'`. Real users with a visible window are fine, but headless preview browsers and backgrounded automation will hang at "Capturing map…" with no error. To test the export end-to-end, run it from a foregrounded window and drop the file somewhere accessible. For data-plumbing-only verification, `scripts/smoke-test-pptx-malaga.mjs` exercises buildCaseStudyData → docxtemplater render in pure Node (no map capture).
 - **Region-scoped derivations** (multi-region store, `src/lib/store.tsx`): components that show data for the active region only must consume `allMunicipiosList` / `filteredMunicipios` / `currentRegionProvincias` / `currentRegionFacilities`. The raw `municipios` and `provincias` maps contain ALL regions — using them directly in a UI component will leak Bilbao munis into a Málaga view. The escape hatch is `allMunicipiosGlobal` for components that genuinely want every muni (rare; mostly for global-rank tables).
 - **Choropleth uniform-swath effect for Málaga rural munis**: 91 of 103 Málaga munis use the **provincial price fallback** (€2,897/m² constructed from MIVAU Tabla 1 — the MIVAU >25k hab publication threshold leaves 91 munis with no muni-level value). The price choropleth therefore renders large uniform swaths across the rural interior. This is correct given the source — not a rendering bug. Same pattern applies to housing tenure / apartment / surface for the 84 munis that fall into INE Censo 2021 size-bin aggregates (provincial-bin per band) instead of muni-microdata. Document this behaviour in any tooltip / legend redesign.
-- **Facility schema is a union, not one shape**: Euskadi facilities use `operator`, `nla_sqm`, `estimated_nla`. Málaga facilities use `brand`, `nla_sqm`, `constructed_area_sqm`, `nla_estimated`, `nla_confidence`. Both flow through the same `Facility` interface (`src/lib/store.tsx`), and the pipeline + UI normalise reads as `f.operator || f.brand` and `f.nla_sqm ?? f.estimated_nla`. **7 Málaga facilities have `nla_sqm: null`** — never assume the field is populated. Pipeline contributes 0 from null-NLA facilities to muni totals (which is correct).
+- **Facility schema — canonical vs. legacy**: All NEW facilities (any region) MUST follow the **canonical schema** documented under "Adding a new facility" above (`brand`, `municipio`, `nla_sqm` operational, `nla_estimated`, `nla_confidence`, plus enrichment fields `id`, `place_id`, `phone`, `website`, `rating`, `rating_count`, `source`, `nla_source_url`, `nla_notes`, `postal_code`). This was set as the standard on 2026-04-30 when the Donostia/Gipuzkoa batch landed; Málaga 2026-04-23 already follows it. **The 47 Bizkaia/Vitoria entries from the original Euskadi seed are LEGACY** — flat schema with `operator` (not `brand`), `ine_code` (not `municipio`), `nla_sqm` + `estimated_nla` both populated, `notes` instead of `nla_notes`. Treat them as immutable and do NOT migrate them in passing — the pipeline + UI normalise reads via `f.operator || f.brand`, `f.nla_sqm ?? f.estimated_nla`, and `prepare-data.js` resolves `ine_code` from `municipio` when missing. **7 Málaga facilities have `nla_sqm: null`** (operator-confirmed but no Catastro figure) — never assume the field is populated. Pipeline contributes 0 from null-NLA facilities to muni totals (which is correct).
 - **Region switching clears UI state**: `setCurrentRegion` resets `selectedIds`, `searchQuery`, and `filters` to defaults. This is intentional — selections / searches / filters scoped to one region don't make sense after a switch. If you add new "user choice" state, decide explicitly whether it should reset on region change and update `setCurrentRegion` in `store.tsx` accordingly.
 - **Opportunity score is GLOBAL rank**: `prepare-data.js` rank-normalises across all 228 scored munis from all regions. A muni's score is its position in the all-Spain distribution, not its position within its own region. Top scorers therefore tend to cluster in whichever region has the most "underserved + dense + high-apartment" munis (currently Euskadi — top 5 globally are all Basque). Don't add per-region opportunity ranking unless you also expose a global ranking — the muni-to-muni cross-region comparison is the whole point of the multi-region pipeline.
