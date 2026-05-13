@@ -25,18 +25,33 @@ type MetricCol = {
   header: string;
   weight: number;
   inverted?: boolean;
+  description: string;
   format: 'number' | 'percent' | 'euro' | 'euro_sqm' | 'decimal';
   decimals: number;
 };
 
 const METRIC_COLS: MetricCol[] = [
-  { key: 'catch_nla_per_capita', header: 'NLA/cap',    weight: 0.30, inverted: true, format: 'decimal',   decimals: 4 },
-  { key: 'catchment_density',    header: 'Density',    weight: 0.20,                 format: 'number',    decimals: 0 },
-  { key: 'catch_turnover_rate',  header: 'Turnover',   weight: 0.10,                 format: 'decimal',   decimals: 4 },
-  { key: 'catch_avg_price_sqm',  header: 'Price €/m²', weight: 0.10,                 format: 'euro_sqm',  decimals: 0 },
-  { key: 'catch_pop_growth',     header: 'Growth %',   weight: 0.10,                 format: 'percent',   decimals: 2 },
-  { key: 'catch_pct_rented',     header: '% Rented',   weight: 0.10,                 format: 'percent',   decimals: 1 },
-  { key: 'catch_avg_income',     header: 'Income €',   weight: 0.10,                 format: 'euro',      decimals: 0 },
+  { key: 'catch_nla_per_capita', header: 'NLA/cap',    weight: 0.30, inverted: true,
+    description: 'Existing self-storage NLA per capita in the 10-min catchment (m² per person). Inverted — lower supply = higher opportunity.',
+    format: 'decimal', decimals: 4 },
+  { key: 'catchment_density',    header: 'Density',    weight: 0.20,
+    description: 'Population density across the 10-min catchment (people per km²).',
+    format: 'number', decimals: 0 },
+  { key: 'catch_turnover_rate',  header: 'Turnover',   weight: 0.10,
+    description: 'Housing market velocity — annual transactions ÷ total dwellings in the catchment.',
+    format: 'decimal', decimals: 4 },
+  { key: 'catch_avg_price_sqm',  header: 'Price €/m²', weight: 0.10,
+    description: 'Average constructed-area house price in the catchment (MIVAU, €/m²).',
+    format: 'euro_sqm', decimals: 0 },
+  { key: 'catch_pop_growth',     header: 'Growth %',   weight: 0.10,
+    description: '5-year population growth across the catchment.',
+    format: 'percent', decimals: 2 },
+  { key: 'catch_pct_rented',     header: '% Rented',   weight: 0.10,
+    description: 'Share of dwellings rented vs owned across the catchment.',
+    format: 'percent', decimals: 1 },
+  { key: 'catch_avg_income',     header: 'Income €',   weight: 0.10,
+    description: 'Average annual income per person across the catchment.',
+    format: 'euro', decimals: 0 },
 ];
 
 // Mirrors rankNormalize() in scripts/prepare-data.js. Nulls coerce to 0 so the
@@ -97,7 +112,7 @@ function makeColumns(
     }),
   );
   for (const c of METRIC_COLS) {
-    const weightTxt = `Weight: ${(c.weight * 100).toFixed(0)}%${c.inverted ? ' • Inverted (lower raw value = higher rank contribution)' : ''}`;
+    const weightTxt = `${(c.weight * 100).toFixed(0)}% • ${c.description}`;
     cols.push(
       colHelper.accessor(c.key, {
         header: () => <span title={weightTxt}>{c.header}</span>,
