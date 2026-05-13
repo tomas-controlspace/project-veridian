@@ -366,6 +366,7 @@ function aggregateToLevel(entries) {
     avg_rent_sqm_active: round(popWeighted('avg_rent_sqm_active'), 4),
     housing_turnover: muniTurnover || null,
     housing_turnover_annual_prov: provTurnover,
+    catch_turnover_rate: round(popWeighted('catch_turnover_rate'), 6),
     nla_sqm: entries.reduce((s, m) => s + (m.nla_sqm || 0), 0) || null,
     nla_per_capita:
       totalPop > 0
@@ -822,35 +823,80 @@ function rankNormalize(arr, field, inverse = false) {
   return ranks;
 }
 
-const densityRank = rankNormalize(scorable, 'density_per_km2');
-const incomeRank = rankNormalize(scorable, 'avg_total_income');
-const apartmentRank = rankNormalize(scorable, 'pct_apartment');
-const growthRank = rankNormalize(scorable, 'pop_growth_5yr_pct');
-const nlaCapitaRank = rankNormalize(scorable, 'nla_per_capita', true);
-const rentedRank = rankNormalize(scorable, 'pct_rented');
+// Provincial total_dwellings (for turnover-rate fallback inside catchment sums)
+const provDwellings = {};
+for (const m of munis) {
+  const pc = m.provincia_code;
+  provDwellings[pc] = (provDwellings[pc] || 0) + (m.total_dwellings || 0);
+}
+
+// Catchment turnover rate = Σ transactions ÷ Σ dwellings across the 10-min catchment.
+// When a muni inside the catchment lacks muni-level turnover, fall back to that
+// muni's provincial rate × that muni's dwellings (so the sum stays consistent).
+function catchTurnoverRate(m) {
+  if (!m.catch_ine_codes) return null;
+  let totalTurn = 0;
+  let totalDwell = 0;
+  for (const code of m.catch_ine_codes) {
+    const cm = master[code];
+    if (!cm) continue;
+    const dwell = cm.total_dwellings || 0;
+    totalDwell += dwell;
+    if (cm.housing_turnover != null) {
+      totalTurn += cm.housing_turnover;
+    } else if (
+      cm.housing_turnover_annual_prov != null &&
+      provDwellings[cm.provincia_code] > 0
+    ) {
+      totalTurn += (cm.housing_turnover_annual_prov / provDwellings[cm.provincia_code]) * dwell;
+    }
+  }
+  return totalDwell > 0 ? totalTurn / totalDwell : null;
+}
+
+// Score uses 10-min catchment aggregates (industry-standard primary trade area
+// for self-storage). For the 34 munis whose catchment === self, this reduces
+// to the muni-level value. Persist the catchment turnover rate so downstream
+// consumers (e.g. the Opportunity Score table) can display it without
+// re-aggregating from catch_ine_codes.
+const scorableV2 = scorable;
+for (const m of munis) {
+  m.catch_turnover_rate = catchTurnoverRate(m);
+}
+
+const densityRank = rankNormalize(scorableV2, 'catchment_density');
+const incomeRank = rankNormalize(scorableV2, 'catch_avg_income');
+const growthRank = rankNormalize(scorableV2, 'catch_pop_growth');
+const nlaCapitaRank = rankNormalize(scorableV2, 'catch_nla_per_capita', true);
+const rentedRank = rankNormalize(scorableV2, 'catch_pct_rented');
+const turnoverRank = rankNormalize(scorableV2, 'catch_turnover_rate');
+const priceRank = rankNormalize(scorableV2, 'catch_avg_price_sqm');
 
 const W = {
+  nla_gap: 0.3,
   density: 0.2,
-  income: 0.15,
-  apartment: 0.2,
+  turnover: 0.1,
+  price: 0.1,
   growth: 0.1,
-  nla_gap: 0.25,
   rented: 0.1,
+  income: 0.1,
 };
 
+const scorableSet = new Set(scorableV2.map((m) => m.ine_code));
 for (const m of munis) {
   const code = m.ine_code;
-  if (densityRank[code] == null) {
+  if (!scorableSet.has(code)) {
     m.opportunity_score = null;
     continue;
   }
   m.opportunity_score = round(
-    W.density * densityRank[code] +
-      W.income * incomeRank[code] +
-      W.apartment * apartmentRank[code] +
+    W.nla_gap * nlaCapitaRank[code] +
+      W.density * densityRank[code] +
+      W.turnover * turnoverRank[code] +
+      W.price * priceRank[code] +
       W.growth * growthRank[code] +
-      W.nla_gap * nlaCapitaRank[code] +
-      W.rented * rentedRank[code],
+      W.rented * rentedRank[code] +
+      W.income * incomeRank[code],
     1,
   );
 }

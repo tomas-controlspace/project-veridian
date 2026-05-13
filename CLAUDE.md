@@ -159,15 +159,18 @@ Computed at build time in `scripts/prepare-data.js`:
 
 **Supply fields per municipio**: `facility_count`, `ss_facility_count`, `nla_sqm`, `constructed_area_sqm`, `nla_per_capita`, `nla_per_1000_households`, `operator_count`
 
-**Opportunity score** (0-100, rank-normalized composite):
-- Density: 20% weight
-- % apartment dwellings: 20%
-- NLA gap (inverse — lower supply = higher score): 25%
-- Average income: 15%
-- Population growth: 10%
-- % rented dwellings: 10%
+**Opportunity score** (0-100, rank-normalized composite — v2 weights, 2026-05-13). **Each input is aggregated across the muni's 10-min drive-time catchment, NOT the muni boundary** — the score answers "if a facility is built here, what does the surrounding trade area look like?" rather than "what does this administrative unit look like in isolation":
+- NLA gap (inverse — lower `catch_nla_per_capita` = higher score): 30%
+- `catchment_density` (catchment pop ÷ catchment area km²): 20%
+- Catchment turnover rate (Σ `housing_turnover` ÷ Σ `total_dwellings` across `catch_ine_codes`, with provincial fallback for any muni inside the catchment missing muni-level data): 10%
+- `catch_avg_price_sqm`: 10%
+- `catch_pop_growth` (5yr): 10%
+- `catch_pct_rented`: 10%
+- `catch_avg_income`: 10%
 
-Only municipios with population >= 1,000 receive a score (228 of 355 across both regions). Rank normalization is **GLOBAL across all regions** — Málaga and Euskadi munis compete on the same axis. The default choropleth metric is `opportunity_score`.
+Only municipios with population >= 1,000 receive a score (228 of 355 across both regions). For the 34 munis whose 10-min isochrone covers a single muni only (`catch_ine_codes.length <= 1`), the catchment aggregates reduce to that muni's own metrics. Rank normalization is **GLOBAL across all regions** — Málaga and Euskadi munis compete on the same axis. The default choropleth metric is `opportunity_score`.
+
+**Note on `catch_opportunity_score`:** The post-scoring patch still computes `catch_opportunity_score` as the population-weighted average of muni-level `opportunity_score` values across `catch_ine_codes`. Now that muni scores are themselves catchment-based, this field is near-redundant for adjacent munis (overlapping catchments). Kept on the type/data for backward compatibility; prefer `opportunity_score` for site-selection analysis.
 
 **Post-scoring catchment patch**: After scoring all municipios, the pipeline loops through `catch_ine_codes` and `catch20_ine_codes` to recompute `catch_opportunity_score` and `catch20_opportunity_score` as population-weighted averages of the now-scored municipios.
 
