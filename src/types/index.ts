@@ -201,6 +201,8 @@ export interface DrawnArea {
 export interface Filters {
   pop_min: number | null;
   pop_max: number | null;
+  catch_pop_min: number | null;
+  catch_pop_max: number | null;
   income_min: number | null;
   income_max: number | null;
   price_min: number | null;

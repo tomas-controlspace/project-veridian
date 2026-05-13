@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import { useStore } from '@/lib/store';
 import { METRIC_DEFS } from '@/lib/metrics';
+import { DEFAULT_FILTERS } from '@/lib/filters';
 import type { Filters } from '@/types';
 
 const sLabel: React.CSSProperties = {
@@ -82,17 +83,19 @@ export default function Sidebar() {
   // is already scoped to currentRegion in the store), so they update on
   // region switch without any extra plumbing.
   const filterRanges = useMemo(() => {
-    const popR    = rangeOf(allMunicipiosList.map(m => m.pop_2025));
-    const incomeR = rangeOf(allMunicipiosList.map(m => m.avg_total_income));
-    const priceR  = rangeOf(allMunicipiosList.map(m => m.avg_price_sqm));
+    const popR      = rangeOf(allMunicipiosList.map(m => m.pop_2025));
+    const catchPopR = rangeOf(allMunicipiosList.map(m => m.catchment_pop));
+    const incomeR   = rangeOf(allMunicipiosList.map(m => m.avg_total_income));
+    const priceR    = rangeOf(allMunicipiosList.map(m => m.avg_price_sqm));
     // Rent: prefer avg_rent_sqm; fall back to avg_rent_sqm_active for Málaga
     // (avg_rent_sqm is null for all 103 Málaga munis per methodology §2).
-    const rentR   = rangeOf(allMunicipiosList.map(m => m.avg_rent_sqm ?? m.avg_rent_sqm_active));
+    const rentR     = rangeOf(allMunicipiosList.map(m => m.avg_rent_sqm ?? m.avg_rent_sqm_active));
     return {
-      pop:    { min: fmtPlaceholder(popR.min,    'int'),     max: fmtPlaceholder(popR.max,    'int') },
-      income: { min: fmtPlaceholder(incomeR.min, 'int'),     max: fmtPlaceholder(incomeR.max, 'int') },
-      price:  { min: fmtPlaceholder(priceR.min,  'int'),     max: fmtPlaceholder(priceR.max,  'int') },
-      rent:   { min: fmtPlaceholder(rentR.min,   'decimal'), max: fmtPlaceholder(rentR.max,   'decimal') },
+      pop:       { min: fmtPlaceholder(popR.min,      'int'),     max: fmtPlaceholder(popR.max,      'int') },
+      catch_pop: { min: fmtPlaceholder(catchPopR.min, 'int'),     max: fmtPlaceholder(catchPopR.max, 'int') },
+      income:    { min: fmtPlaceholder(incomeR.min,   'int'),     max: fmtPlaceholder(incomeR.max,   'int') },
+      price:     { min: fmtPlaceholder(priceR.min,    'int'),     max: fmtPlaceholder(priceR.max,    'int') },
+      rent:      { min: fmtPlaceholder(rentR.min,     'decimal'), max: fmtPlaceholder(rentR.max,     'decimal') },
     };
   }, [allMunicipiosList]);
 
@@ -219,10 +222,11 @@ export default function Sidebar() {
         {showFilters && (
           <div className="mt-2 space-y-3">
             {([
-              { title: 'Population',     minKey: 'pop_min',    maxKey: 'pop_max',    rangeKey: 'pop' },
-              { title: 'Income (€/year)',minKey: 'income_min', maxKey: 'income_max', rangeKey: 'income' },
-              { title: 'Price (€/m²)',   minKey: 'price_min',  maxKey: 'price_max',  rangeKey: 'price' },
-              { title: 'Rent (€/m²/mo)', minKey: 'rent_min',   maxKey: 'rent_max',   rangeKey: 'rent' },
+              { title: 'Population',       minKey: 'pop_min',       maxKey: 'pop_max',       rangeKey: 'pop' },
+              { title: 'Catchment Pop (10-min)', minKey: 'catch_pop_min', maxKey: 'catch_pop_max', rangeKey: 'catch_pop' },
+              { title: 'Income (€/year)',  minKey: 'income_min',    maxKey: 'income_max',    rangeKey: 'income' },
+              { title: 'Price (€/m²)',     minKey: 'price_min',     maxKey: 'price_max',     rangeKey: 'price' },
+              { title: 'Rent (€/m²/mo)',   minKey: 'rent_min',      maxKey: 'rent_max',      rangeKey: 'rent' },
             ] as const).map(f => {
               const r = filterRanges[f.rangeKey];
               return (
@@ -237,7 +241,7 @@ export default function Sidebar() {
             })}
             {hasActiveFilters && (
               <button
-                onClick={() => setFilters({ pop_min: null, pop_max: null, income_min: null, income_max: null, price_min: null, price_max: null, rent_min: null, rent_max: null })}
+                onClick={() => setFilters(DEFAULT_FILTERS)}
                 className="text-xs"
                 style={{ color: 'var(--danger)' }}
               >
