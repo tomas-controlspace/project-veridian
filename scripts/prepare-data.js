@@ -822,37 +822,51 @@ function rankNormalize(arr, field, inverse = false) {
   return ranks;
 }
 
-const densityRank = rankNormalize(scorable, 'density_per_km2');
-const incomeRank = rankNormalize(scorable, 'avg_total_income');
-const apartmentRank = rankNormalize(scorable, 'pct_apartment');
-const growthRank = rankNormalize(scorable, 'pop_growth_5yr_pct');
-const nlaCapitaRank = rankNormalize(scorable, 'nla_per_capita', true);
-const rentedRank = rankNormalize(scorable, 'pct_rented');
+// Drop munis without a muni-level housing_turnover value (per v2 spec)
+const scorableV2 = scorable.filter((m) => m.housing_turnover != null);
+
+// Turnover rate = annual transactions per dwelling (housing market velocity)
+for (const m of scorableV2) {
+  m._turnover_rate =
+    m.total_dwellings > 0 ? m.housing_turnover / m.total_dwellings : null;
+}
+
+const densityRank = rankNormalize(scorableV2, 'density_per_km2');
+const incomeRank = rankNormalize(scorableV2, 'avg_total_income');
+const growthRank = rankNormalize(scorableV2, 'pop_growth_5yr_pct');
+const nlaCapitaRank = rankNormalize(scorableV2, 'nla_per_capita', true);
+const rentedRank = rankNormalize(scorableV2, 'pct_rented');
+const turnoverRank = rankNormalize(scorableV2, '_turnover_rate');
+const priceRank = rankNormalize(scorableV2, 'avg_price_sqm');
 
 const W = {
+  nla_gap: 0.3,
   density: 0.2,
-  income: 0.15,
-  apartment: 0.2,
+  turnover: 0.1,
+  price: 0.1,
   growth: 0.1,
-  nla_gap: 0.25,
   rented: 0.1,
+  income: 0.1,
 };
 
+const scorableSet = new Set(scorableV2.map((m) => m.ine_code));
 for (const m of munis) {
   const code = m.ine_code;
-  if (densityRank[code] == null) {
+  if (!scorableSet.has(code)) {
     m.opportunity_score = null;
     continue;
   }
   m.opportunity_score = round(
-    W.density * densityRank[code] +
-      W.income * incomeRank[code] +
-      W.apartment * apartmentRank[code] +
+    W.nla_gap * nlaCapitaRank[code] +
+      W.density * densityRank[code] +
+      W.turnover * turnoverRank[code] +
+      W.price * priceRank[code] +
       W.growth * growthRank[code] +
-      W.nla_gap * nlaCapitaRank[code] +
-      W.rented * rentedRank[code],
+      W.rented * rentedRank[code] +
+      W.income * incomeRank[code],
     1,
   );
+  delete m._turnover_rate;
 }
 
 const scored = munis.filter((m) => m.opportunity_score != null);
