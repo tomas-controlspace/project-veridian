@@ -5,9 +5,10 @@ import ComparisonPanel from './ComparisonPanel';
 import RankingTable from './RankingTable';
 import FacilitiesPanel from './FacilitiesPanel';
 import CustomAreasPanel from './CustomAreasPanel';
+import OpportunityTable from './OpportunityTable';
 import { useStore } from '@/lib/store';
 
-type Tab = 'comparison' | 'ranking' | 'facilities' | 'custom';
+type Tab = 'comparison' | 'ranking' | 'facilities' | 'custom' | 'opportunity';
 
 export default function BottomPanel() {
   const [tab, setTab] = useState<Tab>('comparison');
@@ -69,6 +70,9 @@ export default function BottomPanel() {
             </span>
           )}
         </button>
+        <button onClick={() => setTab('opportunity')} style={tabStyle(tab === 'opportunity')}>
+          Opportunity Score
+        </button>
         <button onClick={() => setTab('ranking')} style={tabStyle(tab === 'ranking')}>
           Ranking
         </button>
@@ -79,6 +83,7 @@ export default function BottomPanel() {
       <div className="flex-1 overflow-hidden">
         {tab === 'comparison' && <ComparisonPanel />}
         {tab === 'custom' && <CustomAreasPanel />}
+        {tab === 'opportunity' && <OpportunityTable />}
         {tab === 'ranking' && <RankingTable />}
         {tab === 'facilities' && <FacilitiesPanel />}
       </div>

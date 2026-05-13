@@ -39,6 +39,7 @@ export interface MunicipioMetrics {
   avg_rent_sqm: number | null;
   avg_rent_sqm_active: number | null;
   housing_turnover_annual_prov: number | null;
+  catch_turnover_rate: number | null;
   nla_sqm: number | null;
   nla_per_capita: number | null;
   facility_count: number;
@@ -121,6 +122,7 @@ export interface ProvinciaMetrics {
   avg_rent_sqm: number | null;
   avg_rent_sqm_active: number | null;
   housing_turnover_annual_prov: number | null;
+  catch_turnover_rate: number | null;
   nla_sqm: number | null;
   nla_per_capita: number | null;
   facility_count: number;

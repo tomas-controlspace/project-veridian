@@ -366,6 +366,7 @@ function aggregateToLevel(entries) {
     avg_rent_sqm_active: round(popWeighted('avg_rent_sqm_active'), 4),
     housing_turnover: muniTurnover || null,
     housing_turnover_annual_prov: provTurnover,
+    catch_turnover_rate: round(popWeighted('catch_turnover_rate'), 6),
     nla_sqm: entries.reduce((s, m) => s + (m.nla_sqm || 0), 0) || null,
     nla_per_capita:
       totalPop > 0
@@ -855,10 +856,12 @@ function catchTurnoverRate(m) {
 
 // Score uses 10-min catchment aggregates (industry-standard primary trade area
 // for self-storage). For the 34 munis whose catchment === self, this reduces
-// to the muni-level value.
+// to the muni-level value. Persist the catchment turnover rate so downstream
+// consumers (e.g. the Opportunity Score table) can display it without
+// re-aggregating from catch_ine_codes.
 const scorableV2 = scorable;
-for (const m of scorableV2) {
-  m._catch_turnover_rate = catchTurnoverRate(m);
+for (const m of munis) {
+  m.catch_turnover_rate = catchTurnoverRate(m);
 }
 
 const densityRank = rankNormalize(scorableV2, 'catchment_density');
@@ -866,7 +869,7 @@ const incomeRank = rankNormalize(scorableV2, 'catch_avg_income');
 const growthRank = rankNormalize(scorableV2, 'catch_pop_growth');
 const nlaCapitaRank = rankNormalize(scorableV2, 'catch_nla_per_capita', true);
 const rentedRank = rankNormalize(scorableV2, 'catch_pct_rented');
-const turnoverRank = rankNormalize(scorableV2, '_catch_turnover_rate');
+const turnoverRank = rankNormalize(scorableV2, 'catch_turnover_rate');
 const priceRank = rankNormalize(scorableV2, 'catch_avg_price_sqm');
 
 const W = {
@@ -896,7 +899,6 @@ for (const m of munis) {
       W.income * incomeRank[code],
     1,
   );
-  delete m._catch_turnover_rate;
 }
 
 const scored = munis.filter((m) => m.opportunity_score != null);
