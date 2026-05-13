@@ -162,13 +162,13 @@ Computed at build time in `scripts/prepare-data.js`:
 **Opportunity score** (0-100, rank-normalized composite — v2 weights, 2026-05-13):
 - NLA gap (inverse — lower NLA per capita = higher score): 30%
 - Density per km²: 20%
-- Housing market turnover rate (annual transactions ÷ total dwellings): 10%
+- Housing market turnover rate (annual transactions ÷ total dwellings; falls back to provincial rate `housing_turnover_annual_prov ÷ Σ provincial total_dwellings` when muni-level data is missing): 10%
 - Avg house price €/m²: 10%
 - Population growth (5yr): 10%
 - % rented dwellings: 10%
 - Average income: 10%
 
-Only municipios with population >= 1,000 **AND** a muni-level `housing_turnover` value receive a score (222 of 355 across both regions; 6 munis with pop >= 1,000 are dropped for missing turnover — notably Barakaldo, Pasaia, Zumaia). Rank normalization is **GLOBAL across all regions** — Málaga and Euskadi munis compete on the same axis. The default choropleth metric is `opportunity_score`.
+Only municipios with population >= 1,000 receive a score (228 of 355 across both regions). Rank normalization is **GLOBAL across all regions** — Málaga and Euskadi munis compete on the same axis. The default choropleth metric is `opportunity_score`.
 
 **Post-scoring catchment patch**: After scoring all municipios, the pipeline loops through `catch_ine_codes` and `catch20_ine_codes` to recompute `catch_opportunity_score` and `catch20_opportunity_score` as population-weighted averages of the now-scored municipios.
 

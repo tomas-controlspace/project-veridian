@@ -822,13 +822,24 @@ function rankNormalize(arr, field, inverse = false) {
   return ranks;
 }
 
-// Drop munis without a muni-level housing_turnover value (per v2 spec)
-const scorableV2 = scorable.filter((m) => m.housing_turnover != null);
+// Provincial total_dwellings (for turnover-rate fallback)
+const provDwellings = {};
+for (const m of munis) {
+  const pc = m.provincia_code;
+  provDwellings[pc] = (provDwellings[pc] || 0) + (m.total_dwellings || 0);
+}
 
-// Turnover rate = annual transactions per dwelling (housing market velocity)
+// Turnover rate = annual transactions per dwelling (housing market velocity).
+// Muni-level data preferred; fall back to provincial rate when missing.
+const scorableV2 = scorable;
 for (const m of scorableV2) {
-  m._turnover_rate =
-    m.total_dwellings > 0 ? m.housing_turnover / m.total_dwellings : null;
+  if (m.housing_turnover != null && m.total_dwellings > 0) {
+    m._turnover_rate = m.housing_turnover / m.total_dwellings;
+  } else if (m.housing_turnover_annual_prov != null && provDwellings[m.provincia_code] > 0) {
+    m._turnover_rate = m.housing_turnover_annual_prov / provDwellings[m.provincia_code];
+  } else {
+    m._turnover_rate = null;
+  }
 }
 
 const densityRank = rankNormalize(scorableV2, 'density_per_km2');
